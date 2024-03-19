@@ -1,0 +1,149 @@
+@import "src/resources/base.scss";
+
+$height: 45px;
+$backgroundColor: $white;
+
+.module {
+  position: relative;
+  display: flex;
+  @include fonts();
+  width: 100%;
+  font-size: 16px;
+}
+
+.container {
+  background-color: $backgroundColor;
+  height: $height;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+}
+
+.active {
+  background-color: $white-light;
+}
+
+.flexColumn {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  a,
+  h3,
+  .button {
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+}
+
+.module li {
+  color: #444 !important;
+}
+
+.barsMenu {
+  margin: 16px;
+  display: block;
+}
+
+.left {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.right {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+.title {
+  margin-top: 5px;
+  margin-left: 24px !important;
+  font-weight: normal;
+  font-size: 15px !important;
+
+  .subtitle {
+    font-weight: bold;
+    font-size: inherit;
+  }
+}
+
+.button {
+  margin-left: 18px;
+  margin-right: 12px;
+  font-size: 14px !important;
+  color: #777 !important;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
+  .smallImage {
+    vertical-align: middle;
+    background-clip: padding-box;
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+.profileImage {
+  font-size: 20px;
+}
+
+.element {
+  display: block;
+}
+
+.element i {
+  font-size: 19px !important;
+  color: #a0a0a0 !important;
+}
+
+.search {
+  border: 1px solid #e7e7e7;
+  margin-right: 20px;
+}
+
+.search i {
+  font-size: 16px !important;
+  padding: 8px 10px;
+}
+
+.search input {
+  border: none;
+  font-size: 14px;
+  width: 200px;
+}
+
+.search input::placeholder {
+  color: #a0a0a0;
+}
+
+
+
+.teamImage {
+  display: inline-block;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.userName span {
+  font-size: 14px !important;
+  margin-right: 17px;
+  i {
+    display: inline-block;
+    margin-left: 5px;
+  }
+}
+
+.profileImage {
+  margin-right: 12px;
+}

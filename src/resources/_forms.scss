@@ -1,0 +1,78 @@
+@import "base.scss";
+
+.module label {}
+
+.module button {
+  margin-right: 8px !important;
+  margin-top: 6px;
+}
+
+.module .buttonLink {
+  background: none;
+  border: none;
+  padding: 0 !important;
+  font-weight: bold;
+  color: $primary;
+  cursor: pointer;
+  box-sizing: border-box;
+  &:hover {
+    box-sizing: border-box;
+    text-decoration: underline;
+  }
+}
+
+.module .buttonGreen {
+  color: $white;
+  background-color: $green;
+  &:hover {
+    background-color: $green-hover;
+  }
+}
+
+.module .mainButton {
+  border-radius: 18px;
+  width: 100%;
+}
+
+.module .input {
+  background-color: $background-fields;
+  border: solid 1px $grey-light;
+  padding: 12px;
+  margin-top: 6px;
+}
+
+.module .text {
+}
+
+.module .textArea {
+}
+
+.module .checkbox {
+}
+
+.module .box {
+}
+
+.module .button {
+  background-color: $primary;
+  color: $white;
+
+  height: 36px;
+  border-radius: 18px;
+
+  &.lg {
+    height: 48px;
+    border-radius: 24px;
+  }
+}
+
+.module .select {
+  @extend .input;
+  height: 48px;
+}
+
+.module .label {
+}
+
+.module .file {
+}

@@ -1,0 +1,50 @@
+@import "src/resources/base.scss";
+@import "src/resources/layout.scss";
+@import "src/resources/forms.scss";
+
+.module {
+  @include fonts();
+  height: 100%;
+  width: 100%;
+}
+
+.module .title {
+  margin-bottom: 27px;
+}
+
+.module .loading {
+  position: absolute;
+  margin-left: 185px;
+  height: 50px;
+  width: 50px;
+  z-index: 100
+}
+
+.btn{
+  background: #a0a0a0;
+  margin-left: 10px;
+}
+.input {
+  margin: 5px 0px !important;
+}
+
+.module label{
+  color: #777;
+}
+
+.module textarea{
+  height: 150px;
+}
+
+.module .save {
+  background-color: $green;
+  color: $white;
+  min-height: 45px !important;
+  border-radius: 24px;
+  font-size: 16px;
+
+  &:hover {
+    color: $white;
+    background-color: $green-hover;
+  }
+}

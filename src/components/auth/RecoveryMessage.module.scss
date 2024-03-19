@@ -1,0 +1,57 @@
+@import "src/resources/base.scss";
+@import "src/resources/forms.scss";
+@import "src/resources/layout.scss";
+
+.module {
+  @include fonts();
+  font-family: "PT Serif", serif;
+  height: 100%;
+  width: 100%;
+}
+
+.module .jumbotron {
+  background-color: $primary-dark;
+  padding: 25px 34px 10px 34px;
+}
+
+.module .back {
+  position: absolute;
+  height: 32px;
+  top: 44px;
+  cursor: pointer;
+}
+
+.module .image {
+  height: 75px;
+  width: auto;
+}
+
+
+.module .title {
+  font-size: 32px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  line-height: 1.4em;
+}
+
+
+.module label {
+  font-family: "PT Serif", serif;
+  color: $grey;
+  font-size: 19px;
+  margin-bottom: 7px;
+  font-weight: bold;
+}
+
+.module small {
+  font-family: "PT Serif", serif;
+  color: #999;
+  font-size: 15px;
+}
+
+.mainButton{
+  width: 150px !important;
+  padding: 10px;
+  margin: 0px;
+  @include border-radius(20px)
+}

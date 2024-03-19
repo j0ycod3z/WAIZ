@@ -1,0 +1,22 @@
+@import "src/resources/base.scss";
+
+.module {
+  width: 100%;
+  height: 100%;
+}
+
+.item {
+  display: inline-block;
+  padding: 4px 12px;
+  margin: 3px 3px;
+  border: 1px solid;
+  cursor: pointer;
+  min-height: 31px;
+  min-width: 47px;
+  text-align: center;
+  @include border-radius(14px);
+}
+
+.tick {
+  display: inline-block;
+}

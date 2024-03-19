@@ -1,0 +1,26 @@
+@import "src/resources/base.scss";
+
+.module {
+  width: 100%;
+  height: 100%;
+}
+
+.itemContainer {
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  margin-bottom: 10px;
+}
+
+.empty {
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  font-style: italic;
+  color: #aaa;
+  padding: 60px 20px;
+
+  i {
+    margin-bottom: 14px;
+    font-size: 40px;
+  }
+}

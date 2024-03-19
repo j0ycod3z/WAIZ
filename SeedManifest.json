@@ -1,0 +1,2963 @@
+{
+  "models": [
+    {
+      "attrs": [
+        {
+          "length": "32",
+          "name": "phone",
+          "type": "string"
+        },
+        {
+          "name": "gender",
+          "options": [
+            "MALE",
+            "FEMALE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "age",
+          "options": [
+            "LESS_THAN_15",
+            "15_19",
+            "20_24",
+            "25_29",
+            "30_34",
+            "35_39",
+            "40_44",
+            "45_49",
+            "50_54",
+            "MORE_THAN_55"
+          ],
+          "type": "int"
+        },
+        {
+          "length": "512",
+          "name": "bio",
+          "type": "text"
+        },
+        {
+          "name": "country",
+          "options": [
+            "AFGHANISTAN",
+            "ALBANIA",
+            "ALGERIA",
+            "ANDORRA",
+            "ANGOLA",
+            "ANTIGUA_AND_BARBUDA",
+            "ARGENTINA",
+            "ARMENIA",
+            "AUSTRALIA",
+            "AUSTRIA",
+            "AZERBAIJAN",
+            "THE_BAHAMAS",
+            "BAHRAIN",
+            "BANGLADESH",
+            "BARBADOS",
+            "BELARUS",
+            "BELGIUM",
+            "BELIZE",
+            "BENIN",
+            "BHUTAN",
+            "BOLIVIA",
+            "BOSNIA_AND_HERZEGOVINA",
+            "BOTSWANA",
+            "BRAZIL",
+            "BRUNEI",
+            "BULGARIA",
+            "BURKINA_FASO",
+            "BURUNDI",
+            "CABO_VERDE",
+            "CAMBODIA",
+            "CAMEROON",
+            "CANADA",
+            "CENTRAL_AFRICAN_REPUBLIC",
+            "CHAD",
+            "CHILE",
+            "CHINA",
+            "COLOMBIA",
+            "COMOROS",
+            "DEMOCRATIC_REPUBLIC_OF_THE_CONGO",
+            "REPUBLIC_OF_THE_CONGO",
+            "COSTA_RICA",
+            "COTE_DIVOIRE",
+            "CROATIA",
+            "CUBA",
+            "CYPRUS",
+            "CZECH_REPUBLIC",
+            "DENMARK",
+            "DJIBOUTI",
+            "DOMINICA",
+            "DOMINICAN_REPUBLIC",
+            "EAST_TIMOR",
+            "ECUADOR",
+            "EGYPT",
+            "EL_SALVADOR",
+            "EQUATORIAL_GUINEA",
+            "ERITREA",
+            "ESTONIA",
+            "ESWATINI",
+            "ETHIOPIA",
+            "FIJI",
+            "FINLAND",
+            "FRANCE",
+            "GABON",
+            "THE_GAMBIA",
+            "GEORGIA",
+            "GERMANY",
+            "GHANA",
+            "GREECE",
+            "GRENADA",
+            "GUATEMALA",
+            "GUINEA",
+            "GUINEA_BISSAU",
+            "GUYANA",
+            "HAITI",
+            "HONDURAS",
+            "HUNGARY",
+            "ICELAND",
+            "INDIA",
+            "INDONESIA",
+            "IRAN",
+            "IRAQ",
+            "IRELAND",
+            "ISRAEL",
+            "ITALY",
+            "JAMAICA",
+            "JAPAN",
+            "JORDAN",
+            "KAZAKHSTAN",
+            "KENYA",
+            "KIRIBATI",
+            "NORTH_KOREA",
+            "SOUTH_KOREA",
+            "KOSOVO",
+            "KUWAIT",
+            "KYRGYZSTAN",
+            "LAOS",
+            "LATVIA",
+            "LEBANON",
+            "LESOTHO",
+            "LIBERIA",
+            "LIBYA",
+            "LIECHTENSTEIN",
+            "LITHUANIA",
+            "LUXEMBOURG",
+            "MADAGASCAR",
+            "MALAWI",
+            "MALAYSIA",
+            "MALDIVES",
+            "MALI",
+            "MALTA",
+            "MARSHALL_ISLANDS",
+            "MAURITANIA",
+            "MAURITIUS",
+            "MEXICO",
+            "FEDERATED_STATES_OF_MICRONESIA",
+            "MOLDOVA",
+            "MONACO",
+            "MONGOLIA",
+            "MONTENEGRO",
+            "MOROCCO",
+            "MOZAMBIQUE",
+            "MYANMAR_BURMA",
+            "NAMIBIA",
+            "NAURU",
+            "NEPAL",
+            "NETHERLANDS",
+            "NEW_ZEALAND",
+            "NICARAGUA",
+            "NIGER",
+            "NIGERIA",
+            "NORTH_MACEDONIA",
+            "NORWAY",
+            "OMAN",
+            "PAKISTAN",
+            "PALAU",
+            "PANAMA",
+            "PAPUA_NEW_GUINEA",
+            "PARAGUAY",
+            "PERU",
+            "PHILIPPINES",
+            "POLAND",
+            "PORTUGAL",
+            "QATAR",
+            "ROMANIA",
+            "RUSSIA",
+            "RWANDA",
+            "SAINT_KITTS_AND_NEVIS",
+            "SAINT_LUCIA",
+            "SAINT_VINCENT_AND_THE_GRENADINES",
+            "SAMOA",
+            "SAN_MARINO",
+            "SAO_TOME_AND_PRINCIPE",
+            "SAUDI_ARABIA",
+            "SENEGAL",
+            "SERBIA",
+            "SEYCHELLES",
+            "SIERRA_LEONE",
+            "SINGAPORE",
+            "SLOVAKIA",
+            "SLOVENIA",
+            "SOLOMON_ISLANDS",
+            "SOMALIA",
+            "SOUTH_AFRICA",
+            "SPAIN",
+            "SRI_LANKA",
+            "SUDAN",
+            "SOUTH_SUDAN",
+            "SURINAME",
+            "SWEDEN",
+            "SWITZERLAND",
+            "SYRIA",
+            "TAIWAN",
+            "TAJIKISTAN",
+            "TANZANIA",
+            "THAILAND",
+            "TOGO",
+            "TONGA",
+            "TRINIDAD_AND_TOBAGO",
+            "TUNISIA",
+            "TURKEY",
+            "TURKMENISTAN",
+            "TUVALU",
+            "UGANDA",
+            "UKRAINE",
+            "UNITED_ARAB_EMIRATES",
+            "UNITED_KINGDOM",
+            "UNITED_STATES",
+            "URUGUAY",
+            "UZBEKISTAN",
+            "VANUATU",
+            "VATICAN_CITY",
+            "VENEZUELA",
+            "VIETNAM",
+            "YEMEN",
+            "ZAMBIA",
+            "ZIMBABWE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "state",
+          "options": [
+            "ALABAMA",
+            "ALASKA",
+            "ARIZONA",
+            "ARKANSAS",
+            "CALIFORNIA",
+            "COLORADO",
+            "CONNECTICUT",
+            "DELAWARE",
+            "FLORIDA",
+            "GEORGIA",
+            "HAWAII",
+            "IDAHO",
+            "ILLINOIS",
+            "INDIANA",
+            "IOWA",
+            "KANSAS",
+            "KENTUCKY",
+            "LOUISIANA",
+            "MAINE",
+            "MARYLAND",
+            "MASSACHUSETTS",
+            "MICHIGAN",
+            "MINNESOTA",
+            "MISSISSIPPI",
+            "MISSOURI",
+            "MONTANA",
+            "NEBRASKA",
+            "NEVADA",
+            "NEW_HAMPSHIRE",
+            "NEW_JERSEY",
+            "NEW_MEXICO",
+            "NEW_YORK",
+            "NORTH_CAROLINA",
+            "NORTH_DAKOTA",
+            "OHIO",
+            "OKLAHOMA",
+            "OREGON",
+            "PENNSYLVANIA",
+            "RHODE_ISLAND",
+            "SOUTH_CAROLINA",
+            "SOUTH_DAKOTA",
+            "TENNESSEE",
+            "TEXAS",
+            "UTAH",
+            "VERMONT",
+            "VIRGINIA",
+            "WASHINGTON",
+            "WEST_VIRGINIA",
+            "WISCONSIN",
+            "WYOMINGAGUASCALIENTES",
+            "BAJA_CALIFORNIA",
+            "BAJA_CALIFORNIA_SUR",
+            "CAMPECHE",
+            "CIUDAD_DE_MEXICO",
+            "CHIAPAS",
+            "CHIHUAHUA",
+            "COAHUILA",
+            "COLIMA",
+            "DURANGO",
+            "ESTADO_DE_MEXICO",
+            "GUANAJUATO",
+            "GUERRERO",
+            "HIDALGO",
+            "JALISCO",
+            "MICHOACAN",
+            "MORELOS",
+            "NAYARIT",
+            "NUEVO_LEON",
+            "OAXACA",
+            "PUEBLA",
+            "QUERETARO",
+            "QUINTANA_ROO",
+            "SAN_LUIS_POTOSI",
+            "SINALOA",
+            "SONORA",
+            "TABASCO",
+            "TAMAULIPAS",
+            "TLAXCALA",
+            "VERACRUZ",
+            "YUCATAN",
+            "ZACATECAS"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "industry",
+          "options": [
+            "AEROSPACE_INDUSTRY",
+            "AGRICULTURE",
+            "ARTS_ENTERTAINMENT_RECREATION",
+            "AUTOMOTIVE",
+            "CHEMICAL_PHARMACEUTICAL_INDUSTRIES",
+            "CLEAN_ENERGY",
+            "CONSTRUCTION",
+            "CONSULTING_PROFESSIONAL_AND_BUSINESS_SERVICES",
+            "DEFENSE_INDUSTRY",
+            "DESIGN",
+            "ECOMMERCE",
+            "EDUCATION",
+            "ENERGY_INDUSTRY",
+            "FASHION",
+            "FINANCIAL_SERVICES_INSURANCE_CREDIT_FUNDS",
+            "FOOD_DRINK",
+            "HEALTH_AND_WELLNESS_HEALTHCARE",
+            "INFORMATION_TECHNOLOGY",
+            "INTERNET_OF_THINGS",
+            "LEGAL",
+            "LIFE_SCIENCES",
+            "LOGISTICS",
+            "MANUFACTURING",
+            "MEDIA",
+            "MINING",
+            "MOBILE_APPLICATION",
+            "PUBLIC_SERVICE",
+            "REAL_ESTATE",
+            "RETAIL",
+            "SCIENTIFIC_AND_TECHNICAL_SERVICES",
+            "SPORTS",
+            "STEEL_INDUSTRY",
+            "TELECOMMUNICATIONS_SERVICES",
+            "TEXTILES",
+            "TOURISM",
+            "TRANSPORT",
+            "OTHER"
+          ],
+          "type": "enum"
+        },
+        {
+          "length": "32",
+          "name": "preferred_lang",
+          "type": "string"
+        },
+        {
+          "length": "512",
+          "name": "website",
+          "type": "string"
+        },
+        {
+          "length": "512",
+          "name": "linkedin",
+          "type": "string"
+        },
+        {
+          "length": "512",
+          "name": "github",
+          "type": "string"
+        },
+        {
+          "length": "512",
+          "name": "facebook",
+          "type": "string"
+        },
+        {
+          "length": "512",
+          "name": "twitter",
+          "type": "string"
+        },
+        {
+          "length": "512",
+          "name": "angel_list",
+          "type": "string"
+        },
+        {
+          "length": "512",
+          "name": "made",
+          "type": "text"
+        },
+        {
+          "name": "phone_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "gender_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "age_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "bio_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "country_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "state_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "industry_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "website_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "linkedin_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "github_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "facebook_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "twitter_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "angel_list_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "made_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "educations_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "laborals_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "languages_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "primary_skills_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "secondary_skills_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "user",
+          "type": "user"
+        },
+        {
+          "card": {
+            "has": "1",
+            "ref": "0..*"
+          },
+          "is_fk": true,
+          "name": "educations",
+          "type": "profile_education[]",
+          "write": false
+        },
+        {
+          "card": {
+            "has": "1",
+            "ref": "0..*"
+          },
+          "is_fk": true,
+          "name": "laborals",
+          "type": "profile_laboral[]",
+          "write": false
+        },
+        {
+          "card": {
+            "has": "1",
+            "ref": "0..*"
+          },
+          "is_fk": true,
+          "name": "languages",
+          "type": "profile_language[]",
+          "write": false
+        },
+        {
+          "card": {
+            "has": "1",
+            "ref": "0..*"
+          },
+          "is_fk": true,
+          "name": "primary_skills",
+          "type": "profile_primary_skill[]",
+          "write": false
+        },
+        {
+          "card": {
+            "has": "1",
+            "ref": "0..*"
+          },
+          "is_fk": true,
+          "name": "secondary_skills",
+          "type": "profile_secondary_skill[]",
+          "write": false
+        }
+      ],
+      "name": "profile"
+    },
+    {
+      "attrs": [
+        {
+          "length": "256",
+          "name": "degree",
+          "type": "string"
+        },
+        {
+          "length": "128",
+          "name": "period",
+          "type": "string"
+        },
+        {
+          "length": "512",
+          "name": "activities_groups",
+          "type": "string"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "empty": true,
+          "is_fk": true,
+          "name": "university",
+          "type": "university"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "profile",
+          "type": "profile"
+        }
+      ],
+      "name": "profile_education"
+    },
+    {
+      "attrs": [
+        {
+          "length": "80",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "country",
+          "options": [
+            "AFGHANISTAN",
+            "ALBANIA",
+            "ALGERIA",
+            "ANDORRA",
+            "ANGOLA",
+            "ANTIGUA_AND_BARBUDA",
+            "ARGENTINA",
+            "ARMENIA",
+            "AUSTRALIA",
+            "AUSTRIA",
+            "AZERBAIJAN",
+            "THE_BAHAMAS",
+            "BAHRAIN",
+            "BANGLADESH",
+            "BARBADOS",
+            "BELARUS",
+            "BELGIUM",
+            "BELIZE",
+            "BENIN",
+            "BHUTAN",
+            "BOLIVIA",
+            "BOSNIA_AND_HERZEGOVINA",
+            "BOTSWANA",
+            "BRAZIL",
+            "BRUNEI",
+            "BULGARIA",
+            "BURKINA_FASO",
+            "BURUNDI",
+            "CABO_VERDE",
+            "CAMBODIA",
+            "CAMEROON",
+            "CANADA",
+            "CENTRAL_AFRICAN_REPUBLIC",
+            "CHAD",
+            "CHILE",
+            "CHINA",
+            "COLOMBIA",
+            "COMOROS",
+            "DEMOCRATIC_REPUBLIC_OF_THE_CONGO",
+            "REPUBLIC_OF_THE_CONGO",
+            "COSTA_RICA",
+            "COTE_DIVOIRE",
+            "CROATIA",
+            "CUBA",
+            "CYPRUS",
+            "CZECH_REPUBLIC",
+            "DENMARK",
+            "DJIBOUTI",
+            "DOMINICA",
+            "DOMINICAN_REPUBLIC",
+            "EAST_TIMOR",
+            "ECUADOR",
+            "EGYPT",
+            "EL_SALVADOR",
+            "EQUATORIAL_GUINEA",
+            "ERITREA",
+            "ESTONIA",
+            "ESWATINI",
+            "ETHIOPIA",
+            "FIJI",
+            "FINLAND",
+            "FRANCE",
+            "GABON",
+            "THE_GAMBIA",
+            "GEORGIA",
+            "GERMANY",
+            "GHANA",
+            "GREECE",
+            "GRENADA",
+            "GUATEMALA",
+            "GUINEA",
+            "GUINEA_BISSAU",
+            "GUYANA",
+            "HAITI",
+            "HONDURAS",
+            "HUNGARY",
+            "ICELAND",
+            "INDIA",
+            "INDONESIA",
+            "IRAN",
+            "IRAQ",
+            "IRELAND",
+            "ISRAEL",
+            "ITALY",
+            "JAMAICA",
+            "JAPAN",
+            "JORDAN",
+            "KAZAKHSTAN",
+            "KENYA",
+            "KIRIBATI",
+            "NORTH_KOREA",
+            "SOUTH_KOREA",
+            "KOSOVO",
+            "KUWAIT",
+            "KYRGYZSTAN",
+            "LAOS",
+            "LATVIA",
+            "LEBANON",
+            "LESOTHO",
+            "LIBERIA",
+            "LIBYA",
+            "LIECHTENSTEIN",
+            "LITHUANIA",
+            "LUXEMBOURG",
+            "MADAGASCAR",
+            "MALAWI",
+            "MALAYSIA",
+            "MALDIVES",
+            "MALI",
+            "MALTA",
+            "MARSHALL_ISLANDS",
+            "MAURITANIA",
+            "MAURITIUS",
+            "MEXICO",
+            "FEDERATED_STATES_OF_MICRONESIA",
+            "MOLDOVA",
+            "MONACO",
+            "MONGOLIA",
+            "MONTENEGRO",
+            "MOROCCO",
+            "MOZAMBIQUE",
+            "MYANMAR_BURMA",
+            "NAMIBIA",
+            "NAURU",
+            "NEPAL",
+            "NETHERLANDS",
+            "NEW_ZEALAND",
+            "NICARAGUA",
+            "NIGER",
+            "NIGERIA",
+            "NORTH_MACEDONIA",
+            "NORWAY",
+            "OMAN",
+            "PAKISTAN",
+            "PALAU",
+            "PANAMA",
+            "PAPUA_NEW_GUINEA",
+            "PARAGUAY",
+            "PERU",
+            "PHILIPPINES",
+            "POLAND",
+            "PORTUGAL",
+            "QATAR",
+            "ROMANIA",
+            "RUSSIA",
+            "RWANDA",
+            "SAINT_KITTS_AND_NEVIS",
+            "SAINT_LUCIA",
+            "SAINT_VINCENT_AND_THE_GRENADINES",
+            "SAMOA",
+            "SAN_MARINO",
+            "SAO_TOME_AND_PRINCIPE",
+            "SAUDI_ARABIA",
+            "SENEGAL",
+            "SERBIA",
+            "SEYCHELLES",
+            "SIERRA_LEONE",
+            "SINGAPORE",
+            "SLOVAKIA",
+            "SLOVENIA",
+            "SOLOMON_ISLANDS",
+            "SOMALIA",
+            "SOUTH_AFRICA",
+            "SPAIN",
+            "SRI_LANKA",
+            "SUDAN",
+            "SOUTH_SUDAN",
+            "SURINAME",
+            "SWEDEN",
+            "SWITZERLAND",
+            "SYRIA",
+            "TAIWAN",
+            "TAJIKISTAN",
+            "TANZANIA",
+            "THAILAND",
+            "TOGO",
+            "TONGA",
+            "TRINIDAD_AND_TOBAGO",
+            "TUNISIA",
+            "TURKEY",
+            "TURKMENISTAN",
+            "TUVALU",
+            "UGANDA",
+            "UKRAINE",
+            "UNITED_ARAB_EMIRATES",
+            "UNITED_KINGDOM",
+            "UNITED_STATES",
+            "URUGUAY",
+            "UZBEKISTAN",
+            "VANUATU",
+            "VATICAN_CITY",
+            "VENEZUELA",
+            "VIETNAM",
+            "YEMEN",
+            "ZAMBIA",
+            "ZIMBABWE"
+          ],
+          "type": "enum"
+        }
+      ],
+      "name": "university"
+    },
+    {
+      "attrs": [
+        {
+          "length": "512",
+          "name": "job",
+          "type": "string"
+        },
+        {
+          "length": "512",
+          "name": "company",
+          "type": "string"
+        },
+        {
+          "length": "128",
+          "name": "period",
+          "type": "string"
+        },
+        {
+          "length": "1024",
+          "name": "company_description",
+          "type": "string"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "profile",
+          "type": "profile"
+        }
+      ],
+      "name": "profile_laboral"
+    },
+    {
+      "attrs": [
+        {
+          "length": "64",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "profile",
+          "type": "profile"
+        }
+      ],
+      "name": "profile_language"
+    },
+    {
+      "attrs": [
+        {
+          "length": "32",
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "score",
+          "type": "float"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "profile",
+          "type": "profile"
+        }
+      ],
+      "name": "profile_primary_skill"
+    },
+    {
+      "attrs": [
+        {
+          "length": "32",
+          "name": "sector",
+          "type": "string"
+        },
+        {
+          "length": "32",
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "score",
+          "type": "int"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "profile",
+          "type": "profile"
+        }
+      ],
+      "name": "profile_secondary_skill"
+    },
+    {
+      "attrs": [
+        {
+          "length": "512",
+          "name": "image_url",
+          "type": "string"
+        },
+        {
+          "length": "32",
+          "name": "color",
+          "type": "string"
+        },
+        {
+          "empty": true,
+          "name": "lang",
+          "options": [
+            "EN",
+            "ES"
+          ],
+          "type": "enum"
+        },
+        {
+          "default": "TRIAL",
+          "name": "plan",
+          "options": [
+            "TRIAL",
+            "PREMIUM"
+          ],
+          "type": "enum"
+        },
+        {
+          "length": "256",
+          "name": "verification_token",
+          "type": "string"
+        },
+        {
+          "default": "false",
+          "name": "is_verified",
+          "type": "boolean"
+        },
+        {
+          "length": "128",
+          "name": "intro_status",
+          "type": "string"
+        },
+        {
+          "empty": true,
+          "name": "v4_ref",
+          "type": "int"
+        }
+      ],
+      "name": "user"
+    },
+    {
+      "attrs": [
+        {
+          "length": "512",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "default": "now",
+          "name": "date",
+          "type": "date"
+        },
+        {
+          "empty": true,
+          "name": "v4_ref",
+          "type": "int"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "admin",
+          "type": "user"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "0..*"
+          },
+          "is_fk": true,
+          "name": "mentors",
+          "type": "user[]"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "0..*"
+          },
+          "is_fk": true,
+          "name": "instructors",
+          "type": "user[]"
+        }
+      ],
+      "name": "cohort"
+    },
+    {
+      "attrs": [
+        {
+          "length": "256",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "length": "1024",
+          "name": "description",
+          "type": "text"
+        },
+        {
+          "length": "512",
+          "name": "image",
+          "type": "string"
+        },
+        {
+          "default": "false",
+          "name": "is_active",
+          "type": "boolean"
+        },
+        {
+          "default": "false",
+          "name": "has_phase1",
+          "type": "boolean"
+        },
+        {
+          "default": "false",
+          "name": "has_phase21",
+          "type": "boolean"
+        },
+        {
+          "default": "false",
+          "name": "has_phase22",
+          "type": "boolean"
+        },
+        {
+          "default": "false",
+          "name": "has_phase23",
+          "type": "boolean"
+        },
+        {
+          "default": "false",
+          "name": "has_phase24",
+          "type": "boolean"
+        },
+        {
+          "default": "false",
+          "name": "has_phase25",
+          "type": "boolean"
+        },
+        {
+          "default": "false",
+          "name": "has_phase3",
+          "type": "boolean"
+        },
+        {
+          "default": "false",
+          "name": "has_phase4",
+          "type": "boolean"
+        },
+        {
+          "default": "false",
+          "name": "has_phase5",
+          "type": "boolean"
+        },
+        {
+          "empty": true,
+          "name": "v4_ref",
+          "type": "int"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "canvas_type2",
+          "type": "canvas_type"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "empty": true,
+          "is_fk": true,
+          "name": "admin",
+          "type": "user"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "empty": true,
+          "is_fk": true,
+          "name": "cohort",
+          "type": "cohort"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "0..*"
+          },
+          "empty": true,
+          "is_fk": true,
+          "name": "mentors",
+          "type": "user[]"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "0..*"
+          },
+          "empty": true,
+          "is_fk": true,
+          "name": "members",
+          "type": "user[]"
+        },
+        {
+          "card": {
+            "has": "1",
+            "ref": "0..*"
+          },
+          "is_fk": true,
+          "name": "canvas",
+          "type": "canvas[]",
+          "write": false
+        }
+      ],
+      "name": "project"
+    },
+    {
+      "attrs": [
+        {
+          "name": "country",
+          "options": [
+            "AFGHANISTAN",
+            "ALBANIA",
+            "ALGERIA",
+            "ANDORRA",
+            "ANGOLA",
+            "ANTIGUA_AND_BARBUDA",
+            "ARGENTINA",
+            "ARMENIA",
+            "AUSTRALIA",
+            "AUSTRIA",
+            "AZERBAIJAN",
+            "THE_BAHAMAS",
+            "BAHRAIN",
+            "BANGLADESH",
+            "BARBADOS",
+            "BELARUS",
+            "BELGIUM",
+            "BELIZE",
+            "BENIN",
+            "BHUTAN",
+            "BOLIVIA",
+            "BOSNIA_AND_HERZEGOVINA",
+            "BOTSWANA",
+            "BRAZIL",
+            "BRUNEI",
+            "BULGARIA",
+            "BURKINA_FASO",
+            "BURUNDI",
+            "CABO_VERDE",
+            "CAMBODIA",
+            "CAMEROON",
+            "CANADA",
+            "CENTRAL_AFRICAN_REPUBLIC",
+            "CHAD",
+            "CHILE",
+            "CHINA",
+            "COLOMBIA",
+            "COMOROS",
+            "DEMOCRATIC_REPUBLIC_OF_THE_CONGO",
+            "REPUBLIC_OF_THE_CONGO",
+            "COSTA_RICA",
+            "COTE_DIVOIRE",
+            "CROATIA",
+            "CUBA",
+            "CYPRUS",
+            "CZECH_REPUBLIC",
+            "DENMARK",
+            "DJIBOUTI",
+            "DOMINICA",
+            "DOMINICAN_REPUBLIC",
+            "EAST_TIMOR",
+            "ECUADOR",
+            "EGYPT",
+            "EL_SALVADOR",
+            "EQUATORIAL_GUINEA",
+            "ERITREA",
+            "ESTONIA",
+            "ESWATINI",
+            "ETHIOPIA",
+            "FIJI",
+            "FINLAND",
+            "FRANCE",
+            "GABON",
+            "THE_GAMBIA",
+            "GEORGIA",
+            "GERMANY",
+            "GHANA",
+            "GREECE",
+            "GRENADA",
+            "GUATEMALA",
+            "GUINEA",
+            "GUINEA_BISSAU",
+            "GUYANA",
+            "HAITI",
+            "HONDURAS",
+            "HUNGARY",
+            "ICELAND",
+            "INDIA",
+            "INDONESIA",
+            "IRAN",
+            "IRAQ",
+            "IRELAND",
+            "ISRAEL",
+            "ITALY",
+            "JAMAICA",
+            "JAPAN",
+            "JORDAN",
+            "KAZAKHSTAN",
+            "KENYA",
+            "KIRIBATI",
+            "NORTH_KOREA",
+            "SOUTH_KOREA",
+            "KOSOVO",
+            "KUWAIT",
+            "KYRGYZSTAN",
+            "LAOS",
+            "LATVIA",
+            "LEBANON",
+            "LESOTHO",
+            "LIBERIA",
+            "LIBYA",
+            "LIECHTENSTEIN",
+            "LITHUANIA",
+            "LUXEMBOURG",
+            "MADAGASCAR",
+            "MALAWI",
+            "MALAYSIA",
+            "MALDIVES",
+            "MALI",
+            "MALTA",
+            "MARSHALL_ISLANDS",
+            "MAURITANIA",
+            "MAURITIUS",
+            "MEXICO",
+            "FEDERATED_STATES_OF_MICRONESIA",
+            "MOLDOVA",
+            "MONACO",
+            "MONGOLIA",
+            "MONTENEGRO",
+            "MOROCCO",
+            "MOZAMBIQUE",
+            "MYANMAR_BURMA",
+            "NAMIBIA",
+            "NAURU",
+            "NEPAL",
+            "NETHERLANDS",
+            "NEW_ZEALAND",
+            "NICARAGUA",
+            "NIGER",
+            "NIGERIA",
+            "NORTH_MACEDONIA",
+            "NORWAY",
+            "OMAN",
+            "PAKISTAN",
+            "PALAU",
+            "PANAMA",
+            "PAPUA_NEW_GUINEA",
+            "PARAGUAY",
+            "PERU",
+            "PHILIPPINES",
+            "POLAND",
+            "PORTUGAL",
+            "QATAR",
+            "ROMANIA",
+            "RUSSIA",
+            "RWANDA",
+            "SAINT_KITTS_AND_NEVIS",
+            "SAINT_LUCIA",
+            "SAINT_VINCENT_AND_THE_GRENADINES",
+            "SAMOA",
+            "SAN_MARINO",
+            "SAO_TOME_AND_PRINCIPE",
+            "SAUDI_ARABIA",
+            "SENEGAL",
+            "SERBIA",
+            "SEYCHELLES",
+            "SIERRA_LEONE",
+            "SINGAPORE",
+            "SLOVAKIA",
+            "SLOVENIA",
+            "SOLOMON_ISLANDS",
+            "SOMALIA",
+            "SOUTH_AFRICA",
+            "SPAIN",
+            "SRI_LANKA",
+            "SUDAN",
+            "SOUTH_SUDAN",
+            "SURINAME",
+            "SWEDEN",
+            "SWITZERLAND",
+            "SYRIA",
+            "TAIWAN",
+            "TAJIKISTAN",
+            "TANZANIA",
+            "THAILAND",
+            "TOGO",
+            "TONGA",
+            "TRINIDAD_AND_TOBAGO",
+            "TUNISIA",
+            "TURKEY",
+            "TURKMENISTAN",
+            "TUVALU",
+            "UGANDA",
+            "UKRAINE",
+            "UNITED_ARAB_EMIRATES",
+            "UNITED_KINGDOM",
+            "UNITED_STATES",
+            "URUGUAY",
+            "UZBEKISTAN",
+            "VANUATU",
+            "VATICAN_CITY",
+            "VENEZUELA",
+            "VIETNAM",
+            "YEMEN",
+            "ZAMBIA",
+            "ZIMBABWE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "state",
+          "options": [
+            "ALABAMA",
+            "ALASKA",
+            "ARIZONA",
+            "ARKANSAS",
+            "CALIFORNIA",
+            "COLORADO",
+            "CONNECTICUT",
+            "DELAWARE",
+            "FLORIDA",
+            "GEORGIA",
+            "HAWAII",
+            "IDAHO",
+            "ILLINOIS",
+            "INDIANA",
+            "IOWA",
+            "KANSAS",
+            "KENTUCKY",
+            "LOUISIANA",
+            "MAINE",
+            "MARYLAND",
+            "MASSACHUSETTS",
+            "MICHIGAN",
+            "MINNESOTA",
+            "MISSISSIPPI",
+            "MISSOURI",
+            "MONTANA",
+            "NEBRASKA",
+            "NEVADA",
+            "NEW_HAMPSHIRE",
+            "NEW_JERSEY",
+            "NEW_MEXICO",
+            "NEW_YORK",
+            "NORTH_CAROLINA",
+            "NORTH_DAKOTA",
+            "OHIO",
+            "OKLAHOMA",
+            "OREGON",
+            "PENNSYLVANIA",
+            "RHODE_ISLAND",
+            "SOUTH_CAROLINA",
+            "SOUTH_DAKOTA",
+            "TENNESSEE",
+            "TEXAS",
+            "UTAH",
+            "VERMONT",
+            "VIRGINIA",
+            "WASHINGTON",
+            "WEST_VIRGINIA",
+            "WISCONSIN",
+            "WYOMINGAGUASCALIENTES",
+            "BAJA_CALIFORNIA",
+            "BAJA_CALIFORNIA_SUR",
+            "CAMPECHE",
+            "CIUDAD_DE_MEXICO",
+            "CHIAPAS",
+            "CHIHUAHUA",
+            "COAHUILA",
+            "COLIMA",
+            "DURANGO",
+            "ESTADO_DE_MEXICO",
+            "GUANAJUATO",
+            "GUERRERO",
+            "HIDALGO",
+            "JALISCO",
+            "MICHOACAN",
+            "MORELOS",
+            "NAYARIT",
+            "NUEVO_LEON",
+            "OAXACA",
+            "PUEBLA",
+            "QUERETARO",
+            "QUINTANA_ROO",
+            "SAN_LUIS_POTOSI",
+            "SINALOA",
+            "SONORA",
+            "TABASCO",
+            "TAMAULIPAS",
+            "TLAXCALA",
+            "VERACRUZ",
+            "YUCATAN",
+            "ZACATECAS"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "industry",
+          "options": [
+            "AEROSPACE_INDUSTRY",
+            "AGRICULTURE",
+            "ARTS_ENTERTAINMENT_RECREATION",
+            "AUTOMOTIVE",
+            "CHEMICAL_PHARMACEUTICAL_INDUSTRIES",
+            "CLEAN_ENERGY",
+            "CONSTRUCTION",
+            "CONSULTING_PROFESSIONAL_AND_BUSINESS_SERVICES",
+            "DEFENSE_INDUSTRY",
+            "DESIGN",
+            "ECOMMERCE",
+            "EDUCATION",
+            "ENERGY_INDUSTRY",
+            "FASHION",
+            "FINANCIAL_SERVICES_INSURANCE_CREDIT_FUNDS",
+            "FOOD_DRINK",
+            "HEALTH_AND_WELLNESS_HEALTHCARE",
+            "INFORMATION_TECHNOLOGY",
+            "INTERNET_OF_THINGS",
+            "LEGAL",
+            "LIFE_SCIENCES",
+            "LOGISTICS",
+            "MANUFACTURING",
+            "MEDIA",
+            "MINING",
+            "MOBILE_APPLICATION",
+            "PUBLIC_SERVICE",
+            "REAL_ESTATE",
+            "RETAIL",
+            "SCIENTIFIC_AND_TECHNICAL_SERVICES",
+            "SPORTS",
+            "STEEL_INDUSTRY",
+            "TELECOMMUNICATIONS_SERVICES",
+            "TEXTILES",
+            "TOURISM",
+            "TRANSPORT",
+            "OTHER"
+          ],
+          "type": "enum"
+        },
+        {
+          "length": "512",
+          "name": "website",
+          "type": "string"
+        },
+        {
+          "name": "total_sales",
+          "type": "float"
+        },
+        {
+          "name": "raised_capital",
+          "type": "float"
+        },
+        {
+          "name": "investment_request",
+          "type": "float"
+        },
+        {
+          "name": "num_patents",
+          "type": "int"
+        },
+        {
+          "name": "num_employees",
+          "type": "int"
+        },
+        {
+          "name": "total_available_market",
+          "type": "float"
+        },
+        {
+          "name": "served_available_market",
+          "type": "float"
+        },
+        {
+          "name": "target_market",
+          "type": "float"
+        },
+        {
+          "default": "now",
+          "name": "inc_date",
+          "type": "date"
+        },
+        {
+          "length": "256",
+          "name": "irl",
+          "type": "string"
+        },
+        {
+          "empty": true,
+          "name": "high_prototype",
+          "type": "file"
+        },
+        {
+          "empty": true,
+          "name": "low_prototype",
+          "type": "file"
+        },
+        {
+          "default": "false",
+          "name": "validated_by_instructor",
+          "type": "boolean"
+        },
+        {
+          "name": "country_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "state_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "industry_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "website_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "total_sales_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "raised_capital_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "investment_request_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "num_patents_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "num_employees_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "total_available_market_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "served_available_market_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "target_market_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "inc_date_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "irl_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "prototype_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "features_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "financial_visibility",
+          "options": [
+            "PUBLIC",
+            "PRIVATE"
+          ],
+          "type": "enum"
+        },
+        {
+          "card": {
+            "has": "1",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "project",
+          "type": "project"
+        },
+        {
+          "card": {
+            "has": "1",
+            "ref": "0..*"
+          },
+          "is_fk": true,
+          "name": "features",
+          "type": "project_feature[]",
+          "write": false
+        }
+      ],
+      "name": "project_detail"
+    },
+    {
+      "attrs": [
+        {
+          "length": "1024",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "project_detail",
+          "read": false,
+          "type": "project_detail"
+        }
+      ],
+      "name": "project_feature"
+    },
+    {
+      "attrs": [
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "l_name",
+          "type": "locale"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "l_description",
+          "type": "locale"
+        }
+      ],
+      "name": "trl"
+    },
+    {
+      "attrs": [
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "l_name",
+          "type": "locale"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "trl",
+          "type": "trl"
+        }
+      ],
+      "name": "trl_question"
+    },
+    {
+      "attrs": [
+        {
+          "default": "false",
+          "name": "value",
+          "type": "boolean"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "project",
+          "read": false,
+          "type": "project"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "question",
+          "type": "trl_question"
+        }
+      ],
+      "name": "trl_status"
+    },
+    {
+      "attrs": [
+        {
+          "name": "type",
+          "options": [
+            "BASIC",
+            "BMC",
+            "EXO",
+            "IMPACT",
+            "PUBLIC",
+            "SYSTEMIC",
+            "REPUTATION",
+            "PRODUCTIVITY",
+            "BLANK"
+          ],
+          "type": "enum"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "l_name",
+          "type": "locale"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "l_legend",
+          "type": "locale"
+        },
+        {
+          "card": {
+            "has": "1",
+            "ref": "0..*"
+          },
+          "is_fk": true,
+          "name": "areas",
+          "type": "area[]",
+          "write": false
+        }
+      ],
+      "name": "canvas_type"
+    },
+    {
+      "attrs": [
+        {
+          "name": "ref",
+          "type": "text"
+        },
+        {
+          "card": {
+            "has": "1",
+            "ref": "0..*"
+          },
+          "is_fk": true,
+          "name": "translations",
+          "type": "translation[]",
+          "write": false
+        }
+      ],
+      "name": "locale"
+    },
+    {
+      "attrs": [
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "l_name",
+          "type": "locale"
+        },
+        {
+          "card": {
+            "has": "1",
+            "ref": "0..*"
+          },
+          "is_fk": true,
+          "name": "sections",
+          "type": "kb_section[]",
+          "write": false
+        }
+      ],
+      "name": "kb_course"
+    },
+    {
+      "attrs": [
+        {
+          "name": "index",
+          "type": "int"
+        },
+        {
+          "length": "512",
+          "name": "video_url",
+          "type": "string"
+        },
+        {
+          "length": "256",
+          "name": "video_id",
+          "type": "string"
+        },
+        {
+          "length": "256",
+          "name": "source",
+          "type": "string"
+        },
+        {
+          "name": "section_index",
+          "type": "int"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "l_text",
+          "type": "locale"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "l_title",
+          "type": "locale"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "section",
+          "type": "kb_section"
+        },
+        {
+          "card": {
+            "has": "1",
+            "ref": "0..*"
+          },
+          "is_fk": true,
+          "name": "files",
+          "type": "kb_file[]",
+          "write": false
+        }
+      ],
+      "name": "kb_item"
+    },
+    {
+      "attrs": [
+        {
+          "name": "index",
+          "type": "int"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "l_name",
+          "type": "locale"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "l_description",
+          "type": "locale"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "course",
+          "type": "kb_course"
+        },
+        {
+          "card": {
+            "has": "1",
+            "ref": "0..*"
+          },
+          "is_fk": true,
+          "name": "items",
+          "type": "kb_item[]",
+          "write": false
+        }
+      ],
+      "name": "kb_section"
+    },
+    {
+      "attrs": [
+        {
+          "length": "128",
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "user",
+          "type": "user"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "item",
+          "type": "kb_item"
+        }
+      ],
+      "name": "kb_progress"
+    },
+    {
+      "attrs": [
+        {
+          "name": "value",
+          "type": "text"
+        },
+        {
+          "name": "lang",
+          "options": [
+            "EN",
+            "ES",
+            "ZH"
+          ],
+          "type": "enum"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "locale",
+          "type": "locale"
+        }
+      ],
+      "name": "translation"
+    },
+    {
+      "attrs": [
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "type",
+          "type": "canvas_type"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "project",
+          "type": "project"
+        }
+      ],
+      "name": "canvas"
+    },
+    {
+      "attrs": [
+        {
+          "name": "category",
+          "options": [
+            "CUSTOMERS",
+            "VALUE_PROPOSITION",
+            "CHANNELS",
+            "REVENUE",
+            "PARTNERS",
+            "ACTIVITIES",
+            "RESOURCES",
+            "COSTS",
+            "METRICS",
+            "DIFFERENTIATION",
+            "RELATIONS_CHANNELS",
+            "ACTIVITIES_RESOURCES",
+            "PRODUCTS",
+            "CHALLENGES_OPS",
+            "IMPACT",
+            "EXPERTISE",
+            "OBJECTIVES",
+            "RELATIONSHIPS",
+            "MTP",
+            "INFORMATION",
+            "IMPLEMENTATION",
+            "STAFF_ON_DEMAND",
+            "INTERFACES",
+            "COMMUNITY",
+            "DASHBOARDS",
+            "ALGORITHMS",
+            "EXPERIMENTATION",
+            "LEVERAGED_ASSETS",
+            "AUTONOMY",
+            "ENGAGEMENT",
+            "SOCIAL_TECH",
+            "SOCIODEMOGRAPHIC",
+            "COMPETITION",
+            "ECONOMIC",
+            "INDUSTRY",
+            "TECHNOLOGY",
+            "CHALLENGES",
+            "PROJECT",
+            "STRENGTHS",
+            "WEAKNESSES",
+            "EMPLOYEES",
+            "CUSTOMERS_R",
+            "SHAREHOLDERS",
+            "CORE_VALUES",
+            "PURPOSE",
+            "TARGET",
+            "SANDBOX",
+            "GOALS",
+            "ACTIONS",
+            "THRUSTS",
+            "INITIATIVES",
+            "PROFILE_PER",
+            "BRAND_KPI",
+            "CRITICAL_PEOPLE",
+            "BHAG",
+            "BRAND_PROMISES",
+            "CRITICAL_PROMISES",
+            "STRENGTHS_R",
+            "WEAKNESSES_R",
+            "MAKE_BUY",
+            "SELL",
+            "RECORD",
+            "QTR",
+            "THEME",
+            "ACCOUNTABILITY",
+            "ROCKS",
+            "SCOREBOARD",
+            "PRIORITIES",
+            "CRITICAL_PEOPLE_P1",
+            "CELEBRATION",
+            "CRITICAL_PEOPLE_P2",
+            "CRITICAL_PROCESS_P1",
+            "REWARD",
+            "CRITICAL_PROCESS_P2",
+            "TRENDS_P",
+            "BLANK_1",
+            "BLANK_2",
+            "BLANK_3",
+            "BLANK_4",
+            "BLANK_5",
+            "BLANK_6",
+            "BLANK_7",
+            "BLANK_8",
+            "BLANK_9",
+            "OTHER"
+          ],
+          "type": "enum"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "l_name",
+          "type": "locale"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "canvas_type",
+          "type": "canvas_type"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "0..*"
+          },
+          "is_fk": true,
+          "name": "tags",
+          "type": "area_tag[]"
+        }
+      ],
+      "name": "area"
+    },
+    {
+      "attrs": [
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "l_name",
+          "type": "locale"
+        }
+      ],
+      "name": "area_tag"
+    },
+    {
+      "attrs": [
+        {
+          "length": "2048",
+          "name": "text",
+          "type": "text"
+        },
+        {
+          "empty": true,
+          "name": "v4_ref",
+          "type": "int"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "empty": true,
+          "is_fk": true,
+          "name": "hypothesis",
+          "type": "hypothesis"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "area",
+          "type": "area"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "empty": true,
+          "is_fk": true,
+          "name": "project",
+          "type": "project"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "creator",
+          "type": "user"
+        }
+      ],
+      "name": "comment"
+    },
+    {
+      "attrs": [
+        {
+          "name": "text",
+          "type": "text"
+        },
+        {
+          "default": "false",
+          "name": "is_active",
+          "type": "boolean"
+        },
+        {
+          "default": "false",
+          "name": "is_valid",
+          "type": "boolean"
+        },
+        {
+          "default": "false",
+          "name": "is_tested",
+          "type": "boolean"
+        },
+        {
+          "length": "16",
+          "name": "color",
+          "type": "string"
+        },
+        {
+          "empty": true,
+          "name": "v4_ref",
+          "type": "int"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "area",
+          "type": "area"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "empty": true,
+          "is_fk": true,
+          "name": "blank_area",
+          "type": "area"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "canvas",
+          "type": "canvas"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "creator",
+          "type": "user"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "0..*"
+          },
+          "is_fk": true,
+          "name": "tags",
+          "type": "area_tag[]",
+          "write": true
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "0..*"
+          },
+          "is_fk": true,
+          "name": "customers",
+          "type": "hypothesis[]",
+          "write": true
+        }
+      ],
+      "name": "hypothesis"
+    },
+    {
+      "attrs": [
+        {
+          "length": "2048",
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "question",
+          "type": "deep_question"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "canvas",
+          "type": "canvas"
+        }
+      ],
+      "name": "deep_answer"
+    },
+    {
+      "attrs": [
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "l_content",
+          "type": "locale"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "area",
+          "type": "area"
+        }
+      ],
+      "name": "deep_question"
+    },
+    {
+      "attrs": [
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "l_content",
+          "type": "locale"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "l_video_id",
+          "type": "locale"
+        },
+        {
+          "card": {
+            "has": "1",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "area",
+          "type": "area"
+        }
+      ],
+      "name": "area_help"
+    },
+    {
+      "attrs": [
+        {
+          "length": "2048",
+          "name": "text",
+          "type": "text"
+        },
+        {
+          "name": "type",
+          "options": [
+            "NICE_TO_HAVE",
+            "MUST_HAVE",
+            "INVALIDATE_HYPOTHESIS"
+          ],
+          "type": "enum"
+        },
+        {
+          "empty": true,
+          "name": "v4_ref",
+          "type": "int"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "empty": true,
+          "is_fk": true,
+          "name": "hypothesis",
+          "type": "hypothesis"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "empty": true,
+          "is_fk": true,
+          "name": "area",
+          "type": "area"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "empty": true,
+          "is_fk": true,
+          "name": "interview",
+          "type": "interview"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "project",
+          "type": "project"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "creator",
+          "type": "user"
+        }
+      ],
+      "name": "insight"
+    },
+    {
+      "attrs": [
+        {
+          "name": "transcript",
+          "type": "text"
+        },
+        {
+          "name": "channel",
+          "options": [
+            "FACE_TO_FACE",
+            "TELEPHONE",
+            "VIDEO_CALL",
+            "EMAIL"
+          ],
+          "type": "enum"
+        },
+        {
+          "name": "interviewee_type",
+          "options": [
+            "CUSTOMER",
+            "EXPERT"
+          ],
+          "type": "enum"
+        },
+        {
+          "length": "512",
+          "name": "interviewee_name",
+          "type": "string"
+        },
+        {
+          "length": "256",
+          "name": "interviewee_rol",
+          "type": "string"
+        },
+        {
+          "length": "256",
+          "name": "interviewee_company",
+          "type": "string"
+        },
+        {
+          "length": "256",
+          "name": "interviewee_contact",
+          "type": "string"
+        },
+        {
+          "empty": true,
+          "name": "v4_ref",
+          "type": "int"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "empty": true,
+          "is_fk": true,
+          "name": "interviewee_tag",
+          "type": "area_tag"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "empty": true,
+          "is_fk": true,
+          "name": "hypothesis",
+          "type": "hypothesis"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "empty": true,
+          "is_fk": true,
+          "name": "canvas",
+          "type": "canvas"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "project",
+          "type": "project"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "creator",
+          "type": "user"
+        }
+      ],
+      "name": "interview"
+    },
+    {
+      "attrs": [
+        {
+          "default": "now",
+          "name": "date",
+          "type": "date"
+        },
+        {
+          "length": "1024",
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "default": "false",
+          "name": "is_valid",
+          "type": "boolean"
+        },
+        {
+          "default": "false",
+          "name": "is_tested",
+          "type": "boolean"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "ref",
+          "type": "hypothesis"
+        }
+      ],
+      "name": "hypothesis_log"
+    },
+    {
+      "attrs": [
+        {
+          "default": "false",
+          "name": "value",
+          "type": "boolean"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "project",
+          "read": false,
+          "type": "project"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "frontier",
+          "type": "frontier"
+        }
+      ],
+      "name": "frontier_status"
+    },
+    {
+      "attrs": [
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "l_name",
+          "type": "locale"
+        },
+        {
+          "name": "category",
+          "options": [
+            "H1",
+            "H2",
+            "H3"
+          ],
+          "type": "enum"
+        }
+      ],
+      "name": "frontier"
+    },
+    {
+      "attrs": [
+        {
+          "default": "false",
+          "name": "value",
+          "type": "boolean"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "project",
+          "read": false,
+          "type": "project"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "fit",
+          "type": "fit"
+        }
+      ],
+      "name": "fit_status"
+    },
+    {
+      "attrs": [
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "l_name",
+          "type": "locale"
+        },
+        {
+          "name": "category",
+          "options": [
+            "PROBLEM_SOLUTION",
+            "PRODUCT_MARKET",
+            "BUSINESS_MODEL"
+          ],
+          "type": "enum"
+        }
+      ],
+      "name": "fit"
+    },
+    {
+      "attrs": [
+        {
+          "default": "false",
+          "name": "value",
+          "type": "boolean"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "project",
+          "read": false,
+          "type": "project"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "dev_stage",
+          "type": "dev_stage"
+        }
+      ],
+      "name": "dev_stage_status"
+    },
+    {
+      "attrs": [
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "l_name",
+          "type": "locale"
+        },
+        {
+          "name": "category",
+          "options": [
+            "STARTUP",
+            "GROW_UP",
+            "SCALE_UP",
+            "INDUSTRY_MASTER"
+          ],
+          "type": "enum"
+        }
+      ],
+      "name": "dev_stage"
+    },
+    {
+      "attrs": [
+        {
+          "default": "now",
+          "name": "date",
+          "type": "date"
+        },
+        {
+          "name": "net_income",
+          "type": "float"
+        },
+        {
+          "name": "gross_profile_margins",
+          "type": "float"
+        },
+        {
+          "name": "ebitda",
+          "type": "float"
+        },
+        {
+          "name": "cogs",
+          "type": "float"
+        },
+        {
+          "name": "burn_rate",
+          "type": "float"
+        },
+        {
+          "name": "runway",
+          "type": "float"
+        },
+        {
+          "name": "customers",
+          "type": "float"
+        },
+        {
+          "name": "new_customers",
+          "type": "float"
+        },
+        {
+          "name": "customer_acquisition_cost",
+          "type": "float"
+        },
+        {
+          "name": "customer_lifetime_value",
+          "type": "float"
+        },
+        {
+          "name": "customer_churn_rate",
+          "type": "float"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "project_detail",
+          "type": "project_detail"
+        }
+      ],
+      "name": "financial_indicator"
+    },
+    {
+      "attrs": [
+        {
+          "length": "256",
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "name": "lang",
+          "options": [
+            "EN",
+            "ES",
+            "ZH"
+          ],
+          "type": "enum"
+        },
+        {
+          "card": {
+            "has": "0..*",
+            "ref": "1"
+          },
+          "is_fk": true,
+          "name": "kb_item",
+          "type": "kb_item"
+        }
+      ],
+      "name": "kb_file"
+    }
+  ],
+  "platform": "reactjs"
+}

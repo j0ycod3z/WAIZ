@@ -1,0 +1,35 @@
+@import "src/resources/base.scss";
+
+.background {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-color: $primary-dark;
+}
+
+
+.title {
+  @include serif();
+  font-size: 23px;
+  margin-top: -4px;
+  margin-bottom: 34px;
+  margin-left: 45px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.85);
+  width: 100%;
+
+  span {
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 7px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.logoCanou {
+  display: inline-block;
+  height: 80px;
+  width: auto;
+  margin-top: 30px;
+  margin-left: 40px;
+}

@@ -1,0 +1,334 @@
+@import "src/resources/base.scss";
+@import "src/resources/forms.scss";
+@import "src/resources/layout.scss";
+
+.module {
+  @include fonts();
+  height: 100%;
+  width: 100%;
+}
+
+.module select {
+  text-transform: capitalize;
+}
+
+.module .badgeEdit {
+  font-size: 12px;
+  padding: 8px 0px;
+  color: $white;
+  background-color: $blue-light;
+  padding: 8px;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.module .blueGradient {
+  background: $blue-primary-1;
+  color: $white;
+}
+
+.module .dataList {
+  .ul {
+    list-style-type: none;
+  }
+}
+
+.module .spacing {
+  margin-top: 24px;
+}
+
+.module .spacing p {
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "Open Sans", sans-serif;
+}
+
+.module .cardTitle {
+  font-size: 19px;
+  line-height: 1.4em;
+  font-weight: bolder;
+}
+
+.module .keyPerformanceTable {
+  border: none;
+  width: 100%;
+  padding: 32px;
+  border-radius: 4px;
+
+  .secondary {
+    color: $grey;
+    font-size: 9px;
+  }
+
+  .icon {
+    color: $primary;
+  }
+
+  .featuresNumbers td {
+    @extend .fancyNumber;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  th {
+    font-weight: bold;
+    text-align: center;
+  }
+
+  th,
+  td {
+    text-align: center;
+    padding-top: 8px;
+    width: 10%
+  }
+}
+
+.module .light {
+  color: $white;
+}
+
+.module .headerForm label {
+  margin-top: 16px;
+  margin-bottom: 2px;
+}
+
+.module .fancyNumber {
+  font-family: sans-serif;
+  font-size: 24px;
+  font-weight: bolder;
+  color: $grey-dark;
+}
+
+.module .flexRowContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.module .marketData {
+  .fancyNumber {
+    padding-top: 4px;
+    padding-bottom: 16px;
+  }
+}
+
+.module .marketChart {
+  margin-top: -40px;
+  padding-bottom: 68%;
+  width: 100%;
+  @include box-sizing(border-box);
+
+  @media screen and (max-width: 800px) {
+    padding-bottom: 80%;
+  }
+
+  .chartElement {
+    border-radius: 100%;
+    transform: 40deg;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    position: absolute;
+  }
+
+  .total {
+    top: 0;
+    bottom: auto;
+    -moz-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    -webkit-transform: rotate(40deg);
+    transform: rotate(40deg);
+    @extend .chartElement;
+    padding-bottom: 70%;
+    width: 70%;
+    background: #1cab68;
+    z-index: 200;
+  }
+
+  .server {
+    @extend .chartElement;
+    background: #50a0ff;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+  }
+
+  .target {
+    @extend .chartElement;
+    z-index: 202;
+    background: #ffc040;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+  }
+}
+
+.module .alignRight {
+  text-align: right;
+}
+
+.module .irlTable {
+  width: 100%;
+
+  td {
+    padding-bottom: 7px;
+    padding-right: 7px;
+    color: #707070;
+  }
+}
+
+.module ul.details {
+  @include sans();
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  li {
+    float: left;
+    margin-right: 12px;
+  }
+}
+
+.module ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  .bulletTitle {
+    font-weight: bold;
+  }
+}
+
+.module .trlSteperElement {
+  display: block;
+  border: 1px solid $green;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 24px;
+}
+
+.module .trlSteperCompleted {
+  color: $white;
+}
+
+.module .trlContainer {
+  background: none;
+}
+
+.module .trlSuccess,
+.module .trlPending {
+  border-radius: 25px;
+  margin-left: 2px;
+  height: 24px;
+}
+
+.module .trlSuccess {
+  background-color: $green;
+}
+
+.module .trlPending {
+  background-color: #f0f0f0;
+  color: #777
+}
+
+.module .projectInfoList {
+  li {
+    margin-bottom: 4px;
+  }
+
+  a {
+    color: #fff;
+  }
+}
+
+.module .editGeneric {
+  border: none;
+  padding: none;
+  background: none;
+  font-size: 23px;
+}
+
+.module .edit {
+  @extend .editGeneric;
+  color: $blue-primary-1;
+  margin-left: 8px;
+
+  i {
+    font-size: 15px;
+  }
+
+  &:hover {
+    color: $blue-light;
+  }
+}
+
+.module .editLight {
+  @extend .editGeneric;
+  border: none;
+  padding: none;
+  margin: none;
+  color: $white;
+  margin-left: 8px;
+
+  &:hover {
+    color: $yellow-canou;
+  }
+}
+
+.module .keyFeaturesTableContainer {
+  padding: 10px 0px;
+}
+
+.module .keyFeaturesTable {
+  td {
+    padding: 14px;
+  }
+
+  .keyFeatureNumber {
+    background-color: $green;
+    color: $white;
+  }
+
+  .keyFeatureText {}
+}
+
+.module .financialSwitch {
+  float: right;
+  margin-top: -5px;
+}
+
+.module .openButton {
+  background-color: $green;
+  color: $white;
+  min-height: 32px !important;
+  width: 120px;
+  margin-left: 10px;
+  border-radius: 24px;
+  font-size: 15px;
+  margin-top: -4px;
+
+  &:hover {
+    color: $white;
+    background-color: $green-hover;
+  }
+}
+
+.module .horizonBox {
+  position: relative;
+  border: 1px solid #a0a0a0;
+  margin-left: 35px;
+}
+
+.module .horizonText {
+  position: relative;
+  width: 80px;
+  height: 20px;
+  margin-top: -20px;
+  font-size: 13px;
+  text-align: center;
+}

@@ -1,0 +1,55 @@
+@import "src/resources/base.scss";
+
+.item {
+  background: #fff;
+}
+.item.active {
+  background: #f5f5f5;
+}
+
+.newButton {
+  font-size: 14px;
+  padding: 12px 18px;
+  color: rgb(255, 255, 255);
+  background: #b5b5b5;
+  cursor: pointer;
+}
+
+.newButton:hover {
+  color: #fff;
+}
+
+
+.empty{
+  min-height: 500px;
+  margin-bottom: 50px;
+  text-align: center;
+  padding: 100px 150px;
+}
+
+.emptyText{
+  font-size: 20px;
+  margin-bottom: 30px;
+  color: #aaa;
+}
+
+.emptyIcon i{
+  font-size: 70px;
+  color: #aaa;
+}
+
+.interviewList{
+  height: 500px;
+  border-bottom: 1px solid #e0e0e0;
+  overflow: auto;
+  background: #fff;
+}
+
+.buttonOption{
+  float: right;
+  color: rgba(255,255,255,0.7);
+  font-size: 18px;
+  padding: 4px 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}

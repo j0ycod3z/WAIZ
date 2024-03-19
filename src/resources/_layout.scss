@@ -1,0 +1,78 @@
+@import "base.scss";
+
+.module {
+  @include fonts();
+  height: 100%;
+  width: 100%;
+}
+
+.background {
+  position: absolute;
+  z-index: -100;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  height: 100%;
+  width: 100%;
+  background: url("/resources/images/wave.svg") no-repeat center center;
+  background-size: cover;
+  background-color: $primary-dark;
+}
+
+.module .spacingContainer {
+  padding-top: 20px;
+}
+
+.module .spacingText {
+  padding-top: 4px;
+}
+
+.module .card {
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: 1px solid $grey-light;
+  padding: 8px;
+  .main {
+    color: $white;
+    border: none;
+    padding: 12px;
+    .mainCardText {
+      color: $white;
+      @include sans();
+    }
+  }
+  .mainCardTitle {
+    font-size: 38px;
+    letter-spacing: 1px;
+    @include sans();
+    font-weight: bolder;
+  }
+}
+
+.module .title {
+  font-family: "PT Serif", serif;
+  font-size: 32px;
+  font-weight: bold;
+  &.titleWhite {
+    color: $white;
+  }
+}
+
+.module .completeWidth {
+  width: 100%;
+}
+
+.module a.link {
+  cursor: pointer;
+  color: $blue-primary-1;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.module .tableRight {
+  td {
+    text-align: right;
+  }
+}

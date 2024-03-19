@@ -1,0 +1,100 @@
+@import "src/resources/base.scss";
+
+.module {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 14px;
+  padding-bottom: 4px;
+  color: #777;
+}
+
+.title i {
+  color: #a0a0a0;
+}
+
+.title a {
+  color: #777;
+  font-family: inherit;
+}
+
+.title .numH {
+  color: #F0B010;
+  font-size: 0.85em;
+  margin-left: 4px;
+}
+
+.options {
+  position: absolute;
+  top: 10px;
+  background: #fff;
+  right: 10px;
+  display: none;
+}
+
+.options .option {
+  display: inline-block;
+  margin: 2px;
+  font-size: 13px;
+  color: white;
+  padding: 4px 5px;
+  @include border-radius(50%);
+}
+
+.add {
+  background-color: #198CE5;
+}
+
+.info {
+  background-color: #FFB500;
+}
+
+.edit {
+  background-color: #f0a000;
+}
+
+.insight {
+  background-color: #20b068;
+}
+
+.add:hover {
+  background-color: #1077D5;
+}
+
+.info:hover {
+  background-color: #FFA000;
+}
+
+.edit:hover {
+  background-color: #f08500;
+}
+
+.insight:hover {
+  background-color: #10a060;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.container.other {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wrapperOther {
+  position: relative;
+  width: 25%;
+  padding: 0px 10px 0px 10px;
+}
+
+.item {
+  padding: 8px 0px 6px 0px;
+}
+

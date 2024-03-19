@@ -1,0 +1,50 @@
+/*
+__Seed builder__v0.2.0
+  AUTO_GENERATED (Read only)
+  Modify via builder
+*/
+
+export const SINGULARS =
+{
+  "areas": "area",
+  "areaHelps": "areaHelp",
+  "areaTags": "areaTag",
+  "canvases": "canvas",
+  "canvasTypes": "canvasType",
+  "cohorts": "cohort",
+  "comments": "comment",
+  "deepAnswers": "deepAnswer",
+  "deepQuestions": "deepQuestion",
+  "devStages": "devStage",
+  "devStageStatuses": "devStageStatus",
+  "financialIndicators": "financialIndicator",
+  "fits": "fit",
+  "fitStatuses": "fitStatus",
+  "frontiers": "frontier",
+  "frontierStatuses": "frontierStatus",
+  "hypotheses": "hypothesis",
+  "hypothesisLogs": "hypothesisLog",
+  "insights": "insight",
+  "interviews": "interview",
+  "kbCourses": "kbCourse",
+  "kbFiles": "kbFile",
+  "kbItems": "kbItem",
+  "kbProgresses": "kbProgress",
+  "kbSections": "kbSection",
+  "locales": "locale",
+  "profiles": "profile",
+  "profileEducations": "profileEducation",
+  "profileLaborals": "profileLaboral",
+  "profileLanguages": "profileLanguage",
+  "profilePrimarySkills": "profilePrimarySkill",
+  "profileSecondarySkills": "profileSecondarySkill",
+  "projects": "project",
+  "projectDetails": "projectDetail",
+  "projectFeatures": "projectFeature",
+  "translations": "translation",
+  "trls": "trl",
+  "trlQuestions": "trlQuestion",
+  "trlStatuses": "trlStatus",
+  "universities": "university",
+  "users": "user",
+};

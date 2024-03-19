@@ -1,0 +1,13 @@
+@import "src/resources/base.scss";
+@import "src/resources/layout.scss";
+@import "src/resources/forms.scss";
+
+.module {
+  @include fonts();
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  margin-top: 35px;
+}

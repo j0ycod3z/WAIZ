@@ -1,0 +1,53 @@
+@import "src/resources/base.scss";
+
+.module {
+  background: #fff;;
+}
+
+.form {
+  padding-top: 20px;
+}
+
+.form .label {
+  color: #5f5f5f;
+  padding-bottom: 5px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.form input[type=text],
+.form select,
+.form textarea {
+  width: 100%;
+  padding: 8px 14px;
+  margin-bottom: 4px;
+  font-size: 14px;
+  border: 1px solid #e0e0e0;
+  background: white;
+  @include border-radius(4px);
+  @include box-sizing(border-box);
+}
+
+.form textarea {
+  height: 150px;
+}
+
+.call {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  padding: 9px 14px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  color: #fff;
+  background-color: #11C26F;
+  border: none;
+  cursor: pointer;
+  @include border-radius(20px);
+}
+
+.call:hover {
+  background-color: #11B24F;
+}

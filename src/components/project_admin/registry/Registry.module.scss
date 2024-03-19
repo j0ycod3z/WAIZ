@@ -1,0 +1,34 @@
+@import "src/resources/base.scss";
+@import "src/resources/layout.scss";
+@import "src/resources/forms.scss";
+
+.module {
+  @include fonts();
+  height: 100%;
+  width: 100%;
+}
+
+.module .title {
+  margin-bottom: 27px;
+}
+
+.module label{
+  color: #777;
+}
+
+.module textarea{
+  height: 150px;
+}
+
+.module .save {
+  background-color: $green;
+  color: $white;
+  min-height: 45px !important;
+  border-radius: 24px;
+  font-size: 16px;
+
+  &:hover {
+    color: $white;
+    background-color: $green-hover;
+  }
+}

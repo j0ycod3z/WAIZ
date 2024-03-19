@@ -1,0 +1,146 @@
+@import "src/resources/base.scss";
+
+.background {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-color: $primary-dark;
+}
+
+.module {
+  @include fonts();
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  height: inherit;
+}
+
+.title {
+  @include serif();
+  font-size: 35px;
+  margin-top: 9px;
+  margin-bottom: 36px;
+  font-weight: bold;
+}
+
+.logoCanou {
+  display: inline-block;
+  height: 80px;
+  width: auto;
+  margin-top: 30px;
+  margin-left: 40px;
+}
+
+.containerModifier {
+  height: 100%;
+  position: relative;
+}
+
+.rowCompleteHeight {
+  width: 100%;
+  margin: 0px;
+  margin-top: -30px;
+
+  .columnCenter {
+    height: 100%;
+    display: flex;
+    max-width: 640px;
+    flex-direction: column;
+    justify-content: center;
+
+    .card {
+      margin-top: 10%;
+      width: inherit;
+      margin-top: 20px;
+      padding: 42px 55px 42px 55px;
+    }
+  }
+}
+
+.txtLabel {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #666;
+}
+
+.txtField {
+  border: none;
+  margin-bottom: 12px;
+  padding: 11px 16px !important;
+  background-color: $background-fields;
+  border: 1px solid #e7e7e7;
+  @include border-radius(14px);
+
+  &:hover :focus {
+    background-color: $grey-light;
+  }
+}
+
+.checkboxContainer {
+  display: flex;
+  color: #444;
+  flex-direction: row;
+}
+
+.checkboxElement {
+  display: block;
+}
+
+.optionsContainer {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.signin {
+  margin-bottom: 5px;
+}
+
+.error, .payment {
+  width: 100%;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  padding: 12px;
+  font-weight: bold;
+  @include box-sizing(border-box);
+}
+
+
+.error {
+  background-color: #ffeeee;
+  color: #a05050;
+}
+
+.payment {
+  text-align: center;
+  background-color: #f0eef0;
+  color: #a050a0;
+}
+
+.loginButton {
+  background-color: $green;
+  color: $white;
+  min-height: 50px !important;
+  border-radius: 24px;
+  font-size: 16px;
+
+  &:hover {
+    color: $white;
+    background-color: $green-hover;
+  }
+}
+
+.footer {
+  color: $grey-light;
+  margin-top: 30px;
+  margin-left: 30px;
+  top: 20px;
+}
+
+.footer a {
+  color: $grey-light;
+}

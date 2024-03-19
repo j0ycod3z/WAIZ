@@ -1,0 +1,457 @@
+.module {
+  margin-top: 20px;
+}
+
+.module h5{
+  font-weight: normal !important;
+}
+
+.module b{
+  color: #404040 !important;
+}
+
+.module .container_status {
+  background-color: #198ce5;
+  border-radius: 3px;
+}
+
+.module .container_status .nav {
+  padding-top: 0.3rem;
+  padding-bottom: 0.4rem;
+}
+
+.module .container_status .nav_subtitle,
+.module .container_status .nav_title {
+  text-transform: capitalize;
+  text-align: left;
+  display: table;
+}
+
+.module .container_status .nav_subtitle label,
+.module .container_status .nav_title label {
+  vertical-align: middle;
+  position: relative;
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
+  display: table-cell;
+  line-height: 100%;
+}
+
+.module .container_status .nav_title {
+  font-size: 1.5rem;
+}
+
+.module .container_status .line {
+  width: 1px;
+  background-color: white;
+  margin-left: 1.2rem;
+  margin-right: 1.2rem;
+}
+
+.module .container_status .nav_item {
+  color: white;
+  min-height: 50px;
+}
+
+.module .container_status .nav_item span {
+  width: auto;
+  height: 1rem;
+  display: inline-block;
+  position: relative;
+}
+
+.module .container_status .nav_item .title {
+  width: 100%;
+  height: auto;
+  display: inline-block;
+  text-align: center;
+}
+
+.module .container_status .nav_item .container_top {
+  width: 100%;
+  height: auto;
+  display: inline-block;
+  position: relative;
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+.module .container_status .nav_item .container_bottom {
+  width: 100%;
+  height: auto;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+}
+
+.module .container_status .nav_item .container_bottom .counter {
+  width: auto;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.95);
+  display: inline-block;
+  text-align: center;
+  padding-left: 0.6rem;
+  border-radius: 10px;
+  padding-right: 0.6rem;
+  padding-bottom: 0.1rem;
+  padding-top: 0.1rem;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.module .container_status .nav_item .container_bottom .green_font {
+  color: #11c26f;
+}
+
+.module .container_status .nav_item .container_bottom .red_font {
+  color: #f7667a;
+}
+
+.module .container_status .nav_item .container_bottom .gray_font {
+  color: #5f5f5f;
+}
+
+.module .container_list {
+  border-radius: 30px;
+}
+
+.module .container_list .header {
+  background-color: #413c6b;
+  color: white;
+}
+
+.module .container_list .header .container_row {
+  margin-top: 0.4rem;
+}
+
+.module .container_list .header .title {
+  padding-top: 1.3rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.module .container_list .list {
+  width: 100%;
+  height: auto;
+  background-color: red;
+  display: table;
+  overflow-y: auto;
+  min-height: 20rem;
+  position: relative;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.module .container_list .list .content_list {
+  width: 100%;
+  height: 100%;
+  background-color: green;
+  display: table;
+  position: relative;
+}
+
+.module .container_list .list .container_flex {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow-y: auto;
+  position: relative;
+}
+
+.module .container_list .list .container_flex .list-group {
+  width: 100%;
+}
+
+.module .container_list .list .container_flex .list-group .list-group-item {
+  border: none;
+}
+
+.module .container_list .list .container_flex .list-group .list-group-item h5 {
+  font-size: 1rem;
+}
+
+.module .container_list .list .container_flex .list-group .list-group-item .d-flex {
+  font-weight: 100;
+  font-size: 0.9rem;
+}
+
+.module .container_interview .container_white {
+  border: 1px solid #ddd;
+}
+
+.module .container_interview .header {
+  background-color: #11c26f;
+  color: white;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.module .container_interview .panel_header .title,
+.module .container_interview .panel_text .title,
+.module .container_interview .panel_list .title {
+  color: #5f5f5f;
+  font-weight: 500;
+}
+
+.module .container_interview .panel_header {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  vertical-align: middle;
+}
+
+.module .container_interview .panel_header div {
+  vertical-align: middle;
+}
+
+.module .container_interview .panel_header .name {
+  margin-left: 2rem;
+  border-radius: 1000px;
+  width: auto;
+  height: auto;
+  background-color: #198ce5;
+  display: inline-block;
+  position: relative;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 200;
+}
+
+.module .container_interview .panel_header .circle {
+  margin-left: 1.2rem;
+  width: auto;
+  height: auto;
+  display: inline-block;
+  position: relative;
+  border: 3px solid #11c26f;
+  color: #11c26f;
+  border-radius: 50%;
+}
+
+.module .container_interview .panel_header .circle label {
+  font-size: 2.3rem;
+  line-height: 0.9rem;
+  font-weight: 200;
+}
+
+.module .container_interview .panel_header .circle:hover {
+  opacity: 0.7;
+}
+
+.module .container_interview .panel_text {
+  background-color: whitesmoke;
+}
+
+.module .container_interview .panel_text .title {
+  margin-top: 0.5rem;
+}
+
+.module .container_interview .panel_text .container_flex {
+  margin-top: 1rem;
+  width: 100%;
+  height: auto;
+  background-color: whitesmoke;
+  display: inline-block;
+  position: relative;
+  min-height: 20rem;
+}
+
+.module .container_interview .panel_text .text {
+  color: #928daf;
+  font-weight: 200;
+}
+
+.module .container_interview .panel_text .comment {
+  padding-top: 1rem;
+  padding-bottom: 1.2rem;
+  min-height: 6rem;
+}
+
+.module .container_interview .panel_list .item {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid whitesmoke !important;
+  margin-bottom: 1rem;
+}
+
+.module .container_interview .panel_list .item .circle {
+  width: 3rem;
+  height: auto;
+  display: inline-block;
+  position: relative;
+}
+
+.module .container_interview .panel_list .item .circle span {
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: #11c26f;
+  display: table;
+  margin-left: 0.5rem;
+  border-radius: 100%;
+  text-align: center;
+}
+
+.module .container_interview .panel_list .item .circle span label {
+  vertical-align: middle;
+  position: relative;
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
+  display: table-cell;
+  line-height: 100%;
+  color: white;
+}
+
+.module .container_interview .panel_list .item .content {
+  margin-left: 1rem;
+}
+
+.module .container_interview .panel_list .item .content .title {
+  margin-top: 0rem;
+  margin-bottom: 0.2rem;
+  text-transform: capitalize;
+}
+
+.module .container_interview .panel_list .item .content .text {
+  font-weight: 200;
+  text-justify: auto;
+  color: #928daf;
+}
+
+.module .container_white {
+  background-color: white;
+}
+
+.button {
+  cursor: pointer;
+}
+
+.button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.button_active {
+  font-weight: 500 !important;
+}
+
+.button_label {
+  margin-left: 1rem;
+  border-bottom: 1px solid white;
+  line-height: 100%;
+  font-weight: 200;
+  margin-top: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.button_pill {
+  width: auto;
+  height: auto;
+  display: table;
+  position: relative;
+  margin-left: 1rem;
+  text-transform: capitalize;
+  border-radius: 1000px;
+}
+
+.button_pill label {
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  vertical-align: middle;
+  font-weight: 500;
+  position: relative;
+  vertical-align: middle;
+  min-width: 150px;
+  text-align: center;
+  width: 100%;
+  height: auto;
+  display: table-cell;
+}
+
+.button_green {
+  background-color: #11c26f;
+  border-color: #11c26f;
+  color: white;
+  border: 1px solid #11c26f;
+}
+
+.button_white {
+  background-color: white;
+  color: #5f5f5f;
+  border: 1px solid #5f5f5f;
+}
+
+.red {
+  background-color: red;
+}
+
+.select_ {
+  outline: none;
+  -webkit-appearance: none;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.select_ select {
+  display: none;
+  outline: none;
+  -webkit-appearance: none;
+  /*hide original SELECT element: */
+}
+
+.container_t {
+  margin-top: 15px;
+}
+
+.list-group-item {
+  padding: 17px 18px 14px 18px;
+}
+
+h5.mb-1 {
+  font-size: 14px;
+  padding-bottom: 1px;
+  font-weight: bold;
+  color: #000;
+}
+
+p.mb-1 {
+  font-size: 14px;
+  color: #777;
+}
+
+.list-group .fas {
+  font-size: 12px;
+  color: #999;
+}
+
+.active-temp {
+  background-color: #f7f7f7;
+}
+
+.interview-content {
+  color: #666 !important;
+  font-size: 16px !important;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.interview-content span {
+  background: #d0ffd0;
+  font-size: 16px !important;
+  font-family: 'Times New Roman', Times, serif !important;
+}
+
+.interview-details {
+  padding: 18px;
+  border: 1px solid #ddd;
+}
+
+.interview-details i{
+  color: #a0a0a0 !important;
+  margin-right: 10px;
+}

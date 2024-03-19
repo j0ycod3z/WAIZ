@@ -1,0 +1,284 @@
+/*
+__Seed builder__v1.0
+*/
+
+@import 'src/resources/base';
+
+.module {
+  width: 100%;
+  height: 100%;
+}
+
+.searchBar {
+  display: flex;
+  background-color: white;
+  height: 56px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, .16);
+  align-items: center;
+  padding: 0px 40px;
+  color: #343434;
+  position: relative;
+  z-index: 10;
+
+  p {
+    margin: 0
+  }
+
+  .searchBarTitle {
+    margin: 0;
+    font-size: 18px;
+  }
+
+  .searchBarRight {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+
+    .searchForm {
+      margin-right: 40px;
+      position: relative;
+
+      input {
+        border-radius: 4px;
+        border: 2px solid #198CE5;
+        padding: 5px 40px 5px 10px;
+        background-color: #F5F5F5;
+      }
+
+      .searchButton{
+        color: #d5d5d5;
+        position: absolute;
+        right: 10px;
+        top: 6px;
+
+        &:hover{
+          cursor: pointer;
+        }
+      }
+    }
+
+    .searchBarBtn {
+      margin-right: 40px;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+
+      .imgUser {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+        align-self: center;
+        margin-right: 10px;
+
+        img {
+          width: 100%;
+          display: inline;
+          margin: 0 auto;
+          height: auto;
+        }
+      }
+    }
+  }
+}
+
+.searchBody {
+  color: #686868;
+  background-color: #F5F5F5;
+  padding: 35px 70px 60px 70px;
+  min-height: calc(100vh - 56px);
+
+  .resultsTitle{
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .searchBodyInner {
+    display: flex;
+
+    .searchBodyFilters {
+      margin-right: 40px;
+      width: 220px;
+
+      .filtersTitle{
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .btn {
+        color: #686868;
+        font-size: 14px;
+        font-weight: bold;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 12px;
+        padding: 10px 15px;
+        border: 1px solid #CBCBCB;
+        border-radius: 4px;
+        background: #fff;
+        display: block;
+        text-decoration: none;
+      }
+
+      .btn.active {
+        border-color: #198CE5;
+        background-color: #198CE5;
+        color: white;
+        fill: white;
+      }
+
+      .advanceSearch {
+        color: #198CE5;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .searchBodyResults {
+      width: 75%;
+
+      .typeButtons {
+        width: 100%;
+        margin-bottom: 24px;
+        display: flex;
+        text-align: center;
+
+        .btn {
+          text-decoration: none;
+          color: #686868;
+          font-size: 15px;
+          font-weight: bold;
+          width: 50%;
+          padding: 8px 25px;
+          border: 1px solid #CBCBCB;
+          background: none;
+          display: block;
+
+          &:first-child {
+            border-radius: 4px 0 0 4px;
+          }
+
+          &:last-child {
+            border-radius: 0 4px 4px 0;
+          }
+
+          span{
+            margin-right: 10px;
+          }
+        }
+
+        .btn.active {
+          border-color: #198CE5;
+          background-color: #198CE5;
+          color: white;
+          fill: white;
+        }
+      }
+
+      .cardsTitle {
+        font-size: 18px;
+        margin-bottom: 18px;
+      }
+
+      .searchCard {
+        background-color: white;
+        border-radius: 4px;
+        padding: 20px 25px;
+        display: flex;
+        margin-bottom: 16px;
+        border: 1px solid #d5d5d5;
+
+        &:hover {
+          cursor: pointer;
+          background-color: #fafafa;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .imgProject {
+          align-self: center;
+
+          img {
+            width: 130px;
+          }
+        }
+
+        .imgUser {
+          width: 70px;
+          height: 70px;
+          border-radius: 50%;
+          position: relative;
+          overflow: hidden;
+          align-self: center;
+
+          img {
+            width: 100%;
+            display: inline;
+            margin: 0 auto;
+            height: auto;
+          }
+        }
+
+        .searchCardInfo {
+          margin-left: 35px;
+
+          .cardTitle {
+            font-size: 18px;
+            font-weight: bold;
+          }
+
+          .compoundSubtitle {
+            display: flex;
+
+            svg{
+              margin-left: -3px;
+            }
+
+            .subtitle{
+              margin-left: 10px;
+            }
+          }
+
+          .subtitle {
+            font-size: 16px;
+            text-transform: capitalize
+          }
+
+          .ring {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 3px solid rgb(31, 199, 120);
+          }
+
+          p {
+            font-size: 14px;
+            margin-top: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.noMatch{
+  text-align: center;
+  min-height: 100vh;
+
+  .title{
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  .subtitle{
+    font-size: 32px;
+    font-weight: 400;
+  }
+}

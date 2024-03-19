@@ -1,0 +1,252 @@
+@import "src/resources/base.scss";
+
+$width: 245px;
+$horizontal-margin: 13px;
+$elementWidth: $width - (2 * $horizontal-margin);
+
+.module input {
+  font-family: inherit;
+}
+
+.module {
+  @include fonts();
+  height: 100%;
+  position: relative;
+  display: flex;
+}
+
+.module .container {
+  height: 100%;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  transition: margin-left 250ms ease-out, transform 250ms ease-out;
+  width: $width;
+  color: white;
+  position: relative;
+  color: $white;
+  justify-content: space-between;
+}
+
+.module .footer {
+  position: relative;
+  bottom: 12px;
+  margin-top: 12px;
+}
+
+.module .body {
+  min-height: 80px;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  display: block;
+}
+
+.module .loading {
+  margin-top: 100px;
+}
+
+.module .header {
+  margin: 12px;
+  position: relative;
+  display: block;
+}
+
+.module .element {
+  width: $elementWidth;
+  display: flex;
+  flex-direction: column;
+  margin: 12px;
+  margin-top: 0px;
+}
+
+.module .projects {
+  background: inherit;
+}
+
+.module .menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.module .elementMenu {
+  display: block;
+}
+
+.module .logo {
+  margin-top: 4px;
+  object-fit: contain;
+  height: 24px;
+  width: auto;
+}
+
+.module .menuHamburguer {
+  margin-top: -4px;
+  object-fit: contain;
+  height: 13px;
+  width: auto;
+}
+
+.module .elementMenu {
+  display: block;
+  font-size: 1em;
+}
+
+.module .footer {
+  position: relative;
+  display: block;
+}
+
+.module .team {
+  width: $elementWidth;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.module .flexColumnElement {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.module .elementRight :hover {
+  cursor: pointer;
+}
+
+.module .select {
+  width: $elementWidth;
+}
+
+.module .select * {
+  @include appearance();
+  font-size: 13px !important
+}
+
+.module button {
+  font-family: inherit;
+  border: none;
+  border-radius: 3px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+  width: $elementWidth;
+}
+
+.module button:hover {
+  cursor: pointer;
+}
+
+.module .navButton {
+  display: block;
+  @include appearance();
+  font-family: inherit;
+}
+
+.module .navButton.active .button {
+  background-color: $blue-accent;
+  color: white;
+}
+
+.module .button {
+  color: $grey-light;
+  border-radius: 3px;
+  margin-bottom: 6px;
+  background-color: $primary;
+  text-align: left;
+  padding: 7px 10px 7px 16px;
+}
+
+.module .button:hover {
+  background-color: $blue-accent;
+  color: $white-light;
+}
+
+.module .buttonOption {
+  float: right;
+  width: 30px;
+  padding: 2px 0px;
+  font-size: 13px;
+  text-align: right;
+  z-index: 2;
+}
+
+.module .buttonSecondary {
+  padding: 6px;
+  padding-left: 6px;
+  color: $primary-light;
+  border-radius: 3px;
+  margin-bottom: 6px;
+  text-align: left;
+  background-color: $primary-dark;
+}
+
+.module .buttonSecondary:hover {
+  color: $white-light;
+}
+
+.module .teamSection {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.module .teamElementDefault {
+  margin-left: 7px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  background-color: $primary;
+  cursor: pointer;
+}
+
+.module .teamElement {
+  margin-left: 7px;
+  cursor: pointer;
+}
+
+.module .teamImage {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+
+.module .teamAmmount {
+  padding: 8px;
+}
+
+.module .buttonAdd {
+  background-color: $primary-dark;
+  color: $primary-light;
+  width: auto;
+  height: auto;
+}
+
+.module .buttonAddIcon {
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.module .buttonAdd:hover {
+  color: $white-light;
+}
+
+.module .sectionTitle {
+  margin-bottom: 8px;
+  font-size: 11px;
+  color: $primary-light;
+  text-transform: uppercase;
+}
+
+.module .canvasSection {
+  padding-top: 10px;
+}
