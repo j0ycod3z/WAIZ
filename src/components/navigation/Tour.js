@@ -18,7 +18,7 @@ class TourC extends React.Component
     {
       content: () => (
         <div>
-          <div className={c.title}>Welcome to canou!</div>
+          <div className={c.title}>Welcome to waiz!</div>
           <div className={c.sub}>Forget everything you think you know, instead discover your customer and validate</div>
           <img className={c.image} src={require("resources/images/tablet.png")} />
         </div>
@@ -33,7 +33,7 @@ class TourC extends React.Component
       content: () => (
         <div>
           <div className={c.title}>Fill your profile. </div>
-          <div className={c.sub}>This helps you to interact with others in canou.</div>
+          <div className={c.sub}>This helps you to interact with others in waiz.</div>
         </div>
       )
     },

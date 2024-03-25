@@ -65,8 +65,8 @@ const Locales = {
   ],
 
   sign_up_title: [
-    "Do you want to use canou for business or education purposes?",
-    "¿Desea utilizar canou para fines comerciales o educativos?"
+    "Do you want to use waiz for business or education purposes?",
+    "¿Desea utilizar waiz para fines comerciales o educativos?"
   ],
   sign_up_notice: [
     "Send us an e-mail describing your company or organization and approximately how many people will be using the platform. Also if you want tell us a little bit about your interests or if you have an special request",
@@ -125,8 +125,8 @@ const Locales = {
     "Contraseña modificada"
   ],
   password_changed_notice: [
-    "Now you can enter canou with your new password",
-    "Ahora puedes ingresar a canou con tu nueva contraseña"
+    "Now you can enter waiz with your new password",
+    "Ahora puedes ingresar a waiz con tu nueva contraseña"
   ],
 
   // SIDE-NAV

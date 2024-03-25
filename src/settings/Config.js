@@ -13,8 +13,10 @@ let GA_KEY = "UA-000000000-0";
 // Production
 
 if (IS_PROD) {
-  GRAPH_URL = "https://api.canou.io/graphql";
-  API_URL = "https://api.canou.io/api";
+  // GRAPH_URL = "https://api.canou.io/graphql";
+  // API_URL = "https://api.canou.io/api";
+  let GRAPH_URL = "http://54.169.63.155:8000/graphql";
+  let API_URL = "http://54.169.63.155:8000/api";
   APP_URL = "https://canou.io";
   GA_KEY = "UA-000000000-0";
 }

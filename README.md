@@ -1,6 +1,6 @@
-# Canou Web
+# Waiz Web
 
-This repository holds the source code of a **Canou Web** written mainly in javascript.
+This repository holds the source code of a **Waiz Web** written mainly in javascript.
 
 ## Table of content
 
