@@ -4,14 +4,15 @@ import cx from 'classnames'
 import { hasProjectPermission, hasCohortPermission } from 'components/util/Permissions';
 import { Link } from 'react-router-dom'
 import redux from 'seed/redux';
-
+ 
+import { NavLink } from 'react-router-dom';
 import Select from "react-select";
 import { lcs } from 'components/util/Locales'
 import Loading from 'seed/components/helpers/Loading'
 import CanvasNav from 'components/navigation/sideNav/Canvas'
 import ProjectNav from 'components/navigation/sideNav/Project'
 import MembersNav from 'components/navigation/sideNav/Members'
-
+import { waizNav } from "components/navigation/sideNav/waiz";
 
 import { selectStyle } from 'components/navigation/SideNav.module.js'
 import c from "resources/css/navigation/SideNav.module.css";
@@ -97,6 +98,7 @@ class SideNav extends React.Component
           <CanvasNav project={project} match={this.props.match} />
           <ProjectNav project={project} match={this.props.match} />
           <MembersNav project={project} match={this.props.match} />
+          {/* <waizNav project={project} match={this.props.match} /> */}
         </div> : <div style={{ paddingTop: "50px" }}>{this.state.loading ? <Loading /> : null}</div>
 
     return (
@@ -110,7 +112,7 @@ class SideNav extends React.Component
                 <div className={c.elementLeft}>
                   <div>
                     <img className={c.logo} alt="Logo"
-                      src={require("resources/images/logo-canou-light.svg")} />
+                      src={require("resources/images/waiz_logo_svg_white.svg")} />
                   </div>
                 </div>
                 <div className={c.elementRight}
@@ -163,7 +165,62 @@ class SideNav extends React.Component
 
               {/* Nav */}
               {nav}
+               
+                <div className={c.element}>
+                {/* <Link to={"https://app.gamechangerfunnel.com/"} target="_blank">Game Changer Funnel</Link>
+                <Link to={"https://www.messengerx.io/mx-waiz"} target="_blank">Ask wAIz</Link> */}
+              
+              <NavLink
+                to={{pathname: "https://www.gamechangerfunnel.com/pro?am_id=waizai8003"}}
+                target="_blank"
+                className={c.navButton}
+                activeClassName={c.active}>
+                <button className={c.button}> 
+                  Game Changer Funnel
+                </button>
+              </NavLink>     
+              <NavLink
+                to={{pathname: "https://chat.openai.com/chat"}}
+                target="_blank"
+                className={c.navButton}
+                activeClassName={c.active}>
+                <button className={c.button}> 
+                  Chat GPT
+                </button>
+              </NavLink>
+              <NavLink
+                to={{pathname: "https://www.smartsheet.com"}}
+                target="_blank"
+                className={c.navButton}
+                activeClassName={c.active}>
+                <button className={c.button}> 
+                  SmartSheet
+                </button>
+              </NavLink>
 
+              <NavLink
+                to={{pathname: "https://miro.com/login/"}}
+                target="_blank"
+                className={c.navButton}
+                activeClassName={c.active}>
+                <button className={c.button}> 
+                  Miro
+                </button>
+              </NavLink>
+              
+              <NavLink
+                to={{pathname: "https://www.canva.com/en_ph/"}}
+                target="_blank"
+                className={c.navButton}
+                activeClassName={c.active}>
+                <button className={c.button}> 
+                  Canva
+                </button>
+              </NavLink>
+
+              </div>
+              
+              
             </div>
           </div>
         </div>
