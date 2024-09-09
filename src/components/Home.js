@@ -15,12 +15,15 @@ import ProjectAdmin from 'components/project_admin/Admin'
 import Search from 'components/search/Search'
 import Dashboards from 'components/dashboards/Dashboards'
 import Settings from 'components/users/Settings';
-
+ 
 import TopNav from 'components/navigation/TopNav';
 import SideNav from 'components/navigation/SideNav';
 import Tour from 'components/navigation/Tour';
+// import WaizNav from 'components/navigation/sideNav/waiz';
 
 import c from 'resources/css/Home.module.css';
+import GameChangerFunnel from './gamechangerfunnel/GCF';
+import Chatbot from './chatbot/Chatbot';
 
 class Home extends React.Component
 {
@@ -65,7 +68,9 @@ class Home extends React.Component
         <div className={c.columns}>
           <div className={c.rows}>
             {sideNav}
+             
           </div>
+     
           <div className={cx(c.rightRow, c.rows)}>
             <Route
               path={[
@@ -75,7 +80,11 @@ class Home extends React.Component
                 `${path}/dashboards`,
                 `${path}/profile/:user_id(\\d+)`,
                 `${path}/:section_id/:project_id(\\d+)`,
-                `${path}/:section_id?`]}
+                `${path}/:section_id?`,
+                `gcf`,
+                `chat`
+              ]}
+ 
               render={() => topNav} />
 
             <div className={c.content}>
@@ -113,6 +122,12 @@ class Home extends React.Component
                 <Route
                   path={`${path}/settings`}
                   component={Settings} />
+                {/* <Route
+                  path={`${path}/gcf`}
+                  component={GameChangerFunnel} />
+                  <Route
+                  path={`${path}/chat`}
+                  component={Chatbot} /> */}
                 {defRedirect}
               </Switch>
 
@@ -121,8 +136,10 @@ class Home extends React.Component
                 match={this.props.match} />
 
             </div>
+           
           </div>
-        </div>
+        </div> 
+        
       </div>
     );
   }

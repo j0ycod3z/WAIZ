@@ -21,7 +21,7 @@ class RecoveryForm extends Component
             onClick={this.onClickBack}></img>
           <div className={cx("container")}>
             <img
-              src={require("resources/images/canou_logo.svg")}
+              src={require("resources/images/waiz_logo_white.svg")}
               className={c.image}
               alt="Logo" />
           </div>

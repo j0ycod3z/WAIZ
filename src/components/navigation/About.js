@@ -11,9 +11,9 @@ class About extends React.Component
           <div className={c.container}>
             <div>
               <img className={c.logoCanou} alt="Logo"
-                src={require("resources/images/canou_logo.svg")} />
+                src={require("resources/images/waiz_logo_white.svg")} />
             </div>
-            <div className={c.title}>v5.1.0<span>build12</span></div>
+            {/* <div className={c.title}>v5.1.0<span>build12</span></div> */}
           </div>
         </div>
       </div >
