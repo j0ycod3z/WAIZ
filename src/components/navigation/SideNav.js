@@ -180,12 +180,12 @@ class SideNav extends React.Component
                 </button>
               </NavLink>     
               <NavLink
-                to={{pathname: "https://chat.openai.com/chat"}}
+                to={{pathname: "http://exoasia.org/aitools"}}
                 target="_blank"
                 className={c.navButton}
                 activeClassName={c.active}>
                 <button className={c.button}> 
-                  Chat GPT
+                  AI Tools
                 </button>
               </NavLink>
               <NavLink
