@@ -95,7 +95,7 @@ class Login extends React.Component {
                 <div className={cx("row", "d-flex", "justify-content-center")}>
                   <div className={cx("d-flex", "align-items-end")}>
                     <p className={cx(c.footer)}>
-                      wAIz © </a>
+                      wAIz © 
                     </p>
                   </div>
                 </div>
