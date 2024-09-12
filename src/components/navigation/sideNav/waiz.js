@@ -2,7 +2,7 @@ import * as React from 'react';
 import redux from 'seed/redux';
 import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import c from "resources/css/navigation/sideNav/waiz.module.css";
+import c from "resources/css/navigation/sideNav/Waiz.module.css";
 
 
 class waiz extends React.Component
