@@ -81,8 +81,8 @@ class Home extends React.Component
                 `${path}/profile/:user_id(\\d+)`,
                 `${path}/:section_id/:project_id(\\d+)`,
                 `${path}/:section_id?`,
-                `gcf`,
-                `chat`
+                // `${path}/gcf`,
+                // `chat`
               ]}
  
               render={() => topNav} />
@@ -125,7 +125,7 @@ class Home extends React.Component
                 {/* <Route
                   path={`${path}/gcf`}
                   component={GameChangerFunnel} />
-                  <Route
+                <Route
                   path={`${path}/chat`}
                   component={Chatbot} /> */}
                 {defRedirect}

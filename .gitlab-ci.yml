@@ -1,0 +1,12 @@
+stages:
+  - deploy
+
+deploy_to_s3:
+  stage: deploy
+  image: amazon/aws-cli
+  script:
+    - echo "Deploying to AWS S3..."
+    # Sync the contents of the dist (build) folder to the S3 bucket
+    - aws s3 sync dist/ s3://$waiz-productionE --delete
+  only:
+    - main  # Change to your main branch name

@@ -171,6 +171,15 @@ class SideNav extends React.Component
                 <Link to={"https://www.messengerx.io/mx-waiz"} target="_blank">Ask wAIz</Link> */}
               
               <NavLink
+                to={{pathname: "https://chatgpt.com/g/g-UPhtesy6L-waiz"}}
+                target="_blank"
+                className={c.navButton}
+                activeClassName={c.active}>
+                <button className={c.button}> 
+                  wAiz GPT AI Mentor
+                </button>
+              </NavLink>  
+              <NavLink
                 to={{pathname: "https://www.gamechangerfunnel.com/pro?am_id=waizai8003"}}
                 target="_blank"
                 className={c.navButton}
