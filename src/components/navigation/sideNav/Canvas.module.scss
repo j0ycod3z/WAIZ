@@ -140,10 +140,10 @@ $elementWidth: $width - (2 * $horizontal-margin);
 }
 
 .module .button {
-  color: $grey-light;
+  color: $white;
   border-radius: 3px;
   margin-bottom: 6px;
-  background-color: $primary;
+  background-color: $grey;
   text-align: left;
   padding: 7px 10px 7px 16px;
 }

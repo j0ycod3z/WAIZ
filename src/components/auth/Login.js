@@ -11,7 +11,7 @@ class Login extends React.Component {
     const { error, missingPayment } = this.state;
 
     const paymentMessage =
-      missingPayment ? <div className={c.payment + ' animated fadeIn'}><div> {lcs("missing_payment_message")} <a href="mailto:hello@canou.io">hello@canou.io</a> {lcs("missing_payment_message_2")}</div></div> : null;
+      missingPayment ? <div className={c.payment + ' animated fadeIn'}><div> {lcs("missing_payment_message")} <a href="mailto:hello@waiz.ai">hello@waiz.ai</a> {lcs("missing_payment_message_2")}</div></div> : null;
 
     const errorMessage =
       error ? <div className={c.error + ' animated fadeIn'}><div> {error}</div></div> : null;
@@ -22,7 +22,7 @@ class Login extends React.Component {
           <div className={c.container}>
             <div>
               <img className={c.logoCanou} alt="Logo"
-                src={require("resources/images/canou_logo.svg")} />
+                src={require("resources/images/waiz_logo_white.svg")} />
             </div>
 
             <div className={cx("row", "d-flex", "justify-content-center", c.rowCompleteHeight)}>
@@ -95,7 +95,7 @@ class Login extends React.Component {
                 <div className={cx("row", "d-flex", "justify-content-center")}>
                   <div className={cx("d-flex", "align-items-end")}>
                     <p className={cx(c.footer)}>
-                      waiz © | <a href="https://canou-media.s3-us-west-1.amazonaws.com/static/Te%CC%81rminos+y+condiciones+y+aviso+de+provacidad.pdf">{lcs("terms_and_conditions")}</a>
+                      wAIz © 
                     </p>
                   </div>
                 </div>

@@ -23,7 +23,7 @@
 }
 
 .module .blueGradient {
-  background: $blue-primary-1;
+  background: $orange-primary-1;
   color: $white;
 }
 
@@ -255,7 +255,7 @@
 
 .module .edit {
   @extend .editGeneric;
-  color: $blue-primary-1;
+  color: $grey-dark;
   margin-left: 8px;
 
   i {

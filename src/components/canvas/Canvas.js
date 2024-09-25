@@ -148,8 +148,8 @@ class Canvas extends React.Component
         return <Basic type={type} hypothesis={hypothesis} allHPhase2={allHPhase2} match={match} />
       case "BMC":
         return <BMC type={type} hypothesis={hypothesis} allHPhase2={allHPhase2} match={match} />
-      case "EXO":
-        return <Exo type={type} hypothesis={hypothesis} match={match} />
+      // case "EXO":
+      //   return <Exo type={type} hypothesis={hypothesis} match={match} />
       case "SYSTEMIC":
         return <Systemic type={type} hypothesis={hypothesis} match={match} />
       case "IMPACT":

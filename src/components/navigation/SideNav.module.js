@@ -1,7 +1,7 @@
 const selectStyle = {
   control: c => ({
     ...c,
-    backgroundColor: "#413c6b;",
+    backgroundColor: "#6c757d;",
     border: "0px",
     boderRadious: "3px",
   }),

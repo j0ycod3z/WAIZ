@@ -101,14 +101,14 @@ class Canvas extends React.Component
             }
           </Menu>
 
-          {project.has_phase3 ?
-            <NavLink
-              to={`${url}/c/${canvas3.id}`}
-              className={c.navButton}
-              activeClassName={c.active}>
-              <button className={c.button}>3. {lc(canvas3.type.l_name)}</button>
-            </NavLink> : null
-          }
+            {/* {project.has_phase3 ?
+              <NavLink
+                to={`${url}/c/${canvas3.id}`}
+                className={c.navButton}
+                activeClassName={c.active}>
+                <button className={c.button}>3. {lc(canvas3.type.l_name)}</button>
+              </NavLink> : null
+            } */}
 
           {project.has_phase4 ?
             <NavLink
@@ -116,7 +116,7 @@ class Canvas extends React.Component
               className={c.navButton}
               activeClassName={c.active}>
               <button className={c.button}>
-                4. {lcs("incubation_acceleration")}
+                3. {lcs("incubation_acceleration")}
               </button>
             </NavLink> : null
           }
@@ -127,11 +127,12 @@ class Canvas extends React.Component
               className={c.navButton}
               activeClassName={c.active}>
               <button className={c.button}>
-                5. {lcs("scaling")}
+                4. {lcs("scaling")}
               </button>
             </NavLink>
             : null
           }
+ 
 
           {this.state.phaseModal ?
             <Modal
@@ -142,7 +143,10 @@ class Canvas extends React.Component
                 projectId={project.id} />
             </Modal> : null
           }
+
+            
         </div>
+        
       </div >
     );
   }
