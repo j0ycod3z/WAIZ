@@ -7,7 +7,7 @@ deploy_to_s3:
   script:
     - echo "Deploying to AWS S3..."
     # Sync the contents of the dist (build) folder to the S3 bucket
-    - aws s3 sync build/ s3://$waiz-production --delete
+    - aws s3 sync build/ s3://waiz-production --delete
   only:
     - main  # Change to your main branch name
 
