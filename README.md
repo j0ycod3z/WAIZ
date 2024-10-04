@@ -95,3 +95,8 @@ npm run build
 aws s3 sync build/ s3://$S3_BUCKET_NAME --delete
 # invalidate cloudfront
 aws cloudfront create-invalidation --distribution-id E2J05Z0KM8JMIQ --paths "/*"
+
+or 
+
+push and sync to gitlab
+create and approved merge request
