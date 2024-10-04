@@ -10,15 +10,6 @@ deploy_to_s3:
     - echo "Deploying to AWS S3..."
     # Sync the contents of the dist (build) folder to the S3 bucket
     - aws s3 sync build/ s3://waiz-production --delete
-  only:
-    - main  # Change to your main branch name
-
-cloudfront_invalidate:
-  stage: deploy
-  image:
-    name: amazon/aws-cli:2.2.18
-    entrypoint: [""]
-  script:
     - aws cloudfront create-invalidation --distribution-id E2J05Z0KM8JMIQ --paths "/*"
   only:
-    - main
+    - main  # Change to your main branch name

@@ -17,7 +17,7 @@ class Login extends React.Component {
       error ? <div className={c.error + ' animated fadeIn'}><div> {error}</div></div> : null;
 
     return (
-      <div className={c.background} style={{ background: "url(" + require("resources/images/wave.svg") + ") no-repeat center center", backgroundColor: "#29244e" }}>
+      <div className={c.background} style={{ backgroundColor: "#454545" }}>
         <div className={c.module}>
           <div className={c.container}>
             <div>
