@@ -770,6 +770,10 @@ const Locales = {
     "Help",
     "Ayuda"
   ],
+  Bot: [
+    "bot",
+    "bot"
+  ],
 
   // INSIGHTS
 
