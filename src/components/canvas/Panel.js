@@ -5,50 +5,53 @@ import Modal from "seed/components/helpers/Modal";
 import HypothesisForm from "components/canvas_forms/Hypothesis";
 import FormPanel from "components/canvas_forms/Panel";
 import Canvas from "components/canvas/Canvas";
-import Activity from 'components/canvas/activity/List';
+import Activity from "components/canvas/activity/List";
 
 import c from "resources/css/canvas/Panel.module.css";
+import Chatbot from "./Chatbot";
 
-class Panel extends React.Component
-{
-  render()
-  {
+class Panel extends React.Component {
+  render() {
     const { path, params } = this.props.match;
     const canvasId = params.canvas_id;
 
-    const activityForm = props => (
+    const activityForm = (props) => (
       <Modal
         {...this.props}
         onClose={this.onModalClose}
         width={600}
-        height={600}>
+        height={600}
+      >
         <Activity />
       </Modal>
     );
 
-    const hypothesisForm = props => (
+    const hypothesisForm = (props) => (
       <Modal
         {...this.props}
         onClose={this.onModalClose}
         width={470}
-        height={500}>
+        height={500}
+      >
         <HypothesisForm />
       </Modal>
     );
 
-    const panelForm = props => (
+    const panelForm = (props) => (
       <Modal
         {...this.props}
         onClose={this.onModalClose}
         animation={""}
         width={850}
-        height={580}>
+        height={580}
+      >
         <FormPanel />
       </Modal>
     );
 
     return (
       <div className={c.module}>
+        <Chatbot />
         <Canvas canvasId={canvasId} />
         <Route
           path={`${path}/add-hypothesis/:area_id`}
@@ -64,8 +67,7 @@ class Panel extends React.Component
     );
   }
 
-  onModalClose = () =>
-  {
+  onModalClose = () => {
     const { url } = this.props.match;
     this.props.history.push(url);
   };

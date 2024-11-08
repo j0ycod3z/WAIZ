@@ -34,7 +34,15 @@
   top: 10px;
   background: #fff;
   right: 10px;
-  display: none;
+  justify-content: center;
+  align-items: center;
+  opacity: 0; /* Hide icons initially */
+  display: flex; /* Flex display for single-line alignment */
+  transition: opacity 0.3s ease; /* Smooth transition when shown */
+}
+.module:hover .options {
+  opacity: 1; /* Show icons */
+  position: absolute; /* Place them correctly when visible */
 }
 
 .options .option {
@@ -58,6 +66,11 @@
   background-color: #f0a000;
 }
 
+.bot {
+  background-color: #FF5F00;
+  
+}
+
 .insight {
   background-color: #20b068;
 }
@@ -71,6 +84,10 @@
 }
 
 .edit:hover {
+  background-color: #f08500;
+}
+
+.bot:hover {
   background-color: #f08500;
 }
 
