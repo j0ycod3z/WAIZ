@@ -1,121 +1,114 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import cx from "classnames";
 import redux from 'seed/redux'
 import { lcs } from 'components/util/Locales';
 import { Formik, Field } from "formik";
 import CircularProgress from '@material-ui/core/CircularProgress';
-
+import waizLogo from 'resources/images/waiz_logo_white.svg';
+import backSvg from 'resources/images/ic_back.svg';
 
 import "resources/bootstrap.min.module.css";
 import c from "resources/css/auth/RecoveryForm.module.css";
 
-class RecoveryForm extends Component
-{
-  render()
-  {
-    return (
-      <div className={c.module}>
+function RecoveryForm(props) {
+  const [state, setState] = useState({});
 
-        <div className={cx("jumbotron", "jumbotron-fluid", c.jumbotron)}>
-          <img src={require("resources/images/ic_back.svg")} className={c.back} alt="back"
-            onClick={this.onClickBack}></img>
-          <div className={cx("container")}>
-            <img
-              src={require("resources/images/waiz_logo_white.svg")}
-              className={c.image}
-              alt="Logo" />
-          </div>
-        </div>
+  const onSubmit = (values) => {
+    // const { url } = props.match;
+    const { token } = props.match.params;
 
-        <div className={cx("container")}>
-          <div className={cx("row")}>
-            <div className={cx("col-md-4", "col-lg-4")} />
-            <div className={cx("col-md-4", "col-lg-4")}>
-              <h2 className={c.title}>{lcs("recover_password")}</h2>
-
-              {this.state.loading ?
-                <CircularProgress className={c.loading} size="20" /> : null
-              }
-
-              <Formik
-                onSubmit={this.onSubmit}
-                render={props => (
-                  <form onSubmit={props.handleSubmit}>
-                    <div className={cx("form-group")}>
-                      <label for="password">{lcs("password")}</label>
-                      <Field
-                        type="password" name="password"
-                        className={cx("form-control", c.input)} required
-                      />
-                    </div>
-                    <div className={cx("form-group")}>
-                      <label for="confirmPassword">{lcs("confirm_password")}</label>
-                      <Field
-                        type="password" name="password2"
-                        className={cx("form-control", c.input)} required
-                      />
-                    </div>
-                    {this.state.error ?
-                      <div className={c.error + ' animated fadeIn'}><div> {this.state.error}</div></div> : null}
-                    <div>
-                      <button className={cx("btn", "btn-md", c.buttonGreen, c.mainButton)}
-                        type="submit">
-                        {lcs("send")}
-                      </button>
-                    </div>
-                  </form>
-                )}
-              />
-              <br />
-              <br />
-            </div>
-            <div className={cx("col-md-4", "col-lg-4")}></div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {};
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onClickBack = this.onClickBack.bind(this);
-  }
-
-  onSubmit(values)
-  {
-    const { url } = this.props.match;
-    const { token } = this.props.match.params;
-
-    if (values.password != values.password2)
-      return this.setState(s => ({ error: lcs("password_dont_match") }));
+    if (values.password !== values.password2)
+      return setState((s) => ({ error: lcs("password_dont_match") }));
 
     const body = {
       password: values.password,
       token: token
     }
 
-    const callback = res =>
-    {
+    const callback = (res) => {
       if (res.ok)
-        this.props.history.replace(`/recovery_message/changed`);
-      else this.setState(s => ({
-        error: res.body.status == 404 ?
+        props.history.replace(`/recovery_message/changed`);
+      else setState(s => ({
+        error: res.body.status === 404 ?
           lcs("unregistered_user") :
           lcs("an_error_has_ocurred")
       }));
-      this.setState(s => ({ loading: false }));
+      setState((s) => ({ loading: false }));
     }
-    this.setState(s => ({ loading: true }));
-    this.props.changePassword(body, callback)
+    setState((s) => ({ loading: true }));
+    props.changePassword(body, callback)
   }
 
-  onClickBack()
-  {
-    this.props.history.goBack();
+  const onClickBack = () => {
+    props.history.goBack();
   }
+
+  return (
+    <div className={c.module}>
+
+      <div className={cx("d-flex", "align-items-center", c.jumbotron)}>
+        <img
+          src={backSvg}
+          className={c.back}
+          onClick={onClickBack}
+          alt="back"
+        />
+        <div className={cx("container")}>
+          <img
+            src={waizLogo}
+            className={c.image}
+            alt="Logo"
+          />
+        </div>
+      </div>
+
+      <div className={cx("container")}>
+        <div className={cx("row", "justify-content-center")}>
+          <div className={cx("col-md-4", "col-lg-4")}>
+            <h2 className={c.title}>{lcs("recover_password")}</h2>
+
+            {state.loading ?
+              <CircularProgress className={c.loading} size="20" /> : null
+            }
+
+            <Formik
+              onSubmit={onSubmit}
+              render={props => (
+                <form onSubmit={props.handleSubmit}>
+                  <div className={cx("form-group")}>
+                    <Field
+                      type="password"
+                      name="password"
+                      className={cx("form-control", c.input)}
+                      placeholder={lcs("password")}
+                      required
+                    />
+                  </div>
+                  <div className={cx("form-group")}>
+                    <Field
+                      type="password"
+                      name="password2"
+                      className={cx("form-control", c.input)}
+                      placeholder={lcs("confirm_password")}
+                      required
+                    />
+                  </div>
+                  {state.error ?
+                    <div className={c.error + ' animated fadeIn'}><div> {state.error}</div></div> : null}
+                  <div>
+                    <button className={cx("btn", "btn-md", c.buttonGreen, c.mainButton)}
+                      type="submit">
+                      {lcs("send")}
+                    </button>
+                  </div>
+                </form>
+              )}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default redux(RecoveryForm);

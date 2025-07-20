@@ -1,104 +1,31 @@
-@import "src/resources/base.scss";
-@import "src/resources/forms.scss";
-@import "src/resources/layout.scss";
-
-.module {
-  @include fonts();
-  font-family: "PT Serif", serif;
-  height: 100%;
-  width: 100%;
-}
+@use "src/resources/base" as base;
+@use "./AuthCommon.module" as common;
 
 .module .jumbotron {
-  background-color: $primary-dark;
-  padding: 25px 34px 10px 34px;
+  @include common.jumbotron();
 }
 
 .module .loading {
-  position: absolute;
-  margin-left: 130px;
-  height: 100px;
-  width: 100px;
+  @include common.loading();
 }
 
 .module .back {
-  position: absolute;
-  height: 32px;
-  top: 44px;
-  cursor: pointer;
+  @include common.back();
 }
 
 .module .image {
-  height: 75px;
-  width: auto;
+  @include common.image();
 }
 
 .module .title {
-  font-size: 32px;
-  margin-top: 50px;
-  margin-bottom: 20px;
-  line-height: 1.4em;
-}
-
-.module label {
-  font-family: "PT Serif", serif;
-  color: $grey;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.module input,
-select,
-textarea {
-  font-family: "PT Serif", serif;
-  height: auto;
-  padding-top: 8px !important;
-  padding-bottom: 8px !important;
-}
-
-.module h5 {
-  font-family: "PT Serif", serif;
-}
-
-.module .breadcrumb {
-  font-family: "PT Serif", serif;
-  font-size: 18px;
-  font-weight: bold;
-  color: $grey-dark;
-
-  &.breadcrumbLight {
-    color: $grey;
-  }
-}
-
-.module .subtitle {
-  font-family: "PT Serif", serif;
-  font-size: 15px;
-  color: #a0a0a0;
-  line-height: 1.7em;
+  @include common.title();
 }
 
 .module button {
-  background-color: $green;
-  color: $white;
-  min-height: 45px !important;
-  border-radius: 24px;
+  height: 45px;
   font-size: 16px;
-
-  &:hover {
-    color: $white;
-    background-color: $green-hover;
-  }
 }
 
 .error {
-  width: 100%;
-  margin-top: -10px;
-  margin-bottom: 10px;
-  background-color: #ffeeee;
-  color: #a05050;
-  font-size: 14px;
-  padding: 12px;
-  font-weight: bold;
-  @include box-sizing(border-box);
+  @include common.error();
 }

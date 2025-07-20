@@ -1,50 +1,29 @@
-@import "src/resources/base.scss";
-@import "src/resources/forms.scss";
-@import "src/resources/layout.scss";
-
-.module {
-  @include fonts();
-  font-family: "PT Serif", serif;
-  height: 100%;
-  width: 100%;
-}
+@use "src/resources/base" as base;
+@use "./AuthCommon.module" as common;
 
 .module .jumbotron {
-  background-color: $primary-dark;
-  padding: 25px 34px 10px 34px;
+  @include common.jumbotron();
 }
 
 .module .back {
-  position: absolute;
-  height: 32px;
-  top: 44px;
-  cursor: pointer;
+  @include common.back();
 }
 
 .module .image {
-  height: 75px;
-  width: auto;
+  @include common.image();
 }
-
 
 .module .title {
-  font-size: 32px;
-  margin-top: 30px;
-  margin-bottom: 20px;
-  line-height: 1.4em;
+  @include common.title();
 }
 
-
-.module label {
-  font-family: "PT Serif", serif;
-  color: $grey;
+.module p {
+  color: base.$grey;
   font-size: 19px;
   margin-bottom: 7px;
   font-weight: bold;
 }
 
 .module small {
-  font-family: "PT Serif", serif;
-  color: #999;
-  font-size: 15px;
+  @include common.small();
 }
