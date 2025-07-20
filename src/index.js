@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { MuiTheme } from 'settings/MuiTheme';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import HTML5Backend from 'react-dnd-html5-backend'
+import {HTML5Backend} from 'react-dnd-html5-backend'
 import { DndProvider } from 'react-dnd'
 
 import Popup from 'react-popup';

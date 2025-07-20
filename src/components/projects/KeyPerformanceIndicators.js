@@ -5,8 +5,6 @@ import { hasProjectPermission } from 'components/util/Permissions';
 
 import 'resources/bootstrap.min.module.css';
 import c from 'resources/css/projects/Profile.module.css';
-import { format } from "path";
-
 
 class KeyPerformanceIndicators extends Component
 {

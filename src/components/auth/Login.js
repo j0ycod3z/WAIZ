@@ -3,6 +3,7 @@ import redux from 'seed/redux';
 import cx from 'classnames';
 import { lcs } from 'components/util/Locales'
 import { Link } from 'react-router-dom'
+import waizLogo from 'resources/images/waiz_logo_white.svg';
 
 import c from 'resources/css/auth/Login.module.css';
 
@@ -22,7 +23,7 @@ class Login extends React.Component {
           <div className={c.container}>
             <div>
               <img className={c.logoCanou} alt="Logo"
-                src={require("resources/images/waiz_logo_white.svg")} />
+                src={waizLogo} />
             </div>
 
             <div className={cx("row", "d-flex", "justify-content-center", c.rowCompleteHeight)}>
