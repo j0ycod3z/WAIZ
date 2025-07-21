@@ -17,6 +17,9 @@ import { waizNav } from "components/navigation/sideNav/waiz";
 import { selectStyle } from 'components/navigation/SideNav.module.js'
 import c from "resources/css/navigation/SideNav.module.css";
 
+import waizLogo from 'resources/images/waiz_logo_white.svg';
+import menuExtended from 'resources/images/menu-extended.svg';
+
 class SideNav extends React.Component
 {
   render()
@@ -112,13 +115,13 @@ class SideNav extends React.Component
                 <div className={c.elementLeft}>
                   <div>
                     <img className={c.logo} alt="Logo"
-                      src={require("resources/images/waiz_logo_svg_white.svg")} />
+                      src={waizLogo} />
                   </div>
                 </div>
                 <div className={c.elementRight}
                   onClick={this.props.onBurgerClick}>
                   <img className={c.menuHamburguer} alt="Menu"
-                    src={require("resources/images/menu-extended.svg")} />
+                    src={menuExtended} />
                 </div>
               </div>
             </div>
