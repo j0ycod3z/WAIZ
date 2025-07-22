@@ -26,6 +26,6 @@ function App() {
       <Route path="*" element={<Navigate to="/app" replace />} />
     </Routes>
   );
-}
+}//not fully fixed yet, still to test for other modules
 
 export default App;
