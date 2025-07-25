@@ -1,3 +1,8 @@
+# Modernization Guide
+- [Modernization.md](Modernization.md#2-check-ui-components)
+---
+<br><br><br>
+
 # Waiz Web
 
 This repository holds the source code of a **Waiz Web** written mainly in javascript.

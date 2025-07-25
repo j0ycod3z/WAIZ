@@ -155,7 +155,7 @@ class Home extends React.Component
   {
     const userId = sessionStorage.getItem('id');
     const userIdR = localStorage.getItem('id')
-    if (userId == null && userIdR == null)
+    if (userId === null && userIdR === null)
       return this.props.history.replace('/login');
   }
 

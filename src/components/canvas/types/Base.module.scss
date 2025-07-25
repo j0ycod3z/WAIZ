@@ -1,9 +1,5 @@
-@import "src/resources/base.scss";
-
-.module {
-  width: 100%;
-  height: 100%;
-}
+@use "src/resources/base" as base;
+@use "src/resources/layout" as layout;
 
 .fullwidth {
   max-width: 100%;
@@ -26,7 +22,6 @@
 
 .col {
   padding: 0px;
-  @include box-sizing(border-box);
 }
 
 .col.header {
@@ -44,8 +39,6 @@
   background: #fff;
   width: 100%;
   height: 100%;
-  @include border-radius(4px);
-  @include box-sizing(border-box);
 }
 
 .content.other {
@@ -61,11 +54,11 @@
   font-size: 13px;
   color: #fff;
   text-align: center;
-  @include border-radius(4px);
+  @include base.border-radius(4px);
 }
 
 .brand {
-  background-color: $grey-dark;
+  background-color: base.$grey-dark;
   color: #fff;
   max-width: 100%;
   margin-top: 5px;
@@ -73,5 +66,5 @@
   padding: 4px;
   font-size: 13px;
   text-align: center;
-  @include border-radius(4px);
+  @include base.border-radius(4px);
 }

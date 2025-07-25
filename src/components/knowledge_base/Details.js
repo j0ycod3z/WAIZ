@@ -6,7 +6,7 @@ import { lc, getLang } from "components/util/Locales"
 import cx from "classnames";
 import Loading from 'seed/components/helpers/Loading'
 
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import c from "resources/css/knowledge_base/Details.module.css";
 
 class Details extends Component

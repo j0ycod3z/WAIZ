@@ -5,7 +5,7 @@ import { getBrText } from 'components/util/Format'
 import { lcs } from 'components/util/Locales';
 import { hasProfilePermission } from 'components/util/Permissions';
 
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import c from "resources/css/users/Profile.module.css";
 
 class Details extends Component

@@ -3,7 +3,7 @@ import cx from "classnames";
 import { Link } from 'react-router-dom'
 import { lcs } from 'components/util/Locales';
 
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import c from "resources/css/users/Profile.module.css";
 
 class Projects extends Component

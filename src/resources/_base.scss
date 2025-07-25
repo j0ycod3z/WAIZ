@@ -1,9 +1,6 @@
 @forward 'src/resources/colors';
 @forward 'src/seed/util/mixins';
 
-// $sans: "Open Sans", sans-serif;
-// $serif: "PT Serif", serif;
-
 @mixin fonts() {
   font-family: "PT Serif", serif;
   font-family: "Open Sans", sans-serif;

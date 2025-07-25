@@ -22,7 +22,7 @@ import Caption from 'components/helpers/Caption';
 import Modal from 'seed/components/helpers/Modal'
 import Loading from 'seed/components/helpers/Loading'
 
-import 'resources/bootstrap.min.module.css';
+import 'react-bootstrap';
 import c from 'resources/css/projects/Profile.module.css';
 import { Switch } from "@material-ui/core";
 

@@ -9,10 +9,8 @@ import Base from 'components/canvas/types/Base';
 import c from 'resources/css/canvas/types/Base.module.css'
 
 
-class Exo extends Base
-{
-  render()
-  {
+class Exo extends Base {
+  render() {
     const { type, hypothesis, match } = this.props;
     const footerLegend = type.l_legend;
     const areas = type.areas;

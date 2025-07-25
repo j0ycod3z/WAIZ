@@ -4,7 +4,7 @@ import { lcs } from 'components/util/Locales';
 import { Link } from 'react-router-dom'
 import { hasProjectPermission } from 'components/util/Permissions';
 
-import 'resources/bootstrap.min.module.css';
+import 'react-bootstrap';
 import styles from 'resources/css/projects/Profile.module.css';
 import c from 'resources/css/projects/Members.module.css';
 

@@ -9,7 +9,7 @@ import { hasProjectPermission } from 'components/util/Permissions';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { lcs } from 'components/util/Locales'
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import 'resources/css/interviews/Interviews.css';
 import c from 'resources/css/interviews/Interviews.module.css';
 

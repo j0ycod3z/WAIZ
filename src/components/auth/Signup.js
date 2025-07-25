@@ -4,7 +4,7 @@ import cx from "classnames";
 import { lcs, lang } from 'components/util/Locales';
 import { Formik, Field } from "formik";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import c from "resources/css/auth/Signup.module.css";
 
 import waizLogo from 'resources/images/waiz_logo_white.svg';
@@ -67,6 +67,13 @@ function Signup(props) {
             }
 
             <Formik
+              initialValues={{
+                name: "",
+                last_name: "",
+                email: "",
+                password: "",
+                password2: ""
+              }}
               onSubmit={onSubmit}
               render={props => (
                 <form onSubmit={props.handleSubmit}>

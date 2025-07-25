@@ -7,7 +7,7 @@ import { Formik, Field } from 'formik';
 import Loading from 'seed/components/helpers/Loading'
 import Insights from 'components/interviews/Insights'
 
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import 'resources/css/interviews/Interviews.css';
 
 import c from 'resources/css/interviews/Form.module.css'

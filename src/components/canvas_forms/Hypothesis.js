@@ -10,10 +10,8 @@ import Loading from 'seed/components/helpers/Loading'
 import c from 'resources/css/canvas_forms/Hypothesis.module.css'
 
 
-class HypothesisForm extends React.Component
-{
-  render()
-  {
+class HypothesisForm extends React.Component {
+  render() {
     const { canvases = [], hypotheses = [] } = this.props;
     const { hypothesis } = this.state;
     const { hypothesis_id } = this.props.match.params;
@@ -121,6 +119,7 @@ class HypothesisForm extends React.Component
           <form onSubmit={this.onSubmit}>
             <textarea type="text"
               value={hypothesis.text}
+              name='hypothesis'
               onChange={this.onTextChanged}
               className={c.hypothesis}
               rows={hypothesis.text && hypothesis.text.length > 90 ? 4: 2}

@@ -4,7 +4,7 @@ import redux from 'seed/redux';
 import cx from "classnames";
 import { lcs } from 'components/util/Locales';
 
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import { Formik } from "formik";
 import c from "resources/css/project_admin/registry/Registry.module.css";
 

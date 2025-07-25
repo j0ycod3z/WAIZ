@@ -6,7 +6,7 @@ import { Formik, Field } from "formik";
 
 import cx from "classnames";
 
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import c from "resources/css/projects/Fit.module.css";
 import Loading from "seed/components/helpers/Loading";
 

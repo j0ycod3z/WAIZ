@@ -8,11 +8,8 @@ import Base from 'components/canvas/types/Base';
 
 import c from 'resources/css/canvas/types/Base.module.css'
 
-
-class Systemic extends Base
-{
-  render()
-  {
+class Systemic extends Base {
+  render() {
     const { type, hypothesis, match } = this.props;
     const areas = type.areas;
 

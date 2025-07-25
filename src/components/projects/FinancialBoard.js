@@ -4,7 +4,7 @@ import { Formik, Field } from 'formik';
 
 import { lcs } from "components/util/Locales"
 import c from "resources/css/projects/FinancialBoard.module.css";
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 
 class FinancialBoard extends Component
 {

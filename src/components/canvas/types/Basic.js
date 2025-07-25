@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 import { Container, Row, Col } from 'react-bootstrap'
-import { lc, lcs } from 'components/util/Locales'
+import { lcs } from 'components/util/Locales'
 
 import Area from 'components/canvas/Area'
 import AreaTemp from 'components/canvas/AreaTemp'
@@ -9,21 +9,10 @@ import Base from 'components/canvas/types/Base';
 
 import c from 'resources/css/canvas/types/Base.module.css'
 
-
-class Basic extends Base
-{
-  render()
-  {
+class Basic extends Base {
+  render() {
     const { type, hypothesis, allHPhase2, match } = this.props;
-    const footerLegend = type.l_legend;
     const areas = type.areas;
-
-    const footer = footerLegend ?
-      <Row className={c.footer}>
-        <Col>
-          {lc(footerLegend)}
-        </Col>
-      </Row> : null
 
     return (
       <div className={c.module}>

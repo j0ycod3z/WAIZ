@@ -10,7 +10,7 @@ import { hasProjectPermission } from 'components/util/Permissions';
 import Modal from 'seed/components/helpers/Modal';
 import Form from 'components/interviews/Form'
 import { lcs } from 'components/util/Locales'
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import 'resources/css/interviews/Interviews.css';
 
 import c from 'resources/css/interviews/Details.module.css'

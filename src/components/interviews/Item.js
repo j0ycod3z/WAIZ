@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cx from "classnames";
 import { lcs, getDate, lang } from 'components/util/Locales'
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import 'resources/css/interviews/Interviews.css';
 
 class Item extends React.Component

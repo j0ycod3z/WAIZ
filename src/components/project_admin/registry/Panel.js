@@ -7,7 +7,7 @@ import Invites from "components/project_admin/registry/Invites";
 import Registry from "components/project_admin/registry/Registry";
 
 import c from "resources/css/project_admin/registry/Panel.module.css";
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 
 class Panel extends Component
 {

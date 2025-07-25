@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { hasProjectPermission } from 'components/util/Permissions';
 import { lcs } from 'components/util/Locales';
 
-import 'resources/bootstrap.min.module.css';
+import 'react-bootstrap';
 import c from 'resources/css/projects/Profile.module.css';
 
 

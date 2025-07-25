@@ -1,7 +1,7 @@
 import React from "react";
 import cx from "classnames";
 
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import c from "resources/css/auth/SignupWelcome.module.css";
 import { lcs } from "../util/Locales";
 

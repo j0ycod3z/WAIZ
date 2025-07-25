@@ -19,14 +19,16 @@ function Login(props) {
     let rememberMe = e.target.rememberMe.checked;
 
     let callback = (res) => {
-      if (res.ok === false) {
+      if (res.ok) {
         let token = res.body.key;
         let userId = res.body.user;
-        props.getUserDetails(res.body.user, (resU) => {
+
+        props.getUserDetails(userId, (resU) => {
           if (resU.body.missing_payment) {
             sessionStorage.clear();
             localStorage.clear();
-            return setState(s => ({
+            
+            return setState((s) => ({
               missingPayment: true,
               error: undefined
             }));

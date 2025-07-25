@@ -9,21 +9,10 @@ import Base from 'components/canvas/types/Base';
 
 import c from 'resources/css/canvas/types/Base.module.css'
 
-
-class Impact extends Base
-{
-  render()
-  {
+class Impact extends Base {
+  render() {
     const { type, hypothesis, allHPhase2, match } = this.props;
-    const footerLegend = type.l_legend;
     const areas = type.areas;
-
-    const footer = footerLegend ?
-      <Row className={c.footer}>
-        <Col>
-          {lc(footerLegend)}
-        </Col>
-      </Row> : null
 
     return (
       <div className={c.module}>

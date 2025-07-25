@@ -3,7 +3,7 @@ import cx from "classnames";
 import { lcs, getLang } from 'components/util/Locales';
 import { hasProfilePermission } from 'components/util/Permissions';
 
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import c from "resources/css/users/Profile.module.css";
 
 class Skills extends Component

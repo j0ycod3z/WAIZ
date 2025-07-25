@@ -7,7 +7,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import waizLogo from 'resources/images/waiz_logo_white.svg';
 import backSvg from 'resources/images/ic_back.svg';
 
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import c from "resources/css/auth/Recovery.module.css";
 
 function Recovery(props) {
@@ -64,11 +64,14 @@ function Recovery(props) {
             }
 
             <Formik
+              initialValues={{
+                email: ""
+              }}
               onSubmit={onSubmit}
               render={props => (
                 <form onSubmit={props.handleSubmit}>
                   <div className={cx("form-group")}>
-                    <label for="email">{lcs("recovery_notice")}</label>
+                    <label htmlFor="email">{lcs("recovery_notice")}</label>
                     <Field
                       type="email"
                       name="email"

@@ -7,7 +7,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import waizLogo from 'resources/images/waiz_logo_white.svg';
 import backSvg from 'resources/images/ic_back.svg';
 
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import c from "resources/css/auth/RecoveryForm.module.css";
 
 function RecoveryForm(props) {
@@ -72,6 +72,10 @@ function RecoveryForm(props) {
             }
 
             <Formik
+              initialValues={{
+                password: "",
+                password2: ""
+              }}
               onSubmit={onSubmit}
               render={props => (
                 <form onSubmit={props.handleSubmit}>
