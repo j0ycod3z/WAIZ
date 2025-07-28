@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import $ from 'jquery'
 import redux from 'seed/redux';
 import { CSVLink } from "react-csv";
@@ -45,18 +44,28 @@ function Canvas(props) {
   const [filterInvalid, setFilterInvalid] = useState(false);
   const [optionMenu, setOptionMenu] = useState(null);
   const [activeWeek, setActiveWeek] = useState(0);
+  const isMountedRef = useRef(true);
 
   useEffect(() => {
+    isMountedRef.current = true;
     loadData(canvasId);
+    
+    return () => {
+      isMountedRef.current = false;
+    };
   }, []);
 
   useEffect(() => {
-    loadData(canvasId);
+    if (isMountedRef.current) {
+      loadData(canvasId);
+    }
   }, [canvasId]);
 
   const loadData = (canvasId) => {
     const callback = (res) => {
-      if (res.ok) props.getCanvasTypeDetails(res.body.type.id)
+      if (res.ok && isMountedRef.current) {
+        props.getCanvasTypeDetails(res.body.type.id)
+      }
     }
 
     getCanvasDetails(canvasId, callback)
@@ -153,10 +162,45 @@ function Canvas(props) {
   };
 
   const onClickExportImage = () => {
-    const node = $("." + c.panel)[0];
-    domtoimage.toBlob(node).then((blob) => {
-      saveAs(blob, 'canvas.png');
-    });
+    let node = $("." + c.panel)[0];
+    
+    if (!node) {
+      node = document.querySelector('.panel');
+    }
+    
+    if (!node) {
+      node = document.querySelector('[class*="panel"]');
+    }
+    
+    if (!node) {
+      console.error('Panel element not found for export. Available classes:', c);
+      return;
+    }
+    
+    setTimeout(() => {
+      if (!node || !node.cloneNode) {
+        console.error('Invalid node for export');
+        return;
+      }
+      
+      const options = {
+        quality: 0.95,
+        bgcolor: '#fff',
+        style: {
+          'transform': 'scale(1)',
+          'transform-origin': 'top left'
+        }
+      };
+      
+      domtoimage.toBlob(node, options)
+        .then((blob) => {
+          saveAs(blob, 'canvas.png');
+        })
+        .catch((error) => {
+          console.error('Error exporting image:', error);
+        });
+    }, 100);
+    
     setOptionMenu(null);
   };
 

@@ -1,53 +1,48 @@
-import * as React from 'react';
-import * as Util from 'seed/util'
+import { useEffect } from 'react';
 import redux from 'seed/redux';
 
 import YouTube from 'react-youtube';
-import { lcs, lc, lang } from "components/util/Locales"
+import { lc, lang } from "components/util/Locales"
 import c from 'resources/css/canvas_forms/Help.module.css'
 
+function Help(props) {
+  const { match, areaHelps, getAreaHelpList } = props;
+  const { area_id } = match.params;
 
-class Help extends React.Component
-{
+  useEffect(() => {
+    getAreaHelpList({ area: area_id });
+  }, [area_id, getAreaHelpList]);
 
-  render()
-  {
-    const { area_id } = this.props.match.params;
-    const areaHelp = this.props.areaHelps.filter(ah => ah.area_id == area_id)[0];
-    if (areaHelp == null) return <div></div>
+  const areaHelp = areaHelps.find((ah) => ah.area_id == area_id);
+  if (areaHelp == null) return <></>;
 
-    const opts = {
-      playerVars: {
-        color: "white",
-        modestbranding: 0,
-        rel: 0,
-        showinfo: 0,
-        cc_load_policy: lang.startsWith("EN") ? 0 : 1
+  const opts = {
+    playerVars: {
+      color: "white",
+      modestbranding: 0,
+      rel: 0,
+      showinfo: 0,
+      cc_load_policy: lang.startsWith("EN") ? 0 : 1
+    }
+  };
+
+  const videoId = lc(areaHelp.l_video_id)
+  
+  return (
+    <div className={c.module}>
+      { (videoId != "0" && videoId != null) &&
+        <YouTube
+          videoId={videoId}
+          opts={opts}
+          className={c.video}
+        />
       }
-    };
-
-    const videoId = lc(areaHelp.l_video_id)
-    const video = videoId != "0" && videoId != null ?
-      <YouTube
-        videoId={videoId}
-        opts={opts}
-        className={c.video} /> : null
-
-    return (
-      <div className={c.module}>
-        {video}
-        <div className={c.content}
-          dangerouslySetInnerHTML={{ __html: lc(areaHelp.l_content) }}>
-        </div>
+      <div
+        className={c.content}
+        dangerouslySetInnerHTML={{ __html: lc(areaHelp.l_content) }}>
       </div>
-    );
-  }
-
-  componentDidMount()
-  {
-    const { area_id } = this.props.match.params;
-    this.props.getAreaHelpList({area: area_id});
-  }
+    </div>
+  );
 }
 
 export default redux(Help);

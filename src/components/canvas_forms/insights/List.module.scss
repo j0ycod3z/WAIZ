@@ -12,11 +12,12 @@
 }
 
 .empty {
+  height: 100%;
   width: 100%;
   text-align: center;
   font-size: 18px;
   color: #aaa;
-  padding: 60px 100px;
+  align-content: center;
 
   i {
     margin-bottom: 14px;

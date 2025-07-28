@@ -32,15 +32,15 @@
   top: 10px;
   background: #fff;
   right: 10px;
+  display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0; /* Hide icons initially */
-  display: flex; /* Flex display for single-line alignment */
-  transition: opacity 0.3s ease; /* Smooth transition when shown */
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 .module:hover .options {
-  opacity: 1; /* Show icons */
-  position: absolute; /* Place them correctly when visible */
+  text-decoration: none;
+  opacity: 1;
 }
 
 .options .option {
@@ -49,6 +49,11 @@
   font-size: 13px;
   color: white;
   padding: 4px 5px;
+  height: 23px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   @include base.border-radius(50%);
 }
 
@@ -91,6 +96,15 @@
 
 .insight:hover {
   background-color: #10a060;
+}
+
+// Override link underline for option divs
+.options a {
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .container {

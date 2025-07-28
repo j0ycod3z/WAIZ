@@ -22,7 +22,7 @@ import c from "resources/css/canvas/Area.module.css";
 let area38hypo = ""
 
 function Area(props) {
-  const { area = {}, hypothesis = [], maxHypothesis, selectedColor, setSelectedColor, match, projects } = props;
+  const { area = {}, hypothesis = [], maxHypothesis, selectedColor, setSelectedColor, match, projects, disableOptions = false } = props;
   const [showAreaForm, setShowAreaForm] = useState(false);
   const { url } = match;
 
@@ -68,48 +68,46 @@ function Area(props) {
   const handleCloseAreaForm = () => setShowAreaForm(false);
 
   return (
-    <div
-      className={c.module}
-    >
-      <div className={c.options}>
-        {area.category.startsWith("BLANK") &&
-          hasProjectPermission(project, ["MEMBER"]) ? (
-          <div
-            onClick={handleShowAreaForm}
-            className={cx(c.edit, c.option, "fas fa-pencil-alt")}
-          ></div>
-        ) : null}
+    <div className={c.module}>
+      { !disableOptions && 
+        <div className={c.options}>
+          {(area.category.startsWith("BLANK") && hasProjectPermission(project, ["MEMBER"])) &&
+            <div
+              onClick={handleShowAreaForm}
+              className={cx(c.edit, c.option, "fas fa-pencil-alt")}
+            />
+          }
 
-        {(maxHypothesis == null || numHypothesis < maxHypothesis) &&
-          hasProjectPermission(project, ["MEMBER"]) ? (
-          <Link to={`${url}/add-hypothesis/${area.id}`}>
-            <div className={cx(c.add, c.option, "fas fa-plus")}></div>
+          {((maxHypothesis == null || numHypothesis < maxHypothesis) && hasProjectPermission(project, ["MEMBER"])) &&
+            <Link to={`${url}/add-hypothesis/${area.id}`}>
+              <div className={cx(c.add, c.option, "fas fa-plus")} />
+            </Link>
+          }
+
+          {!area.category.startsWith("BLANK") &&
+            <Link to={`${url}/area/${area.id}/help`}>
+              <div className={cx(c.info, c.option, "fas fa-question")} />
+            </Link>
+          }
+
+          <Link to={`${url}/area/${area.id}/insights`}>
+            <div className={cx(c.insight, c.option, "fas fa-lightbulb")} />
           </Link>
-        ) : null}
 
-        {!area.category.startsWith("BLANK") ? (
-          <Link to={`${url}/area/${area.id}/help`}>
-            <div className={cx(c.info, c.option, "fas fa-question")}></div>
-          </Link>
-        ) : null}
-
-        <Link to={`${url}/area/${area.id}/insights`}>
-          <div className={cx(c.insight, c.option, "fas fa-lightbulb")}></div>
-        </Link>
-
-        {/* //TODO Here is the something */}
-        {/* projectId, area.id, hypothesisS[0]) */}
-        {/* <Link
-          onClick={() => {
-            // toggleModal();
-            // dumpTextGen(projectId, area, hypothesis, area38hypo);
-          }}
-        >
-          <div>
-            <div className={cx(c.bot, c.option, "fas fa-robot")}></div>
-          </div>
-        </Link> */}
-      </div>
+          {/* //TODO Here is the something */}
+          {/* projectId, area.id, hypothesisS[0]) */}
+          {/* <Link
+            onClick={() => {
+              // toggleModal();
+              // dumpTextGen(projectId, area, hypothesis, area38hypo);
+            }}
+          >
+            <div>
+              <div className={cx(c.bot, c.option, "fas fa-robot")}></div>
+            </div>
+          </Link> */}
+        </div>
+      }
 
       <div className={c.title}>
         {area.category.startsWith("BLANK") && name.ref === "" ? (

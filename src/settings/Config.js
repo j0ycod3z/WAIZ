@@ -6,10 +6,10 @@ const IS_PROD = process.env.NODE_ENV === 'production';
 // let APP_URL = "http://localhost:3000";
 
 // Default (Development)
-let publicIPv4 = '54.179.14.53';
-let GRAPH_URL = `http://${publicIPv4}:8000/graphql`;
-let API_URL = `http://${publicIPv4}:8000/api`;
-let APP_URL = `http://${publicIPv4}:8000`;
+let domain = '13.213.37.240';
+let GRAPH_URL = `http://${domain}:8000/graphql`;
+let API_URL = `http://${domain}:8000/api`;
+let APP_URL = `http://${domain}:8000`;
 let GA_KEY = "UA-000000000-0";
 let CHATBOT = "https://y722zxgrdj.execute-api.ap-southeast-1.amazonaws.com/dev/waiz_chat";
 

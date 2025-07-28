@@ -1,115 +1,94 @@
-import * as React from 'react';
+import { useState, useEffect, useRef } from 'react';
 import redux from 'seed/redux'
 import { lcs, lc } from "components/util/Locales"
 import c from 'resources/css/canvas_forms/deepdives/Item.module.css'
 
-class Item extends React.Component
-{
-  render()
-  {
-    const { numItems, activeItem } = this.props;
-    const { question } = this.props;
+function Item(props){
+  const {
+    numItems,
+    activeItem,
+    question,
+    match,
+    getDeepAnswerList,
+  } = props;
 
-    if (question.id == null) return <div></div>
+  const [answer, setAnswer] = useState({});
+  const isMountedRef = useRef(true);
+  
+  const canvasId = match.params.canvas_id;
 
-    const next = activeItem < numItems ?
-      <a onClick={this.onClickNext}>{lcs("next")}</a> : null;
-    const prev = activeItem > 1 ?
-      <a onClick={this.onClickPrev}>{lcs("previous")}</a> : null;
-
-    return (
-      <div className={c.module}>
-
-        <div className={c.title}><span>{activeItem}.</span>{lc(question.l_content)}</div>
-        <div className={c.options}>
-          {next}{prev}
-        </div>
-        <div className={c.formContainer}>
-          <form onSubmit={this.onSubmit}>
-            <textarea name="text"
-              placeholder={lcs("write_your_answer")}
-              value={this.state.answer.text}
-              onChange={this.onAnswerChange} required />
-            <button type="submit">{lcs("save")}</button>
-          </form>
-        </div>
-      </div>
-    );
-  }
-
-  constructor(props)
-  {
-    super(props);
-    this.state = { answer: {} };
-    this.onClickNext = this.onClickNext.bind(this);
-    this.onClickPrev = this.onClickPrev.bind(this);
-    this.onAnswerChange = this.onAnswerChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  componentDidMount()
-  {
-    if (this.props.question.id != null)
-      this.loadData(this.props.question.id);
-  }
-
-  onSubmit = e =>
-  {
-    e.preventDefault();
-    let answer = this.state.answer;
-    const { numItems, activeItem } = this.props;
-    if (activeItem < numItems)
-      this.props.onNavChange(parseInt(activeItem) + 1)
-    if (answer.id == null) {
-      answer.canvas_id = this.props.match.params.canvas_id;
-      answer.question_id = this.props.question.id;
-      this.props.saveDeepAnswer(answer);
-    } else
-      this.props.setDeepAnswer(answer.id, answer);
-  }
-
-  componentWillReceiveProps(nextProps)
-  {
-    if (nextProps.question !== this.props.question && nextProps.question.id != null)
-      this.loadData(nextProps.question.id);
-  }
-
-  loadData(questionId)
-  {
-    const callback = res =>
-    {
-      if (res.body.length > 0)
-        this.setState(s => ({ answer: res.body[0] }))
-      else this.setState(s => ({ answer: { text: "" } }))
+  useEffect(() => {
+    isMountedRef.current = true;
+    
+    if (question?.id !== null){
+      getDeepAnswerList({
+        question: question.id,
+        canvas: canvasId
+      }, (res) => {
+        if (isMountedRef.current) {
+          if (res.body.length > 0)
+            setAnswer(res.body[0]);
+          else
+            setAnswer({ text: "" });
+        }
+      });
     }
+    
+    return () => isMountedRef.current = false;
+  }, [question]);
 
-    this.props.getDeepAnswerList(
-      {
-        question: questionId,
-        canvas: this.props.match.params.canvas_id
-      }, callback);
+  // const loadData = (questionId) => {
+  // };
+  
+  const onClickNext = () => props.onNavChange(parseInt(activeItem) + 1);
+  const onClickPrev = () => props.onNavChange(parseInt(activeItem) - 1);
+
+  const onAnswerChange = (e) => setAnswer({ ...answer, text: e.target.value });
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    if (activeItem < numItems)
+      props.onNavChange(parseInt(activeItem) + 1)
+    if (answer.id == null) {
+      const newAnswer = {
+        ...answer,
+        canvas_id: canvasId,
+        question_id: question.id,
+      };
+      props.saveDeepAnswer(newAnswer);
+    }
+    else
+      props.setDeepAnswer(answer.id, answer);
   }
 
-  onClickNext = e =>
-  {
-    const { activeItem } = this.props;
-    this.props.onNavChange(parseInt(activeItem) + 1)
-  }
+  if (question.id == null) return <></>
 
-  onClickPrev = e =>
-  {
-    const { activeItem } = this.props;
-    this.props.onNavChange(parseInt(activeItem) - 1)
-  }
-
-  onAnswerChange = e =>
-  {
-    let answer = this.state.answer;
-    answer.text = e.target.value;
-    this.setState({
-      answer: answer
-    })
-  }
+  return (
+    <div className={c.module}>
+      <div className={c.title}><span>{activeItem}.</span>{lc(question.l_content)}</div>
+      <div className={c.options}>
+        { activeItem < numItems &&
+          <button onClick={onClickNext}>{lcs("next")}</button>
+        }
+        { activeItem > 1 &&
+          <button onClick={onClickPrev}>{lcs("previous")}</button>
+        }
+      </div>
+      <div className={c.formContainer}>
+        <form onSubmit={onSubmit}>
+          <textarea
+            name="text"
+            placeholder={lcs("write_your_answer")}
+            value={answer.text || ""}
+            onChange={onAnswerChange}
+            required
+          />
+          <button type="submit">{lcs("save")}</button>
+        </form>
+      </div>
+    </div>
+  );
 }
 
 export default redux(Item);

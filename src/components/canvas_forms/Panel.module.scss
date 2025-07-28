@@ -1,4 +1,4 @@
-@import "src/resources/base.scss";
+@use "src/resources/base" as base;
 
 .module {
   width: 100%;
@@ -15,7 +15,6 @@
 
 .headerTitle {
   font-size: 19px;
-  max-width: 280px;
   cursor: pointer;
 }
 
@@ -33,7 +32,7 @@
   left: 0px;
   z-index: 0;
   height: 200px;
-  @include border-radius-all(5px, 5px, 0, 0);
+  @include base.border-radius-all(5px, 5px, 0, 0);
 }
 
 .headerBackground.insights {
@@ -53,14 +52,13 @@
   background-color: #ffb500;
 }
 
-
 .menu {
   position: absolute;
   right: 10px;
   top: 50px;
 }
 
-.menu>* {
+.menu > * {
   display: inline-block;
 }
 
@@ -74,19 +72,17 @@
 .navItem.active .menuItem {
   color: #222;
   background: #fff;
-  @include border-radius-all(5px, 5px, 0, 0);
+  @include base.border-radius-all(5px, 5px, 0, 0);
 }
 
 .canvas {
   position: relative;
-  padding: 0px 12px 20px 12px;
   background: #fff;
   width: 40%;
   height: 430px;
   overflow: auto;
   border-right: 1px solid #e7e7e7;
-  @include border-radius-all(0px, 0px, 0px, 5px);
-
+  @include base.border-radius-all(0px, 0px, 0px, 5px);
 }
 
 .content {
@@ -97,5 +93,5 @@
   left: 40%;
   margin-top: -430px;
   height: 430px;
-  @include border-radius-all(0px, 0px, 5px, 0px);
+  @include base.border-radius-all(0px, 0px, 5px, 0px);
 }
