@@ -6,7 +6,7 @@ const IS_PROD = process.env.NODE_ENV === 'production';
 // let APP_URL = "http://localhost:3000";
 
 // Default (Development)
-let domain = '13.213.37.240';
+let domain = '3.1.79.109';
 let GRAPH_URL = `http://${domain}:8000/graphql`;
 let API_URL = `http://${domain}:8000/api`;
 let APP_URL = `http://${domain}:8000`;

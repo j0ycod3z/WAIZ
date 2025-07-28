@@ -1,5 +1,5 @@
 # Modernization Guide
-- [Modernization.md](Modernization.md#2-check-ui-components)
+- [Modernization.md](Modernization.md)
 ---
 <br><br><br>
 

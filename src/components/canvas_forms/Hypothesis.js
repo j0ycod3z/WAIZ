@@ -60,6 +60,40 @@ function HypothesisForm(props) {
     "#ABDDA4", "#A6D94A", "#60BD63"
   ].map(color => ({ value: color, color }));
 
+  
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const onSave = (res) => {
+      if (res == "error")
+        setError("An error has occurred, try again");
+      else
+        onClose();
+    }
+
+    if (!hypothesis_id && saveHypothesis)
+      saveHypothesis(hypothesis, onSave)
+    if (hypothesis_id && setHypothesis)
+      setHypothesis(hypothesis_id, hypothesis, onSave);
+  };
+
+  const onTextChanged = (e) => {
+    const value = e.target.value;
+    setHypothesisState((prev) => ({ ...prev, text: value }));
+  };
+
+  const onColorChanged = (data) => {
+    setHypothesisState((prev) => ({ ...prev, color: data }));
+  };
+
+  const onCustomerChanged = (data) => {
+    setHypothesisState((prev) => ({ ...prev, customer_ids: data }));
+  };
+
+  const onTypeChanged = (data) => {
+    setHypothesisState((prev) => ({ ...prev, tag_ids: data }));
+  };
+
   const colors = area.category === "CUSTOMERS" && (
     <div className={c.customers}>
       <b>{lcs("color")}</b>
@@ -113,39 +147,6 @@ function HypothesisForm(props) {
       <div>{error}</div>
     </div>
   );
-  
-  const onSubmit = (e) => {
-    e.preventDefault();
-
-    const onSave = (res) => {
-      if (res == "error")
-        setError("An error has occurred, try again");
-      else
-        onClose();
-    }
-
-    if (!hypothesis_id && saveHypothesis)
-      saveHypothesis(hypothesis, onSave)
-    if (hypothesis_id && setHypothesis)
-      setHypothesis(hypothesis_id, hypothesis, onSave);
-  };
-
-  const onTextChanged = (e) => {
-    const value = e.target.value;
-    setHypothesisState((prev) => ({ ...prev, text: value }));
-  };
-
-  const onColorChanged = (data) => {
-    setHypothesisState((prev) => ({ ...prev, color: data }));
-  };
-
-  const onCustomerChanged = (data) => {
-    setHypothesisState((prev) => ({ ...prev, customer_ids: data }));
-  };
-
-  const onTypeChanged = (data) => {
-    setHypothesisState((prev) => ({ ...prev, tag_ids: data }));
-  };
   
   return (
     <div className={c.module}>
