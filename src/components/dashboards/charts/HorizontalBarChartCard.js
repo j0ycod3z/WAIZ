@@ -37,8 +37,10 @@ class HorizontalBarChartCard extends React.Component
               options={{
                 maintainAspectRatio: false,
                 responsive: true,
-                tooltips: {
-                  enabled: false,
+                plugins: {
+                  tooltip: {
+                    enabled: false
+                  }
                 },
                 scales: {
                   yAxes: [{
