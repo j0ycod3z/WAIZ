@@ -20,7 +20,7 @@ function TagPicker(props) {
     
     const res = [...value];
     const pos = res.indexOf(tVal);
-    if (pos == -1)
+    if (pos === -1)
       res.unshift(tVal)
     else
       res.splice(pos, 1);

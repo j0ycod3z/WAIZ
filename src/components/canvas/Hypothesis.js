@@ -69,42 +69,33 @@ function Hypothesis(props) {
 
   let hypothesisSelected = hypothesis.customers.some((c) => c.color === selectedColor);
   
-  const colors = hypothesis.customers.map((color, i) => {
-    console.log(color.text);
-    
-    return (
-      <Caption key={i} text={color.text}>
-        <div
-          className={c.color}
-          onMouseEnter={() => onColorEnter(color.color)}
-          onMouseLeave={() => onColorLeave()}
-          style={{
-            backgroundColor: color.color,
-            height: selectedColor == color.color ? "12px" : "6px",
-            width: selectedColor == color.color ? "21px" : "19px"
-          }}
-        />
-      </Caption>
-    )
-  });
+  const colors = hypothesis.customers.map((color) => (
+    <Caption key={color.color} text={color.text}>
+      <div
+        className={c.color}
+        onMouseEnter={() => onColorEnter(color.color)}
+        onMouseLeave={() => onColorLeave()}
+        style={{
+          backgroundColor: color.color,
+          height: selectedColor == color.color ? "12px" : "6px",
+          width: selectedColor == color.color ? "21px" : "19px"
+        }}
+      />
+    </Caption>
+  ));
 
   if (area.category == "CUSTOMERS") {
     colors.push(
-      <Caption key="main-color" text={hypothesis.text}>
+      <Caption key={"main-color-" + hypothesis.id} text={hypothesis.text}>
         <div className={c.color} style={{ backgroundColor: hypothesis.color }} />
       </Caption>
     )
   }
-  const tags = hypothesis.tags.map((t, i) => {
-    console.log(t.l_name)
-    return (
-      <Caption key={i} text={lc(t.l_name)}>
-        <div className={c.tag}>{lc(t.l_name).substring(0, 1)}</div>
-      </Caption>
-    )
-  });
-  // console.log("Customer keys:", hypothesis.customers);
-  // console.log("Tag keys:", hypothesis.tags);
+  const tags = hypothesis.tags.map((t) => (
+    <Caption key={t.id} text={lc(t.l_name)}>
+      <div className={c.tag}>{lc(t.l_name).substring(0, 1)}</div>
+    </Caption>
+  ));
 
   let styleContent = "";
   if (hypothesis.is_tested){

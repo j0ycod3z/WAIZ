@@ -45,7 +45,7 @@ function Area(props) {
   if (project == null) return <></>;
 
   const hypothesisList = hypothesisS.map((h) =>
-    h.is_active ? (
+    h.is_active && (
       <div className={c.item} key={h.id}>
         <Hypothesis
           area={area}
@@ -56,7 +56,7 @@ function Area(props) {
           match={match}
         />
       </div>
-    ) : null
+    )
   );
 
   const numH =

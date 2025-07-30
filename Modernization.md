@@ -10,10 +10,9 @@
 - Restructure react component declaration (Class &rarr; Function).
 
 **Component folders to be checked this week**
-- [x] Canvas
-- [x] Canvas_forms
-- [ ] Dashboard
-- [ ] Helpers
+- [ ] Interviews
+- [ ] Knowledge Base
+- [ ] Navigation
 
 **All Component Folders**
 - [x] Auth
@@ -22,7 +21,7 @@
 - [x] Chatbot
 - [ ] Dashboard
 - [x] Game changer funnel
-- [ ] Helpers
+- [x] Helpers
 - [ ] Interviews
 - [ ] Knowledge Base
 - [ ] Navigation
@@ -30,16 +29,16 @@
 - [ ] Projects
 - [ ] Search
 - [ ] Users
+- [ ] Util
 
 <br>
 
-### 1.1 Key Dependency Updates
+### 1.2 Key Dependency Updates
 - react v17.0.2
   - svg
   - ga
   - ===
   - popup
-  - ===
 
 all 3 @fortawesome packages may not be used
 

@@ -406,7 +406,7 @@ class Skills extends Component
         <div>
           <h5 className={cx(c.title)}>
             {lcs("primary_skills")}
-            {!this.state.editing && hasProfilePermission(profile, "skills", "EDIT") ? (
+            {!this.state.editing && hasProfilePermission(profile, "EDIT") ? (
               <button
                 onClick={this.onClickOpen}
                 className={cx(c.editLight)}

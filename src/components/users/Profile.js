@@ -59,7 +59,7 @@ class Profile extends Component
                 setProfileSecondarySkill={this.props.setProfileSecondarySkill} />
               <br />
               {
-                hasProfilePermission(profile, "skills", "EDIT") ?
+                hasProfilePermission(profile, "EDIT") ?
                   <Export
                     profile={profile} /> : null}
               <br />

@@ -4,7 +4,12 @@ import c from 'resources/css/helpers/Multiselect.module.css';
 
 
 function Multiselect(props) {
-  const { value = [], values = [], onChange, singleChoice } = props;
+  const {
+    value = [],
+    values = [],
+    onChange,
+    singleChoice
+  } = props;
 
   const selected = {}
   for (let d of value)
@@ -28,21 +33,21 @@ function Multiselect(props) {
 
   return (
     <div className={c.module}>{
-      values.map((v) => {
-        let isSelected = Boolean(selected[v.value]);
-        return (
-          <div key={v.value} className={c.item}>
+      values.map((v) => 
+        <div key={v.value} className={c.item}>
+          <label htmlFor={v.label}>
             <input
               type="checkbox"
               name={v.label}
+              id={v.label}
               title={v.value}
-              checked={isSelected}
+              checked={Boolean(selected[v.value])}
               onChange={onItemSelected}
             />
             {v.label}
-          </div>
-        );
-      })
+          </label>
+        </div>
+      )
     }</div>
   );
 }

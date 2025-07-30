@@ -41,7 +41,7 @@ class Card extends Component
           />
           <h5 className={cx(c.username)}>
             {profile.user.first_name + " " + profile.user.last_name}
-            {!this.state.editing && hasProfilePermission(profile, "general", "EDIT") ?
+            {!this.state.editing && hasProfilePermission(profile, "EDIT") ?
               <button
                 onClick={this.onClickOpen}
                 className={cx(c.editLight)} >

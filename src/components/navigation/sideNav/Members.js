@@ -19,26 +19,26 @@ class Members extends React.Component
 
     let memberAdmin = false;
     if (project.cohort_id == null) {
-      members.push(this.renderUser(project.admin));
+      members.push(this.renderUser(project.admin, 'admin'));
       memberAdmin = true;
     }
     for (let i = 0; i < 4 + (!memberAdmin ? 1 : 0); i++)
       if (i < project.members.length)
-        members.push(this.renderUser(project.members[i]));
-      else members.push(this.renderUser())
+        members.push(this.renderUser(project.members[i], `member-${i}`));
+      else members.push(this.renderUser(null, `empty-member-${i}`))
 
     if (project.members.length > 4 + (!memberAdmin ? 1 : 0))
       members.push(
-        this.renderMore(project.members.length - (4 + (!memberAdmin ? 1 : 0))))
+        this.renderMore(project.members.length - (4 + (!memberAdmin ? 1 : 0)), 'more-members'))
 
     for (let i = 0; i < 5; i++)
       if (i < project.mentors.length)
-        mentors.push(this.renderUser(project.mentors[i]));
-      else mentors.push(this.renderUser())
+        mentors.push(this.renderUser(project.mentors[i], `mentor-${i}`));
+      else mentors.push(this.renderUser(null, `empty-mentor-${i}`))
 
     if (project.mentors.length > 5)
       mentors.push(
-        this.renderMore(project.mentors.length - 5))
+        this.renderMore(project.mentors.length - 5, 'more-mentors'))
 
 
     return (
@@ -87,11 +87,11 @@ class Members extends React.Component
     );
   }
 
-  renderUser(user)
+  renderUser(user, key)
   {
     if (user)
       return (
-        <Caption text={user.first_name + " " + user.last_name}>
+        <Caption key={key} text={user.first_name + " " + user.last_name}>
           <div className={c.teamElement}>
             <Link to={`/app/profile/${user.id}`}>
               <img
@@ -102,16 +102,16 @@ class Members extends React.Component
           </div>
         </Caption >)
     return (
-      <div className={c.teamElementDefault}>
+      <div key={key} className={c.teamElementDefault}>
       </div>
     )
   }
 
-  renderMore(num)
+  renderMore(num, key)
   {
     const { project } = this.props;
     return (
-      <Link to={`/app/project_profile/${project.id}`}>
+      <Link key={key} to={`/app/project_profile/${project.id}`}>
         <div className={c.teamElementMore}>
           {"+" + num}
         </div>

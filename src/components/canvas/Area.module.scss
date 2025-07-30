@@ -10,21 +10,20 @@
 .title {
   display: flex;
   font-weight: normal !important;
-}
+  margin-bottom: 8px;
 
-.title i {
-  color: #a0a0a0;
-}
-
-.title a {
-  color: #777;
-  font-family: inherit;
-}
-
-.title .numH {
-  color: #F0B010;
-  font-size: 0.85em;
-  margin-left: 4px;
+  i {
+    color: #a0a0a0;
+  }
+  a {
+    color: #777;
+    font-family: inherit;
+  }
+  .numH {
+    color: #F0B010;
+    font-size: 0.85em;
+    margin-left: 4px;
+  }
 }
 
 .options {
@@ -98,7 +97,6 @@
   background-color: #10a060;
 }
 
-// Override link underline for option divs
 .options a {
   text-decoration: none;
   
@@ -124,6 +122,6 @@
 }
 
 .item {
-  padding: 8px 0px 6px 0px;
+  padding: 6px 0;
 }
 

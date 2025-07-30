@@ -196,7 +196,7 @@ class Details extends Component
           <div className={c.cardSection}>
             <h5 className={cx("card-title", c.cardTitle)}>
               {lcs("short_bio")}
-              {!this.state.editing && hasProfilePermission(profile, "bio", "EDIT") ? (
+              {!this.state.editing && hasProfilePermission(profile, "EDIT") ? (
                 <button onClick={() => this.onClickOpen("BIO")} className={cx(c.edit)}>
                   <i className="fas fa-edit" />
                 </button>
@@ -208,7 +208,7 @@ class Details extends Component
           <div className={cx(c.marginTop, c.paddingBottom)}>
             <h5 className={cx("card-title", c.cardTitle)}>
               {lcs("experience")}
-              {!this.state.editing && hasProfilePermission(profile, "laborals", "EDIT")?  (
+              {!this.state.editing && hasProfilePermission(profile, "EDIT")?  (
                 <button onClick={() => this.onClickOpen("WORK")} className={cx(c.edit)}>
                   <i className="fas fa-edit" />
                 </button>
@@ -222,7 +222,7 @@ class Details extends Component
           <div className={cx(c.marginTop, c.paddingBottom)}>
             <h5 className={cx("card-title", c.cardTitle)}>
               {lcs("what_have_you_made")}
-              {!this.state.editing && hasProfilePermission(profile, "made", "EDIT") ? (
+              {!this.state.editing && hasProfilePermission(profile, "EDIT") ? (
                 <button onClick={() => this.onClickOpen("MADE")} className={cx(c.edit)}>
                   <i className="fas fa-edit" />
                 </button>
@@ -234,7 +234,7 @@ class Details extends Component
           <div className={cx(c.marginTop, c.paddingBottom)}>
             <h5 className={cx("card-title", c.cardTitle)}>
               {lcs("education")}
-              {!this.state.editing && hasProfilePermission(profile, "educations", "EDIT") ? (
+              {!this.state.editing && hasProfilePermission(profile, "EDIT") ? (
                 <button onClick={() => this.onClickOpen("EDUCATION")} className={cx(c.edit)}>
                   <i className="fas fa-edit" />
                 </button>
@@ -248,7 +248,7 @@ class Details extends Component
           <div className={cx(c.marginTop, c.paddingBottom)}>
             <h5 className={cx("card-title", c.cardTitle)}>
               {lcs("languages")}
-              {!this.state.editing && hasProfilePermission(profile, "languages", "EDIT") ? (
+              {!this.state.editing && hasProfilePermission(profile, "EDIT") ? (
                 <button onClick={() => this.onClickOpen("LANGUAGES")} className={cx(c.edit)}>
                   <i className="fas fa-edit" />
                 </button>
