@@ -12,7 +12,7 @@
 **Component folders to be checked this week**
 - [ ] Interviews
 - [ ] Knowledge Base
-- [ ] Navigation
+- [x] Navigation
 
 **All Component Folders**
 - [x] Auth
@@ -24,12 +24,12 @@
 - [x] Helpers
 - [ ] Interviews
 - [ ] Knowledge Base
-- [ ] Navigation
+- [x] Navigation
 - [ ] Project Admin
 - [ ] Projects
 - [ ] Search
 - [ ] Users
-- [ ] Util
+- [x] Util
 
 <br>
 

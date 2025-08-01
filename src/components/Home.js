@@ -34,7 +34,8 @@ class Home extends React.Component {
       if (localStorage.getItem('id') != null) {
         sessionStorage.setItem('id', localStorage.getItem('id'));
         sessionStorage.setItem('token', localStorage.getItem('token'));
-      } else return <></>
+      }
+      else return <></>
     }
 
     const projectId = localStorage.getItem('projectId');
@@ -95,23 +96,20 @@ class Home extends React.Component {
     );
   }
 
-  constructor(props)
-  {
+  constructor(props) {
     super(props);
     this.state = { sidenav: true };
     this.onBurgerClick = this.onBurgerClick.bind(this);
   }
 
-  componentDidMount()
-  {
+  componentDidMount() {
     const userId = sessionStorage.getItem('id');
     const userIdR = localStorage.getItem('id')
     if (userId === null && userIdR === null)
       return this.props.history.replace('/login');
   }
 
-  onBurgerClick()
-  {
+  onBurgerClick() {
     this.setState(prevState => ({
       sidenav: !prevState.sidenav
     }));

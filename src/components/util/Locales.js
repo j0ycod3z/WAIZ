@@ -171,6 +171,10 @@ const Locales = {
     "Reputation & Productivity drivers",
     "Procesos (Reputación / Productividad)"
   ],
+  project: [
+    "Project",
+    "Proyecto"
+  ],
   project_profile: [
     "Project Profile",
     "Ficha de Proyecto"

@@ -1,5 +1,4 @@
-import * as React from "react";
-import * as Util from "seed/util"
+import { useState, useEffect } from "react";
 import redux from 'seed/redux';
 import cx from "classnames";
 import About from "components/navigation/About"
@@ -13,209 +12,189 @@ import Caption from 'components/helpers/Caption';
 
 import c from 'resources/css/navigation/TopNav.module.css';
 
-class TopNav extends React.Component
-{
-  render()
-  {
-    const { projects, canvases } = this.props;
+function TopNav(props) {
+  const {
+    projects,
+    canvases,
+    users,
+    match,
+    history,
+    sidenav,
+    getUserDetails,
+    onBurgerClick
+  } = props;
+  const { url, params } = match;
+  const { section_id, canvas_id, project_id } = params;
 
-    const userId = sessionStorage.getItem('id');
-    const user = Util.get(this.props.users, userId);
+  const [showAbout, setShowAbout] = useState(false);
+  const [optionMenu, setOptionMenu] = useState(null);
 
-    const { url } = this.props.match;
-    const { optionMenu } = this.state;
-    const { section_id, canvas_id, project_id } = this.props.match.params;
+  const userId = sessionStorage.getItem("id");
+  const user = users.find((u) => u.id == userId);
 
-    let projectName = "";
-    let sectionName = "";
-    if (canvas_id != null) {
-      const canvas = Util.get(canvases, canvas_id);
-      if (canvas.id != null) {
-        const project = Util.get(projects, canvas.project_id);
-        sectionName = lc(canvas.type.l_name);
-        if (project.id != null)
-          projectName = project.name + "  /  ";
-      }
-    } else if (project_id != null) {
-      const project = Util.get(projects, project_id);
-      if (section_id == "project_profile") sectionName = lcs("project_profile");
-      else if (section_id == "interviews") sectionName = lcs("interviews");
-      else if (section_id == "incubation_acceleration") sectionName = lcs("incubation_acceleration")
-      if (project.id != null)
-        projectName = project.name + "  /  ";
-    } else {
-      if (section_id == "profile") sectionName = lcs("your_profile")
-      else if (section_id == "search") sectionName = lcs("search_noun")
-      else if (section_id == "settings") sectionName = lcs("settings")
-      else if (url.includes("profile")) sectionName = lcs("profile")
-      else if (url.includes("dashboards")) sectionName = lcs("dashboards")
-      else if (url.includes("project_admin")) sectionName = lcs("project_admin")
-      else if (url.includes("knowledge_base")) sectionName = lcs("knowledge_base");
+  useEffect(() => {
+    const callback = (res) => {
+      if (!res.ok) return false;
+      sessionStorage.setItem("lang", res.body.lang);
+    };
+    getUserDetails(userId, callback);
+  }, [getUserDetails, userId]);
+  
+  let projectName = "";
+  let sectionName = "";
+  if (canvas_id != null) {
+    const canvas = canvases.find((canv) => canv.id == canvas_id);
+
+    if (canvas.id != null) {
+      const project = projects.find((proj) => proj.id == canvas.project_id);
+      sectionName = lc(canvas.type.l_name);
+
+      if (project.id != null) projectName = `${project.name}  /  `;
     }
+  }
+  else if (project_id != null) {
+    const project = projects.find(() => proj.id == project_id);
 
-    const AboutModal = props => (
-      <Modal
-        {...this.props}
-        onClose={() => this.setState({ showAbout: false })}
-        width={350}
-        height={185}>
-        <About />
-      </Modal>
-    );
+    if (section_id == "project_profile") sectionName = lcs("project_profile");
+    else if (section_id == "interviews") sectionName = lcs("interviews");
+    else if (section_id == "incubation_acceleration") sectionName = lcs("incubation_acceleration")
+    
+    if (project.id != null) projectName = `${project.name}  /  `;
+  }
+  else {
+    if (section_id == "profile") sectionName = lcs("your_profile")
+    else if (section_id == "search") sectionName = lcs("search_noun")
+    else if (section_id == "settings") sectionName = lcs("settings")
+    else if (url.includes("profile")) sectionName = lcs("profile")
+    else if (url.includes("dashboards")) sectionName = lcs("dashboards")
+    else if (url.includes("project_admin")) sectionName = lcs("project_admin")
+    else if (url.includes("knowledge_base")) sectionName = lcs("knowledge_base");
+  }
 
+  const AboutModal = () => (
+    <Modal
+      {...props}
+      onClose={() => setShowAbout(false)}
+      width={350}
+      height={185}
+    >
+      <About />
+    </Modal>
+  );
 
-    return (
-      <div className={c.module}>
-        <div className={c.container}>
-          <div className={c.left}>
-            {this.props.sidenav ? null : (
-              <div className={cx(c.flexColumn)}>
-                <a onClick={this.props.onBurgerClick}>
-                  <i style={{ fontSize: "16px" }} className="fas fa-bars" />
-                </a>
-              </div>
-            )}
+  const openOptionMenu = (e) => setOptionMenu(e.currentTarget);
+  const closeOptionMenu = () => setOptionMenu(null);
+
+  const onEnterSearch = (e) => {
+    const value = e.currentTarget.value;
+    if (e.key === "Enter") {
+      e.currentTarget.value = "";
+      history.push(`/app/search/${value}`);
+    }
+  };
+
+  const onClickProfile = (e) => {
+    history.push(`/app/profile/${sessionStorage.getItem("id")}`);
+    closeOptionMenu(e);
+  };
+
+  const onClickSettings = (e) => {
+    history.push("/app/settings");
+    closeOptionMenu(e);
+  };
+
+  const onClickAbout = () => {
+    setShowAbout(true);
+  };
+
+  const onClickLogout = (e) => {
+    history.push("/logout");
+    closeOptionMenu(e);
+  };
+  
+  return (
+    <div className={c.module}>
+      <div className={c.container}>
+        <div className={c.left}>
+          {sidenav ? null : (
             <div className={cx(c.flexColumn)}>
-              <div className={cx(c.element)}>
-                <h3 className={c.title}>
-                  {projectName}<span className={c.subtitle}>{sectionName}</span>
-                </h3>
-              </div>
+              <a onClick={onBurgerClick}>
+                <i style={{ fontSize: "16px" }} className="fas fa-bars" />
+              </a>
             </div>
-          </div>
-
-
-          <div className={c.right}>
-
-            <div className={cx(c.flexColumn)}>
-              <div className={c.element}>
-                <div className={c.search}>
-                  <i className="fas fa-search" />
-                  <input type="text" placeholder={lcs("search")} onKeyDown={this.onEnterSearch}></input>
-                </div>
-              </div>
+          )}
+          <div className={cx(c.flexColumn)}>
+            <div className={cx(c.element)}>
+              <h3 className={c.title}>
+                {projectName}<span className={c.subtitle}>{sectionName}</span>
+              </h3>
             </div>
-
-            {/*<div className={cx(c.flexColumn)}>
-              <div className={c.element}>
-                <Link to="/app/notifications">
-                  <Caption text={lcs("notifications")} onTop={false}>
-                    <i className="fas fa-bell" />
-                  </Caption>
-                </Link>
-              </div>
-            </div>*/}
-
-            <div className={cx(c.flexColumn)}>
-              <div className={c.element}>
-                <Link to="/app/knowledge_base/0">
-                  <Caption text={lcs("knowledge_base")} onTop={false} maxLen={21}>
-                    <i className="fas fa-book-open" />
-                  </Caption>
-                </Link>
-              </div>
-            </div>
-
-            <div className={cx(c.button)} onClick={this.openOptionMenu}>
-              <div className={cx(c.flexColumn)}>
-                {user.image_url != null ?
-                  <label
-                    className={cx(c.teamImage, c.profileImage, c.smallImage)}
-                    style={{ backgroundImage: `url("${user.image_url}")` }}
-                    alt="profileImage" /> : null}
-              </div>
-              <div className={cx(c.flexColumn, c.userName)}>
-                <span>{user.first_name}<i className="fas fa-caret-down"></i></span>
-              </div>
-            </div>
-            <Menu
-              anchorEl={optionMenu}
-              open={Boolean(optionMenu)}
-              onClose={this.closeOptionMenu}>
-              <MenuItem onClick={this.onClickProfile}>{lcs("your_profile")}</MenuItem>
-              <MenuItem onClick={this.onClickSettings}>{lcs("settings")}</MenuItem>
-              <MenuItem onClick={this.onClickAbout}>{lcs("about")}</MenuItem>
-              <MenuItem onClick={this.onClickLogout}>{lcs("logout")}</MenuItem>
-            </Menu>
           </div>
         </div>
 
-        {this.state.showAbout ? <AboutModal /> : null}
+        <div className={c.right}>
+          <div className={cx(c.flexColumn)}>
+            <div className={c.element}>
+              <div className={c.search}>
+                <i className="fas fa-search" />
+                <input type="text" placeholder={lcs("search")} onKeyDown={onEnterSearch}></input>
+              </div>
+            </div>
+          </div>
 
+          {/*<div className={cx(c.flexColumn)}>
+            <div className={c.element}>
+              <Link to="/app/notifications">
+                <Caption text={lcs("notifications")} onTop={false}>
+                  <i className="fas fa-bell" />
+                </Caption>
+              </Link>
+            </div>
+          </div>*/}
+
+          <div className={cx(c.flexColumn)}>
+            <div className={c.element}>
+              <Link to="/app/knowledge_base/0">
+                <Caption text={lcs("knowledge_base")} onTop={false} maxLen={21}>
+                  <i className="fas fa-book-open" />
+                </Caption>
+              </Link>
+            </div>
+          </div>
+
+          <div className={cx(c.button)} onClick={openOptionMenu}>
+            <div className={cx(c.flexColumn)}>
+              {user.image_url != null &&
+                <label
+                  className={cx(c.teamImage, c.profileImage, c.smallImage)}
+                  style={{ backgroundImage: `url("${user.image_url}")` }}
+                  alt="profileImage"
+                />
+              }
+            </div>
+            <div className={cx(c.flexColumn, c.userName)}>
+              <span>
+                {user.first_name}
+                <i className="fas fa-caret-down"></i>
+                </span>
+            </div>
+          </div>
+          <Menu
+            anchorEl={optionMenu}
+            open={Boolean(optionMenu)}
+            onClose={closeOptionMenu}
+          >
+            <MenuItem onClick={onClickProfile}>{lcs("your_profile")}</MenuItem>
+            <MenuItem onClick={onClickSettings}>{lcs("settings")}</MenuItem>
+            <MenuItem onClick={onClickAbout}>{lcs("about")}</MenuItem>
+            <MenuItem onClick={onClickLogout}>{lcs("logout")}</MenuItem>
+          </Menu>
+        </div>
       </div>
-    );
-  }
 
-  constructor(props)
-  {
-    super(props);
-    this.state = {
-      sidenav: props.sidenav,
-      showAbout: false,
-      optionMenu: null
-    };
-
-    this.openOptionMenu = this.openOptionMenu.bind(this);
-    this.closeOptionMenu = this.closeOptionMenu.bind(this);
-    this.onEnterSearch = this.onEnterSearch.bind(this);
-    this.onClickProfile = this.onClickProfile.bind(this);
-    this.onClickSettings = this.onClickSettings.bind(this);
-    this.onClickAbout = this.onClickAbout.bind(this);
-    this.onClickLogout = this.onClickLogout.bind(this);
-  }
-
-  componentDidMount()
-  {
-    const userId = sessionStorage.getItem('id');
-    const callback = (res) =>
-    {
-      if (!res.ok) return false;
-      sessionStorage.setItem('lang', res.body.lang);
-    }
-    this.props.getUserDetails(userId, callback);
-  }
-
-  openOptionMenu(e)
-  {
-    this.setState({ optionMenu: e.currentTarget });
-  };
-
-  closeOptionMenu(e)
-  {
-    this.setState({ optionMenu: null });
-  };
-
-  onEnterSearch(e)
-  {
-    let value = e.currentTarget.value;
-    if (e.key === 'Enter') {
-      e.currentTarget.value = "";
-      this.props.history.push("/app/search/" + value)
-    }
-  }
-
-  onClickProfile(e)
-  {
-    this.props.history.push("/app/profile/" + sessionStorage.getItem('id'))
-    this.closeOptionMenu(e)
-  }
-
-  onClickSettings(e)
-  {
-    this.props.history.push("/app/settings")
-    this.closeOptionMenu(e)
-  }
-
-  onClickAbout(e)
-  {
-    this.setState({ showAbout: true });
-  }
-
-  onClickLogout(e)
-  {
-    this.props.history.push("/logout")
-    this.closeOptionMenu(e)
-  }
+      {showAbout && <AboutModal />}
+    </div>
+  );
 }
 
 export default redux(TopNav);

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import redux from 'seed/redux';
 
 import { NavLink } from 'react-router-dom'
@@ -10,88 +10,66 @@ import InterviewForm from 'components/interviews/Form';
 
 import c from "resources/css/navigation/sideNav/Project.module.css";
 
-class SideNav extends React.Component
-{
-  render()
-  {
-    const { url } = this.props.match;
-    const { project } = this.props;
+function SideNav(props) {
+  const { project, match } = props;
+  const { url } = match;
 
-    return (
-      <div className={c.module}>
-        {/* Sections */}
+  const [interviewModal, setInterviewModal] = useState(false);
 
-        <div className={c.element}>
-          <div className={c.sectionTitle}>{lcs("details")}</div>
-          <NavLink
-            to={`${url}/project_profile/${project.id}`}
-            className={c.navButton}
-            activeClassName={c.active}>
-            <button className={c.button}>
-              <i className="fas fa-th-large" />
-              &nbsp;&nbsp;&nbsp;{lcs("project_profile")}
-            </button>
-          </NavLink>
+  const openInterviewModal = () => setInterviewModal(true);
+  const closeInterviewModal = () => setInterviewModal(false);
 
-          <NavLink
-            to={`${url}/interviews/${project.id}`}
-            className={c.navButton}
-            activeClassName={c.active}>
-            <button className={c.button}>
-              <i className="fas fa-microphone-alt" />
-              &nbsp;&nbsp;&nbsp;{lcs("interviews")}
-              {hasProjectPermission(project, ["MEMBER"]) ?
-                <i className={c.buttonOption + " fas fa-plus"}
-                  onClick={this.openInterviewModal} /> : null
-              }
-            </button>
-          </NavLink>
-
-          {this.state.interviewModal ?
-            <Modal
-              match={this.props.match}
-              onClose={this.closeInterviewModal}
-              width={750}
-              height={650}>
-              <InterviewForm projectId={project.id} />
-            </Modal> : null}
-
-          <NavLink
-            to={`${url}/dashboards`}
-            className={c.navButton}
-            activeClassName={c.active}>
-            <button className={c.button}>
-              <i className="fas fa-chart-line" />
-              &nbsp;&nbsp;&nbsp;{lcs("dashboards")}
-            </button>
-          </NavLink>
-
-        </div>
+  return (
+    <div className={c.module}>
+      <div className={c.element}>
+        <div className={c.sectionTitle}>{lcs("project")}</div>
+        <NavLink
+          to={`${url}/project_profile/${project.id}`}
+          className={c.navButton}
+          activeClassName={c.active}
+        >
+          <button className={c.button}>
+            <i className="fas fa-th-large" />
+            &nbsp;&nbsp;&nbsp;{lcs("project_profile")}
+          </button>
+        </NavLink>
+  
+        <NavLink
+          to={`${url}/interviews/${project.id}`}
+          className={c.navButton}
+          activeClassName={c.active}
+        >
+          <button className={c.button}>
+            <i className="fas fa-microphone-alt" />
+            &nbsp;&nbsp;&nbsp;{lcs("interviews")}
+            {hasProjectPermission(project, ["MEMBER"]) &&
+              <i className={c.buttonOption + " fas fa-plus"} onClick={openInterviewModal} />
+            }
+          </button>
+        </NavLink>
+  
+        {interviewModal &&
+          <Modal
+            match={match}
+            onClose={closeInterviewModal}
+            width={750}
+            height={650}>
+            <InterviewForm projectId={project.id} />
+          </Modal>
+        }
+  
+        <NavLink
+          to={`${url}/dashboards`}
+          className={c.navButton}
+          activeClassName={c.active}>
+          <button className={c.button}>
+            <i className="fas fa-chart-line" />
+            &nbsp;&nbsp;&nbsp;{lcs("dashboards")}
+          </button>
+        </NavLink>
       </div>
-    );
-  }
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {
-      interviewModal: false
-    };
-
-    this.openInterviewModal = this.openInterviewModal.bind(this);
-    this.closeInterviewModal = this.closeInterviewModal.bind(this);
-  }
-
-  openInterviewModal = e =>
-  {
-    this.setState({ interviewModal: true });
-  };
-
-  closeInterviewModal = e =>
-  {
-    this.setState({ interviewModal: false });
-  };
-
+    </div>
+  );
 }
 
 export default redux(SideNav);
