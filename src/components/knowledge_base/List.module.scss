@@ -1,15 +1,9 @@
-@import "src/resources/base.scss";
-@import "src/resources/layout.scss";
-@import "src/resources/forms.scss";
-
-.module {
-  @include fonts();
-  height: 100%;
-  width: 100%;
-}
+@use "src/resources/base.scss" as base;
+@use "src/resources/layout.scss" as layout;
+@use "src/resources/forms.scss" as forms;
 
 .card {
-  padding: 12px 18px;
+  padding: 20px;
   border: 1px solid #ddd !important;
 }
 
@@ -34,7 +28,11 @@
 }
 
 .items {
-  padding-bottom: 24px;
+  list-style: none;
+}
+
+.item {
+  padding: 14px 16px;
 }
 
 .item.active {

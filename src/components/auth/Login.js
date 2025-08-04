@@ -1,68 +1,69 @@
-import React from 'react';
 import { useState } from 'react';
 import redux from 'seed/redux';
 import cx from 'classnames';
 import { lcs } from 'components/util/Locales';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import waizLogo from 'resources/images/waiz_logo_white.svg';
 
 import c from 'resources/css/auth/Login.module.css';
 
 function Login(props) {
-  const [state, setState] = useState({});
+  const { match, history, getUserDetails } = props;
+  const { action } = match.params;
+
+  const [missingPayment, setMissingPayment] = useState(false);
+  const [error, setError] = useState(undefined);
 
   const onLogin = (e) => {
     e.preventDefault();
-    let { action } = props.match.params;
-    let email = e.target.email.value;
-    let password = e.target.password.value;
-    let rememberMe = e.target.rememberMe.checked;
+    
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const rememberMe = e.target.rememberMe.checked;
 
-    let callback = (res) => {
+    props.login(email, password, (res) => {
       if (res.ok) {
-        let token = res.body.key;
-        let userId = res.body.user;
+        const token = res.body.key;
+        const userId = res.body.user;
 
-        props.getUserDetails(userId, (resU) => {
+        getUserDetails(userId, (resU) => {
           if (resU.body.missing_payment) {
             sessionStorage.clear();
             localStorage.clear();
             
-            return setState((s) => ({
-              missingPayment: true,
-              error: undefined
-            }));
+            setMissingPayment(true);
+            setError(undefined);
+            return;
           }
           if (rememberMe) {
             localStorage.setItem("token", token);
             localStorage.setItem("id", userId);
           }
-          if (action === "welcome") props.history.replace("/projects/new")
-          else props.history.replace('/');
+          if (action === "welcome")
+            history.replace("/projects/new")
+          else
+            history.replace('/');
         })
-      } else setState((s) => ({
-        missingPayment: undefined,
-        error: lcs("invalid_user_or_password")
-      }));
-    }
-    props.login(email, password, callback);
+      } else {
+        setMissingPayment(false);
+        setError(lcs("invalid_user_or_password"));
+      }
+    });
   }
 
-  const { error, missingPayment } = state;
-
-  const paymentMessage = missingPayment ? (
-    <div className={c.payment + ' animated fadeIn'}>
+  const paymentMessage = missingPayment && (
+    <div className={cx(c.payment, 'animated', 'fadeIn')}>
       <div>
         {lcs("missing_payment_message")} <a href="mailto:hello@waiz.ai">hello@waiz.ai</a> {lcs("missing_payment_message_2")}
-        </div>
       </div>
-    ) : null;
+    </div>
+  );
 
-  const errorMessage = error ? (
-    <div className={c.error + ' animated fadeIn'}>
+  const errorMessage = error && (
+    <div className={cx(c.error,'animated', 'fadeIn')}>
       <div>{error}</div>
     </div>
-  ) : null;
+  );
 
   return (
     <div className={c.background}>
@@ -126,10 +127,10 @@ function Login(props) {
                       <div className="col">
                         <p className={cx("text-right", c.signin)}>
                           {lcs("dont_have_an_account")}&nbsp;
-                          <Link to="/signup">{lcs("sign_up")}</Link>
+                          <NavLink to="/signup">{lcs("sign_up")}</NavLink>
                         </p>
                         <p className="text-right">
-                          <Link to="/recovery">{lcs("forgot_your_password")}</Link>
+                          <NavLink to="/recovery">{lcs("forgot_your_password")}</NavLink>
                         </p>
                       </div>
                     </div>

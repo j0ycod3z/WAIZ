@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import cx from "classnames";
 import redux from 'seed/redux'
 import { lcs } from 'components/util/Locales';
@@ -11,33 +11,35 @@ import "react-bootstrap";
 import c from "resources/css/auth/Recovery.module.css";
 
 function Recovery(props) {
-  const [state, setState] = useState({});
+  const { history, recoverPassword } = props;
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const onSubmit = (values) => {
-    const body = { email: values.email }
-    // const { url } = props.match;
+    const body = { email: values.email };
 
-    const callback = (res) => {
+    setLoading(true);
+    recoverPassword(body, (res) => {
       if (res.ok)
-        props.history.replace(`/recovery_message/request`);
-      else setState(s => ({
-        error: res.body.status === 404 ?
-          lcs("unregistered_user") :
-          lcs("an_error_has_ocurred")
-      }));
-      setState(s => ({ loading: false }));
-    }
-    setState(s => ({ loading: true }));
-    props.recoverPassword(body, callback)
+        history.replace(`/recovery_message/request`);
+      else {
+        setError(
+          res.body.status === 404
+            ? lcs("unregistered_user")
+            : lcs("an_error_has_ocurred")
+        );
+      }
+      setLoading(false);
+    });
   }
 
   const onClickBack = () => {
-    props.history.goBack();
+    history.goBack();
   }
 
   return (
     <div className={c.module}>
-
       <div className={cx("d-flex", "align-items-center", c.jumbotron)}>
         <img
           src={backSvg}
@@ -59,17 +61,15 @@ function Recovery(props) {
           <div className={cx("col-md-6", "col-lg-4")}>
             <h2 className={c.title}>{lcs("recover_password")}</h2>
 
-            {state.loading ?
-              <CircularProgress className={c.loading} size="20" /> : null
+            {loading &&
+              <CircularProgress className={c.loading} size="20" />
             }
 
             <Formik
-              initialValues={{
-                email: ""
-              }}
+              initialValues={{ email: "" }}
               onSubmit={onSubmit}
-              render={props => (
-                <form onSubmit={props.handleSubmit}>
+              render={(formikProps) => (
+                <form onSubmit={formikProps.handleSubmit}>
                   <div className={cx("form-group")}>
                     <label htmlFor="email">{lcs("recovery_notice")}</label>
                     <Field
@@ -79,8 +79,11 @@ function Recovery(props) {
                       required
                     />
                   </div>
-                  {state.error ?
-                    <div className={c.error + ' animated fadeIn'}><div> {state.error}</div></div> : null}
+                  {error &&
+                    <div className={cx(c.error, 'animated', 'fadeIn')}>
+                      <div> {error}</div>
+                    </div>
+                  }
                   <div>
                     <button className={cx("btn", "btn-md", c.buttonGreen, c.mainButton)}
                       type="submit">

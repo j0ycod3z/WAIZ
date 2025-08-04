@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
+import * as Util from 'seed/util';
 import cx from 'classnames'
 import { hasProjectPermission, hasCohortPermission } from 'components/util/Permissions';
 import { Link } from 'react-router-dom'
@@ -85,8 +86,8 @@ function SideNav(props) {
     .filter((p) => (cohortId == 0 ? p.cohort_id == null : p.cohort_id == cohortId))
     .sort((p1, p2) => p1.name.localeCompare(p2.name));
 
-  let project = filteredProjects.find((proj) => proj.id == projectId);
-  let cohort = cohortsAdmin.find((ch) => ch.id == cohortId);
+  let project = Util.get(filteredProjects, projectId);
+  let cohort = Util.get(cohortsAdmin, cohortId);
 
   const projectSelect = filteredProjects.map((p) => ({ label: p.name, value: p.id }));
 

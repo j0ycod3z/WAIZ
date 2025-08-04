@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import * as Util from 'seed/util';
 import redux from 'seed/redux';
 import cx from "classnames";
 import About from "components/navigation/About"
@@ -30,7 +31,7 @@ function TopNav(props) {
   const [optionMenu, setOptionMenu] = useState(null);
 
   const userId = sessionStorage.getItem("id");
-  const user = users.find((u) => u.id == userId);
+  const user = Util.get(users, userId);
 
   useEffect(() => {
     const callback = (res) => {
@@ -42,18 +43,19 @@ function TopNav(props) {
   
   let projectName = "";
   let sectionName = "";
+  
   if (canvas_id != null) {
-    const canvas = canvases.find((canv) => canv.id == canvas_id);
+    const canvas = Util.get(canvases, canvas_id);
 
     if (canvas.id != null) {
-      const project = projects.find((proj) => proj.id == canvas.project_id);
+      const project = Util.get(projects, canvas.project_id);
       sectionName = lc(canvas.type.l_name);
 
       if (project.id != null) projectName = `${project.name}  /  `;
     }
   }
   else if (project_id != null) {
-    const project = projects.find(() => proj.id == project_id);
+    const project = Util.get(projects, project_id);
 
     if (section_id == "project_profile") sectionName = lcs("project_profile");
     else if (section_id == "interviews") sectionName = lcs("interviews");
@@ -93,30 +95,30 @@ function TopNav(props) {
     }
   };
 
-  const onClickProfile = (e) => {
+  const onClickProfile = () => {
     history.push(`/app/profile/${sessionStorage.getItem("id")}`);
-    closeOptionMenu(e);
+    closeOptionMenu();
   };
 
-  const onClickSettings = (e) => {
+  const onClickSettings = () => {
     history.push("/app/settings");
-    closeOptionMenu(e);
+    closeOptionMenu();
   };
 
   const onClickAbout = () => {
     setShowAbout(true);
   };
 
-  const onClickLogout = (e) => {
+  const onClickLogout = () => {
     history.push("/logout");
-    closeOptionMenu(e);
+    closeOptionMenu();
   };
   
   return (
     <div className={c.module}>
       <div className={c.container}>
         <div className={c.left}>
-          {sidenav ? null : (
+          {!sidenav && (
             <div className={cx(c.flexColumn)}>
               <a onClick={onBurgerClick}>
                 <i style={{ fontSize: "16px" }} className="fas fa-bars" />
@@ -165,7 +167,7 @@ function TopNav(props) {
           <div className={cx(c.button)} onClick={openOptionMenu}>
             <div className={cx(c.flexColumn)}>
               {user.image_url != null &&
-                <label
+                <div
                   className={cx(c.teamImage, c.profileImage, c.smallImage)}
                   style={{ backgroundImage: `url("${user.image_url}")` }}
                   alt="profileImage"
@@ -175,8 +177,8 @@ function TopNav(props) {
             <div className={cx(c.flexColumn, c.userName)}>
               <span>
                 {user.first_name}
-                <i className="fas fa-caret-down"></i>
-                </span>
+                <i className="fas fa-caret-down" />
+              </span>
             </div>
           </div>
           <Menu

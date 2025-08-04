@@ -11,36 +11,38 @@ import waizLogo from 'resources/images/waiz_logo_white.svg';
 import backSvg from 'resources/images/ic_back.svg';
 
 function Signup(props) {
-  const [state, setState] = useState({});
+  const { match, history, signup } = props;
+  const { url } = match;
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const onSubmit = (values) => {
     values.lang = lang;
-    const { url } = props.match;
 
     if (values.password !== values.password2)
-      return setState(s => ({ error: lcs("password_dont_match") }));
+      return setError(lcs("password_dont_match"));
 
     const callback = (res) => {
       if (res.ok)
-        props.history.replace(`${url}/welcome`);
-      else setState((s) => ({
-        error: res.body.status === 409 ?
-          lcs("user_already_registered") :
-          lcs("an_error_has_ocurred")
-      }));
-      setState((s) => ({ loading: false }));
+        history.replace(`${url}/welcome`);
+      else {
+        setError(
+          res.body.status === 409
+            ? lcs("user_already_registered")
+            : lcs("an_error_has_ocurred")
+        );
+      }
+      setLoading(false);
     }
-    setState((s) => ({ loading: true }));
-    props.signup(values, callback);
+    setLoading(true);
+    signup(values, callback);
   }
 
-  const onClickBack = () => {
-    props.history.goBack();
-  }
+  const onClickBack = () => history.goBack();
 
   return (
     <div className={c.module}>
-
       <div className={cx("d-flex", "align-items-center", c.jumbotron)}>
         <img
           src={backSvg}
@@ -62,8 +64,8 @@ function Signup(props) {
           <div className={cx("col-md-5", "col-lg-5", c.formCard)}>
             <h2 className={c.title}>{lcs("sign_up")}</h2>
 
-            {state.loading ?
-              <CircularProgress className={c.loading} size="20" /> : null
+            {loading &&
+              <CircularProgress className={c.loading} size="20" />
             }
 
             <Formik
@@ -75,8 +77,8 @@ function Signup(props) {
                 password2: ""
               }}
               onSubmit={onSubmit}
-              render={props => (
-                <form onSubmit={props.handleSubmit}>
+              render={({ handleSubmit }) => (
+                <form onSubmit={handleSubmit}>
                   <div className={cx("form-group")}>
                     <Field type="text" name="name" placeholder="First Name" className={cx("form-control", c.input)} required />
                   </div>
@@ -92,9 +94,9 @@ function Signup(props) {
                   <div className={cx("form-group")}>
                     <Field type="password" name="password2" placeholder="Confirm Password" className={cx("form-control", c.input)} required />
                   </div>
-                  {state.error && (
+                  {error && (
                     <div className={cx(c.error, "animated", "fadeIn")}>
-                      <div>{state.error}</div>
+                      <div>{error}</div>
                     </div>
                   )}
                   <div>

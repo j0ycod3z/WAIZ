@@ -32,7 +32,7 @@ $elementWidth: $width - (2 * $horizontal-margin);
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .module .loading {
