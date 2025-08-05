@@ -3,9 +3,16 @@ import c from 'resources/css/dashboards/charts/Charts.module.css';
 import cx from 'classnames';
 import "resources/bootstrap.min.module.css";
 import { bright, getColors } from 'components/dashboards/util/Util'
-
+import { Chart as ChartJS, 
+  BarElement, 
+  CategoryScale, 
+  LinearScale, 
+  Tooltip, 
+  Title } from 'chart.js';
 
 import { Doughnut } from 'react-chartjs-2';
+
+ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title);
 
 class DoughnutChartCard extends React.Component
 {

@@ -4,7 +4,15 @@ import "resources/bootstrap.min.module.css";
 import cx from 'classnames';
 import { bright } from 'components/dashboards/util/Util'
 
+import { Chart as ChartJS, 
+  BarElement, 
+  CategoryScale, 
+  LinearScale, 
+  Tooltip, 
+  Title } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+
+ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title);
 
 class BarChartCard extends React.Component
 {
@@ -39,17 +47,17 @@ class BarChartCard extends React.Component
                 maintainAspectRatio: false,
                 responsive: true,
                 scales: {
-                  yAxes: [{
-                    ticks: {
-                      beginAtZero: true
-                    },
-                  }],
-                  xAxes: [{
-                    ticks: {
-                      display: showNames
-                    }
-                  }]
+                y: {
+                  ticks: {
+                    beginAtZero: true
+                  }
+                },
+                x: {
+                  ticks: {
+                    display: showNames
+                  }
                 }
+              },
               }}
               legend={{
                 display: true,

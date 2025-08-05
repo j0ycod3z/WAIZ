@@ -5,7 +5,15 @@ import cx from 'classnames';
 import { lcs, lc } from 'components/util/Locales'
 import { getColor, bright } from 'components/dashboards/util/Util'
 
+import { Chart as ChartJS, 
+  BarElement, 
+  CategoryScale, 
+  LinearScale, 
+  Tooltip, 
+  Title } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+
+ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title);
 
 class LineChartCard extends React.Component
 {
