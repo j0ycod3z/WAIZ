@@ -4,7 +4,15 @@ import "react-bootstrap";
 import cx from 'classnames';
 import { getColor, bright } from 'components/dashboards/util/Util'
 
-import { HorizontalBar } from 'react-chartjs-2';
+import { Chart as ChartJS, 
+  BarElement, 
+  CategoryScale, 
+  LinearScale, 
+  Tooltip, 
+  Title } from 'chart.js';
+import { Bar } from 'react-chartjs-2';
+
+ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title);
 
 class HorizontalBarChartCard extends React.Component
 {
@@ -13,7 +21,7 @@ class HorizontalBarChartCard extends React.Component
     const { labels = [], data = [], percentage = true, color = '#5B558B' } = this.props;
 
     const dataset = {
-      labels: labels,
+      labels,
       datasets: [
         {
           label: "Startup Sector",
@@ -25,52 +33,46 @@ class HorizontalBarChartCard extends React.Component
       ]
     };
 
+    const options = {
+      indexAxis: 'y',
+      maintainAspectRatio: false,
+      responsive: true,
+      plugins: {
+        tooltip: {
+          enabled: false,
+        },
+        legend: {
+          display: false,
+        },
+      },
+      scales: {
+        x: {
+          beginAtZero: true,
+          ticks: {
+            callback: (value) => value + (percentage ? "%" : ""),
+          },
+          grid: {
+            display: false,
+          },
+        },
+        y: {
+          beginAtZero: true,
+          grid: {
+            display: false,
+          },
+        },
+      },
+    };
+
 
     return (
       <div className={c.module}>
-
         <div className={cx(c.ChartCard, c.BarChartCard, c.LargeChardCard)}>
           <h3 className={c.title}>{this.props.title}</h3>
           <div className={c.ChartCardGraphic}>
-            <HorizontalBar
-              data={dataset}
-              options={{
-                maintainAspectRatio: false,
-                responsive: true,
-                tooltips: {
-                  enabled: false,
-                },
-                scales: {
-                  yAxes: [{
-                    gridLines: {
-                      color: "rgba(0, 0, 0, 0)",
-                    },
-                    ticks: {
-                      beginAtZero: true
-                    }
-                  }],
-                  xAxes: [{
-                    gridLines: {
-                      color: "rgba(0, 0, 0, 0)",
-                    },
-                    ticks: {
-                      display: true,
-                      beginAtZero: true,
-                      callback: function (value, index, values)
-                      {
-                        return value + (percentage ? "%" : "");
-                      },
-                    }
-                  }]
-                },
-              }}
-              legend={{
-                display: false,
-              }}
-            />
+            <Bar data={dataset} options={options} />
           </div>
         </div>
-
       </div>
     )
   }

@@ -8,7 +8,7 @@ import Signup from 'components/auth/Signup';
 import SignupWelcome from 'components/auth/SignupWelcome';
 import Recovery from 'components/auth/Recovery';
 import RecoveryMessage from 'components/auth/RecoveryMessage';
-import RecoveryForm from 'components/auth/RecoveryForm'
+import RecoveryForm from 'components/auth/RecoveryForm';
 import NewProject from 'components/project_admin/registry/Panel';
 
 function App() {

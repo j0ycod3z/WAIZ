@@ -36,7 +36,6 @@ class AnalyticCard extends React.Component
 
           <div className={c.data}>
             <h4 className={c.subtitle}>{lcs("interviews")}</h4>
-
             <div className={c.dataNumberContainer}>
               <div className={c.dataNumber}>
                 <p className={cx(c.number)}>{data.interviews.total}</p>
@@ -64,12 +63,10 @@ class AnalyticCard extends React.Component
                 <p className={cx(c.redFont, c.number)}>{data.hypothesis.is_invalid}</p>
                 <p>{lcs("invalid")}</p>
               </div>
-
-            </div>
+              </div>
           </div>
         </div>
-
-      </div>
+        </div>
     )
   }
 }

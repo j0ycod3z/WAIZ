@@ -35,19 +35,17 @@ class LargeDoughnutChartCard extends React.Component
               options={{
                 maintainAspectRatio: false,
                 responsive: true,
-                tooltips: {
-                  callbacks: {
-                    label: function (tooltipItem, data)
-                    {
-                      var dataset = data.datasets[tooltipItem.datasetIndex];
-                      var total = dataset.data.reduce(function (previousValue, currentValue, currentIndex, array)
-                      {
-                        return previousValue + currentValue;
-                      });
-                      var currentValue = dataset.data[tooltipItem.index];
-                      if (!usePercentage) return currentValue;
-                      var percentage = Math.floor(((currentValue / total) * 100) + 0.5);
-                      return percentage + "%";
+                plugins: {
+                  tooltip: {
+                    callbacks: {
+                      label: function (tooltipItem) {
+                        const dataset = tooltipItem.dataset;
+                        const total = dataset.data.reduce((prev, curr) => prev + curr, 0);
+                        const currentValue = dataset.data[tooltipItem.dataIndex];
+                        if (!usePercentage) return currentValue;
+                        const percentage = Math.floor((currentValue / total) * 100 + 0.5);
+                        return percentage + "%";
+                      }
                     }
                   }
                 }

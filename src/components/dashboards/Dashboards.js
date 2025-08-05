@@ -5,6 +5,7 @@ import cx from 'classnames';
 import { lcs, lc } from 'components/util/Locales'
 
 import Performance from 'components/dashboards/pages/Performance';
+
 import Industry from 'components/dashboards/pages/Industry';
 import Benchmark from 'components/dashboards/pages/Benchmark';
 import Cohort from 'components/dashboards/pages/Cohort';
@@ -27,6 +28,9 @@ class Dashboards extends React.Component
             <NavLink activeClassName={c.active} className={c.btn} to={`${url}/industry`}>{lcs("industry")}</NavLink>
           </div>
 
+
+
+
           <Switch>
             <Route path={`${path}/performance`} component={Performance} />
             <Route path={`${path}/benchmark`} component={Benchmark} />
@@ -34,6 +38,13 @@ class Dashboards extends React.Component
             <Route path={`${path}/industry`} component={Industry} />
             <Redirect to={`${path}/performance`} />
           </Switch>
+
+
+
+
+
+
+
 
         </div>
       </div>

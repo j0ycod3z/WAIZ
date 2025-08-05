@@ -4,10 +4,13 @@
   "private": true,
   "dependencies": {
     "body-parser": "1.19.0",
+    "chart.js": "^3.9.1",
     "debug": "4.1.1",
     "express": "4.17.1",
     "log": "6.0.0",
     "morgan": "1.9.1",
+    "react-chartjs-2": "^3.0.4",
+    "react-router-dom": "^5.3.4",
     "react-youtube": "^7.14.0",
     "serve-favicon": "2.5.0"
   },
@@ -47,7 +50,6 @@
     "react-popup": "0.10.0",
     "react-redux": "7.1.0",
     "react-router": "5.0.1",
-    "react-router-dom": "5.0.1",
     "react-scripts": "^5.0.1",
     "react-scripts-cssmodules": "1.1.50",
     "react-select": "3.0.4",
