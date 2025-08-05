@@ -1,6 +1,7 @@
-@import "src/resources/base.scss";
+@use "src/resources/base.scss" as base;
 
 .module {
+  position: relative;
   width: 100%;
   height: 100%;
   padding: 14px;
@@ -18,7 +19,7 @@
   width: auto;
   font-size: 13px;
   padding: 3px 7px;
-  @include border-radius(12px);
+  @include base.border-radius(12px);
 }
 
 .dateContainer {
@@ -38,7 +39,7 @@
   margin-right: 10px;
   background-position: center center;
   background-repeat: no-repeat;
-  @include border-radius(50%);
+  @include base.border-radius(50%);
 }
 
 .dateContainer .date {
@@ -47,9 +48,10 @@
 }
 
 .options {
-  position: absolute;
   background: #fff;
-  right: 30px;
+  position: absolute;
+  right: 14px;
+  top: 14px;
   display: none;
 }
 
@@ -60,7 +62,7 @@
   color: white;
   padding: 4px 5px;
   cursor: pointer;
-  @include border-radius(50%);
+  @include base.border-radius(50%);
 }
 
 .delete {
