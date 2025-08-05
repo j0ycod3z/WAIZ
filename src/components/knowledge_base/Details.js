@@ -22,8 +22,7 @@ function Details(props){
     loadData(item_id);
   }, [item_id]);
 
-  if (item == null)
-    return <Loading />;
+  if (item === null || item === undefined) return <Loading />;
 
   const opts = {
     playerVars: {

@@ -32,7 +32,7 @@ function List(props) {
     for (let i of s.items)
       if (i.id == item_id) defaultItem = i;
 
-  if (defaultItem == null) {
+  if (defaultItem === null) {
     history.replace(`${shortUrl}/${kbSectionsF[0].items[0].id}`);
   }
 

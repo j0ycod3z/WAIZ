@@ -29,7 +29,6 @@ $elementWidth: $width - (2 * $horizontal-margin);
 
 .module .navButton{
   display: block;
-  @include base.appearance();
   font-family: inherit;
 
   &.active .button{

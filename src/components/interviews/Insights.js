@@ -16,7 +16,7 @@ function Insights(props) {
     deleteInsight,
   } = props;
   
-  const filteredInsights = insights.filter((i) => i.interview_id !== null && i.interview_id === interviewId);
+  const filteredInsights = insights.filter((i) => i.interview_id != null && i.interview_id === interviewId);
 
   useEffect(() => {
     if (interviewId !== null) getInsightList({ interview: interviewId });

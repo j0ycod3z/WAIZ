@@ -33,7 +33,6 @@ function SideNav(props) {
             &nbsp;&nbsp;&nbsp;{lcs("project_profile")}
           </button>
         </NavLink>
-  
         <NavLink
           to={`${url}/interviews/${project.id}`}
           className={c.navButton}
@@ -47,6 +46,16 @@ function SideNav(props) {
             }
           </button>
         </NavLink>
+        <NavLink
+          to={`${url}/dashboards`}
+          className={c.navButton}
+          activeClassName={c.active}
+        >
+          <button className={c.button}>
+            <i className="fas fa-chart-line" />
+            &nbsp;&nbsp;&nbsp;{lcs("dashboards")}
+          </button>
+        </NavLink>
   
         {interviewModal &&
           <Modal
@@ -57,16 +66,6 @@ function SideNav(props) {
             <InterviewForm projectId={project.id} />
           </Modal>
         }
-  
-        <NavLink
-          to={`${url}/dashboards`}
-          className={c.navButton}
-          activeClassName={c.active}>
-          <button className={c.button}>
-            <i className="fas fa-chart-line" />
-            &nbsp;&nbsp;&nbsp;{lcs("dashboards")}
-          </button>
-        </NavLink>
       </div>
     </div>
   );

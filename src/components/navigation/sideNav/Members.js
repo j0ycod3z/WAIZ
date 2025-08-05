@@ -42,20 +42,20 @@ function Members(props) {
     )
   }
 
-  let memberAdmin = false;
-  if (project.cohort_id == null) {
+  let count = 5;
+  if (project.cohort_id === null || project.cohort_id === undefined) {
     members.push(renderUser(project.admin, 'admin'));
-    memberAdmin = true;
+    count = 5;
   }
 
-  for (let i = 0; i < 4 + (!memberAdmin ? 1 : 0); i++)
+  for (let i = 0; i < count; i++)
     if (i < project.members.length)
       members.push(renderUser(project.members[i], `member-${i}`));
     else
       members.push(renderUser(null, `empty-member-${i}`));
   
-  if (project.members.length > 4 + (!memberAdmin ? 1 : 0))
-    members.push(renderMore(project.members.length - (4 + (!memberAdmin ? 1 : 0)), 'more-members'));
+  if (project.members.length > count)
+    members.push(renderMore(project.members.length - count, 'more-members'));
   
   for (let i = 0; i < 5; i++)
     if (i < project.mentors.length)
@@ -79,7 +79,6 @@ function Members(props) {
           </div>
         </div>
       </div>
-
       <div className={c.element}>
         <div className={c.sectionTitle}>{lcs("mentors")}</div>
         <div className={c.team}>

@@ -19,13 +19,14 @@ function Canvas(props) {
   const { url } = match;
 
   const [phase2Menu, setPhase2Menu] = useState(null);
-  const [phase5Menu, setPhase5Menu] = useState(null);
+  // const [phase5Menu, setPhase5Menu] = useState(null);
   const [phaseModal, setPhaseModal] = useState(false);
 
   const {
     id, canvas, cohort_id, canvas_type2,
     has_phase21, has_phase22, has_phase23, has_phase24, has_phase25,
-    has_phase1, has_phase3, has_phase4, has_phase5,
+    has_phase1, has_phase4, has_phase5,
+    // has_phase3,
   } = project;
 
   let type2 = canvas_type2.type;
@@ -38,34 +39,34 @@ function Canvas(props) {
   if (type2 != "IMPACT" && has_phase23) canvas2s.push(canvas.find(c => c.type.type == "IMPACT"));
   if (type2 != "PUBLIC" && has_phase24) canvas2s.push(canvas.find(c => c.type.type == "PUBLIC"));
   if (type2 != "BLANK" && has_phase25) canvas2s.push(canvas.find(c => c.type.type == "BLANK"));
-  let canvas3 = canvas.find(c => c.type.type == "EXO");
+  // let canvas3 = canvas.find(c => c.type.type == "EXO");
   let canvas5 = canvas.find(c => c.type.type == "SCALING");
   
-  const openPhase2Menu = (e) => setPhase2Menu(e.currentTarget);
-  const openPhase5Menu = (e) => setPhase5Menu(e.currentTarget);
-
+  
   const openPhaseModal = () => setPhaseModal(true);
   const closePhaseModal = () => setPhaseModal(false);
-
+  
+  const openPhase2Menu = (e) => setPhase2Menu(e.currentTarget);
   const closePhase2Menu = (e) => {
     const { url } = props.match;
     const typeId = e.currentTarget.title.split("_")[0];
     const canvasId = e.currentTarget.title.split("_")[1];
-
+    
     setPhase2Menu(null);
-
+    
     setType2(id, typeId, () =>
       history.push(`${url}/c/${canvasId}`)
     )
   };
 
-  const closePhase5Menu = (e) => {
-    const { url } = props.match;
-    const canvasId = e.currentTarget.title.split("_")[1];
+  // const openPhase5Menu = (e) => setPhase5Menu(e.currentTarget);
+  // const closePhase5Menu = (e) => {
+  //   const { url } = props.match;
+  //   const canvasId = e.currentTarget.title.split("_")[1];
 
-    setPhase5Menu(false);
-    history.push(`${url}/c/${canvasId}`)
-  };
+  //   setPhase5Menu(false);
+  //   history.push(`${url}/c/${canvasId}`)
+  // };
 
   return (
     <div className={c.module}>
@@ -76,7 +77,6 @@ function Canvas(props) {
             hasProjectPermission(project, ["C_ADMIN"]) && cohort_id != null) &&
             <i className={"fas fa-ellipsis-h"} style={{ color: "#928daf", cursor: "pointer" }} onClick={openPhaseModal} />}
         </div>
-
         {has_phase1 &&
           <NavLink
             to={`${url}/c/${canvas1.id}`}
@@ -125,16 +125,14 @@ function Canvas(props) {
             </MenuItem>
           }
         </Menu>
-
-          {/* {has_phase3 &&
-            <NavLink
-              to={`${url}/c/${canvas3.id}`}
-              className={c.navButton}
-              activeClassName={c.active}>
-              <button className={c.button}>3. {lc(canvas3.type.l_name)}</button>
-            </NavLink>
-          } */}
-
+        {/* {has_phase3 &&
+          <NavLink
+            to={`${url}/c/${canvas3.id}`}
+            className={c.navButton}
+            activeClassName={c.active}>
+            <button className={c.button}>3. {lc(canvas3.type.l_name)}</button>
+          </NavLink>
+        } */}
         {has_phase4 &&
           <NavLink
             to={`${url}/incubation_acceleration`}
@@ -145,7 +143,6 @@ function Canvas(props) {
             </button>
           </NavLink>
         }
-
         {has_phase5 &&
           <NavLink
             to={`${url}/c/${canvas5.id}`}
@@ -156,7 +153,6 @@ function Canvas(props) {
             </button>
           </NavLink>
         }
-
         {phaseModal &&
           <Modal
             onClose={closePhaseModal}

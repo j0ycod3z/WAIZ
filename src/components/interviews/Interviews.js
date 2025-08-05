@@ -128,7 +128,7 @@ function Interviews(props) {
                       {expertsWeek}/{expertsAll}
                     </b>
                   </div>
-                  {((project !== null || project !== undefined) && hasProjectPermission(project, ["MEMBER"])) &&
+                  {(project != null && hasProjectPermission(project, ["MEMBER"])) &&
                     <i className={cx(c.buttonOption, "fas", "fa-ellipsis-v")} onClick={openOptionMenu} />
                   }
                   <Menu

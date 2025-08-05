@@ -81,7 +81,7 @@ function Details(props) {
       <div className={"row"}>
         <div className={cx(c.header, "col-md-12")}>
           {interview.interviewee_name} ({type})
-          {((project !== null || project !== undefined) && hasProjectPermission(project, ["MEMBER"])) &&
+          {(project != null && hasProjectPermission(project, ["MEMBER"])) &&
             <i className={c.buttonOption + "  fas fa-ellipsis-v"} onClick={openOptionMenu} />
           }
           <Menu

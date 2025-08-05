@@ -65,16 +65,16 @@ function SideNav(props) {
   const projectId = localStorage.getItem('projectId');
   const cohortId = localStorage.getItem('cohortId');
 
-  if (projectId == 0 || projectId == null) {
-    if (cohortId == null) {
+  if (projectId == 0 || project === null || project == undefined) {
+    if (cohortId === null || cohortId == undefined) {
       if (filteredProjects.length > 0) {
         localStorage.setItem('projectId', filteredProjects[0].id);
         localStorage.setItem('cohortId', filteredProjects[0].cohort_id ? filteredProjects[0].cohort_id : 0);
         history.replace("/");
       }
     } else {
-      let temp = filteredProjects.filter((p) => p.cohort_id == null);
-      if (temp.length > 0 && (cohortId == 0 || cohortId == null)) {
+      let temp = filteredProjects.filter((p) => (p.cohort_id === null || p.cohort_id === undefined));
+      if (temp.length > 0 && (cohortId == 0 || cohortId === null || cohortId == undefined)) {
         localStorage.setItem('projectId', temp[0].id);
         localStorage.setItem('cohortId', temp[0].cohort_id ? temp[0].cohort_id : 0);
         history.replace("/");
@@ -92,7 +92,7 @@ function SideNav(props) {
   const projectSelect = filteredProjects.map((p) => ({ label: p.name, value: p.id }));
 
   const addProjectCondition =
-    (project.id != null && hasProjectPermission(project, ["MEMBER"]) && project.cohort_id == null && projectSelect.length < 3) ||
+    (project.id != null && hasProjectPermission(project, ["MEMBER"]) && (project.cohort_id === null || project.cohort_id === undefined) && projectSelect.length < 3) ||
     (cohort.id != null && hasCohortPermission(cohort, ["ADMIN"])) ||
     ((cohortId == 0 || cohortId == undefined) && projectSelect.length == 0);
 
@@ -124,17 +124,17 @@ function SideNav(props) {
   const onSelectCohort = useCallback((cohort) => {
     const userId = sessionStorage.getItem('id');
     const cohortId = cohort.value ? parseInt(cohort.value) : 0;
-    const project = projects.filter(p => p.cohort_id == cohortId || (cohortId == 0 && p.cohort_id == null))[0]
+    const project = projects.filter(p => p.cohort_id == cohortId || (cohortId == 0 && (p.cohort_id === null || p.cohort_id === undefined)))[0]
     
     setLoading(true);
 
-    if (project == null) {
+    if (project === null || project == undefined) {
       const callback = (res) => {
         setLoading(false);
         if (res.ok == false) return;
 
-        const project = res.body.filter(p => p.cohort_id == cohortId || (cohortId == 0 && p.cohort_id == null))[0]
-        if (project == null) {
+        const project = res.body.filter(p => p.cohort_id == cohortId || (cohortId == 0 && (p.cohort_id === null || p.cohort_id === undefined)))[0]
+        if (project === null || project == undefined) {
           localStorage.setItem('projectId', 0);
           localStorage.setItem('cohortId', cohortId)
           history.replace("/");
