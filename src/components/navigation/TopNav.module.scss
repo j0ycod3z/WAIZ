@@ -3,19 +3,17 @@
 $height: 45px;
 
 .module {
-  position: relative;
   display: flex;
-  @include base.fonts();
   width: 100%;
   font-size: 16px;
 }
 
 .container {
   background-color: base.$white;
-  height: $height;
-  width: 100%;
   display: flex;
-  flex-direction: row;
+  min-height: $height;
+  width: 100%;
+  padding: 0 30px;
   justify-content: space-between;
   border-bottom: 1px solid #eee;
 }
@@ -23,35 +21,43 @@ $height: 45px;
 .flexColumn {
   height: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 5px;
 
-  a, h3, .button {
-    margin-left: 18px;
-    margin-right: 18px;
+  i {
+    font-size: 16px;
+    color: #a0a0a0;
   }
-  a, .button{
-    cursor: pointer;
+  a:hover {
+    text-decoration: none;
   }
 }
 
 .left {
   display: flex;
-  flex-direction: row;
-  justify-content: start;
+  gap: 50px;
 }
 
 .right {
   display: flex;
-  flex-direction: row;
-  justify-content: end;
+  gap: 18px;
+}
+
+.burgerButton {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  i {
+    color: black;
+  }
 }
 
 .title {
   margin-top: 5px;
-  margin-left: 24px !important;
   font-weight: normal;
-  font-size: 15px !important;
+  font-size: 14px;
+  white-space: nowrap;
 
   .subtitle {
     font-weight: bold;
@@ -60,41 +66,25 @@ $height: 45px;
 }
 
 .button {
-  margin-left: 18px;
-  margin-right: 12px;
-  font-size: 14px !important;
-  color: #777 !important;
+  font-size: 14px;
+  color: #777;
   display: flex;
   justify-content: center;
-  flex-direction: row;
-
-  .smallImage {
-    vertical-align: middle;
-    background-clip: padding-box;
-    background-size: cover;
-    background-position: center center;
-  }
+  gap: 10px;
+  cursor: pointer;
 }
 
-.profileImage {
-  font-size: 20px;
-}
-
-.element {
-  display: block;
-  
-  i {
-    font-size: 19px !important;
-    color: #a0a0a0 !important;
-  }
+.knowledge span {
+  color: black;
+  white-space: nowrap;
+  margin-left: 10px;
 }
 
 .search {
   border: 1px solid #e7e7e7;
-  margin-right: 20px;
 
   i {
-    font-size: 16px !important;
+    font-size: 16px;
     padding: 8px 10px;
   }
 
@@ -111,23 +101,15 @@ $height: 45px;
 
 .teamImage {
   display: inline-block;
-  width: 27px;
-  height: 27px;
+  width: 23px;
+  height: 23px;
   border-radius: 50%;
-  background-position: center center;
-  background-repeat: no-repeat;
-  overflow: hidden;
 }
 
 .userName span {
-  font-size: 14px !important;
-  margin-right: 17px;
+  font-size: 14px;
+
   i {
     display: inline-block;
-    margin-left: 5px;
   }
-}
-
-.profileImage {
-  margin-right: 12px;
 }

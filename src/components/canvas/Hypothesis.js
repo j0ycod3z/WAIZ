@@ -12,7 +12,6 @@ import { getBrText } from 'components/util/Format'
 import Caption from 'components/helpers/Caption';
 
 import c from 'resources/css/canvas/Hypothesis.module.css'
-import log from 'log';
 // import color from '@material-ui/core/colors/yellow';
 
 function Hypothesis(props) {
@@ -69,8 +68,8 @@ function Hypothesis(props) {
 
   let hypothesisSelected = hypothesis.customers.some((c) => c.color === selectedColor);
   
-  const colors = hypothesis.customers.map((color) => (
-    <Caption key={color.color} text={color.text}>
+  const colors = hypothesis.customers.map((color, i) => (
+    <Caption key={`${i}-${color.color}`} text={color.text}>
       <div
         className={c.color}
         onMouseEnter={() => onColorEnter(color.color)}
@@ -86,7 +85,7 @@ function Hypothesis(props) {
 
   if (area.category == "CUSTOMERS") {
     colors.push(
-      <Caption key={"main-color-" + hypothesis.id} text={hypothesis.text}>
+      <Caption key={`main-color-${hypothesis.id}`} text={hypothesis.text}>
         <div className={c.color} style={{ backgroundColor: hypothesis.color }} />
       </Caption>
     )
@@ -104,7 +103,7 @@ function Hypothesis(props) {
 
   return (
     <div className={c.module}
-      style={{ backgroundColor: hypothesisSelected ? "#f5f5f5" : "#ffffff" }}
+      style={{ backgroundColor: hypothesisSelected && "#f5f5f5" }}
       onMouseEnter={showOptions}
       onMouseLeave={hideOptions}>
       {(colors.length !== 0) &&

@@ -9,16 +9,24 @@
 }
 
 .newButton {
+  background-color: base.$green;
+  color: #ffffff;
   font-size: 14px;
-  padding: 12px 18px;
-  color: rgb(255, 255, 255);
-  background: #b5b5b5;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 12px;
+  border: none;
+  padding: .5rem .75rem;
+  @include base.border-radius(6px);
+
+
+  &:hover {
+    background-color: hsl(152, 84%, 46%);
+  }
 }
 
-.newButton:hover {
-  color: #fff;
-}
 
 .empty{
   min-height: 545px;
@@ -67,7 +75,7 @@
 }
 
 .containerStatus {
-  background-color: #198ce5;
+  background-color: base.$blue-primary-1;
   border-radius: 3px;
   
   .navItem {

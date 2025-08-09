@@ -14,45 +14,61 @@
 
 .type {
   display: inline-block;
-  color: #1CAB68;
-  border: 1px solid #1CAB68;
-  width: auto;
   font-size: 13px;
   padding: 3px 7px;
   @include base.border-radius(12px);
+
+  &.must_have {
+    background-color: base.$green;
+    color: #fff;
+  }
+
+  &.nice_to_have {
+    color: base.$green;
+    border: 1px solid base.$green;
+  }
+  
+  &.invalidate_hypothesis {
+    color: base.$red;
+    border: 1px solid base.$red;
+  }
 }
 
 .dateContainer {
   float: right;
   font-size: 14px;
   padding: 4px 0px;
-}
+  
+  .image,
+  .date {
+    float: left;
+  }
 
-.dateContainer .image,
-.dateContainer .date {
-  float: left;
-}
-
-.dateContainer .image {
-  width: 22px;
-  height: 22px;
-  margin-right: 10px;
-  background-position: center center;
-  background-repeat: no-repeat;
-  @include base.border-radius(50%);
-}
-
-.dateContainer .date {
-  font-style: italic;
-  color: #777;
+  .image {
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    @include base.border-radius(50%);
+  }
+  
+  .date {
+    font-style: italic;
+    color: #777;
+  }
 }
 
 .options {
-  background: #fff;
+  background: white;
   position: absolute;
-  right: 14px;
   top: 14px;
+  right: 14px;
   display: none;
+}
+
+.module:hover .options {
+  display: block;
 }
 
 .options .option {
@@ -66,5 +82,5 @@
 }
 
 .delete {
-  background-color: #FF8050;
+  background-color: base.$orange-primary-1;
 }

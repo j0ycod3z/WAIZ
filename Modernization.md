@@ -9,20 +9,15 @@
 - Consolidate and clean SCSS files.
 - Restructure react component declaration (Class &rarr; Function).
 
-**Component folders to be checked this week**
-- [ ] Interviews
-- [ ] Knowledge Base
-- [x] Navigation
-
 **All Component Folders**
 - [x] Auth
-- [x] Canvas
+- [ ] Canvas
 - [x] Canvas_forms
 - [x] Chatbot
 - [ ] Dashboard
 - [x] Game changer funnel
 - [x] Helpers
-- [ ] Interviews
+- [x] Interviews
 - [ ] Knowledge Base
 - [x] Navigation
 - [ ] Project Admin

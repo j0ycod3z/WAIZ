@@ -57,7 +57,7 @@ function Insights(props) {
             <option value="NICE_TO_HAVE">{lcs("nice_to_have")}</option>
             <option value="INVALIDATE_HYPOTHESIS">{lcs("invalidate_hypothesis")}</option>
           </select>
-          <button type="submit" className={c.call}>{lcs("add")}</button>
+          <button type="submit">{lcs("add")}</button>
         </form>
       </div>
     </div>

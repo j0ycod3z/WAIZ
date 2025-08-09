@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useCallback  } from "react";
+import React, { useEffect, useCallback  } from "react";
 import { Route } from 'react-router-dom'
 import redux from 'seed/redux';
 
@@ -16,13 +16,9 @@ function Panel(props) {
   const { path, url } = match;
   const { course_id } = match.params;
 
-  const loadData = () => {
-    getKbCourseList();
-  };
-
   useEffect(() => {
-    loadData();
-  }, []);
+    getKbCourseList();
+  }, [getKbCourseList]);
 
   const defCourse = kbCourses.find((k) => k.id == course_id);
   const courses = kbCourses.map(k => ({
@@ -68,12 +64,14 @@ function Panel(props) {
     }),
   });
 
-  if (kbCourses.length == 0) return <></>;
+  useEffect(() => {
+    if (kbCourses.length > 0 && (defCourse === null || defCourse === undefined)) {
+      let shortUrl = url.substring(0, url.lastIndexOf('/'));
+      history.replace(`${shortUrl}/${kbCourses[0].id}/0`);
+    }
+  }, [kbCourses, defCourse, url, history]);
 
-  if (defCourse === null || defCourse === undefined) {
-    let shortUrl = url.substring(0, url.lastIndexOf('/'));
-    history.replace(`${shortUrl}/${kbCourses[0].id}/0`)
-  }
+  if (kbCourses.length == 0) return <></>
 
   return (
     <div className={c.module}>

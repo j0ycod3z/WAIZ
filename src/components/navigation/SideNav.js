@@ -12,7 +12,7 @@ import Loading from 'seed/components/helpers/Loading'
 import CanvasNav from 'components/navigation/sideNav/Canvas'
 import ProjectNav from 'components/navigation/sideNav/Project'
 import MembersNav from 'components/navigation/sideNav/Members'
-import { waizNav } from "components/navigation/sideNav/waiz";
+// import { waizNav } from "components/navigation/sideNav/waiz";
 
 import { selectStyle } from 'components/navigation/SideNav.module.js'
 import c from "resources/css/navigation/SideNav.module.css";
@@ -65,7 +65,7 @@ function SideNav(props) {
   const projectId = localStorage.getItem('projectId');
   const cohortId = localStorage.getItem('cohortId');
 
-  if (projectId == 0 || project === null || project == undefined) {
+  if (projectId == 0 || projectId === null || projectId == undefined) {
     if (cohortId === null || cohortId == undefined) {
       if (filteredProjects.length > 0) {
         localStorage.setItem('projectId', filteredProjects[0].id);
@@ -121,6 +121,16 @@ function SideNav(props) {
     </> :
     <div style={{ paddingTop: "10px" }}>{loading && <Loading />}</div>
 
+  const onSelectProject = useCallback((projectV) => {
+    const value = projectV.value;
+    if (value == "new") return history.push('/projects/new');
+    
+    const project = projects.filter(p => p.id == parseInt(value))[0]
+    localStorage.setItem('projectId', project ? project.id : 0);
+    localStorage.setItem('cohortId', project && project.cohort_id ? project.cohort_id : 0)
+    history.replace("/");
+  }, [projects, history]);
+
   const onSelectCohort = useCallback((cohort) => {
     const userId = sessionStorage.getItem('id');
     const cohortId = cohort.value ? parseInt(cohort.value) : 0;
@@ -142,17 +152,7 @@ function SideNav(props) {
       }
       getUserProjectList(userId, cohortId, callback);
     } else onSelectProject({ value: project.id })
-  }, [projects, getUserProjectList, history]);
-
-  const onSelectProject = useCallback((projectV) => {
-    const value = projectV.value;
-    if (value == "new") return history.push('/projects/new');
-    
-    const project = projects.filter(p => p.id == parseInt(value))[0]
-    localStorage.setItem('projectId', project ? project.id : 0);
-    localStorage.setItem('cohortId', project && project.cohort_id ? project.cohort_id : 0)
-    history.replace("/");
-  }, [projects, history]);
+  }, [projects, getUserProjectList, history, onSelectProject]);
 
   return (
     <div className={c.module}>
@@ -161,10 +161,8 @@ function SideNav(props) {
           <div className={c.header}>
             <div className={c.menu}>
               <div className={c.elementLeft}>
-                <div>
-                  <img className={c.logo} alt="Logo"
-                    src={waizLogo} />
-                </div>
+                <img className={c.logo} alt="Logo"
+                  src={waizLogo} />
               </div>
               <div onClick={onBurgerClick}>
                 <img className={c.menuHamburguer} alt="Menu" src={menuExtended} />
@@ -187,15 +185,17 @@ function SideNav(props) {
 
             <div className={cx(c.projects, c.element)}>
               <div className={c.sectionTitle}>{lcs("projects")}&nbsp;&nbsp;
-              {(project.id != null && hasProjectPermission(project, ["MEMBER"]) && project.cohort_id == null) ||
-                  (cohort.id != null && hasCohortPermission(cohort, ["ADMIN"])) ?
-                  <Link to={`${url}/project_admin/${projectId}`}>
-                    <i className={"fas fa-ellipsis-h"} style={{ color: "#928daf" }} />
-                  </Link> : null}
-                {addProjectCondition ?
+                {(project.id != null && hasProjectPermission(project, ["MEMBER"]) && project.cohort_id == null) ||
+                    (cohort.id != null && hasCohortPermission(cohort, ["ADMIN"])) &&
+                    <Link to={`${url}/project_admin/${projectId}`}>
+                      <i className={"fas fa-ellipsis-h"} style={{ color: "#928daf" }} />
+                    </Link>
+                }
+                {addProjectCondition &&
                   <Link to={"/projects/new"} style={{ float: "right", marginRight: "12px" }}>
                     <i className={"fas fa-plus"} style={{ color: "#928daf" }} />
-                  </Link> : null}
+                  </Link>
+                }
               </div>
 
               <div className={c.select}>

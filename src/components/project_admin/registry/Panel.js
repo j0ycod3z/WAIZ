@@ -9,6 +9,9 @@ import Registry from "components/project_admin/registry/Registry";
 import c from "resources/css/project_admin/registry/Panel.module.css";
 import "react-bootstrap";
 
+import waizLogo from 'resources/images/waiz_logo_white.svg';
+import backSvg from 'resources/images/ic_back.svg';
+
 class Panel extends Component
 {
   render()
@@ -19,12 +22,9 @@ class Panel extends Component
       <div className={cx(c.module)}>
 
         <div className={cx("jumbotron", "jumbotron-fluid", c.jumbotron)}>
-          <img src={require("resources/images/ic_back.svg")} className={c.back} onClick={this.onClickBack}></img>
+          <img src={backSvg} className={c.back} onClick={this.onClickBack} alt="back" />
           <div className={cx("container")}>
-            <img
-              src={require("resources/images/waiz_logo_white.svg")}
-              className={c.image}
-              alt="canou logo" />
+            <img src={waizLogo} className={c.image} alt="canou logo" />
           </div>
         </div>
 

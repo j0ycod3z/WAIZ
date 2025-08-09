@@ -7,8 +7,7 @@ class Base extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedColor: "",
-      animation: ""
+      selectedColor: ""
     }
   }
 
@@ -19,7 +18,6 @@ class Base extends React.Component {
     window.onresize = this.onresize;
     for (let i = 1; i <= 5; i++)
       window.setTimeout(this.resize, i * i * 150);
-    this.setState({ animation: sessionStorage.getItem('lastProjectId') === null || sessionStorage.getItem('lastProjectId') !== localStorage.getItem('projectId') ? "slideInUp" : "" })
     sessionStorage.setItem('lastProjectId', localStorage.getItem('projectId'))
   }
 

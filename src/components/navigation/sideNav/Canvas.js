@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import redux from 'seed/redux';
 
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import { lcs, lc } from 'components/util/Locales'
 import { hasProjectPermission } from 'components/util/Permissions';
 
@@ -17,6 +17,13 @@ import c from "resources/css/navigation/sideNav/Canvas.module.css";
 function Canvas(props) {
   const { project, match, setType2, history, } = props;
   const { url } = match;
+  const location = useLocation();
+
+  const handleNavClick = (to) => (e) => {
+    if (location.pathname === to) {
+      e.preventDefault();
+    }
+  };
 
   const [phase2Menu, setPhase2Menu] = useState(null);
   // const [phase5Menu, setPhase5Menu] = useState(null);
@@ -31,16 +38,17 @@ function Canvas(props) {
 
   let type2 = canvas_type2.type;
 
-  let canvas1 = canvas.find(c => c.type.type == "SYSTEMIC");
-  let canvas2 = canvas.find(c => c.type.type == type2);
+  let canvas1 = canvas.find((c) => c.type.type === "SYSTEMIC");
+  let canvas2 = canvas.find((c) => c.type.type === type2);
   let canvas2s = [];
-  if (type2 != "BMC" && has_phase21) canvas2s.push(canvas.find(c => c.type.type == "BMC"));
-  if (type2 != "BASIC" && has_phase22) canvas2s.push(canvas.find(c => c.type.type == "BASIC"));
-  if (type2 != "IMPACT" && has_phase23) canvas2s.push(canvas.find(c => c.type.type == "IMPACT"));
-  if (type2 != "PUBLIC" && has_phase24) canvas2s.push(canvas.find(c => c.type.type == "PUBLIC"));
-  if (type2 != "BLANK" && has_phase25) canvas2s.push(canvas.find(c => c.type.type == "BLANK"));
-  // let canvas3 = canvas.find(c => c.type.type == "EXO");
-  let canvas5 = canvas.find(c => c.type.type == "SCALING");
+  
+  if (type2 !== "BMC" && has_phase21) canvas2s.push(canvas.find((c) => c.type.type === "BMC"));
+  if (type2 !== "BASIC" && has_phase22) canvas2s.push(canvas.find((c) => c.type.type === "BASIC"));
+  if (type2 !== "IMPACT" && has_phase23) canvas2s.push(canvas.find((c) => c.type.type === "IMPACT"));
+  if (type2 !== "PUBLIC" && has_phase24) canvas2s.push(canvas.find((c) => c.type.type === "PUBLIC"));
+  if (type2 !== "BLANK" && has_phase25) canvas2s.push(canvas.find((c) => c.type.type === "BLANK"));
+  // let canvas3 = canvas.find(c => c.type.type === "EXO");
+  let canvas5 = canvas.find(c => c.type.type === "SCALING");
   
   
   const openPhaseModal = () => setPhaseModal(true);
@@ -73,15 +81,16 @@ function Canvas(props) {
       <div className={cx(c.element, c.canvasSection)}>
         <div className={c.sectionTitle}>
           {lcs("phases")}&nbsp;&nbsp;
-          {(hasProjectPermission(project, ["MEMBER"]) && cohort_id == null ||
-            hasProjectPermission(project, ["C_ADMIN"]) && cohort_id != null) &&
+          {((hasProjectPermission(project, ["MEMBER"]) && cohort_id == null) || (hasProjectPermission(project, ["C_ADMIN"]) && cohort_id != null)) &&
             <i className={"fas fa-ellipsis-h"} style={{ color: "#928daf", cursor: "pointer" }} onClick={openPhaseModal} />}
         </div>
         {has_phase1 &&
           <NavLink
             to={`${url}/c/${canvas1.id}`}
             className={c.navButton}
-            activeClassName={c.active}>
+            activeClassName={c.active}
+            onClick={handleNavClick(`${url}/c/${canvas1.id}`)}
+          >
             <button className={cx(c.button, c.active)}>1. {lc(canvas1.type.l_name)}</button>
           </NavLink>
         }
@@ -89,12 +98,13 @@ function Canvas(props) {
         <NavLink
           to={`${url}/c/${canvas2.id}`}
           className={c.navButton}
-          activeClassName={c.active}>
+          activeClassName={c.active}
+          onClick={handleNavClick(`${url}/c/${canvas2.id}`)}
+        >
           <button className={c.button}>
             2. {lc(canvas2.type.l_name)}
-            <div
+            <i
               className={cx(c.buttonOption, "fas fa-angle-down")}
-              style={{ fontSize: "18px" }}
               onClick={openPhase2Menu}
             />
           </button>
@@ -129,7 +139,9 @@ function Canvas(props) {
           <NavLink
             to={`${url}/c/${canvas3.id}`}
             className={c.navButton}
-            activeClassName={c.active}>
+            activeClassName={c.active}
+            onClick={handleNavClick(`${url}/c/${canvas3.id`)}
+          >
             <button className={c.button}>3. {lc(canvas3.type.l_name)}</button>
           </NavLink>
         } */}
@@ -137,7 +149,9 @@ function Canvas(props) {
           <NavLink
             to={`${url}/incubation_acceleration`}
             className={c.navButton}
-            activeClassName={c.active}>
+            activeClassName={c.active}
+            onClick={handleNavClick(`${url}/incubation_acceleration`)}
+          >
             <button className={c.button}>
               3. {lcs("incubation_acceleration")}
             </button>
@@ -147,7 +161,9 @@ function Canvas(props) {
           <NavLink
             to={`${url}/c/${canvas5.id}`}
             className={c.navButton}
-            activeClassName={c.active}>
+            activeClassName={c.active}
+            onClick={handleNavClick(`${url}/c/${canvas5.id}`)}
+          >
             <button className={c.button}>
               4. {lcs("scaling")}
             </button>

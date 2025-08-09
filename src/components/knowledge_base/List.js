@@ -13,28 +13,21 @@ function List(props) {
   const { course_id, item_id } = match.params;
   const { url } = match;
 
-  const kbSectionsF = kbSections.filter((k) => k.course_id == course_id && k.items.length > 0)
-  
-  const loadData = (courseId) => {
-    getKbSectionList({ course: courseId });
-  };
+  const kbSectionsF = kbSections.filter((k) => k.course_id == course_id && k.items.length > 0);
+
+  const shortUrl = url.substring(0, url.lastIndexOf('/'));
 
   useEffect(() => {
-    loadData(course_id);
-  }, [course_id]);
+    getKbSectionList({ course: course_id });
+  }, [course_id, getKbSectionList]);
+
+  useEffect(() => {
+    if ( kbSectionsF.length > 0 && !kbSectionsF.some(s => s.items.some(i => i.id == item_id))){
+      history.replace(`${shortUrl}/${kbSectionsF[0].items[0].id}`);
+    }
+  }, [kbSectionsF, item_id, history, shortUrl]);
 
   if (kbSectionsF.length == 0) return <></>;
-
-  let shortUrl = url.substring(0, url.lastIndexOf('/'));
-
-  let defaultItem = null;
-  for (let s of kbSectionsF)
-    for (let i of s.items)
-      if (i.id == item_id) defaultItem = i;
-
-  if (defaultItem === null) {
-    history.replace(`${shortUrl}/${kbSectionsF[0].items[0].id}`);
-  }
 
   const sections = kbSectionsF
   .sort((k1, k2) => k1.id - k2.id)

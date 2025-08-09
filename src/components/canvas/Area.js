@@ -19,7 +19,7 @@ import c from "resources/css/canvas/Area.module.css";
 // import { dumpTextGen, textGeneration } from "./GenerateText";
 // import Hypotheses from "actions/hypotheses";
 
-let area38hypo = ""
+// let area38hypo = ""
 
 function Area(props) {
   const { area = {}, hypothesis = [], maxHypothesis, selectedColor, setSelectedColor, match, projects, disableOptions = false } = props;
@@ -33,19 +33,19 @@ function Area(props) {
     .filter((h) => h.is_active);
 
   // TODO: Locate My Project
-  if (hypothesis[0] && hypothesis[0].area_id === 38) {
-    area38hypo = String(hypothesis[0].text);
-  }
+  // if (hypothesis[0] && hypothesis[0].area_id === 38) {
+  //   area38hypo = String(hypothesis[0].text);
+  // }
 
   const numHypothesis = hypothesisS.length;
 
   // TODO : Project ID here
-  let projectId = localStorage.getItem("projectId");
-  const project = projects.filter((p) => p.id == projectId)[0];
+  const projectId = parseInt(localStorage.getItem('projectId'));
+  const project = projects.find((p) => p.id === projectId);
   if (project == null) return <></>;
 
   const hypothesisList = hypothesisS.map((h) =>
-    h.is_active && (
+    // h.is_active &&
       <div className={c.item} key={h.id}>
         <Hypothesis
           area={area}
@@ -56,13 +56,9 @@ function Area(props) {
           match={match}
         />
       </div>
-    )
   );
 
-  const numH =
-    maxHypothesis != null ? (
-      <span className={c.numH}>{`(${numHypothesis}/${maxHypothesis})`}</span>
-    ) : null;
+  const numH = maxHypothesis != null && <span className={c.numH}>{`(${numHypothesis}/${maxHypothesis})`}</span>
 
   const handleShowAreaForm = () => setShowAreaForm(true);
   const handleCloseAreaForm = () => setShowAreaForm(false);

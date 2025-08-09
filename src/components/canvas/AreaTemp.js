@@ -8,26 +8,26 @@ import Hypothesis from 'components/canvas/Hypothesis'
 import c from 'resources/css/canvas/Area.module.css'
 
 function AreaTemp(props) {
-  const { hypothesis = [] } = props;
-  let projectId = localStorage.getItem('projectId');
-  const project = props.projects.filter(p => p.id == projectId)[0];
+  const { hypothesis = [], projects } = props;
+
+  const projectId = parseInt(localStorage.getItem('projectId'));
+  const project = projects.find((p) => p.id === projectId);
 
   if (project == null) return <></>
 
   const hypothesisS = hypothesis.sort((h1, h2) => h2.id - h1.id);
   const hypothesisList = hypothesisS.map((h) =>
-    h.is_active ?
+    h.is_active &&
       <div className={c.wrapperOther}>
-        <div className={cx(c.item)}>
-          <Hypothesis
-            area={{}}
-            project={project}
-            hypothesis={h}
-            selectedColor={props.selectedColor}
-            setSelectedColor={props.setSelectedColor}
-            match={props.match} />
-        </div>
-      </div> : null
+        <Hypothesis
+          area={{}}
+          project={project}
+          hypothesis={h}
+          selectedColor={props.selectedColor}
+          setSelectedColor={props.setSelectedColor}
+          match={props.match}
+        />
+      </div>
   );
 
   return (

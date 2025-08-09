@@ -99,15 +99,15 @@ function Interviews(props) {
   return (
     <div className={cx(c.module, "container")} >
       <div className={cx(c.container, 'row justify-content-md-center')}>
-        <div className={"col-md-10"}>
+        <div className={"col-md-12"}>
           <div className={cx(c.containerStatus)}>
-            <div className='row' style={{paddingInline: '15px', minHeight: '60px',}}>
+            <div className={cx('row', 'justify-content-between')} style={{paddingInline: '15px', minHeight: '60px',}}>
               <div className={cx("col-md-2", 'd-flex', 'align-items-center', 'justify-content-start')}>
                 <div className={cx(c.navItem)}>
                   <h5>{lcs("interviews")}</h5>
                 </div>
               </div>
-              <div className={cx("col-md-10", 'd-flex', 'align-items-center', 'justify-content-end')}>
+              <div className={cx("col-md-6", 'd-flex', 'align-items-center', 'justify-content-end')}>
                 <div className={cx(c.nav, 'd-flex', 'align-items-center')}>
                   <div className={cx(c.navItem, 'd-flex', 'flex-column', 'align-items-center')}>
                     {lcs("interviews")}
@@ -150,18 +150,20 @@ function Interviews(props) {
         <div className={"col-md-3"}>
           <div className={"list-group"} >
             {(project != null && hasProjectPermission(project, ["MEMBER"])) &&
-              <div
+              <button
                 className={c.newButton}
-                onClick={onClickNew}>
-                {lcs("new_interview")}
-              </div>
+                onClick={onClickNew}
+              >
+                <i className={"fas fa-plus"} />
+                <span>{lcs("add_interview")}</span>
+              </button>
             }
             <div className={c.interviewList}>
               {interviewList}
             </div>
           </div>
         </div>
-        <div className={"col-md-7"}>
+        <div className={"col-md-9"}>
           <div>
             <Switch>
               <Route

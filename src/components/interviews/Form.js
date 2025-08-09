@@ -23,11 +23,12 @@ function Form(props) {
   } = props;
 
   const [interview, setInterviewState] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const onSave = (res) => setInterviewState(res.body);
 
-    if (interviewId === null) {
+    if (interviewId == null) {
       let newInterview = {
         channel: "FACE_TO_FACE",
         interviewee_type: "CUSTOMER",
@@ -35,9 +36,15 @@ function Form(props) {
         creator_id: sessionStorage.getItem('id')
       };
       saveInterview(newInterview, onSave);
+    } else {
+      loadData();
     }
-    else getInterviewDetails(interviewId, onSave);
-  }, [interviewId, projectId, match.params.project_id, saveInterview, getInterviewDetails]);
+  }, [interviewId]);
+
+  const loadData = () => {
+    const callback = (res) => setInterviewState(res.body);
+    getInterviewDetails(interviewId, callback);
+  };
 
   const onSubmit = (values, { setSubmitting }) => {
     let updatedInterview = interview ? { ...interview } : {};
@@ -54,36 +61,41 @@ function Form(props) {
   const onValidate = () => {};
 
   const saveData = (interviewObj) => {
-    setInterview(interviewObj.id, interviewObj, (res) => {
+    const onSave = (res) => {
       if (res.ok) handleSave(res.body);
-    });
+      else handleError(res.body);
+    };
+    setInterview(interviewObj.id, interviewObj, onSave);
   };
 
   const handleSave = () => {
     onClose();
   };
 
-  if (interview === null) return <Loading />;
+  const handleError = () => {
+    setError('An error has occurred, try again');
+  };
 
-  return (
-    <div className={"module"}>
-      <div className={"container_interview"}>
-        <div className={cx(c.containerWhite, "container")}>
+  if (interview == null) return <Loading />;
+
+    return (
+      <div className={"module"}>
+        <div className={cx("container", c.containerWhite)}>
           <div className={"row"}>
-            <div className={cx(c.header, "col-md-12")}>
+            <div className={cx("col-md-12", c.header)}>
               {lcs("interview")}
             </div>
           </div>
           <div className={"row"}>
-            <div className={cx(c.panelText, "col-md-7")}>
+            <div className={cx("col-md-7", c.panelText)}>
               <Formik
                 initialValues={interview}
                 validate={onValidate}
                 onSubmit={onSubmit}>
-                {({ handleSubmit }) => (
+                {({ values, errors, setFieldValue, handleSubmit }) => (
                     <form className={c.form} onSubmit={handleSubmit}>
                       <div className={c.label}>{lcs("transcript")}</div>
-                      <Field name="transcript" component="textarea" className={c.transcript} required/>
+                      <Field name="transcript" component="textarea" className={c.transcript} />
                       
                       <div className={c.label}>{lcs("interviewee_information")}</div>
                       
@@ -91,29 +103,29 @@ function Form(props) {
                       <Field name="interviewee_rol" type="text" placeholder={lcs("job")} />
                       <Field name="interviewee_company" type="text" placeholder={lcs("company")} />
                       <Field name="interviewee_contact" type="text" placeholder={lcs("contact")} />
-                      <Field name="interviewee_type" component="select" required>
-                        <option value="">{lcs("interviewee_type")}</option>
+                      <Field name="interviewee_type" component="select" defaultValue={'DEFAULT'} required>
+                        <option value="DEFAULT" disabled>{lcs("interviewee_type")}</option>
                         <option value="CUSTOMER">{lcs("customer")}</option>
                         <option value="EXPERT">{lcs("expert")}</option>
                       </Field>
-                      <Field name="channel" component="select" required>
-                        <option value="">{lcs("interview_method")}</option>
+                      <Field name="channel" component="select" defaultValue={'DEFAULT'} required>
+                        <option value="DEFAULT" disabled>{lcs("interview_method")}</option>
                         <option value="FACE_TO_FACE">{lcs("face_to_face")}</option>
                         <option value="TELEPHONE">{lcs("telephone")}</option>
                         <option value="VIDEO_CALL">{lcs("video_call")}</option>
                         <option value="EMAIL">{lcs("email")}</option>
                       </Field>
-                      <input className={c.call} type="submit" value={lcs("save")} />
+                      <input className={c.call} type="submit" value={lcs("save")}></input>
                     </form>
                   )}
               </Formik>
             </div>
             <div className={"col-md-5"}>
-              <div className={cx(c.panelHeader, "row")}>
-                {lcs("key_insights")}
+              <div className={cx("row", c.panelHeader)}>
+                <div>{lcs("key_insights")}</div>
               </div>
               <div className={"row"}>
-                <div className={"col-md-11"}>
+                <div className={"col-md-12"}>
                   <Insights
                     interviewId={interview.id}
                     projectId={interview.project_id}
@@ -124,8 +136,7 @@ function Form(props) {
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
 }
 
 export default redux(Form);

@@ -68,15 +68,6 @@ $elementWidth: $width - (2 * $horizontal-margin);
   }
 }
 
-.module .buttonOption{
-  float:right;
-  width: 30px;
-  padding: 2px 0px;
-  font-size: 13px;
-  text-align: right;
-  z-index: 2;
-}
-
 .module .sectionTitle {
   font-size: 11px;
   color: base.$primary-light;

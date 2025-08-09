@@ -16,6 +16,7 @@
 }
 
 .form input[type=text],
+.form input[type=tel],
 .form select,
 .form textarea {
   width: 100%;
@@ -41,17 +42,14 @@
   margin-bottom: 20px;
   font-size: 15px;
   color: #fff;
-  background-color: #11C26F;
+  background-color: base.$green;
   border: none;
-  cursor: pointer;
-  @include base.border-radius(20px);
+  @include base.border-radius(6px);
   
   &:hover {
     background-color: #11B24F;
   }
 }
-
-
 
 .containerWhite {
   background-color: white;
@@ -62,7 +60,7 @@
 }
 
 .header {
-  background-color: #11c26f;
+  background-color: base.$green;
   color: white;
   padding-top: 1rem;
   padding-bottom: 1rem;
