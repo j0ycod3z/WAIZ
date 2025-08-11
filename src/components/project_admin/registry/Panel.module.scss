@@ -1,27 +1,19 @@
-@import "src/resources/base.scss";
-@import "src/resources/layout.scss";
-@import "src/resources/forms.scss";
-
-.module {
-  @include fonts();
-  font-family: "PT Serif", serif;
-  height: 100%;
-  width: 100%;
-}
+@use "src/resources/base" as base;
+@use "src/resources/forms" as forms;
+@use "src/resources/layout" as layout;
 
 .module .jumbotron {
-  background-color: $primary-dark;
-  padding: 25px 34px 10px 34px;
+  background-color: base.$primary-dark;
+  padding: 20px 30px;
+  margin-bottom: 40px;
 }
 
 .module .back {
-  position: absolute;
   height: 32px;
-  top: 44px;
   cursor: pointer;
 }
 
 .module .image {
-  height: 75px;
+  height: 58px;
   width: auto;
 }

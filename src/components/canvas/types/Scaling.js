@@ -1,6 +1,5 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { Container, Row, Col } from 'react-bootstrap'
 import { lcs } from 'components/util/Locales'
 
 import Area from 'components/canvas/Area'

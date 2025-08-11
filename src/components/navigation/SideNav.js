@@ -161,8 +161,7 @@ function SideNav(props) {
           <div className={c.header}>
             <div className={c.menu}>
               <div className={c.elementLeft}>
-                <img className={c.logo} alt="Logo"
-                  src={waizLogo} />
+                <img className={c.logo} alt="Logo" src={waizLogo} />
               </div>
               <div onClick={onBurgerClick}>
                 <img className={c.menuHamburguer} alt="Menu" src={menuExtended} />
@@ -182,14 +181,12 @@ function SideNav(props) {
                 </div>
               </div>
             }
-
-            <div className={cx(c.projects, c.element)}>
+            <div className={cx(c.projects, c.element, 'here_boyyiii')}>
               <div className={c.sectionTitle}>{lcs("projects")}&nbsp;&nbsp;
-                {(project.id != null && hasProjectPermission(project, ["MEMBER"]) && project.cohort_id == null) ||
-                    (cohort.id != null && hasCohortPermission(cohort, ["ADMIN"])) &&
-                    <Link to={`${url}/project_admin/${projectId}`}>
-                      <i className={"fas fa-ellipsis-h"} style={{ color: "#928daf" }} />
-                    </Link>
+                {((project.id != null && hasProjectPermission(project, ["MEMBER"]) && project.cohort_id == null) || (cohort.id != null && hasCohortPermission(cohort, ["ADMIN"]))) &&
+                  <Link to={`${url}/project_admin/${projectId}`}>
+                    <i className={"fas fa-ellipsis-h"} style={{ color: "#928daf" }} />
+                  </Link>
                 }
                 {addProjectCondition &&
                   <Link to={"/projects/new"} style={{ float: "right", marginRight: "12px" }}>

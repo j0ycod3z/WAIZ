@@ -1,6 +1,5 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { Container, Row, Col } from 'react-bootstrap'
 
 import Area from 'components/canvas/Area'
 import AreaTemp from 'components/canvas/AreaTemp'
