@@ -28,7 +28,6 @@ let domain = '54.169.73.121';
 let GRAPH_URL = `http://54.179.167.188:8000/graphql`; //let GRAPH_URL = `http://${domain}:8000/graphql`;
 let API_URL = `http://54.179.167.188:8000/api`; //let API_URL = `http://${domain}:8000/api`;
 let APP_URL = `http://54.179.167.188:8000`; //let APP_URL = `http://${domain}:3000`;
->>>>>>> Stashed changes
 let GA_KEY = "UA-000000000-0";
 let CHATBOT = "https://y722zxgrdj.execute-api.ap-southeast-1.amazonaws.com/dev/waiz_chat";
 
