@@ -26,7 +26,6 @@ function ProjectAdmin(props) {
   const userId = parseInt(sessionStorage.getItem('id'));
   
   const cohortId = parseInt(localStorage.getItem('cohortId')) !== 0 ? parseInt(localStorage.getItem('cohortId')) : null;
-  console.log(projectsProp);
   
   let projects = projectsProp.filter((p) => 
     p != null && (
@@ -101,8 +100,9 @@ function ProjectAdmin(props) {
     setOptionMenu(null);
   };
   const onClickDeleteProject = () => {
-    const projectId = parseInt(optionMenu.title);
+    const projectId = optionMenu.title;
     const currentProjectId = parseInt(localStorage.getItem('projectId'));
+    
     deleteProject(projectId);
     if (currentProjectId === projectId) {
       localStorage.setItem('projectId', null);
@@ -206,7 +206,7 @@ function ProjectAdmin(props) {
   if (!hasPermission) return <div />;
 
   const AddMemberModal = (props) => (
-    <Modal match={props.match} width={470} height={500} history={props.history}>
+    <Modal match={props.match} width={470} height={300} history={props.history}>
       <AddMember />
     </Modal>
   );
@@ -262,11 +262,8 @@ function ProjectAdmin(props) {
                 <div className='d-flex justify-content-between align-items-center'>
                   <h3 className={cx(c.projectName)}>{project.name}</h3>
                   {modifyPermission &&
-                    <button className={cx(c.buttonOption)} onClick={openOptionMenu}>
-                      <i
-                        className={cx("fas fa-ellipsis-v")}
-                        title={project.id}
-                      />
+                    <button className={cx(c.buttonOption)} title={project.id} onClick={openOptionMenu}>
+                      <i className={cx("fas fa-ellipsis-v")} />
                     </button>
                   }
                 </div>

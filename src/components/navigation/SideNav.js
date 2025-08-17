@@ -183,12 +183,10 @@ function SideNav(props) {
             }
             <div className={cx(c.projects, c.element, 'here_boyyiii')}>
               <div className={c.sectionTitle}>{lcs("projects")}&nbsp;&nbsp;
-                {((project.id != null && hasProjectPermission(project, ["MEMBER"]) && project.cohort_id == null) || (cohort.id != null && hasCohortPermission(cohort, ["ADMIN"]))) &&
-                  <Link to={`${url}/project_admin/${projectId}`}>
-                    <i className={"fas fa-ellipsis-h"} style={{ color: "#928daf" }} />
-                  </Link>
-                }
-                {addProjectCondition &&
+                <Link to={`${url}/project_admin/${projectId}`}>
+                  <i className={"fas fa-ellipsis-h"} style={{ color: "#928daf" }} />
+                </Link>
+                {
                   <Link to={"/projects/new"} style={{ float: "right", marginRight: "12px" }}>
                     <i className={"fas fa-plus"} style={{ color: "#928daf" }} />
                   </Link>

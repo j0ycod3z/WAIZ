@@ -12,12 +12,12 @@
 **All Component Folders**
 - [x] Auth
 - [ ] Canvas
-- [x] Canvas_forms
+- [ ] Canvas_forms
 - [x] Chatbot
 - [ ] Dashboard
 - [x] Game changer funnel
 - [x] Helpers
-- [x] Interviews
+- [ ] Interviews
 - [ ] Knowledge Base
 - [x] Navigation
 - [ ] Project Admin
