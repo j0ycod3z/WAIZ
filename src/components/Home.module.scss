@@ -1,4 +1,4 @@
-@import "src/resources/base.scss";
+@use "src/resources/base" as base;
 
 .module {
   position: absolute;
@@ -37,7 +37,7 @@
   height: 100vh;
   width: 245px;
   position: relative;
-  background-color: $grey-dark;
+  background-color: base.$grey-dark;
   min-height: 100vh;
 }
 

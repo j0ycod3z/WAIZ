@@ -1,4 +1,4 @@
-@import "src/resources/base.scss";
+@use "src/resources/base" as base;
 
 .module {
   width: 100%;
@@ -15,7 +15,7 @@
   background-color: #198CE5;
   color: #fff;
   font-size: 20px;
-  @include border-radius-all(5px, 5px, 0, 0);
+  border-radius: 5px, 5px, 0, 0;
 }
 
 .content {
@@ -23,11 +23,11 @@
   background: #fff;
   max-height: 500px;
   overflow: auto;
-  @include border-radius-all(0px, 0px, 5px, 5px);
+  border-radius: 0px, 0px, 5px, 5px;
 }
 
 .content input {
-  background-color: $background-fields;
+  background-color: base.$background-fields;
   border: none;
   padding: 8px 10px;
   width: 250px;
@@ -45,5 +45,5 @@
   background-color: #11C26F;
   border: none;
   cursor: pointer;
-  @include border-radius(6px);
+  border-radius: 6px;
 }

@@ -1,4 +1,4 @@
-@import "src/resources/base.scss";
+@use "src/resources/base" as base;
 
 .module {
   width: 100%;
