@@ -10,7 +10,7 @@
 .title {
   display: flex;
   font-weight: normal !important;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 
   i {
     color: #a0a0a0;
@@ -20,8 +20,8 @@
     font-family: inherit;
   }
   .numH {
-    color: #F0B010;
-    font-size: 0.85em;
+    color: base.$accent-color;
+    font-size: 0.85rem;
     margin-left: 4px;
   }
 }
@@ -118,7 +118,7 @@
 .wrapperOther {
   position: relative;
   width: 25%;
-  padding: 0px 10px 0px 10px;
+  padding: 0px 10px;
 }
 
 .item {

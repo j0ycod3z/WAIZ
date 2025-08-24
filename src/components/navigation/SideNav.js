@@ -12,7 +12,7 @@ import Loading from 'seed/components/helpers/Loading'
 import CanvasNav from 'components/navigation/sideNav/Canvas'
 import ProjectNav from 'components/navigation/sideNav/Project'
 import MembersNav from 'components/navigation/sideNav/Members'
-import { waizNav } from "components/navigation/sideNav/waiz";
+// import { waizNav } from "components/navigation/sideNav/waiz";
 
 import { selectStyle } from 'components/navigation/SideNav.module.js'
 import c from "resources/css/navigation/SideNav.module.css";
@@ -65,16 +65,16 @@ function SideNav(props) {
   const projectId = localStorage.getItem('projectId');
   const cohortId = localStorage.getItem('cohortId');
 
-  if (projectId == 0 || projectId == null) {
-    if (cohortId == null) {
+  if (projectId == 0 || projectId === null || projectId == undefined) {
+    if (cohortId === null || cohortId == undefined) {
       if (filteredProjects.length > 0) {
         localStorage.setItem('projectId', filteredProjects[0].id);
         localStorage.setItem('cohortId', filteredProjects[0].cohort_id ? filteredProjects[0].cohort_id : 0);
         history.replace("/");
       }
     } else {
-      let temp = filteredProjects.filter((p) => p.cohort_id == null);
-      if (temp.length > 0 && (cohortId == 0 || cohortId == null)) {
+      let temp = filteredProjects.filter((p) => (p.cohort_id === null || p.cohort_id === undefined));
+      if (temp.length > 0 && (cohortId == 0 || cohortId === null || cohortId == undefined)) {
         localStorage.setItem('projectId', temp[0].id);
         localStorage.setItem('cohortId', temp[0].cohort_id ? temp[0].cohort_id : 0);
         history.replace("/");
@@ -92,7 +92,7 @@ function SideNav(props) {
   const projectSelect = filteredProjects.map((p) => ({ label: p.name, value: p.id }));
 
   const addProjectCondition =
-    (project.id != null && hasProjectPermission(project, ["MEMBER"]) && project.cohort_id == null && projectSelect.length < 3) ||
+    (project.id != null && hasProjectPermission(project, ["MEMBER"]) && (project.cohort_id === null || project.cohort_id === undefined) && projectSelect.length < 3) ||
     (cohort.id != null && hasCohortPermission(cohort, ["ADMIN"])) ||
     ((cohortId == 0 || cohortId == undefined) && projectSelect.length == 0);
 
@@ -121,29 +121,6 @@ function SideNav(props) {
     </> :
     <div style={{ paddingTop: "10px" }}>{loading && <Loading />}</div>
 
-  const onSelectCohort = useCallback((cohort) => {
-    const userId = sessionStorage.getItem('id');
-    const cohortId = cohort.value ? parseInt(cohort.value) : 0;
-    const project = projects.filter(p => p.cohort_id == cohortId || (cohortId == 0 && p.cohort_id == null))[0]
-    
-    setLoading(true);
-
-    if (project == null) {
-      const callback = (res) => {
-        setLoading(false);
-        if (res.ok == false) return;
-
-        const project = res.body.filter(p => p.cohort_id == cohortId || (cohortId == 0 && p.cohort_id == null))[0]
-        if (project == null) {
-          localStorage.setItem('projectId', 0);
-          localStorage.setItem('cohortId', cohortId)
-          history.replace("/");
-        } else onSelectProject({ value: project.id })
-      }
-      getUserProjectList(userId, cohortId, callback);
-    } else onSelectProject({ value: project.id })
-  }, [projects, getUserProjectList, history]);
-
   const onSelectProject = useCallback((projectV) => {
     const value = projectV.value;
     if (value == "new") return history.push('/projects/new');
@@ -154,6 +131,29 @@ function SideNav(props) {
     history.replace("/");
   }, [projects, history]);
 
+  const onSelectCohort = useCallback((cohort) => {
+    const userId = sessionStorage.getItem('id');
+    const cohortId = cohort.value ? parseInt(cohort.value) : 0;
+    const project = projects.filter(p => p.cohort_id == cohortId || (cohortId == 0 && (p.cohort_id === null || p.cohort_id === undefined)))[0]
+    
+    setLoading(true);
+
+    if (project === null || project == undefined) {
+      const callback = (res) => {
+        setLoading(false);
+        if (res.ok == false) return;
+
+        const project = res.body.filter(p => p.cohort_id == cohortId || (cohortId == 0 && (p.cohort_id === null || p.cohort_id === undefined)))[0]
+        if (project === null || project == undefined) {
+          localStorage.setItem('projectId', 0);
+          localStorage.setItem('cohortId', cohortId)
+          history.replace("/");
+        } else onSelectProject({ value: project.id })
+      }
+      getUserProjectList(userId, cohortId, callback);
+    } else onSelectProject({ value: project.id })
+  }, [projects, getUserProjectList, history, onSelectProject]);
+
   return (
     <div className={c.module}>
       <div className={c.container}>
@@ -161,10 +161,7 @@ function SideNav(props) {
           <div className={c.header}>
             <div className={c.menu}>
               <div className={c.elementLeft}>
-                <div>
-                  <img className={c.logo} alt="Logo"
-                    src={waizLogo} />
-                </div>
+                <img className={c.logo} alt="Logo" src={waizLogo} />
               </div>
               <div onClick={onBurgerClick}>
                 <img className={c.menuHamburguer} alt="Menu" src={menuExtended} />
@@ -184,18 +181,16 @@ function SideNav(props) {
                 </div>
               </div>
             }
-
-            <div className={cx(c.projects, c.element)}>
+            <div className={cx(c.projects, c.element, 'here_boyyiii')}>
               <div className={c.sectionTitle}>{lcs("projects")}&nbsp;&nbsp;
-              {(project.id != null && hasProjectPermission(project, ["MEMBER"]) && project.cohort_id == null) ||
-                  (cohort.id != null && hasCohortPermission(cohort, ["ADMIN"])) ?
-                  <Link to={`${url}/project_admin/${projectId}`}>
-                    <i className={"fas fa-ellipsis-h"} style={{ color: "#928daf" }} />
-                  </Link> : null}
-                {addProjectCondition ?
+                <Link to={`${url}/project_admin/${projectId}`}>
+                  <i className={"fas fa-ellipsis-h"} style={{ color: "#928daf" }} />
+                </Link>
+                {
                   <Link to={"/projects/new"} style={{ float: "right", marginRight: "12px" }}>
                     <i className={"fas fa-plus"} style={{ color: "#928daf" }} />
-                  </Link> : null}
+                  </Link>
+                }
               </div>
 
               <div className={c.select}>

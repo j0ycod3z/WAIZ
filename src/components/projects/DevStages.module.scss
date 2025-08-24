@@ -1,89 +1,40 @@
-@import "src/resources/base.scss";
-@import "src/resources/forms.scss";
-@import "src/resources/layout.scss";
+@use "src/resources/base" as base;
+@use "src/resources/forms" as forms;
+@use "src/resources/layout" as layout;
 
 .module {
-  @include fonts();
-  height: 100%;
-  width: 100%;
-  font-family: "PT Serif", serif;
   background: #fff;
   overflow: auto;
-  padding: 35px 0px;
+
+  & > div {
+    margin-top: 15px;
+  }
 }
 
 .module label {
-  font-family: "PT Serif", serif;
-  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 10px;
+  cursor: pointer;
 }
 
 .module .selectAllBtn {
-  padding: 9px 10px;
-  font-size: 15px;
+  padding: 3px 10px;
   border: 1px solid rgba(0, 0, 0, .125);
+  margin-bottom: 10px;
+  user-select: none;
   cursor: pointer;
-
-  input {
-    margin-right: 10px;
-  }
-}
-
-.module .featureTitle {
-  margin-top: 12px;
-  margin-bottom: 8px;
-  font-family: "PT Serif", serif;
-  font-style: italic;
-}
-
-.module .question {
-  font-style: italic;
-}
-
-.module input,
-.module select,
-.module textarea {
-  font-family: "PT Serif", serif;
-}
-
-.module h4 {
-  margin-bottom: 30px;
-}
-
-.module hr {
-  margin-top: 30px;
-  margin-bottom: 20px;
-}
-
-.module .selected {
-  background-color: $primary;
-}
-
-.module .breadcrumb {
-  font-family: "PT Serif", serif;
-  font-size: 18px;
-  font-weight: bold;
-  color: $grey-dark;
-
-  &.breadcrumbLight {
-    color: $grey;
-  }
-}
-
-.module .subtitle {
-  font-family: "PT Serif", serif;
-  font-size: 18px;
-  color: grey-dark;
 }
 
 .module button {
-  background-color: $green;
-  color: $white;
-  min-height: 43px !important;
-  border-radius: 24px;
-  font-size: 15px;
+  background-color: base.$green;
+  color: base.$white;
+  min-height: 43px;
+  margin-bottom: 15px;
 
   &:hover {
-    color: $white;
-    background-color: $green-hover;
+    color: base.$white;
+    background-color: base.$green-hover;
   }
 }

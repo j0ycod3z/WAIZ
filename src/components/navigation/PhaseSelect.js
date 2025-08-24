@@ -23,7 +23,7 @@ function PhaseSelect(props) {
     }
   }, [getProjectDetailList, projectId]);
 
-  if (project == null) return <Loading />;
+  if (project === null || project == undefined) return <Loading />;
   const { canvas } = project;
 
   const canvas1 = canvas.find((c) => c.type.type === "SYSTEMIC");

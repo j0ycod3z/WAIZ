@@ -49,18 +49,9 @@ function RecoveryForm(props) {
   return (
     <div className={c.module}>
       <div className={cx("d-flex", "align-items-center", c.jumbotron)}>
-        <img
-          src={backSvg}
-          className={c.back}
-          onClick={onClickBack}
-          alt="back"
-        />
+        <img src={backSvg} className={c.back} onClick={onClickBack} alt="back" />
         <div className={cx("container")}>
-          <img
-            src={waizLogo}
-            className={c.image}
-            alt="Logo"
-          />
+          <img src={waizLogo} className={c.image} alt="Logo" />
         </div>
       </div>
 

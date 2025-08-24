@@ -47,7 +47,6 @@ $elementWidth: $width - (2 * $horizontal-margin);
 }
 .module .navButton{
   display: block;
-  @include base.appearance();
   font-family: inherit;
 
   &.active .button{
@@ -67,15 +66,6 @@ $elementWidth: $width - (2 * $horizontal-margin);
     background-color: base.$blue-accent;
     color: base.$white-light;
   }
-}
-
-.module .buttonOption{
-  float:right;
-  width: 30px;
-  padding: 2px 0px;
-  font-size: 13px;
-  text-align: right;
-  z-index: 2;
 }
 
 .module .sectionTitle {

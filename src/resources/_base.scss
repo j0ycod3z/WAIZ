@@ -15,17 +15,6 @@
   font-family: "PT Serif", serif;
 }
 
-@mixin appearance($value: none) {
-  -webkit-appearance: $value;
-  -moz-appearance: $value;
-  -ms-appearance: $value;
-  -o-appearance: $value;
-  appearance: $value;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
 @mixin border-radius-all($rTL, $rTR, $rBL, $rBR) {
   -webkit-border-radius: $rTL $rTR $rBL $rBR;
   -moz-border-radius: $rTL $rTR $rBL $rBR;

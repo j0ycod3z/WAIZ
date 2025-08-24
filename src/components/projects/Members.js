@@ -1,51 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
 import cx from 'classnames';
 import { lcs } from 'components/util/Locales';
 import { Link } from 'react-router-dom'
-import { hasProjectPermission } from 'components/util/Permissions';
 
-import 'react-bootstrap';
-import styles from 'resources/css/projects/Profile.module.css';
-import c from 'resources/css/projects/Members.module.css';
+import c from 'resources/css/projects/Profile.module.css';
+import c2 from 'resources/css/projects/Members.module.css';
 
-class Export extends Component
-{
-  render()
-  {
-    const { project } = this.props;
+function Members(props) {
+  const { project } = props;
 
-    return (
-      <div className={cx("card", styles.card)}>
-        <div className={cx("card-body")}>
-          <h5 className={cx("card-title")}>{lcs("members")}</h5>
+  const renderUser = (user, i) => (
+    <div key={i} className={cx(c2.member)}>
+      <img className={cx(c2.profilePic)} src={user.image_url} alt="user" />
+      <div className={cx(c2.memberInfo)}>
+        <Link to={`/app/profile/${user.id}`}>
+          <b className={cx(c2.name)}>{`${user.first_name} ${user.last_name}`}</b>
+          <p className={cx(c2.mail)}>{user.email}</p>
+        </Link>
+      </div>
+    </div>
+  );
 
-          <div className={c.project}>
-            {project.cohort_id == null ?
-              this.renderUser(project.admin) : null}
-            {project.members.map(member => this.renderUser(member))}
-          </div>
+  return (
+    <div className={cx(c.card)}>
+      <div className={cx('card-body')}>
+        <h5 className={cx('card-title', c.cardTitle)}>{lcs('members')}</h5>
+        <div className={c2.project}>
+          {project.cohort_id === null && renderUser(project.admin, 'admin')}
+          {project.members.map((member, i) => renderUser(member, i))}
         </div>
       </div>
-    );
-  }
-
-  renderUser(user)
-  {
-    return (
-      <div className={cx(c.member)}>
-        <label
-          className={cx(c.profilePic)}
-          style={{ backgroundImage: `url("${user.image_url}")` }}
-          alt="profileImage" />
-        <div className={cx(c.memberInfo)}>
-          <Link to={`/app/profile/${user.id}`}>
-            <p className={cx(c.name)}>{user.first_name} {user.last_name}</p>
-            <p className={cx(c.mail)}>{user.email}</p>
-          </Link>
-        </div>
-      </div>
-    );
-  }
+    </div>
+  );  
 }
 
-export default Export;
+export default Members;

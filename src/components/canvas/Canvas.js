@@ -12,7 +12,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import Basic from 'components/canvas/types/Basic'
 import BMC from 'components/canvas/types/BMC'
-import Exo from 'components/canvas/types/Exo'
+// import Exo from 'components/canvas/types/Exo'
 import Systemic from 'components/canvas/types/Systemic'
 import Impact from 'components/canvas/types/Impact'
 import Public from 'components/canvas/types/Public'
@@ -33,6 +33,7 @@ function Canvas(props) {
     canvasId,
     history,
     match,
+    getCanvasTypeDetails,
     getCanvasDetails,
     getCanvasList,
     getHypothesisList,
@@ -45,43 +46,29 @@ function Canvas(props) {
   const [optionMenu, setOptionMenu] = useState(null);
   const [activeWeek, setActiveWeek] = useState(0);
   const isMountedRef = useRef(true);
-
+  
   useEffect(() => {
     isMountedRef.current = true;
-    loadData(canvasId);
+    const projectId = localStorage.getItem('projectId');
+    getCanvasDetails(canvasId, (res) => {
+      if (res.ok && isMountedRef.current) {
+        getCanvasTypeDetails(res.body.type.id)
+      }
+    })
+    getHypothesisList({ canvas: canvasId })
+    getCanvasList({ project: projectId });
+    getHypothesisList({ "canvas.project": projectId })
     
     return () => {
       isMountedRef.current = false;
     };
-  }, []);
+  }, [canvasId, getCanvasTypeDetails, getCanvasDetails, getCanvasList, getHypothesisList]);
 
-  useEffect(() => {
-    if (isMountedRef.current) {
-      loadData(canvasId);
-    }
-  }, [canvasId]);
-
-  const loadData = (canvasId) => {
-    const callback = (res) => {
-      if (res.ok && isMountedRef.current) {
-        props.getCanvasTypeDetails(res.body.type.id)
-      }
-    }
-
-    getCanvasDetails(canvasId, callback)
-    getHypothesisList({ canvas: canvasId })
-
-    const projectId = localStorage.getItem('projectId');
-    getCanvasList({ project: projectId });
-    getHypothesisList({ "canvas.project": projectId })
-  }
-
-
-  let canvas = canvases.filter(canvas => canvas.id == canvasId)[0];
+  let canvas = canvases.find(canvas => canvas.id === parseInt(canvasId));
   if (canvas == null)
     return <div className={c.loading}><div><CircularProgress size={75} /></div></div>;
 
-  let canvasType = canvasTypes.filter(type => type.id == canvas.type.id)[0];
+  let canvasType = canvasTypes.find(type => type.id == canvas.type.id);
   if (canvasType == null)
     return <div className={c.loading}><div><CircularProgress size={75} /></div></div>;
   
@@ -90,7 +77,7 @@ function Canvas(props) {
 
   let hypothesis = hypotheses.filter((h) =>
     h.is_active == true &&
-    h.canvas_id == canvasId &&
+    h.canvas_id === parseInt(canvasId) &&
     (filterAll ||
       (filterUntested && !h.is_tested) ||
       (filterValid && h.is_tested && h.is_valid) ||
@@ -105,7 +92,7 @@ function Canvas(props) {
     const type = relatedCanvas.type.type;
 
     if (!["BMC", "BASIC", "IMPACT", "PUBLIC"].includes(type)) return false;
-    if (h.canvas_id == canvasId) return false;
+    if (h.canvas_id === parseInt(canvasId)) return false;
     if (relatedCanvas.project_id != projectId) return false;
 
     return (
@@ -116,14 +103,25 @@ function Canvas(props) {
         (filterInvalid && h.is_tested && !h.is_valid)
       ))
   });
+  const canvasHypotheses = hypotheses.filter((h) => h.canvas_id === parseInt(canvasId));
+  const maxWeeks = Math.ceil(
+    (Date.now() - Math.min(...canvasHypotheses.map(h => new Date(h.created_at).getTime())))
+    / (86400000 * 7)
+  );
 
-  hypotheses.filter((h) => h.canvas_id == canvasId).map((h) =>
+  canvasHypotheses.forEach(h => {
+    const ageWeeks = Math.ceil(
+      (Date.now() - new Date(h.created_at).getTime()) / (86400000 * 7)
+    );
+    h.week = maxWeeks - ageWeeks + 1;
+  });
+  canvasHypotheses.map((h) =>
     h.week = Math.ceil((Date.now() - new Date(h.created_at).getTime()) / (86400000 * 7))
   );
   
   let currentWeek = 1;
   let minWeek = 10000;
-  hypotheses.filter((h) => h.canvas_id == canvasId).map((h) => { 
+  canvasHypotheses.forEach((h) => { 
     if (h.week > currentWeek) currentWeek = h.week;
     if (h.week < minWeek) minWeek = h.week;
   });
@@ -135,8 +133,8 @@ function Canvas(props) {
     weeks.push(<option key={i} value={i}>{i}</option>);
   }
 
-  hypothesis = hypothesis.filter(h => h.week - minWeek <= selectedWeek)
-  allHPhase2 = allHPhase2.filter(h => h.week - minWeek <= selectedWeek)
+  hypothesis = hypothesis.filter(h => h.week <= selectedWeek);
+  allHPhase2 = allHPhase2.filter(h => h.week <= selectedWeek);
 
   const allCount = hypothesis.length;
   const untestedCount = hypothesis.filter(h => !h.is_tested).length;
@@ -204,9 +202,9 @@ function Canvas(props) {
     setOptionMenu(null);
   };
 
-  const onClickActivity = () => {
-    history.push(`${match.url}/activity`);
-  };
+  // const onClickActivity = () => {
+  //   history.push(`${match.url}/activity`);
+  // };
 
   return (
     <div className={c.module}>
@@ -228,48 +226,56 @@ function Canvas(props) {
           <div className={c.filters}>
             <span>{lcs("filters")}</span>
             <div>
-              <input type="checkbox" id="filter-all" checked={filterAll}
-                onChange={(e) => {
-                  setFilterAll(e.target.checked);
-                  if (e.target.checked) {
-                    setFilterUntested(false);
-                    setFilterValid(false);
-                    setFilterInvalid(false);
-                  }
-                }}
-              />
-              {lcs("all")}
-              <label>{allCount}</label>
+              <label htmlFor="filter-all">
+                <input type="checkbox" id="filter-all" checked={filterAll}
+                  onChange={(e) => {
+                    setFilterAll(e.target.checked);
+                    if (e.target.checked) {
+                      setFilterUntested(false);
+                      setFilterValid(false);
+                      setFilterInvalid(false);
+                    }
+                  }}
+                />
+                <span >{lcs("all")}</span>
+                <span>{allCount}</span>
+              </label>
             </div>
             <div>
-              <input type="checkbox" id="filter-untested" checked={filterUntested}
-                onChange={(e) => {
-                  setFilterUntested(e.target.checked);
-                  setFilterAll(false);
-                }}
-              />
-              {lcs("untested")}
-              <label>{untestedCount}</label>
+              <label htmlFor="filter-untested">
+                <input type="checkbox" id="filter-untested" checked={filterUntested}
+                  onChange={(e) => {
+                    setFilterUntested(e.target.checked);
+                    setFilterAll(false);
+                  }}
+                />
+                <span >{lcs("untested")}</span>
+                <span>{untestedCount}</span>
+              </label>
             </div>
             <div>
-              <input type="checkbox" id="filter-valid" checked={filterValid}
-                onChange={(e) => {
-                  setFilterValid(e.target.checked);
-                  setFilterAll(false);
-                }}
-              />
-              {lcs("valid")}
-              <label>{validCount}</label>
+              <label htmlFor="filter-valid">
+                <input type="checkbox" id="filter-valid" checked={filterValid}
+                  onChange={(e) => {
+                    setFilterValid(e.target.checked);
+                    setFilterAll(false);
+                  }}
+                />
+                <span >{lcs("valid")}</span>
+                <span>{validCount}</span>
+              </label>
             </div>
             <div>
-              <input type="checkbox" id="filter-invalid" checked={filterInvalid}
-                onChange={(e) => {
-                  setFilterInvalid(e.target.checked);
-                  setFilterAll(false);
-                }}
-              />
-              {lcs("invalid")}
-              <label>{invalidCount}</label>
+              <label htmlFor='filter-invalid'>
+                <input type="checkbox" id="filter-invalid" checked={filterInvalid}
+                  onChange={(e) => {
+                    setFilterInvalid(e.target.checked);
+                    setFilterAll(false);
+                  }}
+                />
+                <span >{lcs("invalid")}</span>
+                <span>{invalidCount}</span>
+              </label>
             </div>
           </div>
         </div>

@@ -7,8 +7,7 @@ function waiz() {
   return (
     <div className={c.element}>
       <Link to={`https://app.gamechangerfunnel.com`}>
-        <a href="#">GCF</a>
-        <p style={{ color: "#777" }}></p>
+        <p style={{ color: "#777" }}>GCF</p>
       </Link>
     </div>
   );

@@ -13,17 +13,13 @@ function Details(props){
   const { kbItems = [], getKbItemDetails, match } = props;
   const { item_id } = match.params;
 
+  useEffect(() => {
+    getKbItemDetails(item_id);
+  }, [item_id, getKbItemDetails]);
+
   const item = kbItems.filter(p => p.id == item_id)[0];
 
-  const loadData = (itemId) => {
-    getKbItemDetails(itemId);
-  };
-  useEffect(() => {
-    loadData(item_id);
-  }, [item_id]);
-
-  if (item == null)
-    return <Loading />;
+  if (item === null || item === undefined) return <Loading />;
 
   const opts = {
     playerVars: {
@@ -34,7 +30,8 @@ function Details(props){
       cc_load_policy: getLang().startsWith("EN") ? 0 : 1
     }
   };
-
+  console.log(kbItems);
+  
   const videoId = item.video_id;
   const video = videoId != "0" && videoId != null &&
     <YouTube
@@ -47,10 +44,9 @@ function Details(props){
     <div className={c.module}>
       <div className={cx("card", c.card)}>
         <div className={cx("card-body")}>
-
           <div className={c.title}>{lc(item.l_title)}</div>
           {video}
-          <div className={cx(c.files)}>
+          <div>
             { item.files
               .filter(i => i.lang == getLang())
               .map((i, index) =>

@@ -1,4 +1,4 @@
-@import "src/resources/base.scss";
+@use "src/resources/base.scss" as base;
 
 .module {
   width: 100%;
@@ -7,13 +7,12 @@
 
 .module .listContainer{
   min-height: 150px;
-  max-height: 300px;
+  max-height: 275px;
   overflow: auto;
 }
 
 .module .formContainer{
-  margin-top: 15px;
-  height: 100%;
+  margin-top: 14px;
 }
 
 .module .formContainer textarea{
@@ -33,7 +32,6 @@
 }
 
 .module .formContainer button{
-  position: relative;
   width: 100%;
   display: inline-block;
   padding: 9px 14px;
@@ -41,8 +39,7 @@
   margin-top: 10px;
   font-size: 14px;
   color: #fff;
-  background-color: #279af3;
+  background-color: base.$blue-primary-1;
   border: none;
-  cursor: pointer;
-  @include border-radius(20px);
+  @include base.border-radius(6px);
 }

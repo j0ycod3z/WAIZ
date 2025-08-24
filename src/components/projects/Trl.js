@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import redux from 'seed/redux';
 
 import { lcs, lc } from 'components/util/Locales';
@@ -6,139 +6,110 @@ import { Formik, Field } from "formik";
 
 import cx from "classnames";
 
-import "react-bootstrap";
 import c from "resources/css/projects/Trl.module.css";
 import Loading from "seed/components/helpers/Loading";
 
-class Trl extends Component
-{
-  render()
-  {
-    const { trl_id } = this.props.match.params;
+function Trl(props) {
+  const { match, trls = [], trlQuestions, projectDetails = [], getTrlQuestionList, getTrlStatusList, saveTrlStatus, setTrlStatus, setProjectDetail, onClose } = props;
+  const { trl_id, project_id } = match.params;
 
-    const { trls = [] } = this.props;
-    const { statuses } = this.state;
+  const [statuses, setStatuses] = useState(null);
+  const [statusesData, setStatusesData] = useState([]);
 
-    const trl = trls.filter(t => t.id == trl_id)[0];
+  const trl = trls.find((t) => t.id == trl_id);
+  const trlQuestionsFiltered = trlQuestions.filter((q) => q.trl_id == trl_id);
 
-    if (trl == null || statuses == null) return <Loading />
+  const onSelectAll = (values, setValue) => {
+    let all = trlQuestionsFiltered.reduce((tot, f) => (tot &= values[f.id]), true);
+    trlQuestionsFiltered.map((q) => setValue(q.id, !all));
+  };
 
-    const trlQuestions =
-      this.props.trlQuestions.filter(q => q.trl_id == trl_id)
-
-    return (
-      <div className={c.module}>
-        <div className={cx("container")}>
-          <div
-            className={cx(
-              "row",
-              c.spacingContainer,
-              "justify-content-md-center"
-            )}>
-            <div className={cx("col-md-9", "col-lg-9")}>
-              {/*TODO add level*/}
-              <h2>{lcs("level")} {trl.id}</h2>
-              <h4>{lc(trl.l_name)}</h4>
-              <p>{lc(trl.l_description)}</p>
-              <hr />
-
-              <Formik
-                initialValues={statuses}
-                onSubmit={this.onSubmit}
-                render={props => (
-                  <form onSubmit={props.handleSubmit}>
-                    <div className={cx("form-group")}>
-                      <p className={c.question}>
-                        {lcs("trl_instructions")}
-                      </p>
-                    </div>
-                    <div className={c.selectAllBtn}
-                      onClick={() => this.onSelectAll(props.setFieldValue)}>{lcs("mark_all")}</div>
-                    <div className={cx("list-group")}>
-                      {trlQuestions.map(q =>
-                        <div className={cx("list-group-item")}>
-                          <label>
-                            <Field type="checkbox" name={q.id} checked={props.values[q.id]} />
-                            &nbsp;&nbsp; {lc(q.l_name)}
-                          </label>
-                        </div>)}
-                    </div>
-                    <br />
-
-                    <button
-                      className={cx(
-                        "btn",
-                        "btn-md",
-                        c.buttonPrimary,
-                        c.mainButton
-                      )}
-                      type="submit"
-                    >
-                      {lcs("save")}
-                    </button>
-                  </form>
-                )}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {}
-    this.onSelectAll = this.onSelectAll.bind(this)
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  componentDidMount()
-  {
-    const { trl_id, project_id } = this.props.match.params;
-    this.props.getTrlQuestionList({ trl: trl_id });
-
-    const callback = res =>
-      this.setState(s =>
-      {
-        let statuses = {}
-        for (let s of res.body)
-          statuses[s.question_id] = Boolean(s.value)
-        return { statuses: statuses, statusesData: res.body.map(s => ({ id: s.id, question_id: s.question_id })) }
-      });
-    this.props.getTrlStatusList({ "question.trl": trl_id, project_id: project_id }, callback)
-  }
-
-  onSelectAll(setValue)
-  {
-    const { trl_id } = this.props.match.params;
-    const trlQuestions =
-      this.props.trlQuestions.filter(q => q.trl_id == trl_id)
-    trlQuestions.map(q => setValue(q.id, true))
-  }
-
-  onSubmit(values, actions)
-  {
-    let { statusesData } = this.state;
-    const { project_id } = this.props.match.params;
+  const onSubmit = (values) => {
     for (let question in values) {
-      let status = statusesData.filter(s => s.question_id == question)[0];
-      if (status == null) {
-        let body = { value: values[question], project_id: project_id, question_id: question }
-        this.props.saveTrlStatus(body)
-      } else
-        this.props.setTrlStatus(status.id, { value: values[question] })
-    }
+      const status = statusesData.find((s) => s.question_id == question);
 
-    const { projectDetails = [] } = this.props;
-    const projectDetail = projectDetails.filter(p => p.project_id == project_id)[0];
-    if (projectDetail) {
-      this.props.setProjectDetail(projectDetail.id);
-      setTimeout(() => this.props.setProjectDetail(projectDetail.id), 1200);
+      if (status == null) {
+        saveTrlStatus({
+          value: values[question],
+          project_id: project_id,
+          question_id: question,
+        });
+      }
+      else setTrlStatus(status.id, { value: values[question] });
     }
-    this.props.onClose();
-  }
+    
+    const projectDetail = projectDetails.find((p) => p.project_id == project_id);
+    if (projectDetail) {
+      setProjectDetail(projectDetail.id);
+      setTimeout(() => setProjectDetail(projectDetail.id), 100);
+    }
+    onClose();
+  };
+
+  useEffect(() => {
+    let isMounted = true;
+    
+    getTrlQuestionList({ trl: trl_id });
+
+    getTrlStatusList({ "question.trl": trl_id, project_id }, (res) => {
+      if (!isMounted) return;
+
+      let statusesObj = {};
+      for (let s of res.body){
+        statusesObj[s.question_id] = Boolean(s.value);
+      }
+      setStatuses(statusesObj);
+      
+      setStatusesData(res.body.map((s) => ({
+        id: s.id,
+        question_id: s.question_id
+      })));
+    });
+    
+    return () => {
+      isMounted = false;
+    };
+  }, [trl_id, project_id, getTrlQuestionList, getTrlStatusList, setStatuses, setStatusesData]);
+
+  if (trl == null || statuses == null) return <Loading />;
+  
+  return (
+    <div className={cx(c.module, "d-flex", "justify-content-md-center")}>
+      <div className={cx("col-md-10")}>
+        {/*TODO add level*/}
+        <h2>{lcs("level")} {trl.id}</h2>
+        <h4>{lc(trl.l_name)}</h4>
+        <p>{lc(trl.l_description)}</p>
+        <hr />
+        <Formik
+          initialValues={statuses}
+          onSubmit={onSubmit}
+          render={formProps => (
+            <form onSubmit={formProps.handleSubmit}>
+              <div className={cx("form-group")}>
+                <p>{lcs("trl_instructions")}</p>
+              </div>
+              <div className={c.selectAllBtn} onClick={(e) => {e.preventDefault(); onSelectAll(formProps.values, formProps.setFieldValue)}}>
+                {lcs("mark_all")}
+              </div>
+              <div className={cx("list-group")}>
+                {trlQuestionsFiltered.map((q) =>
+                  <label key={q.id} htmlFor={q.id} className={cx("list-group-item")}>
+                    <Field type="checkbox" name={q.id} id={q.id} checked={formProps.values[q.id]} />
+                    {lc(q.l_name)}
+                  </label>
+                )}
+              </div>
+              <br />
+              <button className={cx("btn", "btn-md", c.buttonPrimary, c.mainButton)} type="submit">
+                {lcs("save")}
+              </button>
+            </form>
+          )}
+        />
+      </div>
+    </div>
+  );
 }
 
 export default redux(Trl);

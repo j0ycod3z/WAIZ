@@ -8,6 +8,8 @@ import cSideCanvas from 'resources/css/navigation/sideNav/Canvas.module.css';
 import cSideProject from 'resources/css/navigation/sideNav/Project.module.css';
 import cProfile from 'resources/css/users/Profile.module.css';
 
+import tabletPng from "resources/images/tablet.png";
+
 function TourC(props) {
   const { getUserDetails, setUser, history, match } = props;
 
@@ -20,7 +22,7 @@ function TourC(props) {
         <div>
           <div className={c.title}>Welcome to wAIz!</div>
           <div className={c.sub}>Forget everything you think you know, instead discover your customer and validate</div>
-          <img className={c.image} src={require("resources/images/tablet.png")} />
+          <img className={c.image} src={tabletPng} alt="table" />
         </div>
       ),
       style: {
@@ -69,7 +71,8 @@ function TourC(props) {
     if (userId != null)
       getUserDetails(userId, (res) => {
       if (!res.ok) return;
-      if (res.body.intro_status == "FINISH") return;
+      
+      if (res.body.intro_status === "FINISH") return;
       
       const { url } = match;
       setSteps(welcome);

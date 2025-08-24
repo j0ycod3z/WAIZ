@@ -9,16 +9,30 @@
 
 .text {
   font-size: 15px;
+  margin-bottom: 5px;
 }
 
 .type {
   display: inline-block;
-  background: #1CAB68;
-  width: auto;
   color: #fff;
   font-size: 13px;
   padding: 3px 7px;
   @include base.border-radius(12px);
+
+  &.must_have {
+    background-color: base.$green;
+    color: #fff;
+  }
+
+  &.nice_to_have {
+    color: base.$green;
+    border: 1px solid base.$green;
+  }
+  
+  &.invalidate_hypothesis {
+    color: base.$red;
+    border: 1px solid base.$red;
+  }
 }
 
 .dateContainer {
@@ -46,9 +60,8 @@
   }
 }
 
-
 .options {
-  background: #fff;
+  background: white;
   position: absolute;
   top: 14px;
   right: 14px;
@@ -70,5 +83,5 @@
 }
 
 .delete {
-  background-color: #FF8050;
+  background-color: base.$orange-primary-1;
 }

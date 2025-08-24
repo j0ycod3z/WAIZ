@@ -24,7 +24,7 @@ class Reputation extends Base {
     return (
       <div className={c.module}>
 
-        <Container className={cx(c.container, c.fullwidth, "animated fast", this.state.animation)}>
+        <Container className={cx(c.container, c.fullwidth)}>
           <Row className={c.fullwidth} data-height={100}>
             <Col md className={c.innercol}>
               <Row>

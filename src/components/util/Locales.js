@@ -885,9 +885,9 @@ const Locales = {
     "Discard",
     "Descartar"
   ],
-  new_interview: [
-    "New Interview",
-    "Nueva Entrevista"
+  add_interview: [
+    "Add Interview",
+    "Agregar Entrevista"
   ],
   interview_method: [
     "Interview method",

@@ -14,12 +14,8 @@ function Item(props) {
     },
   } = props;
 
-  let selectedType = "";
+  let selectedType = type.toLowerCase();
 
-  if(['NICE_TO_HAVE', 'MUST_HAVE', 'INVALIDATE_HYPOTHESIS'].includes(type)){
-    selectedType = lcs(type.toLowerCase())
-  }
-  
   return (
     <div className={c.module}>
       <div className={c.text}>{text}</div>
@@ -31,7 +27,7 @@ function Item(props) {
         />
       </div>
       <div className={c.footer}>
-        <div className={c.type}>{selectedType}</div>
+        <div className={cx(c.type, c[selectedType])}>{lcs(selectedType)}</div>
         <div className={c.dateContainer}>
           <img className={c.image} src={creator.image_url} alt="creator" />
           <div className={c.date}>

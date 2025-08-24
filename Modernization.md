@@ -9,15 +9,10 @@
 - Consolidate and clean SCSS files.
 - Restructure react component declaration (Class &rarr; Function).
 
-**Component folders to be checked this week**
-- [ ] Interviews
-- [ ] Knowledge Base
-- [x] Navigation
-
 **All Component Folders**
 - [x] Auth
-- [x] Canvas
-- [x] Canvas_forms
+- [ ] Canvas
+- [ ] Canvas_forms
 - [x] Chatbot
 - [ ] Dashboard
 - [x] Game changer funnel
@@ -25,9 +20,9 @@
 - [ ] Interviews
 - [ ] Knowledge Base
 - [x] Navigation
-- [ ] Project Admin
-- [ ] Projects
-- [ ] Search
+- [x] Project Admin
+- [x] Projects
+- [x] Search
 - [ ] Users
 - [x] Util
 
@@ -67,28 +62,3 @@ all 3 @fortawesome packages may not be used
    npm install react@17 react-dom@17
    ```
    - main react support for other packages
-
-### 1.2 Needed Changes
-#### 1.2.1 SCSS - Deprecated Warning Fix
-- replace all imports in all scss files to:
-```scss
-// Example
-@use '[filepath]' as [variable_name];
-
-// Use case
-@use "src/resources/base" as base;
-@use "src/resources/layout" as layout;
-@use "src/resources/forms" as forms;
-```
-- Make necessary changes.
-```scss
-// Before
-@include fonts();
-@include border-radius(20px);
-background-color: $green;
-
-// After
-@include base.fonts();
-@include base.border-radius(20px);
-background-color: base.$green;
-```

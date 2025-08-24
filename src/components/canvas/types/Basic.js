@@ -1,6 +1,5 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { Container, Row, Col } from 'react-bootstrap'
 import { lcs } from 'components/util/Locales'
 
 import Area from 'components/canvas/Area'
@@ -8,6 +7,7 @@ import AreaTemp from 'components/canvas/AreaTemp'
 import Base from 'components/canvas/types/Base';
 
 import c from 'resources/css/canvas/types/Base.module.css'
+import c2 from 'resources/css/canvas/types/Basic.module.css'
 
 class Basic extends Base {
   render() {
@@ -16,122 +16,87 @@ class Basic extends Base {
 
     return (
       <div className={c.module}>
-
-        <Container className={cx(c.container, c.fullwidth, "animated fast", this.state.animation)}>
-          <Row className={c.fullwidth} data-height={70}>
-            <Col md className={c.col}>
-              <div className={c.content}>
-                <Area
-                  area={this.getArea("DIFFERENTIATION", areas)}
-                  hypothesis={this.getHypothesis("DIFFERENTIATION", areas, hypothesis)}
-                  selectedColor={this.state.selectedColor}
-                  setSelectedColor={this.setSelectedColor}
-                  match={match} />
-              </div>
-            </Col>
-            <Col className={c.innercol}>
-              <Row>
-                <Col md className={c.col}>
-                  <div className={c.content}>
-                    <Area
-                      area={this.getArea("PRODUCTS", areas)}
-                      hypothesis={this.getHypothesis("PRODUCTS", areas, hypothesis)}
-                      selectedColor={this.state.selectedColor}
-                      setSelectedColor={this.setSelectedColor}
-                      match={match} />
-                  </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col md className={c.col}>
-                  <div className={c.content}>
-                    <Area
-                      area={this.getArea("CHALLENGES_OPS", areas)}
-                      hypothesis={this.getHypothesis("CHALLENGES_OPS", areas, hypothesis)}
-                      selectedColor={this.state.selectedColor}
-                      setSelectedColor={this.setSelectedColor}
-                      match={match} />
-                  </div>
-                </Col>
-              </Row>
-            </Col>
-            <Col md className={c.col}>
-              <div className={c.content}>
-                <Area
-                  area={this.getArea("VALUE_PROPOSITION", areas)}
-                  hypothesis={this.getHypothesis("VALUE_PROPOSITION", areas, hypothesis)}
-                  selectedColor={this.state.selectedColor}
-                  setSelectedColor={this.setSelectedColor}
-                  match={match} />
-              </div>
-            </Col>
-            <Col className={c.innercol}>
-              <Row>
-                <Col md className={c.col}>
-                  <div className={c.content}>
-                    <Area
-                      area={this.getArea("METRICS", areas)}
-                      hypothesis={this.getHypothesis("METRICS", areas, hypothesis)}
-                      selectedColor={this.state.selectedColor}
-                      setSelectedColor={this.setSelectedColor}
-                      match={match} />
-                  </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col md className={c.col}>
-                  <div className={c.content}>
-                    <Area
-                      area={this.getArea("CHANNELS", areas)}
-                      hypothesis={this.getHypothesis("CHANNELS", areas, hypothesis)}
-                      selectedColor={this.state.selectedColor}
-                      setSelectedColor={this.setSelectedColor}
-                      match={match} />
-                  </div>
-                </Col>
-              </Row>
-            </Col>
-            <Col md className={c.col}>
-              <div className={c.content}>
-                <Area
-                  area={this.getArea("CUSTOMERS", areas)}
-                  hypothesis={this.getHypothesis("CUSTOMERS", areas, hypothesis)}
-                  selectedColor={this.state.selectedColor}
-                  setSelectedColor={this.setSelectedColor}
-                  match={match} />
-              </div>
-            </Col>
-          </Row>
-          <Row className={c.fullwidth} data-height={30}>
-            <Col md className={c.col}>
-              <div className={c.content}>
-                <Area
-                  area={this.getArea("COSTS", areas)}
-                  hypothesis={this.getHypothesis("COSTS", areas, hypothesis)}
-                  selectedColor={this.state.selectedColor}
-                  setSelectedColor={this.setSelectedColor}
-                  match={match} />
-              </div>
-            </Col>
-            <Col md className={c.col}>
-              <div className={c.content}>
-                <Area
-                  area={this.getArea("REVENUE", areas)}
-                  hypothesis={this.getHypothesis("REVENUE", areas, hypothesis)}
-                  selectedColor={this.state.selectedColor}
-                  setSelectedColor={this.setSelectedColor}
-                  match={match} />
-              </div>
-            </Col>
-          </Row>
-          <div className={cx(c.content, c.other)}>
-            <AreaTemp hypothesis={allHPhase2}
+        <div className={cx(c2.parent)}>
+          <div className={cx(c2.div1, c.content)}>
+            <Area
+              area={this.getArea("DIFFERENTIATION", areas)}
+              hypothesis={this.getHypothesis("DIFFERENTIATION", areas, hypothesis)}
               selectedColor={this.state.selectedColor}
               setSelectedColor={this.setSelectedColor}
               match={match} />
           </div>
-          <div className={c.brand}>{lcs("made_in_canou")}</div>
-        </Container>
+          <div className={cx(c2.div2, c.content)}>
+            <Area
+              area={this.getArea("PRODUCTS", areas)}
+              hypothesis={this.getHypothesis("PRODUCTS", areas, hypothesis)}
+              selectedColor={this.state.selectedColor}
+              setSelectedColor={this.setSelectedColor}
+              match={match} />
+          </div>
+          <div className={cx(c2.div3, c.content)}>
+            <Area
+              area={this.getArea("CHALLENGES_OPS", areas)}
+              hypothesis={this.getHypothesis("CHALLENGES_OPS", areas, hypothesis)}
+              selectedColor={this.state.selectedColor}
+              setSelectedColor={this.setSelectedColor}
+              match={match} />
+          </div>
+          <div className={cx(c2.div4, c.content)}>
+            <Area
+              area={this.getArea("VALUE_PROPOSITION", areas)}
+              hypothesis={this.getHypothesis("VALUE_PROPOSITION", areas, hypothesis)}
+              selectedColor={this.state.selectedColor}
+              setSelectedColor={this.setSelectedColor}
+              match={match} />
+          </div>
+          <div className={cx(c2.div5, c.content)}>
+            <Area
+              area={this.getArea("METRICS", areas)}
+              hypothesis={this.getHypothesis("METRICS", areas, hypothesis)}
+              selectedColor={this.state.selectedColor}
+              setSelectedColor={this.setSelectedColor}
+              match={match} />
+          </div>
+          <div className={cx(c2.div6, c.content)}>
+            <Area
+              area={this.getArea("CHANNELS", areas)}
+              hypothesis={this.getHypothesis("CHANNELS", areas, hypothesis)}
+              selectedColor={this.state.selectedColor}
+              setSelectedColor={this.setSelectedColor}
+              match={match} />
+          </div>
+          <div className={cx(c2.div7, c.content)}>
+            <Area
+              area={this.getArea("CUSTOMERS", areas)}
+              hypothesis={this.getHypothesis("CUSTOMERS", areas, hypothesis)}
+              selectedColor={this.state.selectedColor}
+              setSelectedColor={this.setSelectedColor}
+              match={match} />
+          </div>
+          <div className={cx(c2.div8, c.content)}>
+            <Area
+              area={this.getArea("COSTS", areas)}
+              hypothesis={this.getHypothesis("COSTS", areas, hypothesis)}
+              selectedColor={this.state.selectedColor}
+              setSelectedColor={this.setSelectedColor}
+              match={match} />
+          </div>
+          <div className={cx(c2.div9, c.content)}>
+            <Area
+              area={this.getArea("REVENUE", areas)}
+              hypothesis={this.getHypothesis("REVENUE", areas, hypothesis)}
+              selectedColor={this.state.selectedColor}
+              setSelectedColor={this.setSelectedColor}
+              match={match} />
+          </div>
+        </div>
+        <div className={cx(c.content, c.other)}>
+          <AreaTemp hypothesis={allHPhase2}
+            selectedColor={this.state.selectedColor}
+            setSelectedColor={this.setSelectedColor}
+            match={match} />
+        </div>
+        <div className={c.brand}>{lcs("made_in_canou")}</div>
       </div>
     );
   }

@@ -4,12 +4,11 @@ import redux from 'seed/redux';
 import cx from "classnames";
 import About from "components/navigation/About"
 import Modal from "seed/components/helpers/Modal"
-import { Link, Route } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { lcs, lc } from 'components/util/Locales'
 
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import Caption from 'components/helpers/Caption';
 
 import c from 'resources/css/navigation/TopNav.module.css';
 
@@ -116,82 +115,71 @@ function TopNav(props) {
   
   return (
     <div className={c.module}>
-      <div className={c.container}>
-        <div className={c.left}>
-          {!sidenav && (
+      <div className={cx(c.container)}>
+          <div className={cx(c.left)}>
+            {!sidenav && (
+              <div className={cx(c.flexColumn)}>
+                <button className={c.burgerButton} onClick={onBurgerClick}>
+                  <i className="fas fa-bars" />
+                </button>
+              </div>
+            )}
             <div className={cx(c.flexColumn)}>
-              <a onClick={onBurgerClick}>
-                <i style={{ fontSize: "16px" }} className="fas fa-bars" />
-              </a>
-            </div>
-          )}
-          <div className={cx(c.flexColumn)}>
-            <div className={cx(c.element)}>
               <h3 className={c.title}>
                 {projectName}<span className={c.subtitle}>{sectionName}</span>
               </h3>
             </div>
           </div>
-        </div>
 
-        <div className={c.right}>
-          <div className={cx(c.flexColumn)}>
-            <div className={c.element}>
+          <div className={cx(c.right)}>
+            <div className={cx(c.flexColumn)}>
               <div className={c.search}>
                 <i className="fas fa-search" />
                 <input type="text" placeholder={lcs("search")} onKeyDown={onEnterSearch}></input>
               </div>
             </div>
-          </div>
 
-          {/*<div className={cx(c.flexColumn)}>
-            <div className={c.element}>
-              <Link to="/app/notifications">
-                <Caption text={lcs("notifications")} onTop={false}>
-                  <i className="fas fa-bell" />
-                </Caption>
-              </Link>
-            </div>
-          </div>*/}
+            {/*<div className={cx(c.flexColumn)}>
+                <NavLink to="/app/notifications">
+                  <Caption text={lcs("notifications")} onTop={false}>
+                    <i className="fas fa-bell" />
+                  </Caption>
+                </NavLink>
+            </div>*/}
 
-          <div className={cx(c.flexColumn)}>
-            <div className={c.element}>
-              <Link to="/app/knowledge_base/0">
-                <Caption text={lcs("knowledge_base")} onTop={false} maxLen={21}>
-                  <i className="fas fa-book-open" />
-                </Caption>
-              </Link>
-            </div>
-          </div>
-
-          <div className={cx(c.button)} onClick={openOptionMenu}>
             <div className={cx(c.flexColumn)}>
-              {user.image_url != null &&
-                <div
-                  className={cx(c.teamImage, c.profileImage, c.smallImage)}
-                  style={{ backgroundImage: `url("${user.image_url}")` }}
-                  alt="profileImage"
-                />
-              }
+              <div className={cx(c.knowledge)}>
+                <NavLink to="/app/knowledge_base/0">
+                  <i className="fas fa-book-open" />
+                  <span>{lcs("knowledge_base")}</span>
+                </NavLink>
+              </div>
             </div>
-            <div className={cx(c.flexColumn, c.userName)}>
-              <span>
-                {user.first_name}
+
+            <div className={cx(c.button)} onClick={openOptionMenu}>
+              <div className={cx(c.flexColumn)}>
+                {user.image_url != null &&
+                  <img className={cx(c.teamImage)} src={user.image_url} alt="user" />
+                }
+              </div>
+              <div className={cx(c.flexColumn, c.userName)}>
+                <span>
+                  {user.first_name}
+                </span>
                 <i className="fas fa-caret-down" />
-              </span>
+              </div>
             </div>
+            <Menu
+              anchorEl={optionMenu}
+              open={Boolean(optionMenu)}
+              onClose={closeOptionMenu}
+            >
+              <MenuItem onClick={onClickProfile}>{lcs("your_profile")}</MenuItem>
+              <MenuItem onClick={onClickSettings}>{lcs("settings")}</MenuItem>
+              <MenuItem onClick={onClickAbout}>{lcs("about")}</MenuItem>
+              <MenuItem onClick={onClickLogout}>{lcs("logout")}</MenuItem>
+            </Menu>
           </div>
-          <Menu
-            anchorEl={optionMenu}
-            open={Boolean(optionMenu)}
-            onClose={closeOptionMenu}
-          >
-            <MenuItem onClick={onClickProfile}>{lcs("your_profile")}</MenuItem>
-            <MenuItem onClick={onClickSettings}>{lcs("settings")}</MenuItem>
-            <MenuItem onClick={onClickAbout}>{lcs("about")}</MenuItem>
-            <MenuItem onClick={onClickLogout}>{lcs("logout")}</MenuItem>
-          </Menu>
-        </div>
       </div>
 
       {showAbout && <AboutModal />}

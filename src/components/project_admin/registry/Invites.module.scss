@@ -1,15 +1,13 @@
-@import "src/resources/base.scss";
-@import "src/resources/layout.scss";
-@import "src/resources/forms.scss";
+@use "src/resources/base" as base;
+@use "src/resources/forms" as forms;
+@use "src/resources/layout" as layout;
 
-.module {
-  @include fonts();
-  height: 100%;
-  width: 100%;
+
+.module h5 {
+  margin: 0;
 }
-
 .module .title {
-  margin-bottom: 27px;
+  margin-bottom: 15px;
 }
 
 .module .loading {
@@ -20,12 +18,15 @@
   z-index: 100
 }
 
+.module form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .btn{
   background: #a0a0a0;
   margin-left: 10px;
-}
-.input {
-  margin: 5px 0px !important;
 }
 
 .module label{
@@ -36,15 +37,25 @@
   height: 150px;
 }
 
+.module .inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.module .buttonLink {
+  width: fit-content;
+  margin: 0 auto;
+}
+
 .module .save {
-  background-color: $green;
-  color: $white;
+  background-color: base.$green;
+  color: base.$white;
   min-height: 45px !important;
-  border-radius: 24px;
+  border-radius: 6px;
   font-size: 16px;
 
   &:hover {
-    color: $white;
-    background-color: $green-hover;
+    background-color: base.$green-hover;
   }
 }
