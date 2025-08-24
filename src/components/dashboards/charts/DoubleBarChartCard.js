@@ -3,7 +3,15 @@ import c from 'resources/css/dashboards/charts/Charts.module.css';
 import "react-bootstrap";
 import cx from 'classnames';
 
+import { Chart as ChartJS, 
+  BarElement, 
+  CategoryScale, 
+  LinearScale, 
+  Tooltip, 
+  Title } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+
+ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title);
 
 class DoubleBarChartCard extends React.Component
 {
@@ -38,20 +46,18 @@ class DoubleBarChartCard extends React.Component
                 responsive: true,
                 barRoundness: 4,
                 scales: {
-                  yAxes: [{
-                    gridLines: {
-                      color: "rgba(0, 0, 0, 0)",
-                    },
-                    ticks: {
-                      display: true,
-                      beginAtZero: true,
-                      callback: function (value, index, values)
-                      {
-                        return value + (percentage ? "%" : "");
-                      },
+                y: {
+                  grid: {
+                    color: "rgba(0, 0, 0, 0)"
+                  },
+                  ticks: {
+                    beginAtZero: true,
+                    callback: function (value) {
+                      return value + (percentage ? "%" : "");
                     }
-                  }]
+                  }
                 }
+              },
               }}
               legend={{
                 display: false,

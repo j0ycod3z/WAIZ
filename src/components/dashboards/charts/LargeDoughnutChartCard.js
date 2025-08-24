@@ -4,7 +4,15 @@ import cx from 'classnames';
 import "react-bootstrap";
 import { bright, getColors } from 'components/dashboards/util/Util'
 
+import { Chart as ChartJS, 
+  BarElement, 
+  CategoryScale, 
+  LinearScale, 
+  Tooltip, 
+  Title } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+
+ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title);
 
 class LargeDoughnutChartCard extends React.Component
 {

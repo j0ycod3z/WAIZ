@@ -34,35 +34,34 @@ class HorizontalBarChartCard extends React.Component
     };
 
     const options = {
-      indexAxis: 'y',
-      maintainAspectRatio: false,
-      responsive: true,
-      plugins: {
-        tooltip: {
-          enabled: false,
-        },
-        legend: {
-          display: false,
-        },
+  indexAxis: 'y', // for horizontal bars
+  responsive: true,
+  plugins: {
+    legend: {
+      display: true,
+    },
+    tooltip: {
+      mode: 'index',
+      intersect: false,
+    },
+  },
+  scales: {
+    x: {
+      beginAtZero: true,
+      ticks: {
+        callback: (value) => `${value}%`, // if showing percentages
       },
-      scales: {
-        x: {
-          beginAtZero: true,
-          ticks: {
-            callback: (value) => value + (percentage ? "%" : ""),
-          },
-          grid: {
-            display: false,
-          },
-        },
-        y: {
-          beginAtZero: true,
-          grid: {
-            display: false,
-          },
-        },
+      grid: {
+        display: false,
       },
-    };
+    },
+    y: {
+      grid: {
+        display: false,
+      },
+    },
+  },
+};
 
 
     return (
