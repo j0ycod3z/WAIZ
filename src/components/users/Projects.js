@@ -3,7 +3,7 @@ import cx from "classnames";
 import { Link } from 'react-router-dom'
 import { lcs } from 'components/util/Locales';
 
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import c from "resources/css/users/Profile.module.css";
 
 class Projects extends Component
@@ -18,11 +18,9 @@ class Projects extends Component
     {
       const description = p.description.length > 100 ? p.description.substring(0, 100) + "…" : p.description;
       return (
-        <div className={c.element}>
-          <Link to={`/app/project_profile/${p.id}`}>
-            <a href={p.url} className={c.link}>
-              {p.name}
-            </a>
+        <div key={p.id} className={c.element}>
+          <Link to={`/app/project_profile/${p.id}`} className={c.link}>
+            {p.name}
             <p style={{ color: "#777" }}>{description}</p>
           </Link>
         </div>);

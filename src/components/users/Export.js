@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { lcs } from 'components/util/Locales';
 import { CSVLink } from "react-csv";
 
-import 'resources/bootstrap.min.module.css';
+import 'react-bootstrap';
 import styles from 'resources/css/users/Profile.module.css';
 
 

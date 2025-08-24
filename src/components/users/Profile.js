@@ -3,7 +3,7 @@ import redux from 'seed/redux';
 import { hasProfilePermission } from 'components/util/Permissions';
 import cx from "classnames";
 
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import c from "resources/css/users/Profile.module.css";
 import Card from "components/users/Card";
 import Projects from 'components/users/Projects'
@@ -59,7 +59,7 @@ class Profile extends Component
                 setProfileSecondarySkill={this.props.setProfileSecondarySkill} />
               <br />
               {
-                hasProfilePermission(profile, "skills", "EDIT") ?
+                hasProfilePermission(profile, "EDIT") ?
                   <Export
                     profile={profile} /> : null}
               <br />

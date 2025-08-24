@@ -1,7 +1,7 @@
 import React from 'react';
 import redux from 'seed/redux';
 import c from 'resources/css/dashboards/pages/Pages.module.css';
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import cx from 'classnames';
 import { lcs, lc } from 'components/util/Locales'
 import { format } from 'components/dashboards/util/Util'

@@ -1,14 +1,8 @@
-@import "src/resources/base.scss";
-@import "src/resources/layout.scss";
-@import "src/resources/forms.scss";
-
-.module {
-  height: 100%;
-  width: 100%;
-}
+@use "src/resources/base.scss" as base;
+@use "src/resources/layout.scss" as layout;
+@use "src/resources/forms.scss" as forms;
 
 .card {
-  padding: 28px;
   border: 1px solid #ddd !important;
 }
 
@@ -23,7 +17,6 @@
 }
 
 .content {
-  font-family: "PT Serif", serif;
   margin-top: 18px;
   font-size: 16px;
   color: #666;

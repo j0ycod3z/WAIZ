@@ -1,17 +1,9 @@
-@import "src/resources/base.scss";
+@use "src/resources/base" as base;
+@use "./AuthCommon.module" as common;
 
 .background {
   position: fixed;
-  height: 100%;
-  width: 100%;
-  background-size: cover;
-  background-color: $primary-dark;
-}
-
-.module {
-  @include fonts();
-  height: 100%;
-  width: 100%;
+  z-index: 0;
 }
 
 .container {
@@ -19,11 +11,7 @@
 }
 
 .title {
-  @include serif();
-  font-size: 35px;
-  margin-top: 9px;
   margin-bottom: 36px;
-  font-weight: bold;
 }
 
 .logoCanou {
@@ -42,7 +30,6 @@
 .rowCompleteHeight {
   width: 100%;
   margin: 0px;
-  margin-top: -30px;
 
   .columnCenter {
     height: 100%;
@@ -52,10 +39,9 @@
     justify-content: center;
 
     .card {
-      margin-top: 10%;
       width: inherit;
-      margin-top: 20px;
-      padding: 42px 55px 42px 55px;
+      margin: 50px 0 20px;
+      padding: 40px 50px;
     }
   }
 }
@@ -67,15 +53,14 @@
 }
 
 .txtField {
-  border: none;
-  margin-bottom: 12px;
-  padding: 11px 16px !important;
-  background-color: $background-fields;
+  background-color: base.$background-fields;
+  margin-bottom: 15px;
+  padding: 11px 16px;
   border: 1px solid #e7e7e7;
-  @include border-radius(14px);
+  @include base.border-radius(7px);
 
-  &:hover :focus {
-    background-color: $grey-light;
+  &:hover, &:focus {
+    background-color: base.$grey-light;
   }
 }
 
@@ -85,8 +70,8 @@
   flex-direction: row;
 }
 
-.checkboxElement {
-  display: block;
+.checkboxItem {
+  white-space: nowrap;
 }
 
 .optionsContainer {
@@ -97,50 +82,26 @@
 
 .signin {
   margin-bottom: 5px;
+  white-space: nowrap;
 }
-
-.error, .payment {
-  width: 100%;
-  margin-top: -10px;
-  margin-bottom: 10px;
-  font-size: 14px;
-  padding: 12px;
-  font-weight: bold;
-  @include box-sizing(border-box);
-}
-
 
 .error {
-  background-color: #ffeeee;
-  color: #a05050;
+  @include common.error();
 }
 
 .payment {
-  text-align: center;
-  background-color: #f0eef0;
-  color: #a050a0;
+  @include common.payment();
 }
 
 .loginButton {
-  background-color: $green;
-  color: $white;
-  min-height: 50px !important;
-  border-radius: 24px;
+  height: 45px;
   font-size: 16px;
-
-  &:hover {
-    color: $white;
-    background-color: $green-hover;
-  }
 }
 
 .footer {
-  color: $grey-light;
-  margin-top: 30px;
-  margin-left: 30px;
-  top: 20px;
+  color: base.$grey-light;
 }
 
 .footer a {
-  color: $grey-light;
+  color: base.$grey-light;
 }

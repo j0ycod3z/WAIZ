@@ -3,7 +3,7 @@ import cx from "classnames";
 import { lcs, getLang } from 'components/util/Locales';
 import { hasProfilePermission } from 'components/util/Permissions';
 
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import c from "resources/css/users/Profile.module.css";
 
 class Skills extends Component
@@ -406,7 +406,7 @@ class Skills extends Component
         <div>
           <h5 className={cx(c.title)}>
             {lcs("primary_skills")}
-            {!this.state.editing && hasProfilePermission(profile, "skills", "EDIT") ? (
+            {!this.state.editing && hasProfilePermission(profile, "EDIT") ? (
               <button
                 onClick={this.onClickOpen}
                 className={cx(c.editLight)}

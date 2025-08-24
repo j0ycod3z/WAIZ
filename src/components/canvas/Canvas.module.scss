@@ -1,16 +1,13 @@
-@import "src/resources/base.scss";
-
-.module {
-  width: 100%;
-  height: 100%;
-}
+@use "src/resources/base" as base;
+@use "src/resources/forms" as forms;
+@use "src/resources/layout" as layout;
 
 .loading {
   width: 100%;
   height: 100%;
 }
 
-.loading>div {
+.loading > div {
   position: relative;
   z-index: 10;
   width: 200px;
@@ -24,11 +21,12 @@
 .header {
   position: relative;
   width: 100%;
-  padding: 10px 18px 2px 14px;
+  padding: 10px 15px;
   font-size: 14px;
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
   color: #555;
-  @include box-sizing(border-box);
 }
 
 .menu {
@@ -36,50 +34,40 @@
   background-color: #fbfbfb;
   border: 1px solid #e0e0e0;
   padding: 7px 10px;
-  margin: 10px 7px;
-  @include box-sizing(border-box);
-}
 
-.menu span {
-  color: #333;
-}
+  &.options {
+    background: #fff;
+    cursor: pointer;
+  }
+  span {
+    color: #333;
+  }
 
-.menu.options {
-  background: #fff;
-  cursor: pointer;
-}
+  .weeks select {
+    width: 5ch;
+    background: #fafafa;
+    border: 1px solid #ddd;
+  }
+  .weeks span {
+    margin-right: 5px;
+  }
 
-.weeks,
-.filters {
-  display: inline;
-}
+  .filters {
+    display: flex;
+    align-items: center;
+    gap: 14px;
 
-.weeks {
-  margin-right: 18px;
-}
-
-.weeks select {
-  background: #fafafa;
-}
-
-.weeks span {
-  margin-right: 5px;
-}
-
-.filters input[type=checkbox] {
-  margin-left: 10px;
-  margin-right: 4px;
-}
-
-.filters label {
-  font-size: 0.95em;
-  color: #999;
+    label{
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+  }
 }
 
 .panel {
   position: relative;
   width: 100%;
-  height: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
+  height: calc(100% - 57.4px);
+  padding: 0 15px;
 }

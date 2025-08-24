@@ -1,45 +1,40 @@
-const getProjectPermissions = (project, userIdd) =>
-{
-  const userId = userIdd ? userIdd : parseInt(sessionStorage.getItem("id"));
+const getProjectPermissions = (project, userId = parseInt(sessionStorage.getItem("id"))) => {
+  const {admin, admin_id, member_ids, mentor_ids, cohort} = project;
   const permissions = [];
 
-  if (project.admin != null &&
-    project.admin_id == userId &&
-    project.cohort == null) {
+  if (admin != null && admin_id == userId && cohort == null) {
     permissions.push("ADMIN")
     permissions.push("MEMBER")
   }
-  if (project.member_ids.includes(userId))
+
+  if (member_ids.includes(userId))
     permissions.push("MEMBER")
-  if (project.mentor_ids.includes(userId))
+  if (mentor_ids.includes(userId))
     permissions.push("MENTOR")
-  if (project.cohort != null) {
-    if (project.cohort.admin_id == userId)
-      permissions.push("C_ADMIN");
-    if (project.cohort.mentor_ids.includes(userId))
-      permissions.push("C_ADMIN");
-    if (project.cohort.instructor_ids.includes(userId))
-      permissions.push("C_INSTRUCTOR");
-  }
+
+  if (cohort?.admin_id == userId)
+    permissions.push("C_ADMIN");
+  if (cohort?.mentor_ids.includes(userId))
+    permissions.push("C_ADMIN");
+  if (cohort?.instructor_ids.includes(userId))
+    permissions.push("C_INSTRUCTOR");
   return permissions;
 }
 
-const getCohortPermissions = (cohort, userIdd) =>
-{
-  const userId = userIdd ? userIdd : parseInt(sessionStorage.getItem("id"));
+const getCohortPermissions = (cohort, userId = parseInt(sessionStorage.getItem("id"))) => {
+  const { admin_id, mentor_ids, instructor_ids } = cohort;
   const permissions = [];
-  if (cohort.admin_id == userId)
+
+  if (admin_id == userId)
     permissions.push("ADMIN")
-  if (cohort.mentor_ids.includes(userId))
+  if (mentor_ids.includes(userId))
     permissions.push("ADMIN")
-  if (cohort.instructor_ids.includes(userId))
+  if (instructor_ids.includes(userId))
     permissions.push("INSTRUCTOR")
   return permissions;
 }
 
-
-const hasProjectPermission = (project, perms, userId) =>
-{
+const hasProjectPermission = (project, perms, userId) => {
   const permissions = getProjectPermissions(project, userId);
   let res = false;
   for (let perm of perms)
@@ -47,8 +42,7 @@ const hasProjectPermission = (project, perms, userId) =>
   return res;
 }
 
-const hasCohortPermission = (cohort, perms, userId) =>
-{
+const hasCohortPermission = (cohort, perms, userId) => {
   const permissions = getCohortPermissions(cohort, userId);
   let res = false;
   for (let perm of perms)
@@ -56,21 +50,19 @@ const hasCohortPermission = (cohort, perms, userId) =>
   return res;
 }
 
-const getProfilePermissions = (profile, attr) =>
-{
-  const userId = sessionStorage.getItem("id");
+const getProfilePermissions = (profile) => {
+  const userId = parseInt(sessionStorage.getItem("id"));
   const permissions = [];
-  if (profile.user_id == userId) {
+  
+  if (profile.user_id === userId) {
     permissions.push("EDIT");
     permissions.push("VIEW");
   }
   return permissions;
 }
 
-const hasProfilePermission = (profile, attr, permission) =>
-{
-  const permissions = getProfilePermissions(profile, attr);
-  return permissions.includes(permission);
+const hasProfilePermission = (profile, permission) => {
+  return getProfilePermissions(profile).includes(permission);
 }
 
 export { hasProjectPermission, hasProfilePermission, hasCohortPermission };

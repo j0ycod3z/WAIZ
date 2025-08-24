@@ -4,7 +4,7 @@ import cx from "classnames";
 import { lcs } from 'components/util/Locales';
 import { hasProfilePermission } from 'components/util/Permissions';
 
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import c from "resources/css/users/Profile.module.css";
 
 class Card extends Component
@@ -41,7 +41,7 @@ class Card extends Component
           />
           <h5 className={cx(c.username)}>
             {profile.user.first_name + " " + profile.user.last_name}
-            {!this.state.editing && hasProfilePermission(profile, "general", "EDIT") ?
+            {!this.state.editing && hasProfilePermission(profile, "EDIT") ?
               <button
                 onClick={this.onClickOpen}
                 className={cx(c.editLight)} >

@@ -1,6 +1,6 @@
 import React from 'react';
 import c from 'resources/css/dashboards/charts/Charts.module.css';
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import cx from 'classnames';
 import { getColor, bright } from 'components/dashboards/util/Util'
 

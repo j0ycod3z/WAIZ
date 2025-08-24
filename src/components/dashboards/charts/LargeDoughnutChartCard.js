@@ -1,7 +1,7 @@
 import React from 'react';
 import c from 'resources/css/dashboards/charts/Charts.module.css';
 import cx from 'classnames';
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import { bright, getColors } from 'components/dashboards/util/Util'
 
 import { Chart as ChartJS, 
