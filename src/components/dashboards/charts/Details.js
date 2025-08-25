@@ -9,11 +9,8 @@ import LineChartCard from '../charts/LineChartCard';
 import DoughnutChartCard from '../charts/DoughnutChartCard';
 import BarChartCard from 'components/dashboards/charts/BarChartCard';
 
-class Details extends React.Component
+function Details (props)
 {
-
-  render()
-  {
     const { projectData = {}, hLabels = [], hDatasets = [], iLabels = [], iDatasets = [] } = this.props;
 
     let hipDataset = [];
@@ -55,7 +52,6 @@ class Details extends React.Component
       </div>
 
     )
-  }
 }
 
 export default Details;
