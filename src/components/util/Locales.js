@@ -2,11 +2,8 @@ import detectBrowserLanguage from 'detect-browser-language'
 
 const lang = detectBrowserLanguage().toUpperCase();
 
-
 const Locales = {
-
   // LOGIN
-
   login: [
     "Login",
     "Iniciar Sesión"
@@ -58,12 +55,10 @@ const Locales = {
   ],
 
   //Sign_up
-
   confirm_password: [
     "Confirm password",
     "Confirmar contraseña"
   ],
-
   sign_up_title: [
     "Do you want to use wAIz for business or education purposes?",
     "¿Desea utilizar wAIz para fines comerciales o educativos?"
@@ -97,9 +92,7 @@ const Locales = {
     "Ha ocurrido un error, prueba de nuevo"
   ],
 
-
   //Recovery
-
   recover_password: [
     "Recover password",
     "Recuperar contraseña"
@@ -130,7 +123,6 @@ const Locales = {
   ],
 
   // SIDE-NAV
-
   cohorts: [
     "Cohorts",
     "Cohorts"
@@ -178,6 +170,10 @@ const Locales = {
   reputation_prodcutivity_drivers: [
     "Reputation & Productivity drivers",
     "Procesos (Reputación / Productividad)"
+  ],
+  project: [
+    "Project",
+    "Proyecto"
   ],
   project_profile: [
     "Project Profile",
@@ -260,9 +256,7 @@ const Locales = {
     "Sube el archivo de la plantilla"
   ],
 
-
   // TOP-NAV
-
   knowledge_base: [
     "Knowledge Base",
     "Base de Conocimientos"
@@ -297,7 +291,6 @@ const Locales = {
   ],
 
   //PROFILE
-
   website: [
     "Website",
     "Sitio web"
@@ -352,7 +345,6 @@ const Locales = {
   ],
 
   // PROJECT PROFILE
-
   project_name: [
     "Project name",
     "Nombre del proyecto"
@@ -592,14 +584,12 @@ const Locales = {
   ],
 
   //TRL
-
   trl_instructions: [
     "Check the boxes that correspond to the process current of your project.",
     "Marque las casillas que corresponden al proceso actual de su proyecto."
   ],
 
   // CANVAS
-
   canvas: [
     "Canvas",
     "Canvas"
@@ -653,14 +643,11 @@ const Locales = {
     "Hipótesis"
   ],
   made_in_canou: [
-    "wAIz ©",
+    "wAiz ©",
     "wAiz ©"
   ],
 
-
-
   // AREAS
-
   validate: [
     "Validate",
     "Validar"
@@ -687,7 +674,6 @@ const Locales = {
   ],
 
   // AREAS-SCALING
-
   organization_core: [
     "Organization core",
     "Organización"
@@ -709,10 +695,7 @@ const Locales = {
     "KPIs",
   ],
 
-
-
   // HYPOTHESIS-FORM
-
   add_hypothesis: [
     "Add Hypothesis",
     "Agregar Hipótesis"
@@ -776,7 +759,6 @@ const Locales = {
   ],
 
   // INSIGHTS
-
   describe_your_insight: [
     "Describe your insight",
     "Describe tu idea"
@@ -803,7 +785,6 @@ const Locales = {
   ],
 
   // DEEP DIVE
-
   next: [
     "Next",
     "Siguiente"
@@ -818,19 +799,16 @@ const Locales = {
   ],
 
   // COMMENTS
-
   write_your_comment: [
     "Write your comment",
     "Escribe tu comentario"
   ],
-
   comments_empty: [
     "Here you can write your comments",
     "Aquí puedes escribir tus comentarios"
   ],
 
   // INTERVIEWS
-
   interview: [
     "Interview",
     "Entrevista"
@@ -907,9 +885,9 @@ const Locales = {
     "Discard",
     "Descartar"
   ],
-  new_interview: [
-    "New Interview",
-    "Nueva Entrevista"
+  add_interview: [
+    "Add Interview",
+    "Agregar Entrevista"
   ],
   interview_method: [
     "Interview method",
@@ -941,7 +919,6 @@ const Locales = {
   ],
 
   // User Profile
-
   short_bio: [
     "Short Bio",
     "Breve Biografía"
@@ -1044,30 +1021,24 @@ const Locales = {
   ],
 
   //KB
-
   section: [
     "Section",
     "Sección"
   ],
 
-
   //FINANCIAL BOARD
-
   financial_board: [
     "Financial Board",
     "Tablero Financiero"
   ],
-
   interval: [
     "Interval",
     "Intervalo"
   ],
-
   net_income: [
     "Net income",
     "Ingresos Netos"
   ],
-
   gross_profit_margins: [
     "Gross profit margins",
     "Margen bruto de ganancia"
@@ -1110,7 +1081,6 @@ const Locales = {
   ],
 
   // Dashboards
-
   dashboards: [
     "Dashboards",
     "Tableros"
@@ -1191,7 +1161,6 @@ const Locales = {
   ],
 
   // Settings
-
   set_language: [
     "Set Language",
     "Definir Lenguaje"
@@ -1244,9 +1213,9 @@ const Locales = {
   ]
 }
 
-const lc = locale =>
-{
+const lc = (locale) => {
   let lang1 = sessionStorage.getItem('lang');
+
   if (lang1 == null) lang1 = lang;
   if (locale == null || locale.ref == null) return "";
   if (lang1.startsWith("EN")) return locale.ref;
@@ -1255,8 +1224,7 @@ const lc = locale =>
   return locale.ref;
 }
 
-const lcs = name =>
-{
+const lcs = (name) => {
   let lang1 = sessionStorage.getItem('lang');
   if (lang1 == null) lang1 = lang;
   let locale = Locales[name];
@@ -1266,11 +1234,9 @@ const lcs = name =>
   return locale[0]
 }
 
-const getLang = () =>
-  sessionStorage.getItem('lang') ? sessionStorage.getItem('lang') : lang;
+const getLang = () => sessionStorage.getItem('lang') ? sessionStorage.getItem('lang') : lang;
 
-const getDate = (date) =>
-{
+const getDate = (date) => {
   if (!date) return '';
   const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   return `${monthNames[new Date(date).getMonth()]} ${new Date(date).getDate()}`;

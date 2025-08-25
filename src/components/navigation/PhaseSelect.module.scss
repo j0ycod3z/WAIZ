@@ -1,4 +1,4 @@
-@import "src/resources/base.scss";
+@use "src/resources/base.scss" as base;
 
 .module {
   width: 100%;
@@ -12,13 +12,13 @@
   background-color: #198CE5;
   color: #fff;
   font-size: 20px;
-  @include border-radius-all(5px, 5px, 0, 0);
+  @include base.border-radius-all(5px, 5px, 0, 0);
 }
 
 .content {
   padding: 15px 20px 30px 20px;
   background: #fff;
-  @include border-radius-all(0px, 0px, 5px, 5px);
+  @include base.border-radius-all(0px, 0px, 5px, 5px);
 }
 
 .item {

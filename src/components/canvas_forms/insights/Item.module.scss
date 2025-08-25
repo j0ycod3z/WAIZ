@@ -1,6 +1,7 @@
-@import "src/resources/base.scss";
+@use "src/resources/base" as base;
 
 .module {
+  position: relative;
   width: 100%;
   height: 100%;
   padding: 14px;
@@ -13,44 +14,62 @@
 
 .type {
   display: inline-block;
-  background: #1CAB68;
-  width: auto;
   color: #fff;
   font-size: 13px;
   padding: 3px 7px;
-  @include border-radius(12px);
+  @include base.border-radius(12px);
+
+  &.must_have {
+    background-color: base.$green;
+    color: #fff;
+  }
+
+  &.nice_to_have {
+    color: base.$green;
+    border: 1px solid base.$green;
+  }
+  
+  &.invalidate_hypothesis {
+    color: base.$red;
+    border: 1px solid base.$red;
+  }
 }
 
 .dateContainer {
   float: right;
   font-size: 14px;
   padding: 4px 0px;
-}
-
-.dateContainer .image,
-.dateContainer .date {
-  float: left;
-}
-
-.dateContainer .image {
-  width: 22px;
-  height: 22px;
-  margin-right: 10px;
-  background-position: center center;
-  background-repeat: no-repeat;
-  @include border-radius(50%);
-}
-
-.dateContainer .date {
-  font-style: italic;
-  color: #777;
+  
+  .image,
+  .date {
+    float: left;
+  }
+  
+  .image {
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    @include base.border-radius(50%);
+  }
+  
+  .date {
+    font-style: italic;
+    color: #777;
+  }
 }
 
 .options {
+  background: white;
   position: absolute;
-  background: #fff;
-  right: 30px;
+  top: 14px;
+  right: 14px;
   display: none;
+}
+
+.module:hover .options {
+  display: block;
 }
 
 .options .option {
@@ -60,9 +79,9 @@
   color: white;
   padding: 4px 5px;
   cursor: pointer;
-  @include border-radius(50%);
+  @include base.border-radius(50%);
 }
 
 .delete {
-  background-color: #FF8050;
+  background-color: base.$orange-primary-1;
 }

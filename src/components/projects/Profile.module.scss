@@ -1,104 +1,27 @@
-@import "src/resources/base.scss";
-@import "src/resources/forms.scss";
-@import "src/resources/layout.scss";
+@use "src/resources/base" as base;
+@use "src/resources/forms" as forms;
+@use "src/resources/layout" as layout;
 
-.module {
-  @include fonts();
-  height: 100%;
-  width: 100%;
+.module p {
+  margin: 0;
 }
 
-.module select {
-  text-transform: capitalize;
-}
+.card {
+  background-color: #fff;
+  margin-bottom: 15px;
 
-.module .badgeEdit {
-  font-size: 12px;
-  padding: 8px 0px;
-  color: $white;
-  background-color: $blue-light;
-  padding: 8px;
-  border-radius: 4px;
-  margin-right: 8px;
-}
-
-.module .blueGradient {
-  background: $orange-primary-1;
-  color: $white;
-}
-
-.module .dataList {
-  .ul {
-    list-style-type: none;
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 }
-
-.module .spacing {
-  margin-top: 24px;
-}
-
-.module .spacing p {
-  color: rgba(255, 255, 255, 0.9);
-  font-family: "Open Sans", sans-serif;
-}
-
 .module .cardTitle {
-  font-size: 19px;
-  line-height: 1.4em;
   font-weight: bolder;
-}
-
-.module .keyPerformanceTable {
-  border: none;
-  width: 100%;
-  padding: 32px;
-  border-radius: 4px;
-
-  .secondary {
-    color: $grey;
-    font-size: 9px;
-  }
-
-  .icon {
-    color: $primary;
-  }
-
-  .featuresNumbers td {
-    @extend .fancyNumber;
-  }
-
-  .subtitle {
-    font-size: 16px;
-    font-weight: bold;
-  }
-
-  th {
-    font-weight: bold;
-    text-align: center;
-  }
-
-  th,
-  td {
-    text-align: center;
-    padding-top: 8px;
-    width: 10%
-  }
-}
-
-.module .light {
-  color: $white;
-}
-
-.module .headerForm label {
-  margin-top: 16px;
-  margin-bottom: 2px;
-}
-
-.module .fancyNumber {
-  font-family: sans-serif;
-  font-size: 24px;
-  font-weight: bolder;
-  color: $grey-dark;
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  gap: 8px;
 }
 
 .module .flexRowContainer {
@@ -108,227 +31,120 @@
   width: 100%;
 }
 
-.module .marketData {
-  .fancyNumber {
-    padding-top: 4px;
-    padding-bottom: 16px;
-  }
-}
-
-.module .marketChart {
-  margin-top: -40px;
-  padding-bottom: 68%;
-  width: 100%;
-  @include box-sizing(border-box);
-
-  @media screen and (max-width: 800px) {
-    padding-bottom: 80%;
-  }
-
-  .chartElement {
-    border-radius: 100%;
-    transform: 40deg;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    position: absolute;
-  }
-
-  .total {
-    top: 0;
-    bottom: auto;
-    -moz-transform: rotate(40deg);
-    -ms-transform: rotate(40deg);
-    -webkit-transform: rotate(40deg);
-    transform: rotate(40deg);
-    @extend .chartElement;
-    padding-bottom: 70%;
-    width: 70%;
-    background: #1cab68;
-    z-index: 200;
-  }
-
-  .server {
-    @extend .chartElement;
-    background: #50a0ff;
-    border: 2px solid rgba(255, 255, 255, 0.7);
-  }
-
-  .target {
-    @extend .chartElement;
-    z-index: 202;
-    background: #ffc040;
-    border: 2px solid rgba(255, 255, 255, 0.7);
-  }
-}
-
-.module .alignRight {
-  text-align: right;
-}
-
-.module .irlTable {
-  width: 100%;
-
-  td {
-    padding-bottom: 7px;
-    padding-right: 7px;
-    color: #707070;
-  }
-}
-
-.module ul.details {
-  @include sans();
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-
-  li {
-    float: left;
-    margin-right: 12px;
-  }
-}
-
 .module ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+}
 
-  .bulletTitle {
-    font-weight: bold;
+.module .levelList {
+  display: flex;
+  gap: 4px;
+  color: base.$grey;
+
+  li, a {
+    border-radius: 6px;
+  }
+  li {
+    width: 100%;
+
+    &.trlSuccess {
+      background-color: base.$green;
+      a {
+        color: white;
+      }
+      a:hover {
+        background-color: base.$green-hover;        
+      }
+    }
+    &.trlPending {
+      background-color: #f0f0f0;
+
+      a {
+        color: base.$grey-dark;
+      }
+    }
+    a:hover {
+      background-color: base.$grey-light;
+      text-decoration: none;
+    }
   }
 }
-
-.module .trlSteperElement {
-  display: block;
-  border: 1px solid $green;
-  height: 24px;
-  width: 24px;
-  border-radius: 50%;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 24px;
-}
-
-.module .trlSteperCompleted {
-  color: $white;
+.module .irlTable td {
+  color: base.$grey;
 }
 
 .module .trlContainer {
   background: none;
 }
 
-.module .trlSuccess,
-.module .trlPending {
-  border-radius: 25px;
-  margin-left: 2px;
-  height: 24px;
-}
-
-.module .trlSuccess {
-  background-color: $green;
-}
-
-.module .trlPending {
-  background-color: #f0f0f0;
-  color: #777
-}
-
-.module .projectInfoList {
-  li {
-    margin-bottom: 4px;
-  }
-
-  a {
-    color: #fff;
-  }
-}
-
 .module .editGeneric {
-  border: none;
-  padding: none;
+  font-size: 24px;
   background: none;
-  font-size: 23px;
+  padding: 0;
+  border: none;
 }
 
 .module .edit {
   @extend .editGeneric;
-  color: $grey-dark;
-  margin-left: 8px;
+  color: base.$grey-dark;
+  display: flex;
 
   i {
     font-size: 15px;
   }
 
   &:hover {
-    color: $blue-light;
+    color: base.$blue-light;
   }
 }
 
-.module .editLight {
-  @extend .editGeneric;
-  border: none;
-  padding: none;
-  margin: none;
-  color: $white;
-  margin-left: 8px;
-
-  &:hover {
-    color: $yellow-canou;
-  }
-}
-
-.module .keyFeaturesTableContainer {
-  padding: 10px 0px;
-}
-
-.module .keyFeaturesTable {
-  td {
-    padding: 14px;
-  }
-
-  .keyFeatureNumber {
-    background-color: $green;
-    color: $white;
-  }
-
-  .keyFeatureText {}
-}
-
-.module .financialSwitch {
-  float: right;
-  margin-top: -5px;
-}
-
-.module .openButton {
-  background-color: $green;
-  color: $white;
-  min-height: 32px !important;
-  width: 120px;
-  margin-left: 10px;
-  border-radius: 24px;
+.module .mainButton {
+  background-color: base.$green;
+  color: base.$white;
+  min-height: 32px;
   font-size: 15px;
-  margin-top: -4px;
 
   &:hover {
-    color: $white;
-    background-color: $green-hover;
+    color: base.$white;
+    background-color: base.$green-hover;
   }
 }
 
-.module .horizonBox {
+.horizonContainer {
   position: relative;
-  border: 1px solid #a0a0a0;
-  margin-left: 35px;
+  aspect-ratio: 1;
+  width: 100%;
 }
 
-.module .horizonText {
-  position: relative;
-  width: 80px;
-  height: 20px;
-  margin-top: -20px;
-  font-size: 13px;
-  text-align: center;
+.horizonBox {
+  position: absolute;
+  bottom: 0;
+  aspect-ratio: 1;
+  border: 1px solid #a0a0a0;
+
+  p {
+    position: absolute;
+    bottom: 2px;
+    white-space: nowrap;
+    text-align: center;
+  }
+}
+
+.orderedList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 15px;
+  margin: 0;
+
+  li::marker {
+    font-weight: bold;
+  }
+}
+
+.btnContainer {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
 }

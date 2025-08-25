@@ -1,4 +1,4 @@
-@import "src/resources/base.scss";
+@use "src/resources/base" as base;
 
 .module {
   width: 100%;
@@ -11,29 +11,29 @@
   background-color: #198CE5;
   color: #fff;
   font-size: 20px;
-  @include border-radius-all(5px, 5px, 0, 0);
+  @include base.border-radius-all(5px, 5px, 0, 0);
 }
 
 .content {
   padding: 20px 20px 30px 20px;
   background: #fff;
-  @include border-radius-all(0px, 0px, 5px, 5px);
+  @include base.border-radius-all(0px, 0px, 5px, 5px);
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
 }
 
 .hypothesis {
   width: 100%;
   padding: 8px 14px;
-  margin-bottom: 2px;
-  font-size: 18px;
+  font-size: 16px;
+  min-height: 64px;
+  max-height: 128px;
   border: 1px solid #e0e0e0;
-  @include border-radius(10px);
-  @include box-sizing(border-box);
-}
-
-.customers,
-.colors,
-.types {
-  margin-top: 14px;
+  @include base.border-radius(6px);
 }
 
 .customers b,
@@ -46,7 +46,7 @@
 .typeContainer {
   border: 1px solid #e0e0e0;
   padding: 8px 16px;
-  height: 120px;
+  height: 112px;
   overflow: auto;
 }
 
@@ -56,13 +56,11 @@
   display: inline-block;
   padding: 9px 14px;
   text-align: center;
-  margin-top: 20px;
   font-size: 15px;
   color: #fff;
   background-color: #11C26F;
   border: none;
-  cursor: pointer;
-  @include border-radius(20px);
+  @include base.border-radius(6px);
 }
 
 .error {
@@ -74,7 +72,6 @@
   font-size: 14px;
   padding: 12px;
   font-weight: bold;
-  @include box-sizing(border-box);
 }
 
 .call:hover {

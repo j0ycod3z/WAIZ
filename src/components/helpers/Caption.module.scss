@@ -1,4 +1,4 @@
-@import "src/resources/base.scss";
+@use "src/resources/base" as base;
 
 .module {
   width: auto;
@@ -14,7 +14,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
   z-index: 2;
-  @include border-radius(10px);
+  @include base.border-radius(10px);
 }
 
 .module .caption.bottom{

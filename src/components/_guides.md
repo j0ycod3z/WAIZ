@@ -2,11 +2,12 @@
 
 Represents the UI module of the application
 
--  [Guidelines](#guidelines)
--  [Examples](#example)
-    -  [List example](#list-example)
-    -  [Form example](#form-example)
--  [References](#references)
+- [Components](#components)
+  - [Guidelines](#guidelines)
+  - [Examples](#examples)
+    - [List example](#list-example)
+    - [Form example](#form-example)
+  - [References](#references)
 
 ## Guidelines
 
@@ -74,63 +75,56 @@ export default redux(Home);
 
 ```javascript
 
-class TeamForm extends React.Component
-{
-  render()
-  {
+class TeamForm extends React.Component {
+  render() {
     const { team = {} } = this.state;
     const teamId = this.props.teamId;
-    if (team.id == null && teamId != null) return <Loading />;
+    if (team.id === null && teamId !== null) return <Loading />;
 
     return (
       <div className={c.module}>
-
       /**
       * Use formik to simplify event handling of inputs
       */
 
-      <Formik
-        initialValues={team}
-        onSubmit={this.onSubmit}
-        render={f => (
+        <Formik
+          initialValues={team}
+          onSubmit={this.onSubmit}
+          render={(f) => (
+            <form onSubmit={f.handleSubmit}>
 
-      <form onSubmit={f.handleSubmit}>
-
-        {/* Name */}
-        <label className={cx(c.lbl, c.nameLbl)}>Name</label><br/>
-        <Field type="text" name="name" className={cx(c.txt, c.nameTxt)} />
-        <br/>
-        {/* Description */}
-        <label className={cx(c.lbl, c.descriptionLbl)}>Description</label><br/>
-        <Field component="textarea" name="description" type="text" rows="3" className={cx(c.txa, c.descriptionTxa)} />
-        <br/>
-        <button type="submit" className={c.submit}>Send</button>
-      </form>
-      )}
-      </Formik>
-    </div>
+              {/* Name */}
+              <label className={cx(c.lbl, c.nameLbl)}>Name</label><br/>
+              <Field type="text" name="name" className={cx(c.txt, c.nameTxt)} />
+              <br/>
+              {/* Description */}
+              <label className={cx(c.lbl, c.descriptionLbl)}>Description</label><br/>
+              <Field component="textarea" name="description" type="text" rows="3" className={cx(c.txa, c.descriptionTxa)} />
+              <br/>
+              <button type="submit" className={c.submit}>Send</button>
+            </form>
+          )}>
+        </Formik>
+      </div>
     );
   }
   /*
   * Component logic
   */
 
-  constructor(props)
-  {
+  constructor(props) {
     super(props);
     this.state = {};
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  componentDidMount()
-  {
+  componentDidMount() {
     this.loadData();
   }
 
   /* Events */
 
-  onSubmit(values)
-  {
+  onSubmit(values) {
     /*
     * Create a team object based on form values
     */
@@ -139,8 +133,7 @@ class TeamForm extends React.Component
 
   /* Actions */
 
-  loadData()
-  {
+  loadData() {
     /*
     * Load data to set initial data (Modify requirements)
     * Those methods are also bind by redux
@@ -148,12 +141,12 @@ class TeamForm extends React.Component
 
     const { getTeamDetails } = this.props;
     const teamId = this.props.teamId;
-    if (teamId != null) {
-      const callback = res =>
+    if (teamId !== null) {
+      const callback = (res) =>
       {
         const teamId = this.props.teamId;
         const team = DataUtil.getItem(this.props.teams, teamId);
-        if (team.id != null)
+        if (team.id !== null)
           this.setState({
             team: Object.assign({}, this.state.team, team)
           })
@@ -162,32 +155,28 @@ class TeamForm extends React.Component
     }
   }
 
-  saveData(team)
-  {
+  saveData(team) {
     /*
     * Save and set methods are also provided automatically by redux functions
     * See /actions/__guides.md to see method list
     */
 
     const teamId = this.props.teamId;
-    const onSave = res =>
-    {
+    const onSave = (res) => {
       if (res.ok) this.onSave(res.body);
       else this.onError(res.body)
     };
-    if (teamId == null)
+    if (teamId === null)
       this.props.saveTeam(team, onSave)
     else
       this.props.setTeam(teamId, team, onSave);
   }
 
-  onSave(res)
-  {
+  onSave(res) {
     this.props.onClose();
   }
 
-  onError(error)
-  {
+  onError(error) {
     this.setState({
       error: 'An error has occurred, try again'
     });

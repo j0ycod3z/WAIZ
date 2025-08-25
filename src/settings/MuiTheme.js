@@ -1,24 +1,22 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 
-const MuiTheme = () =>
-{
-  return createMuiTheme(
-    {
-      palette: {
-        primary: {
-          main: '#00a7df',
-          dark: '#0290d1',
-          contrastText: '#fff'
+const MuiTheme = () => {
+  return createTheme({
+    palette: {
+      primary: {
+        main: '#00a7df',
+        dark: '#0290d1',
+        contrastText: '#fff'
+      }
+    },
+    overrides: {
+      MuiButtonBase: {
+        root: {
+          color: 'rgba(0,10,20,0.08)'
         }
-      },
-      overrides: {
-        MuiButtonBase: {
-          root: {
-            color: 'rgba(0,10,20,0.08)'
-          }
-        }
-      },
-    });
+      }
+    },
+  });
 }
 
 const checkboxStyle = {

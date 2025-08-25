@@ -1,4 +1,4 @@
-@import "src/resources/base.scss";
+@use "src/resources/base" as base;
 
 .module {
   width: 100%;
@@ -25,7 +25,7 @@
   color: #666;
   cursor: pointer;
   border: 2px solid #279af3;
-  @include border-radius(50%);
+  @include base.border-radius(50%);
 }
 
 .item.active {

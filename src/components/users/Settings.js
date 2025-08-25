@@ -5,7 +5,7 @@ import { lcs } from 'components/util/Locales';
 
 import cx from "classnames";
 
-import "resources/bootstrap.min.module.css";
+import "react-bootstrap";
 import c from "resources/css/users/Profile.module.css";
 
 class Settings extends Component

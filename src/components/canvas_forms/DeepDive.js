@@ -1,64 +1,57 @@
-import * as React from 'react';
+import { useState, useEffect, useRef } from 'react';
 import redux from 'seed/redux';
 
 import Nav from 'components/canvas_forms/deepdives/Nav'
 import Item from 'components/canvas_forms/deepdives/Item'
-import { Route } from 'react-router-dom'
 
 import c from 'resources/css/canvas_forms/DeepDive.module.css'
 
-class DeepDive extends React.Component
-{
-  render()
-  {
-    const { area_id } = this.props.match.params;
-    const deepQuestions = this.props.deepQuestions.filter(d => d.area_id == area_id);
+function DeepDive(props) {
+  const { match, deepQuestions, getDeepQuestionList } = props;
+  const { area_id } = match.params;
+  const isMountedRef = useRef(true);
 
-    const { activeItem = 1 } = this.state;
-    let numItems = deepQuestions.length;
-    return (
-      <div className={c.module}>
-        <div className={c.navContainer}>
-          <Nav
-            numItems={numItems}
-            activeItem={activeItem}
-            onChange={this.onNavChange} />
-        </div>
-        <div className={c.itemContainer}>
-          <Item
-            numItems={numItems}
-            activeItem={activeItem}
-            question={numItems > 0 ? deepQuestions[activeItem - 1] : {}}
-            onNavChange={this.onNavChange} />
-        </div>
+  const [activeItem, setActiveItem] = useState(() => {
+    const stored = localStorage.getItem(`nextItemTemp_${area_id}`);
+    return stored ? parseInt(stored) : 1;
+  });
+
+  const questions = deepQuestions.filter((d) => d.area_id === parseInt(area_id));
+  const numItems = questions.length;
+  
+  useEffect(() => {
+    isMountedRef.current = true;
+    getDeepQuestionList({ area: area_id });
+    
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, [area_id]);
+
+  const onNavChange = (val) => {
+    localStorage.setItem(`nextItemTemp_${area_id}`, val)
+    setActiveItem(parseInt(val));
+  };
+  
+  return (
+    <div className={c.module}>
+      <div className={c.navContainer}>
+        <Nav
+          numItems={numItems}
+          activeItem={activeItem}
+          onChange={onNavChange}
+        />
       </div>
-    );
-  }
-
-  constructor(props)
-  {
-    super(props);
-    const { area_id } = props.match.params;
-    this.state = {
-      activeItem: localStorage.getItem('nextItemTemp_' + area_id) ? localStorage.getItem('nextItemTemp_' + area_id) : 1
-    }
-    this.onNavChange = this.onNavChange.bind(this);
-  }
-
-  componentDidMount()
-  {
-    const { area_id } = this.props.match.params;
-    this.props.getDeepQuestionList({ area: area_id });
-  }
-
-  onNavChange = val =>
-  {
-    const { area_id } = this.props.match.params;
-    localStorage.setItem('nextItemTemp_' + area_id, val)
-    this.setState({
-      activeItem: val
-    });
-  }
+      <div className={c.itemContainer}>
+        <Item
+          numItems={numItems}
+          activeItem={activeItem}
+          question={numItems > 0 ? questions[activeItem - 1] : {}}
+          onNavChange={onNavChange}
+        />
+      </div>
+    </div>
+  );
 }
 
 export default redux(DeepDive);

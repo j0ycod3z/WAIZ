@@ -1,16 +1,14 @@
-import * as React from 'react';
+import { useState, useEffect } from 'react';
 import redux from 'seed/redux';
 
 import cx from "classnames";
-import { NavLink } from 'react-router-dom'
-import { Route, Switch } from 'react-router-dom'
+import { NavLink, Route, Switch } from 'react-router-dom';
 import { hasProjectPermission } from 'components/util/Permissions';
 
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { lcs } from 'components/util/Locales'
-import "resources/bootstrap.min.module.css";
-import 'resources/css/interviews/Interviews.css';
+import "react-bootstrap";
 import c from 'resources/css/interviews/Interviews.module.css';
 
 import Modal from 'seed/components/helpers/Modal';
@@ -19,184 +17,170 @@ import Form from 'components/interviews/Form'
 import Export from 'components/interviews/Export'
 import Details from 'components/interviews/Details'
 
+function Interviews(props) {
+  const {
+    match,
+    history,
+    interviews = [],
+    projects = [],
+    getInterviewList,
+    getProjectDetailList
+  } = props;
+  const { path, url } = match;
+  const { project_id } = match.params;
 
-class Interviews extends React.Component
-{
-  render()
-  {
-    const { path, url } = this.props.match;
-    const { project_id } = this.props.match.params;
-    const { optionMenu } = this.state;
+  const [formModal, setFormModal] = useState(false);
+  const [optionMenu, setOptionMenu] = useState(null);
 
-    const interviews = this.props.interviews
-      .filter(i => i.project_id == project_id)
-      .sort((i1, i2) => i2.id - i1.id);
-    let project = this.props.projects.filter(p => p.id == project_id)[0];
+  
+  const filteredInterviews = interviews
+    .filter(i => i.project_id === parseInt(project_id))
+    .sort((i1, i2) => i2.id - i1.id);
 
-    const projectId = localStorage.getItem('projectId');
-    if (project_id != projectId) this.props.history.replace(`/`)
+  const project = projects.find(p => p.id === parseInt(project_id));
+  
+  const projectId = localStorage.getItem('projectId');
+  
+  if (project_id !== projectId) history.replace(`/`);
+  
+  const onClickNew = () => setFormModal(true);
+  const onModalClose = () => setFormModal(false);
 
-    const interviewList = interviews.map(i =>
-    {
-      return (
-        <NavLink
-          to={`${url}/${i.id}`}
-          className={cx(c.item, "list-group-item list-group-item-action flex-column align-items-start active-temp")}
-          activeClassName={cx(c.active)}>
-          <Item interview={i} />
-        </NavLink >)
-    });
+  const openOptionMenu = (e) => setOptionMenu(e.currentTarget);
+  const closeOptionMenu = () => setOptionMenu(null);
 
-    const formModal = this.state.formModal ?
-      <Modal
-        match={this.props.match}
-        onClose={this.onModalClose}
-        width={750}
-        height={650}>
-        <Form />
-      </Modal> : null;
+  const interviewList = filteredInterviews.map((i) => (
+    <NavLink
+      key={i.id}
+      to={`${url}/${i.id}`}
+      className={cx(c.item, "list-group-item list-group-item-action flex-column align-items-start active-temp")}
+      activeClassName={cx(c.active)}
+    >
+      <Item interview={i} />
+    </NavLink>
+  ));
 
-    const expertsAll = interviews.filter(i => i.interviewee_type == "EXPERT").length;
-    const customersAll = interviews.filter(i => i.interviewee_type == "CUSTOMER").length;
-    const expertsWeek = interviews.filter(i => i.interviewee_type == "EXPERT" &&
-      (new Date(i.created_at)).getTime() > new Date() - (86400000 * 7)).length;
-    const customersWeek = interviews.filter(i => i.interviewee_type == "CUSTOMER" &&
-      (new Date(i.created_at)).getTime() > new Date() - (86400000 * 7)).length;
+  const formModalElement = formModal && (
+    <Modal
+      match={match}
+      onClose={onModalClose}
+      width={750}
+      height={650}
+    >
+      <Form />
+    </Modal>
+  );
+  
+  const expertsAll = filteredInterviews.filter(i => i.interviewee_type === "EXPERT").length;
+  const customersAll = filteredInterviews.filter(i => i.interviewee_type === "CUSTOMER").length;
+  const expertsWeek = filteredInterviews.filter(i => i.interviewee_type === "EXPERT" &&
+    (new Date(i.created_at)).getTime() > new Date() - (86400000 * 7)
+  ).length;
+  const customersWeek = filteredInterviews.filter(i => i.interviewee_type === "CUSTOMER" &&
+    (new Date(i.created_at)).getTime() > new Date() - (86400000 * 7)
+  ).length;
 
-    const Empty = () =>
-      <div className={cx(c.empty, "container_white container")}>
-        <div className={c.emptyText}>{lcs("interview_empty")}</div>
-        <div className={c.emptyIcon}><i className="fas fa-microphone-alt"></i></div>
+  const Empty = () => (
+    <div className={cx(c.empty, "container_white container")}>
+      <div className={c.emptyIcon}>
+        <i className="fas fa-microphone-alt" />
       </div>
-    return (
-      <div className={"main module"} >
-        <div className={"row"}>
-          <div className={"col-md-1"}></div>
-          <div className={"col-md-10"}>
-            <div className={"row  col-md-12 container_status"} style={{paddingRight: "0px"}}>
-              <div className={"col-md-2 "}>
-                <div className={" container_bar nav justify-content-start"}>
-                  <div className={"nav_item nav_title"}>
-                    <label style={{ fontSize: "0.9em" }}>{lcs("interviews")}</label>
-                  </div>
+      <div className={c.emptyText}>
+        {lcs("interview_empty")}
+      </div>
+    </div>
+  );
+
+  useEffect(() => {
+    getInterviewList({ project: project_id });
+    getProjectDetailList({ project: project_id });
+  }, [project_id, getInterviewList, getProjectDetailList]);
+
+  return (
+    <div className={cx(c.module, "container")} >
+      <div className={cx(c.container, 'row justify-content-md-center')}>
+        <div className={"col-md-12"}>
+          <div className={cx(c.containerStatus)}>
+            <div className={cx('row', 'justify-content-between')} style={{paddingInline: '15px', minHeight: '60px',}}>
+              <div className={cx("col-md-2", 'd-flex', 'align-items-center', 'justify-content-start')}>
+                <div className={cx(c.navItem)}>
+                  <h5>{lcs("interviews")}</h5>
                 </div>
               </div>
-              <div className={"container_bar col-md-10"}>
-                <div className={"container_bar nav  justify-content-end"}>
-                  <div className={"nav_item line"}></div>
-                  <div className={'nav_item nav_subtitle'}>
-                    <label>{lcs("interviews")}<br /><span style={{ color: "rgba(255,255,255,0.8)", paddingTop: "4px" }}>{lcs("weekly")} / {lcs("totals")}</span></label>
+              <div className={cx("col-md-6", 'd-flex', 'align-items-center', 'justify-content-end')}>
+                <div className={cx(c.nav, 'd-flex', 'align-items-center')}>
+                  <div className={cx(c.navItem, 'd-flex', 'flex-column', 'align-items-center')}>
+                    {lcs("interviews")}
+                    <br />
+                    <span>
+                      {lcs("weekly")} / {lcs("totals")}
+                    </span>
                   </div>
-                  <div className={"nav_item"}>
-                    <div className={"container_top"}>{lcs("customers")}</div>
-                    <div className={"container_bottom"}>
-                      <div className={"counter gray_font"}>{customersWeek}/{customersAll}</div>
-                    </div>
+                  <div className={cx(c.navItem, 'd-flex', 'flex-column', 'align-items-center')}>
+                    <span className={cx(c.category)}>{lcs("customers")}</span>
+                    <b className={cx(c.counter)}>
+                      {customersWeek}/{customersAll}
+                    </b>
                   </div>
-                  <div className={'nav_item'}>
-                    <div className={"container_top"}>{lcs("experts")}</div>
-                    <div className={"container_bottom"}>
-                      <div className={"counter gray_font"}>{expertsWeek}/{expertsAll}</div>
-                    </div>
+                  <div className={cx(c.navItem, 'd-flex', 'flex-column', 'align-items-center')}>
+                    <span className={cx(c.category)}>{lcs("experts")}</span>
+                    <b className={cx(c.counter)}>
+                      {expertsWeek}/{expertsAll}
+                    </b>
                   </div>
-                  {project != null && hasProjectPermission(project, ["MEMBER"]) ?
-                    <i className={c.buttonOption + "  fas fa-ellipsis-v"} onClick={this.openOptionMenu} /> : null
+                  {(project != null && hasProjectPermission(project, ["MEMBER"])) &&
+                    <i className={cx(c.buttonOption, "fas", "fa-ellipsis-v")} onClick={openOptionMenu} />
                   }
                   <Menu
                     anchorEl={optionMenu}
                     open={Boolean(optionMenu)}
-                    onClose={this.closeOptionMenu}>
-                    <MenuItem><Export interviews={interviews} /></MenuItem>
+                    onClose={closeOptionMenu}
+                  >
+                    <MenuItem>
+                      <Export interviews={interviews} />
+                    </MenuItem>
                   </Menu>
-                  <div className={''}>&nbsp;</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className={"row container_t"}>
-          <div className={"col-md-1"}></div>
-          <div className={"col-md-3"} style={{ paddingRight: "0px", paddingLeft: "0px" }}>
-            <div className={"container_list"}>
-              <div className={"container_flex"}>
-                <div className={"list-group"} >
-                  {project != null && hasProjectPermission(project, ["MEMBER"]) ?
-                    <div
-                      className={c.newButton}
-                      onClick={this.onClickNew}>
-                      {lcs("new_interview")}
-                    </div> : null
-                  }
-                  <div className={c.interviewList}>
-                    {interviewList}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <div className={"col-md-7"}>
-            <div className={"container_interview col-md-12 "}>
-              <Switch>
-                <Route
-                  path={`${path}/:interview_id(\\d+)`}
-                  component={Details} />
-                <Route
-                  path={`${path}`}
-                  component={Empty} />
-              </Switch>
-            </div>
-          </div>
-          <div className={"col-md-1"}></div>
-        </div>
-        {formModal}
       </div>
-    );
-  }
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {
-      formModal: false,
-    };
-    this.openOptionMenu = this.openOptionMenu.bind(this);
-    this.closeOptionMenu = this.closeOptionMenu.bind(this);
-    this.onClickNew = this.onClickNew.bind(this);
-    this.onModalClose = this.onModalClose.bind(this);
-  }
-
-  componentDidMount()
-  {
-    const { project_id } = this.props.match.params;
-    this.props.getInterviewList({ project: project_id });
-    this.props.getProjectDetailList({ project: project_id });
-  }
-
-  onClickNew = () =>
-  {
-    this.setState({
-      formModal: true
-    });
-  }
-
-  onModalClose = () =>
-  {
-    this.setState({
-      formModal: false
-    });
-  }
-
-  openOptionMenu(e)
-  {
-    this.setState({ optionMenu: e.currentTarget });
-  }
-
-  closeOptionMenu(e)
-  {
-    this.setState({ optionMenu: null });
-  }
-
+      <div className={cx(c.container, 'row justify-content-md-center')}>
+        <div className={"col-md-3"}>
+          <div className={"list-group"} >
+            {(project != null && hasProjectPermission(project, ["MEMBER"])) &&
+              <button
+                className={c.newButton}
+                onClick={onClickNew}
+              >
+                <i className={"fas fa-plus"} />
+                <span>{lcs("add_interview")}</span>
+              </button>
+            }
+            <div className={c.interviewList}>
+              {interviewList}
+            </div>
+          </div>
+        </div>
+        <div className={"col-md-9"}>
+          <div>
+            <Switch>
+              <Route
+                path={`${path}/:interview_id(\\d+)`}
+                component={Details}
+              />
+              <Route
+                path={`${path}`}
+                component={Empty}
+              />
+            </Switch>
+          </div>
+        </div>
+      </div>
+      {formModalElement}
+    </div>
+  );
 }
 
 export default redux(Interviews);

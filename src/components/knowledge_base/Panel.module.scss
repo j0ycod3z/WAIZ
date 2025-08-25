@@ -1,13 +1,7 @@
-@import "src/resources/base.scss";
-@import "src/resources/layout.scss";
-@import "src/resources/forms.scss";
-
-.module {
-  @include fonts();
-  height: 100%;
-  width: 100%;
-}
+@use "src/resources/base.scss" as base;
+@use "src/resources/layout.scss" as layout;
+@use "src/resources/forms.scss" as forms;
 
 .container {
-  margin-top: 35px;
+  padding: 25px 15px;
 }

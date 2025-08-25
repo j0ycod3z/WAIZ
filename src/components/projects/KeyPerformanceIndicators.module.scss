@@ -1,0 +1,30 @@
+@use "src/resources/base" as base;
+
+.fancyNumber,
+.featuresNumbers td {
+  font-size: 24px;
+  font-weight: bolder;
+  color: base.$grey-dark;
+}
+
+.keyPerformanceTable {
+
+  .secondary {
+    color: base.$grey;
+    font-size: 9px;
+  }
+
+  .featuresNumbers td {
+    font-size: 18px;
+    white-space: nowrap;
+  }
+
+  .subtitle {
+    font-weight: bold;
+  }
+
+  td {
+    text-align: center;
+    width: 20%;
+  }
+}

@@ -4,8 +4,8 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { MuiTheme } from 'settings/MuiTheme';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import {HTML5Backend} from 'react-dnd-html5-backend'
+import { BrowserRouter, Route } from 'react-router-dom'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 import { DndProvider } from 'react-dnd'
 
 import Popup from 'react-popup';
@@ -24,9 +24,9 @@ ReactDOM.render(
         <MuiThemeProvider theme={muiTheme}>
             <DndProvider backend={HTML5Backend}>
                 <Popup />
-                <Router>
+                <BrowserRouter>
                     <Route path='/' component={App} />
-                </Router>
+                </BrowserRouter>
             </DndProvider>
         </MuiThemeProvider>
     </Provider>,

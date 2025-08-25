@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 import { Container, Row, Col } from 'react-bootstrap'
-import { lc, lcs } from 'components/util/Locales'
+import { lc } from 'components/util/Locales'
 
 import Area from 'components/canvas/Area'
 import Base from 'components/canvas/types/Base';
@@ -9,10 +9,8 @@ import Base from 'components/canvas/types/Base';
 import c from 'resources/css/canvas/types/Base.module.css'
 
 
-class Exo extends Base
-{
-  render()
-  {
+class Exo extends Base {
+  render() {
     const { type, hypothesis, match } = this.props;
     const footerLegend = type.l_legend;
     const areas = type.areas;
@@ -27,7 +25,7 @@ class Exo extends Base
     return (
       <div className={c.module}>
 
-        <Container className={cx(c.container, c.fullwidth, "animated fast", this.state.animation)}>
+        <Container className={cx(c.container, c.fullwidth)}>
           <Row className={c.fullwidth} data-height={20}>
             <Col md className={c.col}>
               <div className={c.content}>

@@ -1,5 +1,4 @@
-import * as React from "react";
-import $ from "jquery";
+import { useState } from "react";
 import cx from "classnames";
 import redux from "seed/redux";
 import { Link } from "react-router-dom";
@@ -13,97 +12,90 @@ import AreaForm from "components/canvas_forms/Area";
 
 import c from "resources/css/canvas/Area.module.css";
 
-import { CHATBOT } from "settings/Config";
-import { useState } from "react";
-import ModalBot from "./ModalBot";
-import { text } from "body-parser";
-import { dumpTextGen, textGeneration } from "./GenerateText";
-import Hypotheses from "actions/hypotheses";
-let area38hypo = ""
-class Area extends React.Component {
+// import { CHATBOT } from "settings/Config";
+// import { useState } from "react";
+// import ModalBot from "./ModalBot";
+// import { text } from "body-parser";
+// import { dumpTextGen, textGeneration } from "./GenerateText";
+// import Hypotheses from "actions/hypotheses";
 
-  render() {
-    const { area = {}, hypothesis = [] } = this.props;
-    const { maxHypothesis } = this.props;
-    const { showAreaForm, modal } = this.state;
-    const { url } = this.props.match;
-    let name = area.l_name ? area.l_name : {};
-    
+// let area38hypo = ""
 
-    const hypothesisS = hypothesis
-      .sort((h1, h2) => h2.id - h1.id)
-      .filter((h) => h.is_active);
-     
-    // TODO: Locate My Project
-   
-     if (hypothesis[0] && hypothesis[0].area_id === 38) {
-      area38hypo = String(hypothesis[0].text);
-      
-     }
+function Area(props) {
+  const { area = {}, hypothesis = [], maxHypothesis, selectedColor, setSelectedColor, match, projects, disableOptions = false } = props;
+  const [showAreaForm, setShowAreaForm] = useState(false);
+  const { url } = match;
 
-    const numHypothesis = hypothesisS.length;
+  let name = area.l_name ? area.l_name : {};
 
-    // TODO : Project ID here
-    let projectId = localStorage.getItem("projectId");
-    const project = this.props.projects.filter((p) => p.id == projectId)[0];
+  const hypothesisS = hypothesis
+    .sort((h1, h2) => h2.id - h1.id)
+    .filter((h) => h.is_active);
 
-    if (project == null) return <div></div>;
-    const hypothesisList = hypothesisS.map((h) =>
-      h.is_active ? (
-        <div className={c.item}>
-          <Hypothesis
-            area={area}
-            hypothesis={h}
-            project={project}
-            selectedColor={this.props.selectedColor}
-            setSelectedColor={this.props.setSelectedColor}
-            match={this.props.match}
-          />
-        </div>
-      ) : null
-    );
+  // TODO: Locate My Project
+  // if (hypothesis[0] && hypothesis[0].area_id === 38) {
+  //   area38hypo = String(hypothesis[0].text);
+  // }
 
-    const numH =
-      maxHypothesis != null ? (
-        <span className={c.numH}>{`(${numHypothesis}/${maxHypothesis})`}</span>
-      ) : null;
+  const numHypothesis = hypothesisS.length;
 
-    return (
-      <div
-        className={c.module}
-        // onMouseEnter={this.showOptions}
-        // onMouseLeave={this.hideOptions}
-        onClick={this.onClick}
-      >
+  // TODO : Project ID here
+  const projectId = parseInt(localStorage.getItem('projectId'));
+  const project = projects.find((p) => p.id === projectId);
+  if (project == null) return <></>;
+
+  const hypothesisList = hypothesisS.map((h) =>
+    // h.is_active &&
+      <div className={c.item} key={h.id}>
+        <Hypothesis
+          area={area}
+          hypothesis={h}
+          project={project}
+          selectedColor={selectedColor}
+          setSelectedColor={setSelectedColor}
+          match={match}
+        />
+      </div>
+  );
+
+  const numH = maxHypothesis != null && <span className={c.numH}>{`(${numHypothesis}/${maxHypothesis})`}</span>
+
+  const handleShowAreaForm = () => setShowAreaForm(true);
+  const handleCloseAreaForm = () => setShowAreaForm(false);
+
+  return (
+    <div className={c.module}>
+      { !disableOptions && 
         <div className={c.options}>
-          {area.category.startsWith("BLANK") &&
-            hasProjectPermission(project, ["MEMBER"]) ? (
+          {(area.category.startsWith("BLANK") && hasProjectPermission(project, ["MEMBER"])) &&
             <div
-              onClick={this.showAreaForm}
+              onClick={handleShowAreaForm}
               className={cx(c.edit, c.option, "fas fa-pencil-alt")}
-            ></div>
-          ) : null}
-          {(maxHypothesis == null || numHypothesis < maxHypothesis) &&
-            hasProjectPermission(project, ["MEMBER"]) ? (
+            />
+          }
+
+          {((maxHypothesis == null || numHypothesis < maxHypothesis) && hasProjectPermission(project, ["MEMBER"])) &&
             <Link to={`${url}/add-hypothesis/${area.id}`}>
-              <div className={cx(c.add, c.option, "fas fa-plus")}></div>
+              <div className={cx(c.add, c.option, "fas fa-plus")} />
             </Link>
-          ) : null}
-          {!area.category.startsWith("BLANK") ? (
+          }
+
+          {!area.category.startsWith("BLANK") &&
             <Link to={`${url}/area/${area.id}/help`}>
-              <div className={cx(c.info, c.option, "fas fa-question")}></div>
+              <div className={cx(c.info, c.option, "fas fa-question")} />
             </Link>
-          ) : null}
+          }
+
           <Link to={`${url}/area/${area.id}/insights`}>
-            <div className={cx(c.insight, c.option, "fas fa-lightbulb")}></div>
+            <div className={cx(c.insight, c.option, "fas fa-lightbulb")} />
           </Link>
 
           {/* //TODO Here is the something */}
           {/* projectId, area.id, hypothesisS[0]) */}
           {/* <Link
             onClick={() => {
-              // this.toggleModal(); 
-                dumpTextGen(projectId, area, hypothesis, area38hypo);
+              // toggleModal();
+              // dumpTextGen(projectId, area, hypothesis, area38hypo);
             }}
           >
             <div>
@@ -111,74 +103,28 @@ class Area extends React.Component {
             </div>
           </Link> */}
         </div>
+      }
 
-        <div className={c.title}>
-          {area.category.startsWith("BLANK") && name.ref == "" ? (
-            <i onClick={this.showAreaForm}>{lcs("write_a_name")}</i>
-          ) : (
-            <Link to={`${url}/area/${area.id}`}>
-              {area.category.startsWith("BLANK") ? name.ref : lc(name)}
-            </Link>
-          )}{" "}
-          {numH}
-        </div>
-        {/* Hypothesis List */}
-        <div className={c.container}>{hypothesisList}</div>
-
-        {showAreaForm ? (
-          <Modal
-            match={this.props.match}
-            onClose={this.closeAreaForm}
-            width={400}
-            height={400}
-          >
-            <AreaForm area={area} />
-          </Modal>
-        ) : null}
+      <div className={c.title}>
+        {area.category.startsWith("BLANK") && name.ref === "" ? (
+          <i onClick={handleShowAreaForm}>{lcs("write_a_name")}</i>
+        ) : (
+          <Link to={`${url}/area/${area.id}`}>
+            {area.category.startsWith("BLANK") ? name.ref : lc(name)}
+          </Link>
+        )}{" "}
+        {numH}
       </div>
-    );
-  }
-  constructor(props) {
-    super(props);
-    this.state = {
-      showAreaForm: false,
-      modal: false,
-    };
-    this.showAreaForm = this.showAreaForm.bind(this);
-    // this.showOptions = this.showOptions.bind(this);
-    // this.hideOptions = this.hideOptions.bind(this);
-    this.closeAreaForm = this.closeAreaForm.bind(this);
-    this.toggleModal = this.toggleModal.bind(this);
-  }
-  toggleModal = () => {
-    this.setState((prevState) => ({
-      modal: !prevState.modal,
-    }));
-  };
 
+      <div className={c.container}>{hypothesisList}</div>
 
-  showAreaForm() {
-    this.setState({
-      showAreaForm: true,
-    });
-  }
-
-  closeAreaForm() {
-    this.setState({
-      showAreaForm: false,
-    });
-  }
-
-  showOptions = (e) =>
-    $(e.currentTarget)
-      .find("." + c.options)
-      .fadeIn();
-
-  hideOptions = (e) => {
-    $(e.currentTarget)
-      .find("." + c.options)
-      .fadeOut();
-  };
+      {showAreaForm ? (
+        <Modal match={match} onClose={handleCloseAreaForm} width={400} height={400}>
+          <AreaForm area={area} />
+        </Modal>
+      ) : null}
+    </div>
+  );
 }
 
 const DndWrapper = (props) => {
