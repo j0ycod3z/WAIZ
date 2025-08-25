@@ -13,22 +13,20 @@ import { Bar } from 'react-chartjs-2';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title);
 
-class DoubleBarChartCard extends React.Component
+function DoubleBarChartCard (props)
 {
-  render()
-  {
-    const { labels = [], data = [], label = "", percentage=true } = this.props;
+    const { labels = [], data = [], label = "", percentage=true } = props;
 
     const dataset = {
-      labels: labels,
+      labels,
       datasets: [
         {
-          label: label,
+          label,
           backgroundColor: '#A3A1FB',
           borderWidth: 0,
           hoverBackgroundColor: '#8482DE',
           hoverBorderWidth: 0,
-          data: data
+          data
         }
       ]
     };
@@ -68,7 +66,6 @@ class DoubleBarChartCard extends React.Component
 
       </div>
     )
-  }
 }
 
 export default DoubleBarChartCard;

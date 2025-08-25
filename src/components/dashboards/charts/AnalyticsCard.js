@@ -6,13 +6,13 @@ import { format } from 'components/dashboards/util/Util'
 import { NavLink } from 'react-router-dom';
 
 
-class AnalyticCard extends React.Component
+function AnalyticCard (props)
 {
   render()
   {
-    const data = this.props.data;
-    const { url } = this.props.match;
-    const { project_id } = this.props.match.params;
+    const {data, match} = props;
+    const { url } = match;
+    const { project_id } = match.params;
 
     return (
       <div className={c.module}>

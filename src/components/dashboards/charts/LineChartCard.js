@@ -15,13 +15,11 @@ import { Line } from 'react-chartjs-2';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title);
 
-class LineChartCard extends React.Component
+function LineChartCard (props)
 {
-  render()
-  {
-    const { hypothesisCount = {}, interviewsCount = {}, labels = [], datasets = [] } = this.props;
+    const { hypothesisCount = {}, interviewsCount = {}, labels = [], datasets = [] } = props;
     const data = {
-      labels: labels,
+      labels,
       datasets: datasets.map((d, idx) => ({
         label: d.label,
         fill: false,
@@ -107,7 +105,6 @@ class LineChartCard extends React.Component
 
       </div>
     )
-  }
 }
 
 export default LineChartCard;

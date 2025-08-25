@@ -14,16 +14,14 @@ import { Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title);
 
-class DoughnutChartCard extends React.Component
+function DoughnutChartCard (props)
 {
-  render()
-  {
-    const { labels = [], data = [] } = this.props
+    const { labels = [], data = [] } = props
 
     const dataset = {
-      labels: labels,
+      labels,
       datasets: [{
-        data: data,
+        data,
         backgroundColor: getColors(labels.length),
         hoverBackgroundColor: getColors(labels.length).map(c => bright(c, 0.85)),
         hoverBorderColor: getColors(labels.length).map(c => bright(c, 0.85)),
@@ -56,7 +54,6 @@ class DoughnutChartCard extends React.Component
 
       </div>
     )
-  }
 }
 
 export default DoughnutChartCard;

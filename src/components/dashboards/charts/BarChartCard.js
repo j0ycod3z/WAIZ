@@ -14,11 +14,11 @@ import { Bar } from 'react-chartjs-2';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title);
 
-class BarChartCard extends React.Component
+function BarChartCard (props)
 {
   render()
   {
-    const { labels = [], data = [], color = '#5B558B', label = '', showNames = false } = this.props;
+    const { labels = [], data = [], color = '#5B558B', label = '', showNames = false, Title } = props;
     const dataset = {
       labels: labels,
       datasets: [
