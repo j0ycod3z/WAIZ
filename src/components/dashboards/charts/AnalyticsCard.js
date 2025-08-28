@@ -8,15 +8,12 @@ import { NavLink } from 'react-router-dom';
 
 function AnalyticCard (props)
 {
-  render()
-  {
     const {data, match} = props;
     const { url } = match;
     const { project_id } = match.params;
 
     return (
       <div className={c.module}>
-
         <div className={c.analyticCard}>
           <div className={c.analyticCardLeft}>
             <h3 className={c.title}>{data.name}</h3>
@@ -68,7 +65,6 @@ function AnalyticCard (props)
         </div>
         </div>
     )
-  }
 }
 
 export default AnalyticCard;
