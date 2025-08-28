@@ -11,7 +11,7 @@ import BarChartCard from 'components/dashboards/charts/BarChartCard';
 
 function Details (props)
 {
-    const { projectData = {}, hLabels = [], hDatasets = [], iLabels = [], iDatasets = [] } = this.props;
+    const { projectData = {}, hLabels = [], hDatasets = [], iLabels = [], iDatasets = [] } = props;
 
     let hipDataset = [];
     for (let h of hDatasets) {
