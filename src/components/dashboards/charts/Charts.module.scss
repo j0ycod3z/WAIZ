@@ -1,4 +1,4 @@
-@import 'src/resources/base';
+@use 'src/resources/base' as base;
 
 .module {
   width: 100%;
@@ -31,7 +31,6 @@
   .title{
     font-size: 18px;
     margin-bottom: 20px;
-    font-family: "Open Sans";
     font-weight: bold;
   }
 
@@ -90,7 +89,6 @@
   max-height: 330px;
   justify-content: center;
   align-items: center;
-  font-family: "Open Sans";
 
   .circle{
     border-radius: 50%;
@@ -134,7 +132,7 @@
   background-color: white;
   border: 1px solid #ECECEC;
   color: #686868;
-  padding: 30px;
+  padding: 15px;
   display: flex;
   align-items: center;
 

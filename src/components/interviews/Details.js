@@ -11,7 +11,6 @@ import { hasProjectPermission } from 'components/util/Permissions';
 import Modal from 'seed/components/helpers/Modal';
 import Form from 'components/interviews/Form'
 import { lcs } from 'components/util/Locales'
-import "react-bootstrap";
 
 import c from 'resources/css/interviews/Details.module.css'
 

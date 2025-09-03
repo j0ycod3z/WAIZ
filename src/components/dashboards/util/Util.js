@@ -1,7 +1,5 @@
-export function bright(hex, b)
-{
-  function hexToRgb(hex)
-  {
+export function bright(hex, b) {
+  function hexToRgb(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result ? {
       r: parseInt(result[1], 16),
@@ -9,8 +7,7 @@ export function bright(hex, b)
       b: parseInt(result[3], 16)
     } : null;
   }
-  function rgbToHex(c)
-  {
+  function rgbToHex(c) {
     var hex = c.toString(16);
     return hex.length == 1 ? "0" + hex : hex;
   }
@@ -36,21 +33,18 @@ const colors = [
   '#FFD700'
 ]
 
-export function getColor(idx)
-{
+export function getColor(idx) {
   return colors[idx % colors.length]
 }
 
-export function getColors(len)
-{
+export function getColors(len) {
   let res = [];
   for (let i = 0; i < len; i++)
     res.push(colors[i % colors.length])
   return res;
 }
 
-export function format(str, maxLen = 14)
-{
+export function format(str, maxLen = 14) {
   if ( str == null || str.length == 0) return "" 
   const res = str.charAt(0).toUpperCase() + str.slice(1).toLowerCase().replace(/_/g, " ");
   if (res.length > maxLen) return res.substring(0, maxLen) + "…"

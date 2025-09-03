@@ -1,4 +1,4 @@
-@import 'src/resources/base';
+@use 'src/resources/base' as base;
 
 .module {
   width: 100%;
@@ -48,4 +48,3 @@
     }
   }
 }
-

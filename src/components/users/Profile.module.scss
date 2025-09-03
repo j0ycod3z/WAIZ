@@ -1,126 +1,127 @@
-@import "src/resources/base.scss";
-@import "src/resources/forms.scss";
-@import "src/resources/layout.scss";
-@import "./ProfileForms.module.scss";
+@use "src/resources/base" as base;
+@use "src/resources/forms" as forms;
+@use "src/resources/layout" as layout;
 
-$imageSize: 180px;
-$marginTop: 16px;
-
-.module {
-  @include fonts();
-  height: 100%;
-  width: 100%;
+.module .card{
+  margin-bottom: 15px;
 }
 
 .module .mainCard {
-  background: $orange-primary-1;
+  background: base.$orange-primary-1;
   color: #fff;
-}
 
-.module .mainCard a {
-  color: #fff;
+  a {
+    color: #fff;
+  }
 }
 
 .module .profileImageContainer {
-  width: $imageSize;
-  height: $imageSize;
-  -webkit-border-radius: $imageSize;
-  -webkit-background-clip: padding-box;
-  -moz-border-radius: $imageSize;
-  -moz-background-clip: padding;
-  border-radius: $imageSize;
-  background-clip: padding-box;
-  background-size: cover;
-  background-position: center center;
-  margin: 0 auto;
-  float: none;
+  display: inline-block;
+  object-fit: cover;
+  align-self: center;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
   border: 3px solid #fff;
 }
 
 .module .openButton {
-  background-color: $green;
-  color: $white;
+  background-color: base.$green;
+  color: base.$white;
   min-height: 32px;
   width: 120px;
 
   &:hover {
-    background-color: $green-hover;
+    background-color: base.$green-hover;
   }
 }
 
-
 .module .username {
-  margin: 0 auto;
-  float: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
   text-align: center;
   font-size: 24px;
   font-weight: bold;
-  margin-top: $marginTop;
-}
-
-.module .marginTop {
-  margin-top: $marginTop;
-}
-
-.module .paddingBottom {
-  padding-bottom: ($marginTop)-10px;
 }
 
 .module .cardSection {
-  @extend .marginTop;
-  @extend .paddingBottom;
-  border-bottom: 1px solid $white-light;
+  border-bottom: 1px solid base.$white-light;
 }
 
 .module .list {
   list-style-type: none;
-}
+  padding: 10px 0;
+  margin: 0;
 
-.module .skillsHeader {
-  padding: 28px;
-  background-color: $primary;
-  color: $white;
-  border-radius: 4px;
-
-  .title {
-    font-size: 18px;
-    font-family: "PT Serif", serif;
+  i {
+    min-width: 14px;
+    margin-right: 6px;
   }
 }
 
-.module .greyBox {
-  padding: 12px;
-}
+.module .skillsHeader {
+  background-color: base.$primary;
+  color: base.$white;
+  gap: 20px;
 
-.module .greyBox td {
-  border-right: 1px solid #ccc;
-}
+  span {
+    color: rgba(255, 255, 255, 0.8);
+  }
 
-.module .transparentBox {
-  padding: 12px 0px;
-}
+  .title {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 18px;
+  }
 
-.module .transparentBox td {
-  border-right: 1px solid #ccc;
-  padding: 12px;
-}
+  .skillList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 
-.module .flexHorz {
-  display: flex;
-  justify-content: left;
-  flex-direction: row;
+  .progress {
+    background-color: base.$primary-dark;
+    height: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .progressPrimary {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
 }
 
 .module .bigList {
   .element {
-    border-bottom: 1px solid $grey-light;
     padding: 6px;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid base.$grey-light;
+    }
   }
 
   .link {
-    color: $primary;
-    font-family: "PT Serif", serif;
-    font-size: 18px;
+    color: base.$primary;
+
+    span {
+      font-size: 18px;
+    }
+
+    &:hover {
+      text-decoration: none;
+
+      span {
+        text-decoration: underline;
+      }
+    }
   }
 
   .title {
@@ -128,64 +129,15 @@ $marginTop: 16px;
   }
 }
 
-.module .table {
-  text-align: center;
-  font-size: 18px;
-
-  td {
-    text-align: center;
-    padding: 6px;
-    padding-right: 12px;
-    padding-left: 12px;
-
-    font-size: 16px;
-  }
-
-  .number {
-    font-weight: bold;
-  }
-
-  .validated {
-    color: $green;
-  }
-
-  .unvalid {
-    color: $red;
-  }
-
-  .untested {
-    color: $grey;
-  }
-}
-
-
-.module .progress {
-  background-color: $primary-dark;
-  height: 20px;
-  margin-bottom: 10px;
-}
-
-.module .progressPrimary,
-.module .progressSecondary {
-  background-color: rgba(255, 255, 255, 0.4);
-  cursor: pointer;
-}
-
-.module .progressPrimary:hover,
-.module .progressSecondary:hover {
-  background-color: rgb(255, 255, 255);
-  color: $primary-dark;
-  font-weight: bold;
-}
-
 .module .cardTitle {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   background-color: #eee;
   border-radius: 4px;
   color: #444;
   width: 100%;
   padding: 10px;
-  margin-bottom: 20px;
 }
 
 .sidebarItem {
@@ -203,7 +155,6 @@ $marginTop: 16px;
 }
 
 .makeMeSticky {
-  position: -webkit-sticky;
   position: sticky;
   top: 10px;
 
@@ -215,27 +166,24 @@ $marginTop: 16px;
 .module .formTable {
   width: 100%;
 
-  td {
-    vertical-align: center;
-    text-align: center !important;
-    padding-top: 8px;
-    padding-bottom: 8px;
+  th {
+    text-align: center;
   }
 
-  th {
-    text-align: center !important;
+  th, td {
+    padding: 8px;
   }
 }
 
 
 .buttonGreenLight {
-  color: $green;
-  border: 1px solid $green;
+  color: base.$green;
+  border: 1px solid base.$green;
 }
 
 .buttonGreen {
   color: white;
-  background: $green;
+  background: base.$green;
   border: none;
 }
 
@@ -258,7 +206,6 @@ $marginTop: 16px;
   font-size: 14px;
   padding: 12px;
   font-weight: bold;
-  @include box-sizing(border-box);
 }
 
 .done {
@@ -270,5 +217,45 @@ $marginTop: 16px;
   font-size: 14px;
   padding: 12px;
   font-weight: bold;
-  @include box-sizing(border-box);
+}
+
+.module .editGeneric {
+  display: inline-flex;
+  border: none;
+  padding: 0;
+  background: transparent;
+  font-size: 16px;
+}
+
+.module .edit {
+  @extend .editGeneric;
+  color: base.$blue-primary-1;
+  font-size: 18px;
+  &:hover {
+    color: base.$blue-light;
+  }
+}
+
+.module .editLight {
+  @extend .editGeneric;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: base.$white;
+  font-size: 20px;
+  &:hover {
+    color: base.$yellow-canou;
+  }
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.btnContainer {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
 }

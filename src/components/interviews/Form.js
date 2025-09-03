@@ -7,8 +7,6 @@ import { Formik, Field } from 'formik';
 import Loading from 'seed/components/helpers/Loading'
 import Insights from 'components/interviews/Insights'
 
-import "react-bootstrap";
-
 import c from 'resources/css/interviews/Form.module.css'
 
 function Form(props) {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { lcs, getDate } from 'components/util/Locales'
-import "react-bootstrap";
 
 function Item(props) {
   const { interview: {

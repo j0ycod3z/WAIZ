@@ -1,4 +1,4 @@
-@import 'src/resources/base';
+@use 'src/resources/base' as base;
 
 .module {
   width: 100%;
@@ -16,7 +16,6 @@
 .pageTitle {
   margin-bottom: 20px;
   font-size: 17px;
-  font-family: "Open Sans";
   font-weight: bold;
   text-transform: uppercase;
 }

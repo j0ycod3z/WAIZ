@@ -32,7 +32,7 @@ function Members(props) {
   }
 
   function renderMore(num, key) {
-    const { project } = this.props;
+    const { project } = props;
     return (
       <Link key={key} to={`/app/project_profile/${project.id}`}>
         <div className={c.teamElementMore}>

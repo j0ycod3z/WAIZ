@@ -23,7 +23,7 @@
 - [x] Project Admin
 - [x] Projects
 - [x] Search
-- [ ] Users
+- [x] Users
 - [x] Util
 
 <br>
