@@ -2,14 +2,14 @@ import { useState } from 'react';
 import redux from 'seed/redux';
 import cx from 'classnames';
 import { lcs } from 'components/util/Locales';
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'; //import { useParams } from 'react-router-dom'; to replace
 import waizLogo from 'resources/images/waiz_logo_white.svg';
 
 import c from 'resources/css/auth/Login.module.css';
 
 function Login(props) {
   const { match, history, getUserDetails } = props;
-  const { action } = match.params;
+  const { action } = match.params; //const { action } = useParams(); to replace
 
   const [missingPayment, setMissingPayment] = useState(false);
   const [error, setError] = useState(undefined);
