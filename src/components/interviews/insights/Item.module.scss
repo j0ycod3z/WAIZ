@@ -16,7 +16,7 @@
   display: inline-block;
   font-size: 13px;
   padding: 3px 7px;
-  @include base.border-radius(12px);
+  border-radius: 12px;
 
   &.must_have {
     background-color: base.$green;
@@ -50,7 +50,7 @@
     margin-right: 10px;
     background-position: center center;
     background-repeat: no-repeat;
-    @include base.border-radius(50%);
+    border-radius: 50%;
   }
   
   .date {
@@ -78,7 +78,7 @@
   color: white;
   padding: 4px 5px;
   cursor: pointer;
-  @include base.border-radius(50%);
+  border-radius: 50%;
 }
 
 .delete {

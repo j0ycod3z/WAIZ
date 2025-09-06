@@ -7,14 +7,14 @@ $elementWidth: $width - (2 * $horizontal-margin);
 .module {
   position: relative;
   display: flex;
+  width: 100%;
 }
 
 .module .element {
-  width: $elementWidth;
   display: flex;
   flex-direction: column;
-  gap: 7px;
-  margin: 0 12px;
+  gap: 6px;
+  width: 100%;
 }
 
 .module button {
@@ -24,7 +24,7 @@ $elementWidth: $width - (2 * $horizontal-margin);
   text-align: center;
   font-weight: bold;
   font-size: 12px;
-  width: $elementWidth;
+  width: 100%;
 }
 
 .module .navButton{

@@ -57,7 +57,7 @@
   margin-bottom: 15px;
   padding: 11px 16px;
   border: 1px solid #e7e7e7;
-  @include base.border-radius(7px);
+  border-radius: 7px;
 
   &:hover, &:focus {
     background-color: base.$grey-light;

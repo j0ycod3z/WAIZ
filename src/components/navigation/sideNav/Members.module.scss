@@ -8,13 +8,14 @@ $elementWidth: $width - (2 * $horizontal-margin);
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
 }
+
 .module .element {
-  width: $elementWidth;
   display: flex;
   flex-direction: column;
-  gap: 7px;
-  margin: 0 12px;
+  gap: 6px;
+  width: 100%;
 }
 
 .module .team {

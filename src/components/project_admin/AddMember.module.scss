@@ -32,7 +32,7 @@
   padding: 10px 14px;
   font-size: 18px;
   border: 1px solid #e0e0e0;
-  @include base.border-radius(6px);
+  border-radius: 6px;
 }
 
 .call {
@@ -46,7 +46,7 @@
   color: #fff;
   background-color: base.$green;
   border: none;
-  @include base.border-radius(6px);
+  border-radius: 6px;
 
   &:hover {
     background-color: base.$green-hover;

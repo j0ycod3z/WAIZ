@@ -25,5 +25,5 @@
   width: 150px !important;
   padding: 10px;
   margin: 0px;
-  @include base.border-radius(20px);
+  border-radius: 20px;
 }

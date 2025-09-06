@@ -48,7 +48,7 @@
   right: 10px;
   display: none;
   cursor: pointer;
-  @include base.border-radius(14px);
+  border-radius: 14px;
 }
 
 .options.focused {
@@ -106,5 +106,5 @@
   background: #eee;
   margin-right: 5px;
   cursor: pointer;
-  @include base.border-radius(50%);
+  border-radius: 50%;
 }

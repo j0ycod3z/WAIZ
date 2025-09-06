@@ -1,5 +1,5 @@
-# Modernization Guide
-- [Modernization.md](Modernization.md)
+# Modernization md
+Click here &rarr; [Modernization.md](Modernization.md)
 ---
 <br><br><br>
 
