@@ -15,8 +15,8 @@ function Dashboards(props) {
   const cohortId = localStorage.getItem('cohortId');
 
   return (
-    <div className={c.module}>
-      <div className={c.dashboardsBody}>
+    <div className={cx(c.module, 'container')}>
+      <div className={cx(c.dashboardsBody, 'col-md-12')}>
         <div className={c.dashboardsMenu}>
           <NavLink activeClassName={c.active} className={c.btn} to={`${url}/performance`}>
             {lcs("performance")}

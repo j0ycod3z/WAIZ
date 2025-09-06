@@ -55,7 +55,7 @@
   font-size: 13px;
   color: #fff;
   text-align: center;
-  @include base.border-radius(4px);
+  border-radius: 4px;
 }
 
 .brand {
@@ -66,5 +66,5 @@
   padding: 4px;
   font-size: 13px;
   text-align: center;
-  @include base.border-radius(4px);
+  border-radius: 4px;
 }

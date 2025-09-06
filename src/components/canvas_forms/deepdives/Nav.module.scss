@@ -25,7 +25,7 @@
   color: #666;
   cursor: pointer;
   border: 2px solid #279af3;
-  @include base.border-radius(50%);
+  border-radius: 50%;
 }
 
 .item.active {

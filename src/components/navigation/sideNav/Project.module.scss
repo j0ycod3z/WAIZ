@@ -7,6 +7,7 @@ $elementWidth: $width - (2 * $horizontal-margin);
 .module {
   position: relative;
   display: flex;
+  width: 100%;
 }
 
 .module .footer {
@@ -16,11 +17,10 @@ $elementWidth: $width - (2 * $horizontal-margin);
 }
 
 .module .element {
-  width: $elementWidth;
   display: flex;
   flex-direction: column;
-  gap: 7px;
-  margin: 0 12px;
+  gap: 6px;
+  width: 100%;
 }
 
 .module .logo {
@@ -43,7 +43,7 @@ $elementWidth: $width - (2 * $horizontal-margin);
   font-weight: bold;
   font-size: 12px;
   text-transform: capitalize;
-  width: $elementWidth;
+  width: 100%;
 }
 .module .navButton{
   display: block;

@@ -19,7 +19,7 @@
   background-color: base.$green;
   border: none;
   cursor: pointer;
-  @include base.border-radius(20px);
+  border-radius: 20px;
 }
 
 @media (max-width: 1200px) {

@@ -62,5 +62,5 @@
   background-color: #11C26F;
   border: none;
   cursor: pointer;
-  @include base.border-radius(6px);
+  border-radius: 6px;
 }
