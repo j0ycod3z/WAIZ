@@ -1,13 +1,8 @@
-@import "src/resources/base.scss";
-@import "src/resources/layout.scss";
-@import "src/resources/forms.scss";
+@use "src/resources/base.scss" as base;
+@use "src/resources/layout.scss" as layout;
+@use "src/resources/forms.scss" as forms;
 
-.module {
-  height: 100%;
-  width: 100%;
-}
-
-.module>div>div {
+.module > div > div {
   margin-top: 0px !important;
 }
 
@@ -21,10 +16,10 @@
   margin-left: 40px;
   font-size: 14px;
   color: #fff;
-  background-color: $green;
+  background-color: base.$green;
   border: none;
   cursor: pointer;
-  @include border-radius(20px);
+  border-radius: 20px;
 }
 
 @media (max-width: 1200px) {

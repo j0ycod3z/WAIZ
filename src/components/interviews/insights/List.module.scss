@@ -1,4 +1,4 @@
-@import "src/resources/base.scss";
+@use "src/resources/base.scss" as base;
 
 .module {
   width: 100%;
@@ -8,16 +8,19 @@
 .itemContainer {
   border: 1px solid #e0e0e0;
   background: #fff;
-  margin-bottom: 10px;
 }
+.itemContainer:not(:last-child){
+  margin-bottom: 8px;
 
+}
 .empty {
   width: 100%;
   text-align: center;
   font-size: 14px;
   font-style: italic;
   color: #aaa;
-  padding: 60px 20px;
+  min-height: 150px;
+  align-content: center;
 
   i {
     margin-bottom: 14px;

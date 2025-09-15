@@ -1,0 +1,58 @@
+@use "src/resources/base" as base;
+@use "src/resources/forms" as forms;
+@use "src/resources/layout" as layout;
+
+@mixin jumbotron {
+  background-color: base.$primary-dark;
+  padding: 20px 30px;
+  margin-bottom: 70px;
+}
+
+@mixin loading {
+  position: absolute;
+  margin-left: 130px;
+  width: 100px;
+  height: 100px;
+}
+
+@mixin back {
+  height: 32px;
+  cursor: pointer;
+}
+
+@mixin image {
+  height: 58px;
+  width: auto;
+}
+
+@mixin title {
+  margin-bottom: 20px;
+  line-height: 1.4em;
+}
+
+@mixin small {
+  color: #999;
+  font-size: 15px;
+}
+
+
+@mixin alertMsg{
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 14px;
+  padding: 12px;
+  font-weight: bold;
+}
+
+@mixin error {
+  background-color: #ffeeee;
+  color: #a05050;
+  @include alertMsg();
+}
+
+@mixin payment {
+  background-color: #f0eef0;
+  color: #a050a0;
+  text-align: center;
+  @include alertMsg();
+}

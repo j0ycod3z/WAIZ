@@ -1,4 +1,4 @@
-@import "src/resources/base.scss";
+@use "src/resources/base.scss" as base;
 
 .module {
   width: 100%;
@@ -8,10 +8,10 @@
 .header {
   width: 100%;
   padding: 23px 20px;
-  background-color: #198CE5;
+  background-color: base.$blue-primary-1;
   color: #fff;
   font-size: 20px;
-  @include border-radius-all(5px, 5px, 0, 0);
+  border-radius: 5px 5px 0 0;
 }
 
 .module .loading {
@@ -22,39 +22,17 @@
 }
 
 .content {
-  padding: 20px 20px 30px 20px;
+  padding: 20px;
   background: #fff;
-  @include border-radius-all(0px, 0px, 5px, 5px);
+  border-radius: 0 0 5px 5px;
 }
 
 .input {
   width: 100%;
   padding: 10px 14px;
-  margin-bottom: 2px;
   font-size: 18px;
   border: 1px solid #e0e0e0;
-  @include border-radius(20px);
-  @include box-sizing(border-box);
-}
-
-.customers,
-.colors,
-.types {
-  margin-top: 14px;
-}
-
-.customers b,
-.colors b,
-.types b {
-  display: inline-block;
-  margin-bottom: 7px;
-}
-
-.typeContainer {
-  border: 1px solid #e0e0e0;
-  padding: 8px 16px;
-  height: 120px;
-  overflow: auto;
+  border-radius: 6px;
 }
 
 .call {
@@ -66,10 +44,13 @@
   margin-top: 20px;
   font-size: 15px;
   color: #fff;
-  background-color: #11C26F;
+  background-color: base.$green;
   border: none;
-  cursor: pointer;
-  @include border-radius(20px);
+  border-radius: 6px;
+
+  &:hover {
+    background-color: base.$green-hover;
+  }
 }
 
 .error {
@@ -81,9 +62,4 @@
   font-size: 14px;
   padding: 12px;
   font-weight: bold;
-  @include box-sizing(border-box);
-}
-
-.call:hover {
-  background-color: #11B24F;
 }

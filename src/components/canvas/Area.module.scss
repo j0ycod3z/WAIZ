@@ -1,32 +1,29 @@
-@import "src/resources/base.scss";
+@use "src/resources/base" as base;
+@use "src/resources/layout" as layout;
 
 .module {
   display: block;
-  width: 100%;
-  height: 100%;
   padding: 12px;
   cursor: pointer;
 }
 
 .title {
-  font-size: 14px;
-  padding-bottom: 4px;
-  color: #777;
-}
+  display: flex;
+  font-weight: normal !important;
+  margin-bottom: 4px;
 
-.title i {
-  color: #a0a0a0;
-}
-
-.title a {
-  color: #777;
-  font-family: inherit;
-}
-
-.title .numH {
-  color: #F0B010;
-  font-size: 0.85em;
-  margin-left: 4px;
+  i {
+    color: #a0a0a0;
+  }
+  a {
+    color: #777;
+    font-family: inherit;
+  }
+  .numH {
+    color: base.$accent-color;
+    font-size: 0.85rem;
+    margin-left: 4px;
+  }
 }
 
 .options {
@@ -34,15 +31,15 @@
   top: 10px;
   background: #fff;
   right: 10px;
+  display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0; /* Hide icons initially */
-  display: flex; /* Flex display for single-line alignment */
-  transition: opacity 0.3s ease; /* Smooth transition when shown */
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 .module:hover .options {
-  opacity: 1; /* Show icons */
-  position: absolute; /* Place them correctly when visible */
+  text-decoration: none;
+  opacity: 1;
 }
 
 .options .option {
@@ -51,7 +48,12 @@
   font-size: 13px;
   color: white;
   padding: 4px 5px;
-  @include border-radius(50%);
+  height: 23px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
 .add {
@@ -95,6 +97,14 @@
   background-color: #10a060;
 }
 
+.options a {
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .container {
   position: relative;
   width: 100%;
@@ -108,10 +118,10 @@
 .wrapperOther {
   position: relative;
   width: 25%;
-  padding: 0px 10px 0px 10px;
+  padding: 0px 10px;
 }
 
 .item {
-  padding: 8px 0px 6px 0px;
+  padding: 6px 0;
 }
 

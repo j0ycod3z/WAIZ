@@ -1,12 +1,10 @@
 import { lc, lcs } from 'components/util/Locales'
 
-const hypothesisToCsv = (hypothesis, type) =>
-{
+const hypothesisToCsv = (hypothesis, type) => {
   let res = [];
-  type.areas.map(area => 
-  {
-    const hs = hypothesis.filter(h => h.area_id == area.id && h.is_active).map(h => h.text);
-    if (hs.length == 0) {
+  type.areas.map((area) =>  {
+    const hs = hypothesis.filter(h => h.area_id === area.id && h.is_active).map(h => h.text);
+    if (hs.length === 0) {
       let data = {};
       data[lcs("building_block")] = lc(area.l_name);
       data[lcs("hypotheses")] = "";

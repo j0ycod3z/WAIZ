@@ -1,4 +1,4 @@
-@import "src/resources/base.scss";
+@use "src/resources/base.scss" as base;
 
 .module {
   background: #fff;;
@@ -16,6 +16,7 @@
 }
 
 .form input[type=text],
+.form input[type=tel],
 .form select,
 .form textarea {
   width: 100%;
@@ -24,8 +25,7 @@
   font-size: 14px;
   border: 1px solid #e0e0e0;
   background: white;
-  @include border-radius(4px);
-  @include box-sizing(border-box);
+  border-radius: 4px;
 }
 
 .form textarea {
@@ -42,12 +42,31 @@
   margin-bottom: 20px;
   font-size: 15px;
   color: #fff;
-  background-color: #11C26F;
+  background-color: base.$green;
   border: none;
-  cursor: pointer;
-  @include border-radius(20px);
+  border-radius: 6px;
+  
+  &:hover {
+    background-color: #11B24F;
+  }
 }
 
-.call:hover {
-  background-color: #11B24F;
+.containerWhite {
+  background-color: white;
+}
+
+.panelHeader {
+  margin: 1rem 0;
+}
+
+.header {
+  background-color: base.$green;
+  color: white;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.panelText {
+  background-color: #f5f5f5;
 }

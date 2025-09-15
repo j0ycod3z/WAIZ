@@ -1,140 +1,131 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import cx from 'classnames';
 import { hasProjectPermission } from 'components/util/Permissions';
 import { getBrText } from 'components/util/Format'
 import { lcs } from 'components/util/Locales'
 
-import 'resources/bootstrap.min.module.css';
 import c from 'resources/css/projects/Profile.module.css';
+import c2 from 'resources/css/projects/Header.module.css';
 
-class ProjectHeader extends Component
-{
+function ProjectHeader(props) {
+  const {
+    projectDetails: projectDetailsProp = {},
+    project,
+    setProject,
+    setProjectDetail,
+  } = props;
 
-  render()
-  {
+  const [editing, setEditing] = useState(false);
+  const [projectDetails, setProjectDetails] = useState({...projectDetailsProp});
+
+  const nor = (str) => {
+    let res = str.toLowerCase().replace(/_/g, " ");
+    return res.charAt(0).toUpperCase() + res.slice(1);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setEditing(false);
+
+    const proj = projectDetails.project;
+    const projectBody = {
+      name: proj.name,
+      description: proj.description,
+    };
+    setProject(proj.id, projectBody);
+
+    const detailsBody = {
+      website: projectDetails.website,
+      industry: projectDetails.industry,
+      country: projectDetails.country,
+      visibility: projectDetails.visibility,
+    };
+    setProjectDetail(projectDetails.id, detailsBody);
+  };
+
+  const onFieldChange = (field, subfield) => (e) => {
+    const value = e.target.value;
+
+    setProjectDetails((prev) => {
+      const updated = { ...prev };
+      if (subfield) {
+        updated[subfield][field] = value;
+      } else {
+        updated[field] = value;
+      }
+      return updated;
+    });
+  };
+
+  const onClickOpen = () => setEditing(true);
+  const onClickCancel = () => setEditing(false);
+
+  const renderCard = () => {
     return (
-      <div>{this.state.editing ? this.renderForm() : this.renderCard()}</div>
-    );
-  }
-
-  renderCard()
-  {
-    const { projectDetails = {} } = this.props;
-    const project = projectDetails.project;
-
-    const relation = lcs("member");
-    const nor = str =>
-    {
-      let res = str.toLowerCase().replace(/_/g, " ");
-      return res.charAt(0).toUpperCase() + res.slice(1)
-    }
-
-    return (
-      <div className={cx("card", c.card, c.blueGradient)}>
-        <div className={c.main}>
-          <div className={cx("card-body")}>
-            <h5 className={cx(c.mainCardTitle)}>
-              {project.name}&nbsp;
-              {hasProjectPermission(this.props.project, ["MEMBER"]) ?
-                <button
-                  onClick={this.onClickOpen}
-                  className={cx(c.editLight)}>
-                  <i className="fas fa-edit fa-xs" />
-                </button> : null}
-            </h5>
-            <div className={c.spacing}>
-              <span className={cx(c.badgeEdit)}>{relation}</span>
-              <span className={cx(c.badgeEdit)}>
-                <i className={cx("fas", "fa-xs", "fa-industry")} />&nbsp;&nbsp;
-                {nor(projectDetails.industry)}
-              </span>
+      <div className={cx(c.card, c2.header)}>
+        <div className={cx("card-body")}>
+          <h1 className={cx(c.cardTitle)}>
+            {project.name}
+            {hasProjectPermission(project, ["MEMBER"]) &&
+              <button onClick={onClickOpen} className={cx(c2.editLight)}>
+                <i className="fas fa-edit fa-xs" />
+              </button>
+            }
+          </h1>
+          <div style={{display: 'inline-flex', gap: '8px'}}>
+            <div className={cx(c2.badgeEdit)}>{lcs("member")}</div>
+            <div className={cx(c2.badgeEdit)}>
+              <i className={cx("fas", "fa-xs", "fa-industry")} />
+              {` ${nor(projectDetails.industry)}`}
             </div>
-            <div className={c.spacing}>
-              <p>{getBrText(project.description)}</p>
-            </div>
-
-            <ul className={c.projectInfoList}>
-              <li>
-                <i className="fas fa-globe-americas" />
-                <span className={c.bulletTitle}>
-                  &nbsp;&nbsp;&nbsp;{lcs("website")}:{" "}
-                </span>{" "}
-                <a href={projectDetails.website}>{projectDetails.website}</a>
-              </li>
-              <li>
-                <i className="fas fa-map-marker-alt" />
-                <span className={c.bulletTitle}>
-                  &nbsp;&nbsp;&nbsp;{lcs("industry")}:{" "}
-                </span>{" "}
-                {nor(projectDetails.industry)}
-              </li>
-              <li>
-                <i className="fas fa-map-marker-alt" />
-                <span className={c.bulletTitle}>
-                  &nbsp;&nbsp;&nbsp;{lcs("location")}:{" "}
-                </span>{" "}
-                {nor(projectDetails.country)}
-              </li>
-
-            </ul>
           </div>
+          <div>{getBrText(project.description)}</div>
+
+          <ul className={cx('d-flex', 'flex-column', c2.projectInfoList)}>
+            <li>
+              <i className="fas fa-globe-americas" />
+              <b>
+                {`${lcs("website")}: `}
+                <a target='blank' href={projectDetails.website}>{projectDetails.website}</a>
+              </b>
+            </li>
+            <li>
+              <i className="fas fa-industry" />
+              <b>
+                {`${lcs("industry")}: ${nor(projectDetails.industry)}`}
+              </b>
+            </li>
+            <li>
+              <i className="fas fa-map-marker-alt" />
+              <b>
+                {`${lcs("location")}: ${nor(projectDetails.country)}`}
+              </b>
+            </li>
+          </ul>
         </div>
       </div>
     );
-  }
+  };
 
-  renderForm()
-  {
-    const { projectDetails = {} } = this.state;
-    const project = projectDetails.project;
-
-    const nor = str =>
-    {
-      let res = str.toLowerCase().replace(/_/g, " ");
-      return res.charAt(0).toUpperCase() + res.slice(1)
-    }
+  const renderForm = () => {
+    const { project } = projectDetails;
 
     return (
-      <div className={cx("card", c.card)}>
+      <div className={cx(c.card)}>
         <div className={cx("card-body")}>
-          <form onSubmit={this.onSubmit}>
-            <div className={cx("form-group", c.headerForm)}>
+          <form onSubmit={onSubmit}>
+            <div>
+              <p>{lcs("project_name")}</p>
+              <input type="text" className={cx("form-control", c2.input)} name="projectName" value={project.name} onChange={onFieldChange("name", "project")} required />
 
-              <label htmlFor="projectName">{lcs("project_name")}</label>
-              <input
-                type="text"
-                className={cx("form-control", c.input)}
-                name="projectName"
-                value={project.name}
-                onChange={this.onNameChange}
-                placeholder=""
-                required />
+              <p>{lcs("description")}</p>
+              <textarea className={cx("form-control", c2.input)} style={{ minHeight: '80px', maxHeight: '120px' }} name="description" value={project.description} onChange={onFieldChange("description", "project")} rows="3" />
 
-              <label htmlFor="description">{lcs("description")}</label>
-              <textarea
-                className={cx("form-control", c.input)}
-                name="description"
-                value={project.description}
-                onChange={this.onDescriptionChange}
-                rows="3" />
+              <p>{lcs("website")}</p>
+              <input type="text" className={cx("form-control", c2.input)} name="website" value={projectDetails.website} onChange={onFieldChange("website")} />
 
-              <label htmlFor="website">
-                <i className="fas fa-globe-americas" />
-                &nbsp;{lcs("website")}
-              </label>
-              <input
-                type="text"
-                className={cx("form-control", c.input)}
-                name="website"
-                value={projectDetails.website}
-                onChange={this.onWebsiteChange}
-                placeholder="" />
-
-              <label htmlFor="industry">
-                <i className="fas fa-industry" />
-                &nbsp;&nbsp;{lcs("industry")}
-              </label>
-              <select name="industry" onChange={this.onIndustryChange} className={cx("form-control", c.input)} value={projectDetails.industry} required>
+              <p>{lcs("industry")}</p>
+              <select name="industry" onChange={onFieldChange("industry")} className={cx("form-control", c2.input)} value={projectDetails.industry} required>
                 <option value=''>{lcs("select_an_option")}</option>
                 <option value='AEROSPACE_INDUSTRY'>{nor("AEROSPACE_INDUSTRY")}</option>
                 <option value='AGRICULTURE'>{nor("AGRICULTURE")}</option>
@@ -175,11 +166,8 @@ class ProjectHeader extends Component
                 <option value='OTHER'>{nor("OTHER")}</option>
               </select>
 
-              <label htmlFor="location">
-                <i className="fas fa-map-marker-alt" />
-                &nbsp;&nbsp;{lcs("location")}
-              </label>
-              <select name="country" onChange={this.onCountryChange} className={cx("form-control", c.input)} value={projectDetails.country} required>
+              <p>{lcs("location")}</p>
+              <select name="country" onChange={onFieldChange("country")} className={cx("form-control", c2.input)} value={projectDetails.country} required>
                 <option value="">{lcs("select_an_option")}</option>
                 <option value='AFGHANISTAN'>{nor("AFGHANISTAN")}</option>
                 <option value='ALBANIA'>{nor("ALBANIA")}</option>
@@ -378,136 +366,22 @@ class ProjectHeader extends Component
                 <option value='ZAMBIA'>{nor("ZAMBIA")}</option>
                 <option value='ZIMBABWE'>{nor("ZIMBABWE")}</option>
               </select>
-
             </div>
-
-            <button
-              type="submit"
-              className={cx("btn", c.buttonGreen)}>
-              {lcs("save_changes")}
-            </button>
-            <button
-              type="button"
-              className={cx("btn", "btn-light")}
-              onClick={this.onClickCancel}>
-              {lcs("cancel")}
-            </button>
+            <div className={cx(c.btnContainer)}>
+              <button type="submit" className={cx("btn", c.buttonGreen)}>
+                {lcs("save_changes")}
+              </button>
+              <button type="button" className={cx("btn", "btn-light")} onClick={onClickCancel}>
+                {lcs("cancel")}
+              </button>
+            </div>
           </form>
         </div>
       </div>
     );
   }
-
-  constructor(props)
-  {
-    super(props);
-    this.state = {
-      editing: false,
-      projectDetails: Object.assign({}, props.projectDetails)
-    };
-
-    this.onClickOpen = this.onClickOpen.bind(this);
-    this.onClickCancel = this.onClickCancel.bind(this);
-
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onNameChange = this.onNameChange.bind(this);
-    this.onDescriptionChange = this.onDescriptionChange.bind(this);
-    this.onWebsiteChange = this.onWebsiteChange.bind(this);
-    this.onIndustryChange = this.onIndustryChange.bind(this);
-    this.onCountryChange = this.onCountryChange.bind(this);
-    this.onVisibilityChange = this.onVisibilityChange.bind(this);
-  }
-
-  onSubmit = e =>
-  {
-    e.preventDefault();
-    this.setState(prevState => ({
-      editing: false,
-    }));
-    const projectDetails = this.state.projectDetails;
-    const project = projectDetails.project;
-    let projectBody = {
-      name: project.name,
-      description: project.description
-    };
-    this.props.setProject(project.id, projectBody);
-
-    let detailsBody = {
-      website: projectDetails.website,
-      industry: projectDetails.industry,
-      country: projectDetails.country,
-      visibility: projectDetails.visibility
-    };
-    this.props.setProjectDetail(projectDetails.id, detailsBody)
-  }
-
-  onNameChange = e =>
-  {
-    let projectDetails = this.state.projectDetails;
-    projectDetails.project.name = e.target.value;
-    this.setState({
-      projectDetails: projectDetails
-    })
-  }
-
-  onDescriptionChange = e =>
-  {
-    let projectDetails = this.state.projectDetails;
-    projectDetails.project.description = e.target.value;
-    this.setState({
-      projectDetails: projectDetails
-    })
-  }
-
-  onWebsiteChange = e =>
-  {
-    let projectDetails = this.state.projectDetails;
-    projectDetails.website = e.target.value;
-    this.setState({
-      projectDetails: projectDetails
-    })
-  }
-
-  onIndustryChange = e =>
-  {
-    let projectDetails = this.state.projectDetails;
-    projectDetails.industry = e.target.value;
-    this.setState({
-      projectDetails: projectDetails
-    })
-  }
-
-  onCountryChange = e =>
-  {
-    let projectDetails = this.state.projectDetails;
-    projectDetails.country = e.target.value;
-    this.setState({
-      projectDetails: projectDetails
-    })
-  }
-
-  onVisibilityChange = e =>
-  {
-    let projectDetails = this.state.projectDetails;
-    projectDetails.visibility = e.target.value;
-    this.setState({
-      projectDetails: projectDetails
-    })
-  }
-
-  onClickOpen = e =>
-  {
-    this.setState(prevState => ({
-      editing: true
-    }));
-  }
-
-  onClickCancel = e =>
-  {
-    this.setState(prevState => ({
-      editing: false
-    }));
-  }
+  
+  return <>{editing ? renderForm() : renderCard()}</>;
 }
 
 export default ProjectHeader;

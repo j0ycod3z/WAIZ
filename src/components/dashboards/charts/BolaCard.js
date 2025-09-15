@@ -1,10 +1,8 @@
 import React from 'react';
 import c from 'resources/css/dashboards/charts/Charts.module.css';
-import "resources/bootstrap.min.module.css";
-import cx from 'classnames';
 
-class BolaCard extends React.Component{
-  render(){
+
+function BolaCard(props) {
     return(
       <div className={c.module}>
         <div className={c.BolaCard}>
@@ -15,7 +13,6 @@ class BolaCard extends React.Component{
         </div>
       </div>
     )
-  }
-}
+
 
 export default BolaCard;

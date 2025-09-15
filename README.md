@@ -1,3 +1,8 @@
+# Modernization md
+Click here &rarr; [Modernization.md](Modernization.md)
+---
+<br><br><br>
+
 # Waiz Web
 
 This repository holds the source code of a **Waiz Web** written mainly in javascript.

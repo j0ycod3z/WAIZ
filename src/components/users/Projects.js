@@ -1,48 +1,41 @@
-import React, { Component } from "react";
+import React, { useMemo } from "react";
 import cx from "classnames";
 import { Link } from 'react-router-dom'
 import { lcs } from 'components/util/Locales';
 
-import "resources/bootstrap.min.module.css";
 import c from "resources/css/users/Profile.module.css";
 
-class Projects extends Component
-{
-  render()
-  {
-    const userId = parseInt(this.props.userId);
-    const projects = this.props.projects.filter(p =>
-      p.admin_id == userId || p.mentor_ids.includes(userId) || p.member_ids.includes(userId));
+function Projects(props) {
+  const { userId, projects } = props;
 
-    const projectList = projects.map(p =>
-    {
-      const description = p.description.length > 100 ? p.description.substring(0, 100) + "…" : p.description;
-      return (
-        <div className={c.element}>
-          <Link to={`/app/project_profile/${p.id}`}>
-            <a href={p.url} className={c.link}>
-              {p.name}
-            </a>
-            <p style={{ color: "#777" }}>{description}</p>
-          </Link>
-        </div>);
-    })
+  const numericUserId = parseInt(userId, 10);
 
-    return (
-      <div className={cx("card", c.card)}>
-        <div className={cx("card-body")}>
-
-          <div className={cx(c.marginTop, c.paddingBottom)}>
-            <h5 className={cx("card-title", c.cardTitle)}>{lcs("projects")}</h5>
-            <div className={c.bigList}>
-              {projectList}
-            </div>
-          </div>
-
+  const filteredProjects = useMemo(() => 
+    projects.filter((p) =>
+      p.admin_id === numericUserId || p.mentor_ids.includes(numericUserId) || p.member_ids.includes(numericUserId)
+    ), [projects, numericUserId]
+  );
+  
+  return (
+    <div className={cx(c.card)}>
+      <div className={cx("card-body")}>
+        <h5 className={cx("card-title", c.cardTitle)}>{lcs("projects")}</h5>
+        <div className={c.bigList}>
+          {filteredProjects.map((p) => {
+            const description = p.description.length > 100 ? p.description.substring(0, 100) + "…" : p.description;
+            return (
+              <div key={p.id} className={c.element}>
+                <Link to={`/app/project_profile/${p.id}`} className={c.link}>
+                  <span>{p.name}</span>
+                  <p style={{ color: "#777" }}>{description}</p>
+                </Link>
+              </div>
+            );
+          })}
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Projects;

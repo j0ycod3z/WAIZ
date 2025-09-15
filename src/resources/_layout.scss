@@ -1,7 +1,6 @@
-@import "base.scss";
+@use "./base" as base;
 
 .module {
-  @include fonts();
   height: 100%;
   width: 100%;
 }
@@ -15,9 +14,7 @@
   bottom: 0px;
   height: 100%;
   width: 100%;
-  background: url("/resources/images/wave.svg") no-repeat center center;
-  background-size: cover;
-  background-color: $primary-dark;
+  background-color: base.$primary-dark;
 }
 
 .module .spacingContainer {
@@ -29,33 +26,30 @@
 }
 
 .module .card {
-  margin-bottom: 20px;
   border-radius: 4px;
-  border: 1px solid $grey-light;
-  padding: 8px;
+  border: 1px solid base.$grey-light;
   .main {
-    color: $white;
+    color: base.$white;
     border: none;
     padding: 12px;
     .mainCardText {
-      color: $white;
-      @include sans();
+      color: base.$white;
+      @include base.sans();
     }
   }
   .mainCardTitle {
     font-size: 38px;
     letter-spacing: 1px;
-    @include sans();
+    @include base.sans();
     font-weight: bolder;
   }
 }
 
 .module .title {
-  font-family: "PT Serif", serif;
   font-size: 32px;
   font-weight: bold;
   &.titleWhite {
-    color: $white;
+    color: base.$white;
   }
 }
 
@@ -65,7 +59,7 @@
 
 .module a.link {
   cursor: pointer;
-  color: $blue-primary-1;
+  color: base.$blue-primary-1;
   &:hover {
     text-decoration: underline;
   }

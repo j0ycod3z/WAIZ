@@ -1,5 +1,4 @@
-import * as React from 'react';
-import * as Util from 'seed/util'
+import React, { useState, useEffect } from 'react';
 import redux from 'seed/redux';
 
 import TagPicker from 'components/helpers/TagPicker'
@@ -9,240 +8,171 @@ import Loading from 'seed/components/helpers/Loading'
 
 import c from 'resources/css/canvas_forms/Hypothesis.module.css'
 
+function HypothesisForm(props) {
+  const {
+    canvases = [],
+    hypotheses = [],
+    match,
+    getHypothesisDetails,
+    saveHypothesis,
+    setHypothesis,
+    onClose,
+    canvasTypes
+  } = props;
+  const { area_id, canvas_id, hypothesis_id } = match.params;
 
-class HypothesisForm extends React.Component
-{
-  render()
-  {
-    const { canvases = [], hypotheses = [] } = this.props;
-    const { hypothesis } = this.state;
-    const { hypothesis_id } = this.props.match.params;
-    const { error } = this.state;
-    const errorMessage =
-      error ? <div className={c.error + ' animated fadeIn'}><div> {error}</div></div> : null;
+  const [hypothesis, setHypothesisState] = useState({
+    is_active: true,
+    color: "#a0a0a0",
+    creator_id: sessionStorage.getItem('id'),
+    customer_ids: [],
+    tag_ids: [],
+    canvas_id,
+    area_id,
+  });
 
-    let canvas = canvases.filter(canvas => canvas.id == hypothesis.canvas_id)[0];
-    let canvasType = this.props.canvasTypes.filter(type => type.id == canvas.type.id)[0];
-    if (canvas == null || canvasType == null ||
-      (hypothesis_id != null && hypothesis.id == null)) return <Loading />;
-
-    let area = { tags: [] };
-    let cArea = {};
-    if (canvas != null) {
-      area = canvasType.areas.filter(a => a.id == hypothesis.area_id)[0];
-      cArea = canvasType.areas.filter(a => a.category == "CUSTOMERS")[0];
-      if (cArea == null) cArea = {}
+  const [error, setError] = useState(null);
+  
+  useEffect(() => {
+    if (getHypothesisDetails && hypothesis_id) {
+      getHypothesisDetails(hypothesis_id, (res) => {
+        setHypothesisState(res.body);
+      });
     }
+  }, [getHypothesisDetails, hypothesis_id]);
 
-    let title = hypothesis_id == null ? lcs("add_hypothesis") : lcs("edit_hypothesis");
-    // COLORS
-    let colorsV = [
-      { value: "#D5304F", color: "#D5304F" },
-      { value: "#EF6C42", color: "#EF6C42" },
-      { value: "#F6AD60", color: "#F6AD60" },
-      { value: "#FFE375", color: "#FFE375" },
-      { value: "#F7C4BF", color: "#F7C4BF" },
-      { value: "#E09EB5", color: "#E09EB5" },
-      { value: "#ED82F3", color: "#ED82F3" },
-      { value: "#9E5FB2", color: "#9E5Fb2" },
-      { value: "#4178CD", color: "#4178CD" },
+  const canvas = canvases.find((c) => c.id == hypothesis.canvas_id);
+  if (!canvas) return <Loading />;
 
-      { value: "#2E9EFB", color: "#2E9EFB" },
-      { value: "#53D0FB", color: "#53D0FB" },
-      { value: "#A0CCf4", color: "#a0CCf4" },
-      { value: "#ABDDA4", color: "#ABDDA4" },
-      { value: "#A6D94A", color: "#A6D94A" },
-      { value: "#60BD63", color: "#60BD63" },
-    ]
+  const canvasType = canvasTypes.find((ct) => ct.id == canvas.type.id);
+  if (!canvasType || (hypothesis_id && !hypothesis.id)) return <Loading />;
 
-    let colors = area.category == "CUSTOMERS" ?
-      <div className={c.customers}>
-        <b>{lcs("color")}</b>
-        <TagPicker
-          onChange={this.onColorChanged}
-          singleChoice={true}
-          value={[hypothesis.color]}
-          values={colorsV} />
-      </div> : null
+  const area = canvasType.areas.find((a) => a.id == hypothesis.area_id) || { tags: [] };
+  let cArea = canvasType.areas.find((a) => a.category === "CUSTOMERS") || {};
 
-    // CUSTOMERS
+  const title = hypothesis_id == null ? lcs("add_hypothesis") : lcs("edit_hypothesis");
 
-    let customersD = hypotheses.filter(h => h.canvas_id == hypothesis.canvas_id && h.area_id == cArea.id && h.is_active);
+  const colorsV = [
+    "#D5304F", "#EF6C42", "#F6AD60",
+    "#FFE375", "#F7C4BF", "#E09EB5",
+    "#ED82F3", "#9E5FB2", "#4178CD",
+    "#2E9EFB", "#53D0FB", "#A0CCf4",
+    "#ABDDA4", "#A6D94A", "#60BD63"
+  ].map(color => ({ value: color, color }));
 
-    let customerV = customersD.map(h =>
-    {
-      return {
-        value: h.id,
-        color: h.color,
-        label: h.text && h.text.length > 24 ?
-          h.text.substring(0, 24) + "…" : h.text
-      }
-    })
-
-    let customerss = customersD.length > 0 && area.category != "CUSTOMERS" ?
-      <div className={c.customers}>
-        {canvasType.type == "BMC" ? <b>{lc(cArea.l_name)}</b> : null}
-        <TagPicker
-          onChange={this.onCustomerChanged}
-          value={hypothesis.customer_ids}
-          values={customerV} />
-      </div> : null
-
-    //TYPES
-
-    let typeV = area.tags.sort((t1, t2) => ('' + lc(t1.l_name)).localeCompare(lc(t2.l_name)))
-      .map(t =>
-      {
-        return {
-          value: t.id,
-          label: lc(t.l_name)
-        }
-      })
-
-    let typess = typeV.length > 0 ?
-      <div className={c.types}>
-        <b>{lcs("types")}</b>
-        <div className={c.typeContainer}>
-          <Multiselect
-            onChange={this.onTypeChanged}
-            value={hypothesis.tag_ids}
-            values={typeV} />
-        </div>
-      </div> : null
-
-
-
-    return (
-      <div className={c.module}>
-        <div className={c.header}>
-          {title}
-        </div>
-        <div className={c.content}>
-          <form onSubmit={this.onSubmit}>
-            <textarea type="text"
-              value={hypothesis.text}
-              onChange={this.onTextChanged}
-              className={c.hypothesis}
-              rows={hypothesis.text && hypothesis.text.length > 90 ? 4: 2}
-              placeholder={lcs("write_your_hypothesis")}
-              required></textarea>
-            {colors}
-            {customerss}
-            {typess}
-            {errorMessage}
-            <button type="submit" className={c.call}>{lcs("save")}</button>
-          </form>
-        </div>
-      </div>
-    );
-  }
-
-  constructor(props)
-  {
-    super(props);
-    const { area_id, canvas_id } = this.props.match.params;
-
-    this.state = {
-      hypothesis: {
-        is_active: true,
-        color: "#a0a0a0",
-        creator_id: sessionStorage.getItem('id'),
-        customer_ids: [],
-        tag_ids: [],
-        canvas_id: canvas_id,
-        area_id: area_id
-      }
-    };
-
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onTextChanged = this.onTextChanged.bind(this);
-    this.onColorChanged = this.onColorChanged.bind(this);
-    this.onCustomerChanged = this.onCustomerChanged.bind(this);
-    this.onTypeChanged = this.onTypeChanged.bind(this);
-  }
-
-  componentDidMount()
-  {
-    this.loadData();
-  }
-
-  loadData = () =>
-  {
-    const { getHypothesisDetails } = this.props;
-    const { hypothesis_id } = this.props.match.params;
-
-    if (getHypothesisDetails != null && hypothesis_id != null) {
-      const callback = res => 
-      {
-        this.setState({
-          hypothesis: res.body
-        })
-      }
-      getHypothesisDetails(hypothesis_id, callback);
-    }
-  }
-
-  saveData = () =>
-  {
-    const { saveHypothesis, setHypothesis } = this.props;
-    const { hypothesis_id } = this.props.match.params;
-    const onSave = res => 
-    {
-      if (res == "error")
-        return this.setState({
-          error: "An error has occurred, try again"
-        })
-      this.props.onClose();
-    }
-    if (hypothesis_id == null && saveHypothesis != null)
-      saveHypothesis(this.state.hypothesis, onSave)
-    if (hypothesis_id != null && setHypothesis != null)
-      setHypothesis(hypothesis_id, this.state.hypothesis, onSave);
-  }
-
-  onSubmit(e)
-  {
+  
+  const onSubmit = (e) => {
     e.preventDefault();
-    this.saveData()
-  }
 
-  // Events
+    const onSave = (res) => {
+      if (res == "error")
+        setError("An error has occurred, try again");
+      else
+        onClose();
+    }
 
-  onTextChanged = e =>
-  {
-    let hypothesis = this.state.hypothesis ? this.state.hypothesis : {}
-    hypothesis.text = e.target.value
-    this.setState({
-      hypothesis: hypothesis
-    })
-  }
+    if (!hypothesis_id && saveHypothesis)
+      saveHypothesis(hypothesis, onSave)
+    if (hypothesis_id && setHypothesis)
+      setHypothesis(hypothesis_id, hypothesis, onSave);
+  };
 
-  onColorChanged = data =>
-  {
-    let hypothesis = this.state.hypothesis ? this.state.hypothesis : {}
-    hypothesis.color = data
-    this.setState({
-      hypothesis: hypothesis
-    })
-  }
+  const onTextChanged = (e) => {
+    const value = e.target.value;
+    setHypothesisState((prev) => ({ ...prev, text: value }));
+  };
 
-  onCustomerChanged = data =>
-  {
-    let hypothesis = this.state.hypothesis ? this.state.hypothesis : {}
-    hypothesis.customer_ids = data
-    this.setState({
-      hypothesis: hypothesis
-    })
-  }
+  const onColorChanged = (data) => {
+    setHypothesisState((prev) => ({ ...prev, color: data }));
+  };
 
-  onTypeChanged = data =>
-  {
-    let hypothesis = this.state.hypothesis ? this.state.hypothesis : {}
-    hypothesis.tag_ids = data
-    this.setState({
-      hypothesis: hypothesis
-    })
-  }
+  const onCustomerChanged = (data) => {
+    setHypothesisState((prev) => ({ ...prev, customer_ids: data }));
+  };
+
+  const onTypeChanged = (data) => {
+    setHypothesisState((prev) => ({ ...prev, tag_ids: data }));
+  };
+
+  const colors = area.category === "CUSTOMERS" && (
+    <div className={c.customers}>
+      <b>{lcs("color")}</b>
+      <TagPicker
+        onChange={onColorChanged}
+        singleChoice={true}
+        value={[hypothesis.color]}
+        values={colorsV}
+      />
+    </div>
+  );
+
+  const customersD = hypotheses.filter(h => h.canvas_id == hypothesis.canvas_id && h.area_id == cArea.id && h.is_active);
+
+  const customerV = customersD.map(h => ({
+    value: h.id,
+    color: h.color,
+    label: h.text && h.text.length > 24 ? h.text.substring(0, 24) + "…" : h.text
+  }));
+
+  const customerss = customersD.length > 0 && area.category !== "CUSTOMERS" && (
+    <div className={c.customers}>
+      {canvasType.type === "BMC" && <b>{lc(cArea.l_name)}</b>}
+      <TagPicker
+        onChange={onCustomerChanged}
+        value={hypothesis.customer_ids}
+        values={customerV}
+      />
+    </div>
+  );
+
+  const typeV = area.tags
+    .sort((t1, t2) => ('' + lc(t1.l_name)).localeCompare(lc(t2.l_name)))
+    .map((t) => ({ value: t.id, label: lc(t.l_name) }));
+
+  const typess = typeV.length > 0 && (
+    <div className={c.types}>
+      <b>{lcs("types")}</b>
+      <div className={c.typeContainer}>
+        <Multiselect
+          onChange={onTypeChanged}
+          value={hypothesis.tag_ids}
+          values={typeV}
+        />
+      </div>
+    </div>
+  );
+
+  const errorMessage = error && (
+    <div className={c.error + ' animated fadeIn'}>
+      <div>{error}</div>
+    </div>
+  );
+  
+  return (
+    <div className={c.module}>
+      <div className={c.header}>
+        {title}
+      </div>
+      <div className={c.content}>
+        <form onSubmit={onSubmit}>
+          <textarea type="text"
+            value={hypothesis.text}
+            name='hypothesis'
+            onChange={onTextChanged}
+            className={c.hypothesis}
+            rows={hypothesis.text && hypothesis.text.length > 90 ? 4 : 2}
+            placeholder={lcs("write_your_hypothesis")}
+            required
+          />
+          {colors}
+          {customerss}
+          {typess}
+          {errorMessage}
+          <button type="submit" className={c.call}>{lcs("save")}</button>
+        </form>
+      </div>
+    </div>
+  );
 }
 
 export default redux(HypothesisForm);

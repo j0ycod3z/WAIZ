@@ -1,4 +1,4 @@
-@import "src/resources/base.scss";
+@use "src/resources/base" as base;
 
 .module {
   width: 100%;
@@ -24,10 +24,17 @@
   color: #29244e;
 }
 
-.options a {
+.options button {
+  background: transparent;
   float: right;
-  cursor: pointer;
+  outline: none;
+  border: none;
   margin: 0px 10px;
+  padding: 0;
+
+  &:hover{
+    text-decoration: underline;
+  }
 }
 
 .formContainer {
@@ -55,5 +62,5 @@
   background-color: #11C26F;
   border: none;
   cursor: pointer;
-  @include border-radius(20px);
+  border-radius: 6px;
 }

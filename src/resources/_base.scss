@@ -1,36 +1,5 @@
-@import 'src/resources/colors';
-@import 'src/seed/util/mixins';
-
-$primary-dark: #454545;
-$primary: #413c6b;
-$primary-hover: #474275;
-$primary-light: #928daf;
-$blue-accent: #198ce5;
-$yellow-canou: #feff7c;
-$orange-waiz: #FF5F00;
- 
-
-$white: #ffffff;
-$white-light: #f7f7f7;
-$background-fields: #f5f5f5;
-$grey-light: #cbcbcb;
-$grey: #6c757d;
-$grey-dark: #343434;
-
-$green: rgb(17, 194, 111);
-$green-hover: rgb(15, 160, 99);
-
-$blue-light: #44a8f5;
-$blue-primary-1: #198ce5;
-$blue-primary-2: #1675bf;
-
-$orange-primary-1: #FF5F00;
-
-
-$red: #f96276;
-
-$sans: "Open Sans", sans-serif;
-$serif: "PT Serif", serif;
+@forward 'src/resources/colors';
+@forward 'src/seed/util/mixins';
 
 @mixin fonts() {
   font-family: "PT Serif", serif;
@@ -46,27 +15,9 @@ $serif: "PT Serif", serif;
   font-family: "PT Serif", serif;
 }
 
-@mixin appearance($value: none) {
-  -webkit-appearance: $value;
-  -moz-appearance: $value;
-  -ms-appearance: $value;
-  -o-appearance: $value;
-  appearance: $value;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
 @mixin border-radius-all($rTL, $rTR, $rBL, $rBR) {
   -webkit-border-radius: $rTL $rTR $rBL $rBR;
   -moz-border-radius: $rTL $rTR $rBL $rBR;
   -ms-border-radius: $rTL $rTR $rBL $rBR;
   border-radius: $rTL $rTR $rBL $rBR;
-}
-
-@mixin border-radius($radius) {
-  -webkit-border-radius: $radius;
-  -moz-border-radius: $radius;
-  -ms-border-radius: $radius;
-  border-radius: $radius;
 }

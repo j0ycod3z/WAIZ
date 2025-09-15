@@ -1,68 +1,53 @@
 import React from 'react';
 import c from 'resources/css/dashboards/charts/Charts.module.css';
-import "resources/bootstrap.min.module.css";
 import cx from 'classnames';
 
+import {
+  Chart as ChartJS, 
+  BarElement, 
+  CategoryScale, 
+  LinearScale, 
+  Tooltip, 
+  Title,
+  Legend
+} from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
-class DoubleBarChartCard extends React.Component
+ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title, Legend);
+
+function DoubleBarChartCard (props)
 {
-  render()
-  {
-    const { labels = [], data = [], label = "", percentage=true } = this.props;
+    const { labels = [], data = [], label = "", percentage=true } = props;
 
     const dataset = {
-      labels: labels,
+      labels,
       datasets: [
         {
-          label: label,
+          label,
           backgroundColor: '#A3A1FB',
           borderWidth: 0,
           hoverBackgroundColor: '#8482DE',
           hoverBorderWidth: 0,
-          data: data
+          data
+
         }
-      ]
-    };
-    return (
-      <div className={c.module}>
-
-        <div className={cx(c.ChartCard, c.BarChartCard)}>
-          <h3 className={c.title}>{this.props.title}</h3>
-          <div className={c.ChartCardGraphic}>
-            <Bar
-              data={dataset}
-              height={220}
-              options={{
-                maintainAspectRatio: false,
-                responsive: true,
-                barRoundness: 4,
-                scales: {
-                  yAxes: [{
-                    gridLines: {
-                      color: "rgba(0, 0, 0, 0)",
-                    },
-                    ticks: {
-                      display: true,
-                      beginAtZero: true,
-                      callback: function (value, index, values)
-                      {
-                        return value + (percentage ? "%" : "");
-                      },
-                    }
-                  }]
-                }
-              }}
-              legend={{
-                display: false,
-              }}
-            />
-          </div>
-        </div>
-
-      </div>
-    )
+      }
+    },
+    plugins: {
+      legend: { display: false }
+    }
   }
-}
+
+  return (
+    <div className={c.module}>
+      <div className={cx(c.ChartCard, c.BarChartCard)}>
+        <h3 className={c.title}>{title}</h3>
+        <div className={c.ChartCardGraphic}>
+          <Bar data={dataset} height={220} options={options}/>
+        </div>
+      </div>
+
+    )
+
 
 export default DoubleBarChartCard;

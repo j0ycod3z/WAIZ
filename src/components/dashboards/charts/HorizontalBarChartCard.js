@@ -1,79 +1,82 @@
 import React from 'react';
 import c from 'resources/css/dashboards/charts/Charts.module.css';
-import "resources/bootstrap.min.module.css";
 import cx from 'classnames';
-import { getColor, bright } from 'components/dashboards/util/Util'
+import { bright } from 'components/dashboards/util/Util'
 
-import { HorizontalBar } from 'react-chartjs-2';
+import { Chart as ChartJS, 
+  BarElement, 
+  CategoryScale, 
+  LinearScale, 
+  Tooltip, 
+  Title,
+  Legend
+} from 'chart.js';
+import { Bar } from 'react-chartjs-2';
 
-class HorizontalBarChartCard extends React.Component
+ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title, Legend);
+
+function HorizontalBarChartCard (props)
 {
-  render()
-  {
-    const { labels = [], data = [], percentage = true, color = '#5B558B' } = this.props;
-
-    const dataset = {
-      labels: labels,
-      datasets: [
-        {
-          label: "Startup Sector",
-          backgroundColor: color,
-          borderWidth: 0,
-          hoverBackgroundColor: bright(color, 1.1),
-          data: data
-        }
-      ]
-    };
+    const { labels = [], data = [], percentage = true, color = '#5B558B' } = props;
 
 
-    return (
-      <div className={c.module}>
+  const dataset = {
+    labels,
+    datasets: [{
+      label: "Startup Sector",
+      backgroundColor: color,
+      borderWidth: 0,
+      hoverBackgroundColor: bright(color, 1.1),
+      data
+    }]
+  };
 
-        <div className={cx(c.ChartCard, c.BarChartCard, c.LargeChardCard)}>
-          <h3 className={c.title}>{this.props.title}</h3>
-          <div className={c.ChartCardGraphic}>
-            <HorizontalBar
-              data={dataset}
-              options={{
-                maintainAspectRatio: false,
-                responsive: true,
-                tooltips: {
-                  enabled: false,
-                },
-                scales: {
-                  yAxes: [{
-                    gridLines: {
-                      color: "rgba(0, 0, 0, 0)",
-                    },
-                    ticks: {
-                      beginAtZero: true
-                    }
-                  }],
-                  xAxes: [{
-                    gridLines: {
-                      color: "rgba(0, 0, 0, 0)",
-                    },
-                    ticks: {
-                      display: true,
-                      beginAtZero: true,
-                      callback: function (value, index, values)
-                      {
-                        return value + (percentage ? "%" : "");
-                      },
-                    }
-                  }]
-                },
-              }}
-              legend={{
-                display: false,
-              }}
-            />
-          </div>
+    const options = {
+  indexAxis: 'y',
+  responsive: true,
+  plugins: {
+    legend: {
+      display: true,
+    },
+    tooltip: {
+      mode: 'index',
+      intersect: false,
+    },
+  },
+  scales: {
+    x: {
+      beginAtZero: true,
+      ticks: {
+        callback: (value) => `${value}%`, 
+      },
+      grid: {
+        display: false,
+
+      },
+    },
+    scales: {
+      x: {
+        beginAtZero: true,
+        ticks: {
+          callback: (value) => (percentage ? `${value}%` : value),
+        },
+        grid: { display: false },
+      },
+      y: {
+        grid: { display: false },
+      },
+    },
+  };
+
+  return (
+    <div className={c.module}>
+      <div className={cx(c.ChartCard, c.BarChartCard, c.LargeChardCard)}>
+        <h3 className={c.title}>{title}</h3>
+        <div className={c.ChartCardGraphic}>
+          <Bar data={dataset} options={options} />
         </div>
-
       </div>
     )
-  }
-}
+
 
 export default HorizontalBarChartCard;
