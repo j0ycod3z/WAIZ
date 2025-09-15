@@ -8,13 +8,22 @@ import LineChartCard from '../charts/LineChartCard';
 import DoughnutChartCard from '../charts/DoughnutChartCard';
 import BarChartCard from 'components/dashboards/charts/BarChartCard';
 
-function Details(props) {
-  const { projectData = {}, hLabels = [], hDatasets = [], iLabels = [], iDatasets = [] } = props;
 
-  let hipDataset = [];
-  for (let h of hDatasets) {
-    if (h.label == format(projectData.name)) {
-      hipDataset.push(h);
+function Details (props)
+{
+    const { projectData = {}, hLabels = [], hDatasets = [], iLabels = [], iDatasets = [] } = props;
+
+    let hipDataset = [];
+    for (let h of hDatasets) {
+      if (h.label == format(projectData.name))
+        hipDataset.push(h)
+    }
+
+    let intDataset = [];
+    for (let i of iDatasets) {
+      if (i.label == format(projectData.name))
+        intDataset.push(i)
+
     }
   }
 
@@ -42,13 +51,7 @@ function Details(props) {
           <DoughnutChartCard title={lcs("interview_types")} labels={typeLabels} data={typeData} />
         </div>
       </div>
-      <div className={cx("row", c.chartRow)}>
-        <div className="col-lg-12">
-          <LineChartCard title={lcs("hypotheses")} interview={false} hypothesisCount={projectData.hypothesis} labels={hLabels} datasets={hipDataset} />
-        </div>
-      </div>
-    </div>
-  );
-}
+
+    )
 
 export default Details;

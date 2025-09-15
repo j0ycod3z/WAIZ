@@ -16,8 +16,34 @@ import { Line } from 'react-chartjs-2';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title, Legend);
 
-function LineChartCard(props) {
-  const { hypothesisCount = {}, interviewsCount = {}, labels = [], datasets = [], interview = false, title } = props;
+
+function LineChartCard (props)
+{
+    const { hypothesisCount = {}, interviewsCount = {}, labels = [], datasets = [] } = props;
+    const data = {
+      labels,
+      datasets: datasets.map((d, idx) => ({
+        label: d.label,
+        fill: false,
+        borderColor: getColor(idx),
+        pointBorderColor: getColor(idx),
+        pointBackgroundColor: "#fff",
+        borderCapStyle: 'butt',
+        steppedLine: false,
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderWidth: 2,
+        pointHoverRadius: 6,
+        pointHoverBackgroundColor: getColor(idx),
+        pointHoverBorderColor: bright(getColor(idx), 1.1),
+        pointHoverBorderWidth: 2,
+        pointRadius: 4,
+        pointHitRadius: 10,
+        data: d.data
+      }))
+    };
+
 
   const data = {
     labels: labels,
@@ -172,28 +198,9 @@ function LineChartCard(props) {
 //               )}
 //           </div>
 
-//           <div className={c.ChartCardGraphic}
-//             style={{ height: "265px" }}>
-//             <Line
-//               data={data}
-//               options={{
-//                 maintainAspectRatio: false,
-//                 responsive: true
-//               }}
-//               legend={{
-//                 display: true,
-//                 position: "bottom",
-//                 fullWidth: true,
-//                 reverse: false
-//               }}
-//             />
-//           </div>
-//         </div>
+      </div>
+    )
+}
 
-
-//       </div>
-//     )
-//   }
-// }
 
 export default LineChartCard;

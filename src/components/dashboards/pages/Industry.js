@@ -9,9 +9,11 @@ import HorizontalBarChartCard from 'components/dashboards/charts/HorizontalBarCh
 import BarChartCard from 'components/dashboards/charts/BarChartCard';
 import LargeDoughnutChartCard from 'components/dashboards/charts/LargeDoughnutChartCard';
 
-function Industry(props) {
+function Industry (props)
+{
   const { getStats } = props;
-  
+
+
   const [funding, setFunding] = useState({});
   const [industry, setIndustry] = useState({});
   const [employees, setEmployees] = useState({});
@@ -19,25 +21,15 @@ function Industry(props) {
   const [locations, setLocations] = useState({});
   const [sales, setSales] = useState({});
 
+
   useEffect(() => {
-    getStats("/industry/get_funding", {},
-      (res) => setFunding(res.body)
-    );
-    getStats("/industry/get_projects_by_sector", {},
-      (res) => setIndustry(res.body)
-    );
-    getStats("/industry/get_employees_by_sector", {},
-      (res) => setEmployees(res.body)
-    );
-    getStats("/industry/get_pattents_by_sector", {}, 
-      (res) => setPatents(res.body)
-    );
-    getStats("/industry/get_projects_by_country", {},
-      (res) => setLocations(res.body)
-    );
-    getStats("/industry/get_industry_by_position", {},
-      (res) => setSales(res.body)
-    );
+    getStats("/industry/get_funding", {}, res => setFunding(res.body));
+    getStats("/industry/get_projects_by_sector", {}, res => setIndustry(res.body));
+    getStats("/industry/get_employees_by_sector", {}, res => setEmployees(res.body));
+    getStats("/industry/get_pattents_by_sector", {}, res => setPatents(res.body));
+    getStats("/industry/get_projects_by_country", {}, res => setLocations(res.body));
+    getStats("/industry/get_industry_by_position", {}, res => setSales(res.body));
+
   }, [getStats]);
 
   let fundingLabels = [];
@@ -48,7 +40,8 @@ function Industry(props) {
     fundingData.push(parseInt(funding[ind]));
     fundingAll += parseInt(funding[ind]);
   }
-  fundingData = fundingAll > 0 ? fundingData.map(i => Math.floor(i / fundingAll * 100)) : [];
+  fundingData = fundingData.map(i => Math.floor(i / fundingAll * 100));
+
 
   let industryLabels = [];
   let industryData = [];
@@ -58,7 +51,8 @@ function Industry(props) {
     industryData.push(parseInt(industry[ind]));
     industryAll += parseInt(industry[ind]);
   }
-  industryData = industryAll > 0 ? industryData.map(i => Math.floor(i / industryAll * 100)) : [];
+  industryData = industryData.map(i => Math.floor(i / industryAll * 100));
+
 
   let employeesLabels = [];
   let employeesData = [];
@@ -67,6 +61,7 @@ function Industry(props) {
     employeesData.push(parseInt(employees[ind]));
   }
 
+
   let patentsLabels = [];
   let patentsData = [];
   for (let ind in patents) {
@@ -74,12 +69,14 @@ function Industry(props) {
     patentsData.push(parseInt(patents[ind]));
   }
 
+
   let locationLabels = [];
   let locationData = [];
   for (let ind in locations) {
     locationLabels.push(format(ind));
     locationData.push(parseInt(locations[ind]));
   }
+
 
   let salesLabels = [];
   let salesData = [];
@@ -92,33 +89,30 @@ function Industry(props) {
     <div className={c.module}>
       <h2 className={c.pageTitle}>Overview</h2>
       <div className={cx("row", c.chartRow)}>
-        <div className="col-lg-6">
+        <div className="col col-12 col-lg-6">
           <DoubleBarChartCard title="Startup Funding" data={fundingData} labels={fundingLabels} label={"Industry average"} />
         </div>
-        <div className="col-lg-6">
+        <div className="col col-12 col-lg-6">
           <HorizontalBarChartCard title="Startup industry" data={industryData} labels={industryLabels} />
         </div>
       </div>
 
       <div className={cx("row", c.chartRow)}>
-        <div className="col-lg-4">
+        <div className="col col-12 col-lg-4">
           <BarChartCard title="Employments" data={employeesData} labels={employeesLabels} label={"Industry average"} />
         </div>
-        <div className="col-lg-4">
+        <div className="col col-12 col-lg-4">
           <BarChartCard title="Patents" data={patentsData} labels={patentsLabels} label={"Industry average"} color={"#258DE8"} />
         </div>
-        <div className="col-lg-4">
+        <div className="col col-12 col-lg-4">
           <LargeDoughnutChartCard title="Location" data={locationData} labels={locationLabels} usePercentage={true} />
         </div>
       </div>
 
       <div className={cx("row", c.chartRow)}>
-        {/*
-        <div className="col-lg-4">
-          <LargeDoughnutChartCard title="Type of enterpreneurship" />
-        </div>*/}
-        <div className="col-lg-12">
-          <BarChartCard title="Sales" data={salesData} labels={salesLabels} label={"Industry average"}/>
+        <div className="col col-12 col-lg-12">
+          <BarChartCard title="Sales" data={salesData} labels={salesLabels} label={"Industry average"} />
+
         </div>
       </div>
     </div>

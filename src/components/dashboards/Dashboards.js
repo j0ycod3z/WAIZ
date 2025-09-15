@@ -11,25 +11,29 @@ import Benchmark from 'components/dashboards/pages/Benchmark';
 import Cohort from 'components/dashboards/pages/Cohort';
 
 function Dashboards(props) {
+
   const { url, path } = props.match;
   const cohortId = localStorage.getItem('cohortId');
 
   return (
-    <div className={cx(c.module, 'container')}>
-      <div className={cx(c.dashboardsBody, 'col-md-12')}>
+
+    <div className={c.module}>
+      <div className={c.dashboardsBody}>
         <div className={c.dashboardsMenu}>
           <NavLink activeClassName={c.active} className={c.btn} to={`${url}/performance`}>
             {lcs("performance")}
-          </NavLink>
-          {(cohortId != null && cohortId != 0) &&
+
+          {cohortId != null && cohortId != 0 ? (
             <NavLink activeClassName={c.active} className={c.btn} to={`${url}/cohort`}>
               {lcs("cohort")}
             </NavLink>
-          }
+          ) : null}
+
           <NavLink activeClassName={c.active} className={c.btn} to={`${url}/industry`}>
             {lcs("industry")}
           </NavLink>
         </div>
+
         <Switch>
           <Route path={`${path}/performance`} component={Performance} />
           <Route path={`${path}/benchmark`} component={Benchmark} />

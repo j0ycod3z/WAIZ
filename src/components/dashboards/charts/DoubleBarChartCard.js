@@ -15,31 +15,21 @@ import { Bar } from 'react-chartjs-2';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title, Legend);
 
-function DoubleBarChartCard(props) {
-  const { labels = [], data = [], label = "", percentage = true, title } = props;
+function DoubleBarChartCard (props)
+{
+    const { labels = [], data = [], label = "", percentage=true } = props;
 
-  const dataset = {
-    labels: labels,
-    datasets: [{
-      label: label,
-      backgroundColor: '#A3A1FB',
-      borderWidth: 0,
-      hoverBackgroundColor: '#8482DE',
-      hoverBorderWidth: 0,
-      data: data
-    }]
-  };
+    const dataset = {
+      labels,
+      datasets: [
+        {
+          label,
+          backgroundColor: '#A3A1FB',
+          borderWidth: 0,
+          hoverBackgroundColor: '#8482DE',
+          hoverBorderWidth: 0,
+          data
 
-  const options = {
-    maintainAspectRatio: false,
-    responsive: true,
-    barRoundness: 4,
-    scales: {
-      y: {
-        grid: { color: "rgba(0, 0, 0, 0)" },
-        ticks: {
-          beginAtZero: true,
-          callback: (value) => value + (percentage ? "%" : "")
         }
       }
     },
@@ -56,8 +46,8 @@ function DoubleBarChartCard(props) {
           <Bar data={dataset} height={220} options={options}/>
         </div>
       </div>
-    </div>
-  )
-}
+
+    )
+
 
 export default DoubleBarChartCard;
