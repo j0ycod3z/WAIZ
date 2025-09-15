@@ -1,0 +1,7 @@
+@use "src/resources/base" as base;
+
+.formList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}

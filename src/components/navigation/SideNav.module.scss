@@ -1,0 +1,130 @@
+@use "src/resources/base.scss" as base;
+
+$width: 245px;
+$horizontal-margin: 13px;
+$elementWidth: $width - (2 * $horizontal-margin);
+
+.module {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.module .container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  transition: margin-left 250ms ease-out, transform 250ms ease-out;
+  width: $width;
+  color: white;
+  position: relative;
+  color: base.$white;
+  justify-content: space-between;
+}
+
+.module .body {
+  min-height: 80px;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 0 8px 12px;
+  scrollbar-width: thin;
+}
+
+.module .loading {
+  margin-top: 100px;
+}
+
+.module .header {
+  padding: 12px;
+  position: relative;
+  display: block;
+}
+
+.module .element {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.module .projects {
+  background: inherit;
+}
+
+.module .menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.module .logo {
+  object-fit: contain;
+  height: 24px;
+  width: auto;
+}
+
+.module .menuHamburguer {
+  object-fit: contain;
+  height: 13px;
+  width: auto;
+  cursor: pointer;
+}
+
+.module .flexColumnElement {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+
+.module .select * {
+  font-size: 13px !important
+}
+
+.module button {
+  font-family: inherit;
+  border: none;
+  border-radius: 3px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+  width: 100%;
+}
+
+.module .navButton {
+  display: block;
+  font-family: inherit;
+  
+  &.active .button {
+    background-color: base.$blue-accent;
+    color: base.$white-light;
+  }
+}
+
+.module .button {
+  color: base.$grey-light;
+  border-radius: 3px;
+  background-color: base.$grey;
+  text-align: left;
+  padding: 7px 10px 7px 16px;
+  width: 100%;
+  
+  &:hover {
+    background-color: base.$blue-accent;
+    color: base.$white-light;
+  }
+}
+
+.module .sectionTitle {
+  font-size: 11px;
+  color: base.$primary-light;
+  text-transform: uppercase;
+}

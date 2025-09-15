@@ -1,0 +1,150 @@
+@use "src/resources/base" as base;
+@use "src/resources/forms" as forms;
+@use "src/resources/layout" as layout;
+
+.module p {
+  margin: 0;
+}
+
+.card {
+  background-color: #fff;
+  margin-bottom: 15px;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+.module .cardTitle {
+  font-weight: bolder;
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  gap: 8px;
+}
+
+.module .flexRowContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.module ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.module .levelList {
+  display: flex;
+  gap: 4px;
+  color: base.$grey;
+
+  li, a {
+    border-radius: 6px;
+  }
+  li {
+    width: 100%;
+
+    &.trlSuccess {
+      background-color: base.$green;
+      a {
+        color: white;
+      }
+      a:hover {
+        background-color: base.$green-hover;        
+      }
+    }
+    &.trlPending {
+      background-color: #f0f0f0;
+
+      a {
+        color: base.$grey-dark;
+      }
+    }
+    a:hover {
+      background-color: base.$grey-light;
+      text-decoration: none;
+    }
+  }
+}
+.module .irlTable td {
+  color: base.$grey;
+}
+
+.module .trlContainer {
+  background: none;
+}
+
+.module .editGeneric {
+  font-size: 24px;
+  background: none;
+  padding: 0;
+  border: none;
+}
+
+.module .edit {
+  @extend .editGeneric;
+  color: base.$grey-dark;
+  display: flex;
+
+  i {
+    font-size: 15px;
+  }
+
+  &:hover {
+    color: base.$blue-light;
+  }
+}
+
+.module .mainButton {
+  background-color: base.$green;
+  color: base.$white;
+  min-height: 32px;
+  font-size: 15px;
+
+  &:hover {
+    color: base.$white;
+    background-color: base.$green-hover;
+  }
+}
+
+.horizonContainer {
+  position: relative;
+  aspect-ratio: 1;
+  width: 100%;
+}
+
+.horizonBox {
+  position: absolute;
+  bottom: 0;
+  aspect-ratio: 1;
+  border: 1px solid #a0a0a0;
+
+  p {
+    position: absolute;
+    bottom: 2px;
+    white-space: nowrap;
+    text-align: center;
+  }
+}
+
+.orderedList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 15px;
+  margin: 0;
+
+  li::marker {
+    font-weight: bold;
+  }
+}
+
+.btnContainer {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}

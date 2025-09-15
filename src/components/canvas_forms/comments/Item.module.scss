@@ -1,0 +1,64 @@
+@use "src/resources/base" as base;
+
+.module {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 14px 14px 39px 14px;
+}
+
+.text {
+  font-size: 15px;
+}
+
+.dateContainer {
+  float: right;
+  font-size: 14px;
+  padding: 4px 0px;
+  
+  .image,
+  .date {
+    float: left;
+  }
+  
+  .image {
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+  }
+  
+  .date {
+    font-style: italic;
+    color: #777;
+  }
+}
+
+
+.options {
+  background: #fff;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: none;
+}
+
+.module:hover .options {
+  display: block;
+}
+
+.options .option {
+  display: inline-block;
+  margin: 2px;
+  font-size: 13px;
+  color: white;
+  padding: 4px 5px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.delete {
+  background-color: #FF8050;
+}

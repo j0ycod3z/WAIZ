@@ -1,0 +1,107 @@
+@use "src/resources/base" as base;
+@use "./AuthCommon.module" as common;
+
+.background {
+  position: fixed;
+  z-index: 0;
+}
+
+.container {
+  height: inherit;
+}
+
+.title {
+  margin-bottom: 36px;
+}
+
+.logoCanou {
+  display: inline-block;
+  height: 40px;
+  width: auto;
+  margin-top: 30px;
+  margin-left: 40px;
+}
+
+.containerModifier {
+  height: 100%;
+  position: relative;
+}
+
+.rowCompleteHeight {
+  width: 100%;
+  margin: 0px;
+
+  .columnCenter {
+    height: 100%;
+    display: flex;
+    max-width: 640px;
+    flex-direction: column;
+    justify-content: center;
+
+    .card {
+      width: inherit;
+      margin: 50px 0 20px;
+      padding: 40px 50px;
+    }
+  }
+}
+
+.txtLabel {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #666;
+}
+
+.txtField {
+  background-color: base.$background-fields;
+  margin-bottom: 15px;
+  padding: 11px 16px;
+  border: 1px solid #e7e7e7;
+  border-radius: 7px;
+
+  &:hover, &:focus {
+    background-color: base.$grey-light;
+  }
+}
+
+.checkboxContainer {
+  display: flex;
+  color: #444;
+  flex-direction: row;
+}
+
+.checkboxItem {
+  white-space: nowrap;
+}
+
+.optionsContainer {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.signin {
+  margin-bottom: 5px;
+  white-space: nowrap;
+}
+
+.error {
+  @include common.error();
+}
+
+.payment {
+  @include common.payment();
+}
+
+.loginButton {
+  height: 45px;
+  font-size: 16px;
+}
+
+.footer {
+  color: base.$grey-light;
+}
+
+.footer a {
+  color: base.$grey-light;
+}

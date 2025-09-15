@@ -1,0 +1,115 @@
+@use "src/resources/base.scss" as base;
+
+$height: 45px;
+
+.module {
+  display: flex;
+  width: 100%;
+  font-size: 16px;
+}
+
+.container {
+  background-color: base.$white;
+  display: flex;
+  min-height: $height;
+  width: 100%;
+  padding: 0 30px;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+}
+
+.flexColumn {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  i {
+    font-size: 16px;
+    color: #a0a0a0;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.left {
+  display: flex;
+  gap: 50px;
+}
+
+.right {
+  display: flex;
+  gap: 18px;
+}
+
+.burgerButton {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  i {
+    color: black;
+  }
+}
+
+.title {
+  margin-top: 5px;
+  font-weight: normal;
+  font-size: 14px;
+  white-space: nowrap;
+
+  .subtitle {
+    font-weight: bold;
+    font-size: inherit;
+  }
+}
+
+.button {
+  font-size: 14px;
+  color: #777;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.knowledge span {
+  color: black;
+  white-space: nowrap;
+  margin-left: 10px;
+}
+
+.search {
+  border: 1px solid #e7e7e7;
+
+  i {
+    font-size: 16px;
+    padding: 8px 10px;
+  }
+
+  input {
+    border: none;
+    font-size: 14px;
+    width: 200px;
+    
+    &::placeholder {
+      color: #a0a0a0;
+    }
+  }
+}
+
+.teamImage {
+  display: inline-block;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+}
+
+.userName span {
+  font-size: 14px;
+
+  i {
+    display: inline-block;
+  }
+}

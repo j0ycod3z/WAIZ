@@ -1,0 +1,63 @@
+@use "src/resources/base.scss" as base;
+
+$width: 245px;
+$horizontal-margin: 13px;
+$elementWidth: $width - (2 * $horizontal-margin);
+
+.module {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.module .element {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.module button {
+  font-family: inherit;
+  border: none;
+  border-radius: 3px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+  width: 100%;
+}
+
+.module .navButton{
+  display: block;
+  font-family: inherit;
+
+  &.active .button{
+    background-color: base.$blue-accent;
+    color: base.$white-light;
+  }
+}
+
+.module .button {
+  color: base.$white;
+  border-radius: 3px;
+  background-color: base.$grey;
+  text-align: left;
+  padding: 7px 10px 7px 14px;
+
+  &:hover {
+    background-color: base.$blue-accent;
+    color: base.$white-light;
+  }
+}
+.module .buttonOption{
+  float:right;
+  font-size: 14px;
+  text-align: right;
+  padding: 2px 0;
+}
+
+.module .sectionTitle {
+  font-size: 11px;
+  color: base.$primary-light;
+  text-transform: uppercase;
+}

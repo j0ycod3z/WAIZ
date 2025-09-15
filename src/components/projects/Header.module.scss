@@ -1,0 +1,47 @@
+@use "src/resources/base" as base;
+
+.header {
+  background: base.$orange-primary-1;
+  color: base.$white;
+  
+  select {
+    text-transform: capitalize;
+  }
+  
+  .badgeEdit {
+    font-size: 12px;
+    color: base.$white;
+    background-color: base.$blue-light;
+    padding: 8px;
+    border-radius: 4px;
+  }
+}
+
+.input:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.editLight {
+  font-size: 24px;
+  background: none;
+  padding: 0;
+  border: none;
+  margin: 0;
+  color: base.$white;
+
+  &:hover {
+    color: base.$blue-light;
+  }
+}
+
+.projectInfoList {
+  gap: 4px;
+
+  li i {
+    margin-right: 8px;
+  }
+
+  a {
+    color: #fff;
+  }
+}

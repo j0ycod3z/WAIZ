@@ -1,0 +1,127 @@
+@use "src/resources/base" as base;
+@use "src/resources/layout" as layout;
+
+.module {
+  display: block;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.title {
+  display: flex;
+  font-weight: normal !important;
+  margin-bottom: 4px;
+
+  i {
+    color: #a0a0a0;
+  }
+  a {
+    color: #777;
+    font-family: inherit;
+  }
+  .numH {
+    color: base.$accent-color;
+    font-size: 0.85rem;
+    margin-left: 4px;
+  }
+}
+
+.options {
+  position: absolute;
+  top: 10px;
+  background: #fff;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.module:hover .options {
+  text-decoration: none;
+  opacity: 1;
+}
+
+.options .option {
+  display: inline-block;
+  margin: 2px;
+  font-size: 13px;
+  color: white;
+  padding: 4px 5px;
+  height: 23px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.add {
+  background-color: #198CE5;
+}
+
+.info {
+  background-color: #FFB500;
+}
+
+.edit {
+  background-color: #f0a000;
+}
+
+.bot {
+  background-color: #FF5F00;
+  
+}
+
+.insight {
+  background-color: #20b068;
+}
+
+.add:hover {
+  background-color: #1077D5;
+}
+
+.info:hover {
+  background-color: #FFA000;
+}
+
+.edit:hover {
+  background-color: #f08500;
+}
+
+.bot:hover {
+  background-color: #f08500;
+}
+
+.insight:hover {
+  background-color: #10a060;
+}
+
+.options a {
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.container.other {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wrapperOther {
+  position: relative;
+  width: 25%;
+  padding: 0px 10px;
+}
+
+.item {
+  padding: 6px 0;
+}
+

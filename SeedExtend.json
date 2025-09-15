@@ -1,0 +1,22 @@
+{
+  "actions": [
+    "profile",
+    "project",
+    "canvas",
+    "canvas_type",
+    "cohort",
+    "hypothesis",
+    "area_help",
+    "deep_question",
+    "kb_item",
+    "kb_course",
+    "kb_section",
+    "trl",
+    "project_detail",
+    "trl_question",
+    "dev_stage",
+    "fit",
+    "frontier",
+    "user"
+  ]
+}

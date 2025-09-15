@@ -1,0 +1,23 @@
+@forward 'src/resources/colors';
+@forward 'src/seed/util/mixins';
+
+@mixin fonts() {
+  font-family: "PT Serif", serif;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+}
+
+@mixin sans() {
+  font-family: "Open Sans", sans-serif;
+}
+
+@mixin serif() {
+  font-family: "PT Serif", serif;
+}
+
+@mixin border-radius-all($rTL, $rTR, $rBL, $rBR) {
+  -webkit-border-radius: $rTL $rTR $rBL $rBR;
+  -moz-border-radius: $rTL $rTR $rBL $rBR;
+  -ms-border-radius: $rTL $rTR $rBL $rBR;
+  border-radius: $rTL $rTR $rBL $rBR;
+}

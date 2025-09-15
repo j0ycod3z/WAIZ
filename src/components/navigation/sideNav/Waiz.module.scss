@@ -1,0 +1,13 @@
+@use "src/resources/base.scss" as basedd;
+
+$width: 245px;
+$horizontal-margin: 13px;
+$elementWidth: $width - (2 * $horizontal-margin);
+
+.element {
+  width: $elementWidth;
+  display: flex;
+  flex-direction: column;
+  margin: 12px;
+  margin-top: 0px;
+}

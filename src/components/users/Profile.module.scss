@@ -1,0 +1,261 @@
+@use "src/resources/base" as base;
+@use "src/resources/forms" as forms;
+@use "src/resources/layout" as layout;
+
+.module .card{
+  margin-bottom: 15px;
+}
+
+.module .mainCard {
+  background: base.$orange-primary-1;
+  color: #fff;
+
+  a {
+    color: #fff;
+  }
+}
+
+.module .profileImageContainer {
+  display: inline-block;
+  object-fit: cover;
+  align-self: center;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+}
+
+.module .openButton {
+  background-color: base.$green;
+  color: base.$white;
+  min-height: 32px;
+  width: 120px;
+
+  &:hover {
+    background-color: base.$green-hover;
+  }
+}
+
+.module .username {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.module .cardSection {
+  border-bottom: 1px solid base.$white-light;
+}
+
+.module .list {
+  list-style-type: none;
+  padding: 10px 0;
+  margin: 0;
+
+  i {
+    min-width: 14px;
+    margin-right: 6px;
+  }
+}
+
+.module .skillsHeader {
+  background-color: base.$primary;
+  color: base.$white;
+  gap: 20px;
+
+  span {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .title {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 18px;
+  }
+
+  .skillList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .progress {
+    background-color: base.$primary-dark;
+    height: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .progressPrimary {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.module .bigList {
+  .element {
+    padding: 6px;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid base.$grey-light;
+    }
+  }
+
+  .link {
+    color: base.$primary;
+
+    span {
+      font-size: 18px;
+    }
+
+    &:hover {
+      text-decoration: none;
+
+      span {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .title {
+    font-size: 18px;
+  }
+}
+
+.module .cardTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #eee;
+  border-radius: 4px;
+  color: #444;
+  width: 100%;
+  padding: 10px;
+}
+
+.sidebarItem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  @media (max-width: 1200px) {
+    height: unset;
+    width: unset;
+    position: unset;
+  }
+}
+
+.makeMeSticky {
+  position: sticky;
+  top: 10px;
+
+  @media (max-width: 1200px) {
+    position: unset;
+  }
+}
+
+.module .formTable {
+  width: 100%;
+
+  th {
+    text-align: center;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+}
+
+
+.buttonGreenLight {
+  color: base.$green;
+  border: 1px solid base.$green;
+}
+
+.buttonGreen {
+  color: white;
+  background: base.$green;
+  border: none;
+}
+
+.module .input {
+  margin-bottom: 5px;
+}
+
+.module .input.file {
+  background: none;
+  border: none;
+  padding: 0px;
+}
+
+.error {
+  width: 100%;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  background-color: #ffeeee;
+  color: #a05050;
+  font-size: 14px;
+  padding: 12px;
+  font-weight: bold;
+}
+
+.done {
+  width: 100%;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  background-color: #eeffee;
+  color: #50a050;
+  font-size: 14px;
+  padding: 12px;
+  font-weight: bold;
+}
+
+.module .editGeneric {
+  display: inline-flex;
+  border: none;
+  padding: 0;
+  background: transparent;
+  font-size: 16px;
+}
+
+.module .edit {
+  @extend .editGeneric;
+  color: base.$blue-primary-1;
+  font-size: 18px;
+  &:hover {
+    color: base.$blue-light;
+  }
+}
+
+.module .editLight {
+  @extend .editGeneric;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: base.$white;
+  font-size: 20px;
+  &:hover {
+    color: base.$yellow-canou;
+  }
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.btnContainer {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}

@@ -1,0 +1,48 @@
+@use "src/resources/base" as base;
+@use "./AuthCommon.module" as common;
+
+.module .jumbotron {
+  @include common.jumbotron();
+}
+
+.module .loading {
+  @include common.loading();
+}
+
+.module .back {
+  @include common.back();
+}
+
+.module .image {
+  @include common.image();
+}
+
+.module .title {
+  @include common.title();
+}
+
+.module .title2 {
+  font-size: 21px;
+  margin-bottom: 20px;
+  line-height: 1.4em;
+}
+
+.module .formCard {
+  margin-bottom: 35px;
+}
+
+.module .subtitle {
+  font-family: "PT Serif", serif;
+  font-size: 15px;
+  color: #a0a0a0;
+  line-height: 1.7em;
+}
+
+.module button {
+  height: 45px;
+  font-size: 16px;
+}
+
+.error {
+  @include common.error();
+}

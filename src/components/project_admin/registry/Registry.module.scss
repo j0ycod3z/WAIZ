@@ -1,0 +1,32 @@
+@use "src/resources/base" as base;
+@use "src/resources/forms" as forms;
+@use "src/resources/layout" as layout;
+
+.module .title {
+  margin-bottom: 15px;
+}
+
+.module label{
+  color: #777;
+}
+
+.module textarea{
+  height: 150px;
+}
+.module textarea {
+  min-height: 150px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+.module .save {
+  background-color: base.$green;
+  color: base.$white;
+  min-height: 45px !important;
+  border-radius: 6px;
+  font-size: 16px;
+  border: none;
+
+  &:hover {
+    background-color: base.$green-hover;
+  }
+}

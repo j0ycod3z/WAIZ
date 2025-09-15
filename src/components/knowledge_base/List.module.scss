@@ -1,0 +1,56 @@
+@use "src/resources/base.scss" as base;
+@use "src/resources/layout.scss" as layout;
+@use "src/resources/forms.scss" as forms;
+
+.card {
+  padding: 20px;
+  border: 1px solid #ddd !important;
+}
+
+.sectionHeader {
+  margin-bottom: 0px;
+}
+
+.sectionName {
+  font-size: 15px;
+  color: #777;
+}
+
+.sectionCount {
+  font-size: 14px;
+  color: #888;
+}
+
+.sectionTitle {
+  font-size: 15px;
+  color: #198ce5;
+  padding-bottom: 15px;
+}
+
+.items {
+  list-style: none;
+}
+
+.item {
+  padding: 14px 16px;
+}
+
+.item.active {
+  background: #409ce5;
+  color: #fff;
+}
+
+.flexboxListItem {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .lessonText {
+    margin: 4px;
+  }
+
+  .flexRight {
+    margin: 4px;
+  }
+}

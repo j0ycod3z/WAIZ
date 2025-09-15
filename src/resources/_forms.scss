@@ -1,0 +1,72 @@
+@use "./base" as base;
+
+.module label {}
+
+.module .buttonLink {
+  background: none;
+  border: none;
+  padding: 0 !important;
+  font-weight: bold;
+  color: base.$primary;
+  cursor: pointer;
+  box-sizing: border-box;
+  &:hover {
+    box-sizing: border-box;
+    text-decoration: underline;
+  }
+}
+
+.module .buttonGreen {
+  color: base.$white;
+  background-color: base.$green;
+  &:hover {
+    background-color: base.$green-hover;
+  }
+}
+
+.module .mainButton {
+  border-radius: 6px;
+  width: 100%;
+}
+
+.module .input {
+  background-color: base.$background-fields;
+  border: solid 1px base.$grey-light;
+  padding: 8px 12px;
+}
+
+.module .text {
+}
+
+.module .textArea {
+}
+
+.module .checkbox {
+}
+
+.module .box {
+}
+
+.module .button {
+  background-color: base.$primary;
+  color: base.$white;
+
+  height: 36px;
+  border-radius: 18px;
+
+  &.lg {
+    height: 48px;
+    border-radius: 24px;
+  }
+}
+
+.module .select {
+  @extend .input;
+  height: 48px;
+}
+
+.module .label {
+}
+
+.module .file {
+}

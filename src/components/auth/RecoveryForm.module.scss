@@ -1,0 +1,31 @@
+@use "src/resources/base" as base;
+@use "./AuthCommon.module" as common;
+
+.module .jumbotron {
+  @include common.jumbotron();
+}
+
+.module .loading {
+  @include common.loading();
+}
+
+.module .back {
+  @include common.back();
+}
+
+.module .image {
+  @include common.image();
+}
+
+.module .title {
+  @include common.title();
+}
+
+.module button {
+  height: 45px;
+  font-size: 16px;
+}
+
+.error {
+  @include common.error();
+}

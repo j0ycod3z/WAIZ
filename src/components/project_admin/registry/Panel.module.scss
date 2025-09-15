@@ -1,0 +1,19 @@
+@use "src/resources/base" as base;
+@use "src/resources/forms" as forms;
+@use "src/resources/layout" as layout;
+
+.module .jumbotron {
+  background-color: base.$primary-dark;
+  padding: 20px 30px;
+  margin-bottom: 40px;
+}
+
+.module .back {
+  height: 32px;
+  cursor: pointer;
+}
+
+.module .image {
+  height: 58px;
+  width: auto;
+}
