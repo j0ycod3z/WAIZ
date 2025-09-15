@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import redux from 'seed/redux';
 import c from 'resources/css/dashboards/pages/Pages.module.css';
-import "react-bootstrap";
 import cx from 'classnames';
-import { lcs, lc } from 'components/util/Locales'
 import { format } from 'components/dashboards/util/Util'
 
 import LargeDoughnutChartCard from 'components/dashboards/charts/LargeDoughnutChartCard';
@@ -14,6 +12,7 @@ import HorizontalBarChartCard from 'components/dashboards/charts/HorizontalBarCh
 
 function Cohort (props)
 {
+
   const { getStats } = props;
 
   const [funding, setFunding] = useState({});
@@ -25,6 +24,7 @@ function Cohort (props)
   const [trls, setTrls] = useState({});
   const [frontiers, setFrontiers] = useState({});
   const [sales, setSales] = useState({});
+
 
   useEffect(() => {
     const cohortId = localStorage.getItem('cohortId');
@@ -122,11 +122,13 @@ function Cohort (props)
             labels={universityLabels}
             showNames={true}
           />
+
         </div>
       </div>
 
       <h2 className={c.pageTitle}>Projects</h2>
       <div className={cx("row", c.chartRow)}>
+
         <div className="col col-12 col-lg-4">
           <LargeDoughnutChartCard title="Development Stage" data={enterpreneurData} labels={enterpreneurLabels} />
         </div>
@@ -134,6 +136,7 @@ function Cohort (props)
           <LargeDoughnutChartCard title="TRL Level" data={trlData} labels={trlLabels} />
         </div>
         <div className="col col-12 col-lg-4">
+
           <LargeDoughnutChartCard title="Horizon" data={frontierData} labels={frontierLabels} />
         </div>
       </div>

@@ -1,7 +1,6 @@
 import React from "react";
 import cx from "classnames";
 
-import "react-bootstrap";
 import c from "resources/css/auth/RecoveryMessage.module.css";
 import { lcs } from "../util/Locales";
 import { NavLink } from 'react-router-dom'

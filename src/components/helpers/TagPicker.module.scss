@@ -15,7 +15,7 @@
   align-content: center;
   width: 100%;
   text-align: center;
-  @include base.border-radius(6px);
+  border-radius: 6px;
 }
 
 .tick {

@@ -7,7 +7,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import waizLogo from 'resources/images/waiz_logo_white.svg';
 import backSvg from 'resources/images/ic_back.svg';
 
-import "react-bootstrap";
 import c from "resources/css/auth/Recovery.module.css";
 
 function Recovery(props) {

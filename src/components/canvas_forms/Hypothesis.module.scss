@@ -33,7 +33,7 @@
   min-height: 64px;
   max-height: 128px;
   border: 1px solid #e0e0e0;
-  @include base.border-radius(6px);
+  border-radius: 6px;
 }
 
 .customers b,
@@ -60,7 +60,7 @@
   color: #fff;
   background-color: #11C26F;
   border: none;
-  @include base.border-radius(6px);
+  border-radius: 6px;
 }
 
 .error {

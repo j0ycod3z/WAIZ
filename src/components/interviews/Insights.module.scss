@@ -41,5 +41,5 @@
   color: #fff;
   background-color: base.$blue-primary-1;
   border: none;
-  @include base.border-radius(6px);
+  border-radius: 6px;
 }

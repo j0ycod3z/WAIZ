@@ -1,7 +1,6 @@
 import React from 'react';
 import c from 'resources/css/dashboards/charts/Charts.module.css';
-import "react-bootstrap";
-import cx from 'classnames';
+
 
 function BolaCard(props) {
     return(
@@ -14,6 +13,6 @@ function BolaCard(props) {
         </div>
       </div>
     )
-}
+
 
 export default BolaCard;

@@ -1,18 +1,18 @@
 import React from 'react';
 import c from 'resources/css/dashboards/charts/Charts.module.css';
 import cx from 'classnames';
-import "react-bootstrap";
 import { bright, getColors } from 'components/dashboards/util/Util'
 
-import { Chart as ChartJS, 
-  BarElement, 
-  CategoryScale, 
-  LinearScale, 
-  Tooltip, 
-  Title } from 'chart.js';
+import {
+  Chart as ChartJS,
+  ArcElement,
+  Tooltip,
+  Title,
+  Legend
+} from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
-ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title);
+ChartJS.register(ArcElement, Tooltip, Title, Legend);
 
 function LargeDoughnutChartCard (props)
 {
@@ -29,47 +29,53 @@ function LargeDoughnutChartCard (props)
       },]
     };
 
-    return (
-      <div className={c.module}>
 
-        <div className={cx(c.ChartCard, c.DoughnutChartCard, c.LargeChardCard)}>
-          <h3 className={c.title}>{this.props.title}</h3>
-          <div className={c.ChartCardGraphic}>
-            <Doughnut
-              data={dataset}
-              height={250}
-              options={{
-                maintainAspectRatio: false,
-                responsive: true,
-                plugins: {
-                  tooltip: {
-                    callbacks: {
-                      label: function (tooltipItem) {
-                        const dataset = tooltipItem.dataset;
-                        const total = dataset.data.reduce((prev, curr) => prev + curr, 0);
-                        const currentValue = dataset.data[tooltipItem.dataIndex];
-                        if (!usePercentage) return currentValue;
-                        const percentage = Math.floor((currentValue / total) * 100 + 0.5);
-                        return percentage + "%";
-                      }
-                    }
-                  }
-                }
-              }}
+  const dataset = {
+    labels,
+    datasets: [{
+      data,
+      backgroundColor: baseColors,
+      hoverBackgroundColor: baseColors.map(c => bright(c, 0.85)),
+      hoverBorderColor: baseColors.map(c => bright(c, 0.85)),
+      hoverBorderWidth: 3,
+    }]
+  };
 
-              legend={{
-                display: true,
-                position: "bottom",
-                labels: {
-                  usePointStyle: true,
-                }
-              }}
-            />
-          </div>
+  const options = {
+    maintainAspectRatio: false,
+    responsive: true,
+    plugins: {
+      legend: {
+        display: true,
+        position: "bottom",
+        labels: {
+          usePointStyle: true,
+        }
+      },
+      tooltip: {
+        callbacks: {
+          label: (tooltipItem) => {
+            const dataset = tooltipItem.dataset;
+            const total = dataset.data.reduce((prev, curr) => prev + curr, 0);
+            const currentValue = dataset.data[tooltipItem.dataIndex];
+            if (!usePercentage) return currentValue;
+            const percentage = Math.round((currentValue / total) * 100);
+            return `${percentage}%`;
+          }
+        }
+      }
+    }
+  };
+
+  return (
+    <div className={c.module}>
+      <div className={cx(c.ChartCard, c.DoughnutChartCard, c.LargeChardCard)}>
+        <h3 className={c.title}>{title}</h3>
+        <div className={c.ChartCardGraphic}>
+          <Doughnut data={dataset} height={250} options={options}/>
         </div>
-
       </div>
+
     )
-}
 
 export default LargeDoughnutChartCard;

@@ -303,9 +303,9 @@ const Locales = {
     "Location",
     "Ubicación"
   ],
-  genre: [
-    "Genre",
-    "Genero"
+  gender: [
+    "Gender",
+    "Género"
   ],
   male: [
     "Male",

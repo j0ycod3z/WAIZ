@@ -8,7 +8,6 @@ import { hasProjectPermission } from 'components/util/Permissions';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { lcs } from 'components/util/Locales'
-import "react-bootstrap";
 import c from 'resources/css/interviews/Interviews.module.css';
 
 import Modal from 'seed/components/helpers/Modal';

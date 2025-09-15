@@ -1,17 +1,19 @@
 import React from 'react';
 import c from 'resources/css/dashboards/charts/Charts.module.css';
 import cx from 'classnames';
-import "react-bootstrap";
 import { bright, getColors } from 'components/dashboards/util/Util'
-import { Chart as ChartJS, 
+
+import {
+  Chart as ChartJS, 
   BarElement, 
   CategoryScale, 
   LinearScale, 
   Tooltip, 
-  Title } from 'chart.js';
-
+  Title,
+  Legend
+} from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-
+ matthew-branch
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title);
 
 function DoughnutChartCard (props)
@@ -50,10 +52,11 @@ function DoughnutChartCard (props)
               }}
             />
           </div>
-        </div>
 
+        </div>
       </div>
+
     )
-}
+
 
 export default DoughnutChartCard;

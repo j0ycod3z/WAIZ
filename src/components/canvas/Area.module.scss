@@ -53,7 +53,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  @include base.border-radius(50%);
+  border-radius: 50%;
 }
 
 .add {

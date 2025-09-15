@@ -9,7 +9,6 @@ function Caption(props) {
     text,
     onTop = true,
     maxLen = 14,
-    offset = -25,
   } = props;
 
   const sText = text && text.length > maxLen ? text.substring(0, maxLen) + "…" : text;
@@ -36,7 +35,7 @@ function Caption(props) {
       onMouseLeave={hideCaption}
     >
       {onTop &&
-        <div className={c.caption} style={{marginTop: offset}}>
+        <div className={c.caption}>
           {sText}
         </div>
       }

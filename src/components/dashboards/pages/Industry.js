@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import redux from 'seed/redux';
 import c from 'resources/css/dashboards/pages/Pages.module.css';
-import "react-bootstrap";
 import cx from 'classnames';
 import { format } from 'components/dashboards/util/Util'
 
@@ -30,6 +29,7 @@ function Industry (props)
     getStats("/industry/get_pattents_by_sector", {}, res => setPatents(res.body));
     getStats("/industry/get_projects_by_country", {}, res => setLocations(res.body));
     getStats("/industry/get_industry_by_position", {}, res => setSales(res.body));
+
   }, [getStats]);
 
   let fundingLabels = [];
@@ -112,6 +112,7 @@ function Industry (props)
       <div className={cx("row", c.chartRow)}>
         <div className="col col-12 col-lg-12">
           <BarChartCard title="Sales" data={salesData} labels={salesLabels} label={"Industry average"} />
+
         </div>
       </div>
     </div>

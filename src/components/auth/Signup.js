@@ -4,7 +4,6 @@ import cx from "classnames";
 import { lcs, lang } from 'components/util/Locales';
 import { Formik, Field } from "formik";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import "react-bootstrap";
 import c from "resources/css/auth/Signup.module.css";
 
 import waizLogo from 'resources/images/waiz_logo_white.svg';

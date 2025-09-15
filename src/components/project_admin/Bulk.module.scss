@@ -44,7 +44,7 @@
   color: #fff;
   background-color: base.$green;
   border: none;
-  @include base.border-radius(6px);
+  border-radius: 6px;
 
   &:hover {
     background-color: base.$green-hover;

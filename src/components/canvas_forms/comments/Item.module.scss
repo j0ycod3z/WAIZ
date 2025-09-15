@@ -27,7 +27,7 @@
     margin-right: 10px;
     background-position: center center;
     background-repeat: no-repeat;
-    @include base.border-radius(50%);
+    border-radius: 50%;
   }
   
   .date {
@@ -56,7 +56,7 @@
   color: white;
   padding: 4px 5px;
   cursor: pointer;
-  @include base.border-radius(50%);
+  border-radius: 50%;
 }
 
 .delete {
