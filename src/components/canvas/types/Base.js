@@ -1,7 +1,7 @@
 import * as React from 'react';
 import $ from 'jquery'
 
-import c from 'resources/css/canvas/types/Base.module.css'
+import c from 'components/canvas/types/Base.module.scss'
 
 class Base extends React.Component {
   constructor(props) {

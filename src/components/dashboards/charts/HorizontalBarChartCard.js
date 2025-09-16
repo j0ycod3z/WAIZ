@@ -3,17 +3,20 @@ import c from 'resources/css/dashboards/charts/Charts.module.css';
 import cx from 'classnames';
 import { bright } from 'components/dashboards/util/Util'
 
-import { Chart as ChartJS, 
+import {
+  Chart, 
   BarElement, 
   CategoryScale, 
   LinearScale, 
   Tooltip, 
   Title,
-  Legend
+  Legend,
+  PointElement,
+  LineElement
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
-ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title, Legend);
+Chart.register(BarElement, CategoryScale, LinearScale, Tooltip, Title, Legend, PointElement, LineElement);
 
 function HorizontalBarChartCard(props) {
   const { labels = [], data = [], percentage = true, color = '#5B558B', title } = props;

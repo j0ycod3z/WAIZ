@@ -1,18 +1,14 @@
 import * as React from 'react';
 import cx from 'classnames';
 
-import c from 'resources/css/canvas/activity/List.module.css';
-
+import c from 'components/canvas/activity/List.module.scss';
 
 function ActivityFeed() {
   return (
     <section className={c.module}>
-  
       <div className={c.feedBody}>
         <h1 className={c.title}>Updates</h1>
-  
         <div className={c.feeds}>
-  
           <div className={c.feed}>
             <div className={c.feedLeft}>
               <div className={cx(c.ring, c.red)}></div>
@@ -27,7 +23,7 @@ function ActivityFeed() {
               </div>
             </div>
           </div>
-  
+
           <div className={c.feed}>
             <div className={c.feedLeft}>
               <div className={cx(c.ring, c.purple)}></div>
@@ -42,7 +38,7 @@ function ActivityFeed() {
               </div>
             </div>
           </div>
-  
+
           <div className={c.feed}>
             <div className={c.feedLeft}>
               <div className={cx(c.ring, c.green)}></div>
@@ -57,9 +53,7 @@ function ActivityFeed() {
               </div>
             </div>
           </div>
-  
         </div>
-  
       </div>
     </section>
   )

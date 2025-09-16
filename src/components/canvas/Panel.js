@@ -7,7 +7,7 @@ import FormPanel from "components/canvas_forms/Panel";
 import Canvas from "components/canvas/Canvas";
 import Activity from "components/canvas/activity/List";
 
-import c from "resources/css/canvas/Panel.module.css";
+import c from "components/canvas/Panel.module.scss";
 import Chatbot from "./Chatbot";
 
 function Panel(props) {

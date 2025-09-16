@@ -4,7 +4,7 @@ import cx from "classnames";
 import { lcs, lang } from 'components/util/Locales';
 import { Formik, Field } from "formik";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import c from "resources/css/auth/Signup.module.css";
+import c from "components/auth/Signup.module.scss";
 
 import waizLogo from 'resources/images/waiz_logo_white.svg';
 import backSvg from 'resources/images/ic_back.svg';
@@ -43,24 +43,15 @@ function Signup(props) {
   return (
     <div className={c.module}>
       <div className={cx("d-flex", "align-items-center", c.jumbotron)}>
-        <img
-          src={backSvg}
-          className={c.back}
-          onClick={onClickBack}
-          alt="back"
-        />
+        <img src={backSvg} className={c.back} onClick={onClickBack} alt="back"/>
         <div className={cx("container")}>
-          <img
-            src={waizLogo}
-            className={c.image}
-            alt="Logo"
-          />
+          <img src={waizLogo} className={c.image} alt="Logo"/>
         </div>
       </div>
 
-      <div className={cx(c.container, "container")}> {/*, 'animated fadeIn'*/}
+      <div className={cx(c.container, "container")}>
         <div className={cx("row", "justify-content-center")}>
-          <div className={cx("col-md-5", "col-lg-5", c.formCard)}>
+          <div className={cx("col-md-5", c.formCard)}>
             <h2 className={c.title}>{lcs("sign_up")}</h2>
 
             {loading &&

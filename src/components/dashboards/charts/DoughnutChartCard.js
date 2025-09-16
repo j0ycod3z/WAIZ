@@ -4,17 +4,19 @@ import cx from 'classnames';
 import { bright, getColors } from 'components/dashboards/util/Util'
 
 import {
-  Chart as ChartJS, 
+  Chart, 
   BarElement, 
   CategoryScale, 
   LinearScale, 
   Tooltip, 
   Title,
-  Legend
+  Legend,
+  PointElement,
+  LineElement
 } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
-ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title, Legend);
+Chart.register(BarElement, CategoryScale, LinearScale, Tooltip, Title, Legend, PointElement, LineElement);
 
 function DoughnutChartCard(props) {
   const { labels = [], data = [], title } = props;

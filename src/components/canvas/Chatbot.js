@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { CHATBOT } from "settings/Config"; // Ensure that the path is correct
+import { CHATBOT } from "settings/Config";
 import cx from "classnames";
 
-import c from "resources/css/canvas/Chatbot.module.css"; // Adjust the path as necessary
+import c from "components/canvas/Chatbot.module.scss";
 
 function Chatbot() {
   const [isOpen, setIsOpen] = useState(true);

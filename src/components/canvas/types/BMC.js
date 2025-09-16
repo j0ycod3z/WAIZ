@@ -6,8 +6,8 @@ import Area from 'components/canvas/Area'
 import AreaTemp from 'components/canvas/AreaTemp'
 import Base from 'components/canvas/types/Base';
 
-import c from 'resources/css/canvas/types/Base.module.css'
-import c2 from 'resources/css/canvas/types/BMC.module.css'
+import c from 'components/canvas/types/Base.module.scss'
+import c2 from 'components/canvas/types/BMC.module.scss'
 
 class BMC extends Base {
   render() {

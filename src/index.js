@@ -8,8 +8,6 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { DndProvider } from 'react-dnd'
 
-import Popup from 'react-popup';
-
 import App from 'components/App';
 import Worker from 'settings/bin/Worker';
 import Store from 'settings/bin/Store';
@@ -20,16 +18,15 @@ const store = Store();
 const muiTheme = MuiTheme();
 
 ReactDOM.render(
-    <Provider store={store}>
-        <MuiThemeProvider theme={muiTheme}>
-            <DndProvider backend={HTML5Backend}>
-                <Popup />
-                <BrowserRouter>
-                    <Route path='/' component={App} />
-                </BrowserRouter>
-            </DndProvider>
-        </MuiThemeProvider>
-    </Provider>,
-    document.getElementById('root')
+  <Provider store={store}>
+    <MuiThemeProvider theme={muiTheme}>
+      <DndProvider backend={HTML5Backend}>
+        <BrowserRouter>
+          <Route path='/' component={App} />
+        </BrowserRouter>
+      </DndProvider>
+    </MuiThemeProvider>
+  </Provider>,
+  document.getElementById('root')
 );
 Worker();

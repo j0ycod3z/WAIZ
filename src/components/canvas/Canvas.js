@@ -23,7 +23,7 @@ import Scaling from 'components/canvas/types/Scaling';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import c from 'resources/css/canvas/Canvas.module.css'
+import c from 'components/canvas/Canvas.module.scss'
 
 function Canvas(props) {
   const {

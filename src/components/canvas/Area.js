@@ -10,7 +10,7 @@ import Hypothesis from "components/canvas/Hypothesis";
 import Modal from "seed/components/helpers/Modal";
 import AreaForm from "components/canvas_forms/Area";
 
-import c from "resources/css/canvas/Area.module.css";
+import c from "components/canvas/Area.module.scss";
 
 // import { CHATBOT } from "settings/Config";
 // import { useState } from "react";

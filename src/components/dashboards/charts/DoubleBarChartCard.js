@@ -3,17 +3,19 @@ import c from 'resources/css/dashboards/charts/Charts.module.css';
 import cx from 'classnames';
 
 import {
-  Chart as ChartJS, 
+  Chart, 
   BarElement, 
   CategoryScale, 
   LinearScale, 
   Tooltip, 
   Title,
-  Legend
+  Legend,
+  PointElement,
+  LineElement
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
-ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title, Legend);
+Chart.register(BarElement, CategoryScale, LinearScale, Tooltip, Title, Legend, PointElement, LineElement);
 
 function DoubleBarChartCard(props) {
   const { labels = [], data = [], label = "", percentage = true, title } = props;

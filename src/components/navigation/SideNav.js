@@ -173,11 +173,7 @@ function SideNav(props) {
               <div className={c.element}>
                 <div className={c.sectionTitle}>{lcs("cohorts")}</div>
                 <div className={c.select}>
-                  <Select
-                    styles={selectStyle}
-                    value={cohortSelect[cohortPos]}
-                    onChange={onSelectCohort}
-                    options={cohortSelect} />
+                  <Select styles={selectStyle} value={cohortSelect[cohortPos]} onChange={onSelectCohort} options={cohortSelect} />
                 </div>
               </div>
             }
@@ -192,7 +188,6 @@ function SideNav(props) {
                   </Link>
                 }
               </div>
-
               <div className={c.select}>
                 <Select styles={selectStyle} value={projectSelect[projectPos]} onChange={onSelectProject} options={projectSelect} />
               </div>

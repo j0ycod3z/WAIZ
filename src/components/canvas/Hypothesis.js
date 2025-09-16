@@ -11,7 +11,7 @@ import { getBrText } from 'components/util/Format'
 
 import Caption from 'components/helpers/Caption';
 
-import c from 'resources/css/canvas/Hypothesis.module.css'
+import c from 'components/canvas/Hypothesis.module.scss'
 // import color from '@material-ui/core/colors/yellow';
 
 function Hypothesis(props) {

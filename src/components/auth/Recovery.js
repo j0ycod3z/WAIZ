@@ -7,7 +7,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import waizLogo from 'resources/images/waiz_logo_white.svg';
 import backSvg from 'resources/images/ic_back.svg';
 
-import c from "resources/css/auth/Recovery.module.css";
+import c from "components/auth/Recovery.module.scss";
 
 function Recovery(props) {
   const { history, recoverPassword } = props;
@@ -33,37 +33,23 @@ function Recovery(props) {
     });
   }
 
-  const onClickBack = () => {
-    history.goBack();
-  }
+  const onClickBack = () => history.goBack();
 
   return (
     <div className={c.module}>
       <div className={cx("d-flex", "align-items-center", c.jumbotron)}>
-        <img
-          src={backSvg}
-          className={c.back}
-          onClick={onClickBack}
-          alt="back"
-        />
+        <img src={backSvg} className={c.back} onClick={onClickBack} alt="back"/>
         <div className={cx("container")}>
-          <img
-            src={waizLogo}
-            className={c.image}
-            alt="Logo"
-          />
+          <img src={waizLogo} className={c.image} alt="Logo"/>
         </div>
       </div>
-
-      <div className={cx("container")}> {/*, "animated fadeIn" */}
+      <div className={cx("container")}>
         <div className={cx("row", "justify-content-center")}>
-          <div className={cx("col-md-6", "col-lg-4")}>
+          <div className={cx("col-md-5")}>
             <h2 className={c.title}>{lcs("recover_password")}</h2>
-
             {loading &&
               <CircularProgress className={c.loading} size="20" />
             }
-
             <Formik
               initialValues={{ email: "" }}
               onSubmit={onSubmit}

@@ -5,8 +5,8 @@ import { lcs } from 'components/util/Locales'
 import Area from 'components/canvas/Area'
 import Base from 'components/canvas/types/Base';
 
-import c from 'resources/css/canvas/types/Base.module.css'
-import c2 from 'resources/css/canvas/types/Scaling.module.css'
+import c from 'components/canvas/types/Base.module.scss'
+import c2 from 'components/canvas/types/Scaling.module.scss'
 
 class Scaling extends Base {
   render() {

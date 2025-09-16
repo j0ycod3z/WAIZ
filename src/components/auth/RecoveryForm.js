@@ -7,7 +7,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import waizLogo from 'resources/images/waiz_logo_white.svg';
 import backSvg from 'resources/images/ic_back.svg';
 
-import c from "resources/css/auth/RecoveryForm.module.css";
+import c from "components/auth/RecoveryForm.module.scss";
 
 function RecoveryForm(props) {
   const { match, history, changePassword } = props;
@@ -15,7 +15,6 @@ function RecoveryForm(props) {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [state, setState] = useState({});
 
   const onSubmit = (values) => {
     if (values.password !== values.password2)
@@ -41,9 +40,7 @@ function RecoveryForm(props) {
     });
   }
 
-  const onClickBack = () => {
-    history.goBack();
-  }
+  const onClickBack = () => history.goBack();
 
   return (
     <div className={c.module}>
@@ -53,16 +50,13 @@ function RecoveryForm(props) {
           <img src={waizLogo} className={c.image} alt="Logo" />
         </div>
       </div>
-
       <div className={cx("container")}>
         <div className={cx("row", "justify-content-center")}>
-          <div className={cx("col-md-4", "col-lg-4")}>
+          <div className={cx("col-md-5")}>
             <h2 className={c.title}>{lcs("recover_password")}</h2>
-
-            {state.loading &&
+            {loading &&
               <CircularProgress className={c.loading} size="20" />
             }
-
             <Formik
               initialValues={{
                 password: "",
@@ -91,7 +85,7 @@ function RecoveryForm(props) {
                   </div>
                   {error &&
                     <div className={cx(c.error, 'animated', 'fadeIn')}>
-                      <div> {state.error}</div>
+                      <div>{error}</div>
                     </div>
                   }
                   <div>

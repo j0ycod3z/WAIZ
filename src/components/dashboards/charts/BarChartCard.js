@@ -4,17 +4,19 @@ import cx from 'classnames';
 import { bright } from 'components/dashboards/util/Util'
 
 import {
-  Chart as ChartJS, 
+  Chart, 
   BarElement, 
   CategoryScale, 
   LinearScale, 
   Tooltip, 
   Title,
-  Legend 
+  Legend,
+  PointElement,
+  LineElement
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
-ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title, Legend);
+Chart.register(BarElement, CategoryScale, LinearScale, Tooltip, Title, Legend, PointElement, LineElement);
 
 function BarChartCard(props) {
   const { labels = [], data = [], color = '#5B558B', label = '', showNames = false, title } = props;

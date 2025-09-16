@@ -4,15 +4,17 @@ import cx from 'classnames';
 import { bright, getColors } from 'components/dashboards/util/Util'
 
 import {
-  Chart as ChartJS,
+  Chart,
   ArcElement,
   Tooltip,
   Title,
-  Legend
+  Legend,
+  PointElement,
+  LineElement
 } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
-ChartJS.register(ArcElement, Tooltip, Title, Legend);
+Chart.register(ArcElement, Tooltip, Title, Legend, PointElement, LineElement);
 
 function LargeDoughnutChartCard(props) {
   const { labels = [], data = [], usePercentage = false, title } = props;

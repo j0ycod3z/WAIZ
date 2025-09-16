@@ -2,14 +2,14 @@ import { useState } from 'react';
 import redux from 'seed/redux';
 import cx from 'classnames';
 import { lcs } from 'components/util/Locales';
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'; //import { useParams } from 'react-router-dom'; to replace
 import waizLogo from 'resources/images/waiz_logo_white.svg';
 
-import c from 'resources/css/auth/Login.module.css';
+import c from 'components/auth/Login.module.scss';
 
 function Login(props) {
   const { match, history, getUserDetails } = props;
-  const { action } = match.params;
+  const { action } = match.params; //const { action } = useParams(); to replace
 
   const [missingPayment, setMissingPayment] = useState(false);
   const [error, setError] = useState(undefined);
@@ -51,39 +51,19 @@ function Login(props) {
     });
   }
 
-  const paymentMessage = missingPayment && (
-    <div className={cx(c.payment, 'animated', 'fadeIn')}>
-      <div>
-        {lcs("missing_payment_message")} <a href="mailto:hello@waiz.ai">hello@waiz.ai</a> {lcs("missing_payment_message_2")}
-      </div>
-    </div>
-  );
-
-  const errorMessage = error && (
-    <div className={cx(c.error,'animated', 'fadeIn')}>
-      <div>{error}</div>
-    </div>
-  );
-
   return (
     <div className={c.background}>
       <div className={c.module}>
         <div className={c.container}>
           <div>
-            <img
-              className={c.logoCanou}
-              alt="Logo"
-              src={waizLogo}
-            />
+            <img className={c.logoCanou} alt="Logo" src={waizLogo}/>
           </div>
-
           <div className={cx("row", "d-flex", "justify-content-center", c.rowCompleteHeight)}>
-            <div className={cx(c.columnCenter, "col-md-8", "col-lg-5")}>
-              <div className={cx("card", c.card)}> {/*, 'animated zoomIn'*/}
+            <div className={cx(c.columnCenter, "col-md-7 ")}>
+              <div className={cx("card", c.card)}>
                 <div className={cx("row", "d-flex", "justify-content-center")}>
                   <h1 className={c.title}>{lcs("login")}</h1>
                 </div>
-
                 <form onSubmit={onLogin}>
                   <div className={cx("form-group")}>
                     <input
@@ -135,14 +115,23 @@ function Login(props) {
                       </div>
                     </div>
                   </div>
-                  {paymentMessage}
-                  {errorMessage}
+                  {missingPayment && 
+                    <div className={cx(c.payment, 'animated', 'fadeIn')}>
+                      <div>
+                        {lcs("missing_payment_message")} <a href="mailto:hello@waiz.ai">hello@waiz.ai</a> {lcs("missing_payment_message_2")}
+                      </div>
+                    </div>
+                  }
+                  {error &&
+                    <div className={cx(c.error,'animated', 'fadeIn')}>
+                      <div>{error}</div>
+                    </div>
+                  }
                   <button className={cx("btn", "btn-block", "btn-large", c.loginButton, c.buttonGreen, c.mainButton)}>
                     {lcs("login")}
                   </button>
                 </form>
               </div>
-
               <div className={cx("row", "d-flex", "justify-content-center")}>
                 <div className={cx("d-flex", "align-items-end")}>
                   <p className={cx(c.footer)}>wAIz ©</p>

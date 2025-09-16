@@ -1,7 +1,7 @@
 import ModalBot from "./ModalBot";
 import * as React from "react";
 import Hypothesis from "components/canvas/Hypothesis";
-import { CHATBOT } from "settings/Config"; // Ensure that the path is correct
+import { CHATBOT } from "settings/Config";
 
 export function toggleModal(setModal) {
   setModal((prevState) => !prevState);

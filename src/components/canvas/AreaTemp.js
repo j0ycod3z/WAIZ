@@ -5,7 +5,7 @@ import { lcs } from 'components/util/Locales'
 
 import Hypothesis from 'components/canvas/Hypothesis'
 
-import c from 'resources/css/canvas/Area.module.css'
+import c from 'components/canvas/Area.module.scss'
 
 function AreaTemp(props) {
   const { hypothesis = [], projects } = props;

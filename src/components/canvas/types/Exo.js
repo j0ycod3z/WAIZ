@@ -6,8 +6,7 @@ import { lc } from 'components/util/Locales'
 import Area from 'components/canvas/Area'
 import Base from 'components/canvas/types/Base';
 
-import c from 'resources/css/canvas/types/Base.module.css'
-
+import c from 'components/canvas/types/Base.module.scss'
 
 class Exo extends Base {
   render() {
@@ -15,16 +14,15 @@ class Exo extends Base {
     const footerLegend = type.l_legend;
     const areas = type.areas;
 
-    const footer = footerLegend ?
+    const footer = footerLegend &&
       <Row className={c.footer}>
         <Col>
           {lc(footerLegend)}
         </Col>
-      </Row> : null
+      </Row>
 
     return (
       <div className={c.module}>
-
         <Container className={cx(c.container, c.fullwidth)}>
           <Row className={c.fullwidth} data-height={20}>
             <Col md className={c.col}>
@@ -186,7 +184,6 @@ class Exo extends Base {
           </Row>
           {footer}
         </Container>
-
       </div>
     );
   }
