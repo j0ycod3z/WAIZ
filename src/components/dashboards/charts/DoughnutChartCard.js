@@ -13,12 +13,11 @@ import {
   Legend
 } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
- matthew-branch
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title);
 
 function DoughnutChartCard (props)
 {
-    const { labels = [], data = [] } = props
+    const { labels = [], data = [], title="" } = props;
 
     const dataset = {
       labels,
@@ -57,6 +56,6 @@ function DoughnutChartCard (props)
       </div>
 
     )
-
+  }
 
 export default DoughnutChartCard;

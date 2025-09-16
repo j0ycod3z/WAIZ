@@ -19,13 +19,12 @@ function Details (props)
         hipDataset.push(h)
     }
 
-    let intDataset = [];
-    for (let i of iDatasets) {
-      if (i.label == format(projectData.name))
-        intDataset.push(i)
-
-    }
-  }
+  //   let intDataset = []; //bat dalawa tf
+  //   for (let i of iDatasets) {
+  //     if (i.label == format(projectData.name)){
+  //       intDataset.push(i);
+  //   }
+  // }
 
   let intDataset = [];
   for (let i of iDatasets) {
@@ -51,7 +50,10 @@ function Details (props)
           <DoughnutChartCard title={lcs("interview_types")} labels={typeLabels} data={typeData} />
         </div>
       </div>
+    </div>
 
     )
+  }
+  
 
 export default Details;

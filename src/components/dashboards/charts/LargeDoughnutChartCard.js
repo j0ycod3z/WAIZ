@@ -14,29 +14,16 @@ import { Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Title, Legend);
 
-function LargeDoughnutChartCard (props)
-{
-    const { labels = [], data = [], usePercentage = false, title } = props
-
-    const dataset = {
-      labels,
-      datasets: [{
-        data,
-        backgroundColor: getColors(labels.length),
-        hoverBackgroundColor: getColors(labels.length).map(c => bright(c, 0.85)),
-        hoverBorderColor: getColors(labels.length).map(c => bright(c, 0.85)),
-        hoverBorderWidth: 3,
-      },]
-    };
-
+function LargeDoughnutChartCard (props) {
+  const { labels = [], data = [], usePercentage = false, title } = props;
 
   const dataset = {
     labels,
     datasets: [{
       data,
-      backgroundColor: baseColors,
-      hoverBackgroundColor: baseColors.map(c => bright(c, 0.85)),
-      hoverBorderColor: baseColors.map(c => bright(c, 0.85)),
+      backgroundColor: getColors(labels.length), // ✅ uses util
+      hoverBackgroundColor: getColors(labels.length).map(c => bright(c, 0.85)),
+      hoverBorderColor: getColors(labels.length).map(c => bright(c, 0.85)),
       hoverBorderWidth: 3,
     }]
   };
@@ -48,9 +35,7 @@ function LargeDoughnutChartCard (props)
       legend: {
         display: true,
         position: "bottom",
-        labels: {
-          usePointStyle: true,
-        }
+        labels: { usePointStyle: true }
       },
       tooltip: {
         callbacks: {
@@ -67,15 +52,17 @@ function LargeDoughnutChartCard (props)
     }
   };
 
+
   return (
     <div className={c.module}>
       <div className={cx(c.ChartCard, c.DoughnutChartCard, c.LargeChardCard)}>
         <h3 className={c.title}>{title}</h3>
         <div className={c.ChartCardGraphic}>
-          <Doughnut data={dataset} height={250} options={options}/>
+          <Doughnut data={dataset} height={250} options={options} />
         </div>
       </div>
-
-    )
+    </div>
+  ); 
+}
 
 export default LargeDoughnutChartCard;

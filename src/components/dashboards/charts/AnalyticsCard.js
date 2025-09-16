@@ -63,6 +63,8 @@ function AnalyticCard (props)
               <p>{lcs("invalid")}</p>
             </div>
             </div>
+        </div>
+      </div>
     )
 
 }

@@ -2,7 +2,10 @@
 ## 1. Integration Issues
   _*eto palang yung nahahanap ko na issues._
    - **Knowledge Base:** some YouTube videos are not rendering
+      - Possibly privated, or removed videos, will check - Matthew
+      - update 9/15/25. Vids unavailable already downloaded, will download the rest for further archiving just in case
    - **Dashboard:** Graph data for Hypothesis and Interviews are not showing
+      - Will go and trace - Matthew
    - **Projects Admin:** Can't create a cohort in the front end. _(no code in the front end at all)_
 
 ## 2.  Check UI Components

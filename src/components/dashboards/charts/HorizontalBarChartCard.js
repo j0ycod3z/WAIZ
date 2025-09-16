@@ -15,10 +15,8 @@ import { Bar } from 'react-chartjs-2';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title, Legend);
 
-function HorizontalBarChartCard (props)
-{
-    const { labels = [], data = [], percentage = true, color = '#5B558B' } = props;
-
+function HorizontalBarChartCard (props) {
+  const { labels = [], data = [], percentage = true, color = '#5B558B' } = props;
 
   const dataset = {
     labels,
@@ -31,30 +29,14 @@ function HorizontalBarChartCard (props)
     }]
   };
 
-    const options = {
-  indexAxis: 'y',
-  responsive: true,
-  plugins: {
-    legend: {
-      display: true,
+  const options = {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: {
+      legend: { display: true },
+      tooltip: { mode: 'index', intersect: false },
     },
-    tooltip: {
-      mode: 'index',
-      intersect: false,
-    },
-  },
-  scales: {
-    x: {
-      beginAtZero: true,
-      ticks: {
-        callback: (value) => `${value}%`, 
-      },
-      grid: {
-        display: false,
-
-      },
-    },
-    scales: {
+    scales: { 
       x: {
         beginAtZero: true,
         ticks: {
@@ -71,12 +53,13 @@ function HorizontalBarChartCard (props)
   return (
     <div className={c.module}>
       <div className={cx(c.ChartCard, c.BarChartCard, c.LargeChardCard)}>
-        <h3 className={c.title}>{title}</h3>
+        <h3 className={c.title}>{props.title}</h3>
         <div className={c.ChartCardGraphic}>
           <Bar data={dataset} options={options} />
         </div>
       </div>
-    )
-
+    </div>
+  ); 
+}
 
 export default HorizontalBarChartCard;

@@ -150,6 +150,7 @@ function Benchmark (props)
     </div>
 
   );
+}
 
 }
 

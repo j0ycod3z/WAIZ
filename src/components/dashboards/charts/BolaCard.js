@@ -13,6 +13,6 @@ function BolaCard(props) {
         </div>
       </div>
     )
-
+  }
 
 export default BolaCard;

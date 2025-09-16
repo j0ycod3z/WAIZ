@@ -31,7 +31,8 @@ function Dashboards(props) {
 
           <NavLink activeClassName={c.active} className={c.btn} to={`${url}/industry`}>
             {lcs("industry")}
-          </NavLink>
+        </NavLink>
+        </NavLink>
         </div>
 
         <Switch>

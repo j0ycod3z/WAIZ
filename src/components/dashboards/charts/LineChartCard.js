@@ -19,7 +19,7 @@ ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title, Legend)
 
 function LineChartCard (props)
 {
-    const { hypothesisCount = {}, interviewsCount = {}, labels = [], datasets = [] } = props;
+    const { hypothesisCount = {}, interviewsCount = {}, labels = [], datasets = [], title ="", interview=false } = props;
     const data = {
       labels,
       datasets: datasets.map((d, idx) => ({
@@ -43,31 +43,6 @@ function LineChartCard (props)
         data: d.data
       }))
     };
-
-
-  const data = {
-    labels: labels,
-    datasets: datasets.map((d, idx) => ({
-      label: d.label,
-      fill: false,
-      borderColor: getColor(idx),
-      pointBorderColor: getColor(idx),
-      pointBackgroundColor: "#fff",
-      borderCapStyle: 'butt',
-      stepped: false,
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
-      pointBorderWidth: 2,
-      pointHoverRadius: 6,
-      pointHoverBackgroundColor: getColor(idx),
-      pointHoverBorderColor: bright(getColor(idx), 1.1),
-      pointHoverBorderWidth: 2,
-      pointRadius: 4,
-      pointHitRadius: 10,
-      data: d.data
-    }))
-  };
   
   const options = {
     maintainAspectRatio: false,
@@ -198,9 +173,9 @@ function LineChartCard (props)
 //               )}
 //           </div>
 
-      </div>
-    )
-}
+//       </div>
+//     )
+// }
 
 
 export default LineChartCard;

@@ -63,6 +63,7 @@ function BarChartCard (props)
           <Bar data={dataset} height={220} options={options}/>
         </div>
       </div>
+    </div>
     )
 
 }
