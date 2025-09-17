@@ -1,6 +1,5 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { Container, Row, Col } from 'react-bootstrap'
 import { lc } from 'components/util/Locales'
 
 import Area from 'components/canvas/Area'
@@ -14,18 +13,11 @@ class Exo extends Base {
     const footerLegend = type.l_legend;
     const areas = type.areas;
 
-    const footer = footerLegend &&
-      <Row className={c.footer}>
-        <Col>
-          {lc(footerLegend)}
-        </Col>
-      </Row>
-
     return (
       <div className={c.module}>
-        <Container className={cx(c.container, c.fullwidth)}>
-          <Row className={c.fullwidth} data-height={20}>
-            <Col md className={c.col}>
+        <div className={cx('container', c.container, c.fullwidth)}>
+          <div className={cx('row', c.fullwidth)} data-height={20}>
+            <div className={cx('col', c.col)}>
               <div className={c.content}>
                 <Area
                   area={this.getArea("MTP", areas)}
@@ -34,10 +26,10 @@ class Exo extends Base {
                   setSelectedColor={this.setSelectedColor}
                   match={match} />
               </div>
-            </Col>
-          </Row>
-          <Row className={c.fullwidth} data-height={80}>
-            <Col md={2} className={c.col}>
+            </div>
+          </div>
+          <div className={cx('row', c.fullwidth)} data-height={80}>
+            <div className={cx('col-md-2', c.col)}>
               <div className={c.content}>
                 <Area
                   area={this.getArea("INFORMATION", areas)}
@@ -46,10 +38,10 @@ class Exo extends Base {
                   setSelectedColor={this.setSelectedColor}
                   match={match} />
               </div>
-            </Col>
-            <Col md={4} className={c.innercol}>
-              <Row>
-                <Col md className={c.col}>
+            </div>
+            <div className={cx('col-md-4', c.innercol)}>
+              <div className='row'>
+                <div className={cx('col', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("STAFF_ON_DEMAND", areas)}
@@ -58,10 +50,10 @@ class Exo extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col md className={c.col}>
+                </div>
+              </div>
+              <div className='row'>
+                <div className={cx('col', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("COMMUNITY", areas)}
@@ -70,10 +62,10 @@ class Exo extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col md className={c.col}>
+                </div>
+              </div>
+              <div className='row'>
+                <div className={cx('col', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("ALGORITHMS", areas)}
@@ -82,10 +74,10 @@ class Exo extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col md className={c.col}>
+                </div>
+              </div>
+              <div className='row'>
+                <div className={cx('col', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("LEVERAGED_ASSETS", areas)}
@@ -94,10 +86,10 @@ class Exo extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col md className={c.col}>
+                </div>
+              </div>
+              <div className='row'>
+                <div className={cx('col', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("ENGAGEMENT", areas)}
@@ -106,12 +98,12 @@ class Exo extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-              </Row>
-            </Col>
-            <Col md={4} className={c.innercol}>
-              <Row>
-                <Col md className={c.col}>
+                </div>
+              </div>
+            </div>
+            <div className={cx('col-md-4', c.innercol)}>
+              <div className='row'>
+                <div className={cx('col', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("INTERFACES", areas)}
@@ -120,10 +112,10 @@ class Exo extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col md className={c.col}>
+                </div>
+              </div>
+              <div className='row'>
+                <div className={cx('col', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("DASHBOARDS", areas)}
@@ -132,10 +124,10 @@ class Exo extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col md className={c.col}>
+                </div>
+              </div>
+              <div className='row'>
+                <div className={cx('col', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("EXPERIMENTATION", areas)}
@@ -144,10 +136,10 @@ class Exo extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col md className={c.col}>
+                </div>
+              </div>
+              <div className='row'>
+                <div className={cx('col', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("AUTONOMY", areas)}
@@ -156,10 +148,10 @@ class Exo extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col md className={c.col}>
+                </div>
+              </div>
+              <div className='row'>
+                <div className={cx('col', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("SOCIAL_TECH", areas)}
@@ -168,10 +160,10 @@ class Exo extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-              </Row>
-            </Col>
-            <Col md={2} className={c.col}>
+                </div>
+              </div>
+            </div>
+            <div className={cx('col-md-2', c.col)}>
               <div className={c.content}>
                 <Area
                   area={this.getArea("IMPLEMENTATION", areas)}
@@ -180,10 +172,16 @@ class Exo extends Base {
                   setSelectedColor={this.setSelectedColor}
                   match={match} />
               </div>
-            </Col>
-          </Row>
-          {footer}
-        </Container>
+            </div>
+          </div>
+          {footerLegend &&
+            <div className={cx("row", c.footer)}>
+              <div className="col">
+                {lc(footerLegend)}
+              </div>
+            </div>
+          }
+        </div>
       </div>
     );
   }

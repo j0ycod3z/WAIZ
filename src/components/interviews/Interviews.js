@@ -8,9 +8,9 @@ import { hasProjectPermission } from 'components/util/Permissions';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { lcs } from 'components/util/Locales'
-import c from 'resources/css/interviews/Interviews.module.css';
+import c from 'components/interviews/Interviews.module.scss';
 
-import Modal from 'seed/components/helpers/Modal';
+import Modal from 'components/helpers/Modal';
 import Item from 'components/interviews/Item'
 import Form from 'components/interviews/Form'
 import Export from 'components/interviews/Export'

@@ -1,5 +1,5 @@
 import React from 'react';
-import c from 'resources/css/dashboards/pages/Pages.module.css';
+import c from 'components/dashboards/pages/Pages.module.scss';
 import cx from 'classnames';
 import { lcs } from 'components/util/Locales'
 import { format } from 'components/dashboards/util/Util'

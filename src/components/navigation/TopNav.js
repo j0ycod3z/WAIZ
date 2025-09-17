@@ -3,14 +3,14 @@ import * as Util from 'seed/util';
 import redux from 'seed/redux';
 import cx from "classnames";
 import About from "components/navigation/About"
-import Modal from "seed/components/helpers/Modal"
+import Modal from "components/helpers/Modal"
 import { NavLink } from 'react-router-dom'
 import { lcs, lc } from 'components/util/Locales'
 
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import c from 'resources/css/navigation/TopNav.module.css';
+import c from 'components/navigation/TopNav.module.scss';
 
 function TopNav(props) {
   const {

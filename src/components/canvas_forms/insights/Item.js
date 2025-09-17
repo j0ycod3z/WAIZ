@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { lcs, getDate } from "components/util/Locales"
-import c from 'resources/css/canvas_forms/insights/Item.module.css'
+import c from 'components/canvas_forms/insights/Item.module.scss'
 
 function Item(props) {
   const {

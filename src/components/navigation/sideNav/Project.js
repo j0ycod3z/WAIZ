@@ -4,10 +4,10 @@ import redux from 'seed/redux';
 import { NavLink, useLocation } from 'react-router-dom'
 import { lcs } from 'components/util/Locales'
 
-import Modal from 'seed/components/helpers/Modal';
+import Modal from 'components/helpers/Modal';
 import InterviewForm from 'components/interviews/Form';
 
-import c from "resources/css/navigation/sideNav/Project.module.css";
+import c from "components/navigation/sideNav/Project.module.scss";
 
 function SideNav(props) {
   const { project, match } = props;

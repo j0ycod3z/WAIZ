@@ -4,7 +4,7 @@ import cx from 'classnames';
 import { lcs } from 'components/util/Locales';
 import { Link } from 'react-router-dom'
 
-import c from 'resources/css/search/Search.module.css';
+import c from 'components/search/Search.module.scss';
 
 function Users(props) {
   const { match, getUserList, getProfileList } = props;

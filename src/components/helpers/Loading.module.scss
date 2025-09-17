@@ -1,9 +1,4 @@
-/*
-__Seed builder__v0.2.0
-  (Read_only) Builder helper
-*/
-
-@import "src/resources/base";
+@use "src/resources/base" as base;
 
 .module {
   width: 100%;

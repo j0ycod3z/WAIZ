@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import redux from 'seed/redux';
-import c from 'resources/css/dashboards/pages/Pages.module.css';
+import c from 'components/dashboards/pages/Pages.module.scss';
 import cx from 'classnames';
 
 import { lcs } from 'components/util/Locales'

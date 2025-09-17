@@ -3,8 +3,8 @@ import cx from 'classnames';
 import { lcs } from 'components/util/Locales';
 import { Link } from 'react-router-dom'
 
-import c from 'resources/css/projects/Profile.module.css';
-import c2 from 'resources/css/projects/Members.module.css';
+import c from 'components/projects/Profile.module.scss';
+import c2 from 'components/projects/Members.module.scss';
 
 function Members(props) {
   const { project } = props;

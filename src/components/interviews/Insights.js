@@ -4,7 +4,7 @@ import redux from 'seed/redux';
 import List from 'components/interviews/insights/List'
 import { lcs } from "components/util/Locales"
 
-import c from 'resources/css/interviews/Insights.module.css'
+import c from 'components/interviews/Insights.module.scss'
 
 function Insights(props) {
   const {

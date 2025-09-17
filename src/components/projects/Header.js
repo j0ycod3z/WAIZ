@@ -4,8 +4,8 @@ import { hasProjectPermission } from 'components/util/Permissions';
 import { getBrText } from 'components/util/Format'
 import { lcs } from 'components/util/Locales'
 
-import c from 'resources/css/projects/Profile.module.css';
-import c2 from 'resources/css/projects/Header.module.css';
+import c from 'components/projects/Profile.module.scss';
+import c2 from 'components/projects/Header.module.scss';
 
 function ProjectHeader(props) {
   const {

@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { lcs } from 'components/util/Locales';
 import { CSVLink } from "react-csv";
 
-import c from 'resources/css/projects/Profile.module.css';
+import c from 'components/projects/Profile.module.scss';
 
 function Export(props) {
   const { project, projectDetails } = props;

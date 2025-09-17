@@ -4,10 +4,10 @@ import redux from 'seed/redux';
 import cx from "classnames";
 import { lcs } from 'components/util/Locales'
 import { Formik, Field } from 'formik';
-import Loading from 'seed/components/helpers/Loading'
+import Loading from 'components/helpers/Loading'
 import Insights from 'components/interviews/Insights'
 
-import c from 'resources/css/interviews/Form.module.css'
+import c from 'components/interviews/Form.module.scss'
 
 function Form(props) {
   const { 

@@ -21,7 +21,7 @@ import SideNav from 'components/navigation/SideNav';
 import Tour from 'components/navigation/Tour';
 // import WaizNav from 'components/navigation/sideNav/waiz';
 
-import c from 'resources/css/Home.module.css';
+import c from 'components/Home.module.scss';
 // import GameChangerFunnel from './gamechangerfunnel/GCF';
 // import Chatbot from './chatbot/Chatbot';
 

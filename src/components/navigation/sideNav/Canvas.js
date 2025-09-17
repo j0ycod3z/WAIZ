@@ -7,12 +7,12 @@ import { hasProjectPermission } from 'components/util/Permissions';
 
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import Modal from 'seed/components/helpers/Modal';
+import Modal from 'components/helpers/Modal';
 
 import PhaseSelect from 'components/navigation/PhaseSelect';
 
 import cx from 'classnames';
-import c from "resources/css/navigation/sideNav/Canvas.module.css";
+import c from "components/navigation/sideNav/Canvas.module.scss";
 
 function Canvas(props) {
   const { project, match, setType2, history, } = props;

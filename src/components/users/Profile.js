@@ -3,13 +3,13 @@ import redux from 'seed/redux';
 import { hasProfilePermission } from 'components/util/Permissions';
 import cx from "classnames";
 
-import c from "resources/css/users/Profile.module.css";
+import c from "components/users/Profile.module.scss";
 import Card from "components/users/Card";
 import Projects from 'components/users/Projects'
 import Skills from "components/users/Skills";
 import Details from "components/users/Details";
 import Export from "components/users/Export";
-import Loading from 'seed/components/helpers/Loading';
+import Loading from 'components/helpers/Loading';
 
 function Profile(props) {
   const {

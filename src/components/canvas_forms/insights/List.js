@@ -1,7 +1,7 @@
 import React from 'react';
 import { lcs } from "components/util/Locales"
 import Item from 'components/canvas_forms/insights/Item'
-import c from 'resources/css/canvas_forms/insights/List.module.css'
+import c from 'components/canvas_forms/insights/List.module.scss'
 
 function List(props) {
   const { insightsD = [] } = props;

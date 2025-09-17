@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import redux from 'seed/redux';
 import { lcs, lc } from "components/util/Locales"
 import Switch from '@material-ui/core/Switch';
-import Loading from 'seed/components/helpers/Loading'
+import Loading from 'components/helpers/Loading'
 
-import c from 'resources/css/navigation/PhaseSelect.module.css'
+import c from 'components/navigation/PhaseSelect.module.scss'
 
 function PhaseSelect(props) {
   const { 

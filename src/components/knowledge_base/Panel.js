@@ -8,7 +8,7 @@ import { lc } from "components/util/Locales"
 import Select from "react-select";
 import List from 'components/knowledge_base/List'
 import Details from 'components/knowledge_base/Details'
-import c from "resources/css/knowledge_base/Panel.module.css";
+import c from "components/knowledge_base/Panel.module.scss";
 
 function Panel(props) {
   const { kbCourses = [], getKbCourseList, history, match, showMenu = true } = props;

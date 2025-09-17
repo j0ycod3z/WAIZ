@@ -5,7 +5,7 @@ import { lcs } from 'components/util/Locales';
 
 import cx from "classnames";
 
-import c from "resources/css/users/Profile.module.css";
+import c from "components/users/Profile.module.scss";
 
 function Settings(props) {
   const { getUserDetails, setUser, changePassword } = props;

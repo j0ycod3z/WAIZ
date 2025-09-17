@@ -1,6 +1,5 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { Container, Row, Col } from 'react-bootstrap'
 import { lc } from 'components/util/Locales'
 
 import Area from 'components/canvas/Area'
@@ -14,23 +13,13 @@ class Productivity extends Base {
     const footerLegend = type.l_legend;
     const areas = type.areas;
 
-    const footer = footerLegend &&
-      <Row className={c.footer}>
-        <Col>
-          {lc(footerLegend)}
-        </Col>
-      </Row>
-
     return (
       <div className={c.module}>
-
-        <Container className={cx(c.container, c.fullwidth)}>
-          <Row className={c.fullwidth} data-height={100}>
-
-            <Col md className={c.innercol}>
-
-              <Row>
-                <Col md className={c.col}>
+        <div className={cx("container", c.container, c.fullwidth)}>
+          <div className={cx("row", c.fullwidth)} data-height={100}>
+            <div className={cx('col-md', c.innercol)}>
+              <div className='row'>
+                <div className={cx('col-md', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("MAKE_BUY", areas)}
@@ -40,8 +29,8 @@ class Productivity extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-                <Col md className={c.col}>
+                </div>
+                <div className={cx('col-md', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("SELL", areas)}
@@ -51,8 +40,8 @@ class Productivity extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-                <Col md className={c.col}>
+                </div>
+                <div className={cx('col-md', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("RECORD", areas)}
@@ -62,11 +51,10 @@ class Productivity extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-              </Row>
-
-              <Row>
-                <Col md className={c.col}>
+                </div>
+              </div>
+              <div className='row'>
+                <div className={cx('col-md', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("QTR", areas)}
@@ -75,8 +63,8 @@ class Productivity extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-                <Col md className={c.col}>
+                </div>
+                <div className={cx('col-md', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("THEME", areas)}
@@ -85,8 +73,8 @@ class Productivity extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-                <Col md className={c.col}>
+                </div>
+                <div className={cx('col-md', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("ACCOUNTABILITY", areas)}
@@ -96,11 +84,10 @@ class Productivity extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-              </Row>
-
-              <Row>
-                <Col md className={c.col}>
+                </div>
+              </div>
+              <div className='row'>
+                <div className={cx('col-md', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("ROCKS", areas)}
@@ -110,8 +97,8 @@ class Productivity extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-                <Col md className={c.col}>
+                </div>
+                <div className={cx('col-md', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("SCOREBOARD", areas)}
@@ -120,8 +107,8 @@ class Productivity extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-                <Col md className={c.col}>
+                </div>
+                <div className={cx('col-md', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("PRIORITIES", areas)}
@@ -131,11 +118,10 @@ class Productivity extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-              </Row>
-
-              <Row>
-                <Col md className={c.col}>
+                </div>
+              </div>
+              <div className='row'>
+                <div className={cx('col-md', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("CRITICAL_PEOPLE_P1", areas)}
@@ -145,8 +131,8 @@ class Productivity extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-                <Col md className={c.col}>
+                </div>
+                <div className={cx('col-md', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("CELEBRATION", areas)}
@@ -155,8 +141,8 @@ class Productivity extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-                <Col md className={c.col}>
+                </div>
+                <div className={cx('col-md', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("CRITICAL_PEOPLE_P2", areas)}
@@ -166,11 +152,10 @@ class Productivity extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-              </Row>
-
-              <Row>
-                <Col md className={c.col}>
+                </div>
+              </div>
+              <div className='row'>
+                <div className={cx('col-md', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("CRITICAL_PROCESS_P1", areas)}
@@ -180,8 +165,8 @@ class Productivity extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-                <Col md className={c.col}>
+                </div>
+                <div className={cx('col-md', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("REWARD", areas)}
@@ -190,8 +175,8 @@ class Productivity extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-                <Col md className={c.col}>
+                </div>
+                <div className={cx('col-md', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("CRITICAL_PROCESS_P2", areas)}
@@ -201,11 +186,10 @@ class Productivity extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-              </Row>
-
-              <Row>
-                <Col md className={c.col}>
+                </div>
+              </div>
+              <div className='row'>
+                <div className={cx('col-md', c.col)}>
                   <div className={c.content}>
                     <Area
                       area={this.getArea("TRENDS_P", areas)}
@@ -215,14 +199,18 @@ class Productivity extends Base {
                       setSelectedColor={this.setSelectedColor}
                       match={match} />
                   </div>
-                </Col>
-              </Row>
-
-            </Col>
-          </Row>
-          {footer}
-        </Container>
-
+                </div>
+              </div>
+            </div>
+          </div>
+          {footerLegend &&
+            <div className={cx("row", c.footer)}>
+              <div className="col">
+                {lc(footerLegend)}
+              </div>
+            </div>
+          }
+        </div>
       </div>
     );
   }

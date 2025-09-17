@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink, withRouter, Switch, Route, Redirect } from 'react-router-dom';
-import c from 'resources/css/dashboards/Dashboards.module.css';
+import c from 'components/dashboards/Dashboards.module.scss';
 import cx from 'classnames';
 import { lcs } from 'components/util/Locales'
 

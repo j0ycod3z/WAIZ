@@ -6,7 +6,7 @@ import { lcs } from "components/util/Locales"
 import { Formik } from "formik";
 import { API_URL } from "settings/Config";
 
-import c from 'resources/css/project_admin/Bulk.module.css'
+import c from 'components/project_admin/Bulk.module.scss'
 
 function Bulk(props) {
   const { url: redirectUrl, bulkLoad } = props;

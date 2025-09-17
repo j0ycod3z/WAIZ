@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 
-import c from 'resources/css/helpers/Multiselect.module.css';
-
+import c from 'components/helpers/Multiselect.module.scss';
 
 function Multiselect(props) {
   const {

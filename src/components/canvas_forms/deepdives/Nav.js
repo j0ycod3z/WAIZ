@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
-import c from 'resources/css/canvas_forms/deepdives/Nav.module.css'
+import c from 'components/canvas_forms/deepdives/Nav.module.scss'
 
 function Nav(props) {
   const {

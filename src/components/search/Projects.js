@@ -4,7 +4,7 @@ import cx from 'classnames';
 import { Link } from 'react-router-dom'
 import { lcs } from 'components/util/Locales';
 
-import c from 'resources/css/search/Search.module.css';
+import c from 'components/search/Search.module.scss';
 
 function Projects(props) {
   const { match, getProjectList } = props;

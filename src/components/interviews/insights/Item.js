@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { lcs } from "components/util/Locales"
-import c from 'resources/css/interviews/insights/Item.module.css'
+import c from 'components/interviews/insights/Item.module.scss'
 
 function Item(props) {
   const { insight, onDelete } = props;

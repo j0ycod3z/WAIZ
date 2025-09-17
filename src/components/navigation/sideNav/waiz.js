@@ -1,7 +1,7 @@
 import React from 'react';
 import redux from 'seed/redux';
 import { Link } from 'react-router-dom';
-import c from "resources/css/navigation/sideNav/Waiz.module.css";
+import c from "components/navigation/sideNav/Waiz.module.scss";
 
 function waiz() {
   return (

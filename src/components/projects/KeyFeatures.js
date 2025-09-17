@@ -3,8 +3,8 @@ import cx from 'classnames';
 import { hasProjectPermission } from 'components/util/Permissions';
 import { lcs } from 'components/util/Locales';
 
-import c from 'resources/css/projects/Profile.module.css';
-import c2 from 'resources/css/projects/KeyFeatures.module.css';
+import c from 'components/projects/Profile.module.scss';
+import c2 from 'components/projects/KeyFeatures.module.scss';
 
 function KeyFeatures(props) {
   const { projectDetails: projectDetailsProp = {}, project, setProjectFeature, setProjectDetail } = props;

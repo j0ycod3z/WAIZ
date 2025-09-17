@@ -3,7 +3,7 @@ import redux from 'seed/redux';
 
 import YouTube from 'react-youtube';
 import { lc, lang } from "components/util/Locales"
-import c from 'resources/css/canvas_forms/Help.module.css'
+import c from 'components/canvas_forms/Help.module.scss'
 
 function Help(props) {
   const { match, areaHelps, getAreaHelpList } = props;
@@ -30,7 +30,7 @@ function Help(props) {
   
   return (
     <div className={c.module}>
-      { (videoId != "0" && videoId != null) &&
+      {(videoId != "0" && videoId != null) &&
         <YouTube
           videoId={videoId}
           opts={opts}

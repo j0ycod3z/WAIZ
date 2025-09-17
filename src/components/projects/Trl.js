@@ -6,8 +6,8 @@ import { Formik, Field } from "formik";
 
 import cx from "classnames";
 
-import c from "resources/css/projects/Trl.module.css";
-import Loading from "seed/components/helpers/Loading";
+import c from "components/projects/Trl.module.scss";
+import Loading from "components/helpers/Loading";
 
 function Trl(props) {
   const { match, trls = [], trlQuestions, projectDetails = [], getTrlQuestionList, getTrlStatusList, saveTrlStatus, setTrlStatus, setProjectDetail, onClose } = props;

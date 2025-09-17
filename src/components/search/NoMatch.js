@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import c from 'resources/css/search/Search.module.css';
+import c from 'components/search/Search.module.scss';
 
 function NoMatch() {
   return(

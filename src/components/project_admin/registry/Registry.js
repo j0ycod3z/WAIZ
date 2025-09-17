@@ -5,7 +5,7 @@ import cx from "classnames";
 import { lcs } from 'components/util/Locales';
 
 import { Formik } from "formik";
-import c from "resources/css/project_admin/registry/Registry.module.css";
+import c from "components/project_admin/registry/Registry.module.scss";
 
 function Registry(props) {
   const { registerProject, history, match } = props;

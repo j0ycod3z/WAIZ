@@ -3,7 +3,7 @@ import { lcs } from "components/util/Locales"
 import cx from 'classnames'
 
 import Item from 'components/interviews/insights/Item'
-import c from 'resources/css/interviews/insights/List.module.css'
+import c from 'components/interviews/insights/List.module.scss'
 
 function List(props) {
   const { insightsD = [], onDelete } = props;

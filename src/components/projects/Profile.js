@@ -19,10 +19,10 @@ import FinancialBoard from 'components/projects/FinancialBoard'
 import Export from 'components/projects/Export';
 import Members from 'components/projects/Members'
 
-import Modal from 'seed/components/helpers/Modal'
-import Loading from 'seed/components/helpers/Loading'
+import Modal from 'components/helpers/Modal'
+import Loading from 'components/helpers/Loading'
 
-import c from 'resources/css/projects/Profile.module.css';
+import c from 'components/projects/Profile.module.scss';
 import { Switch } from "@material-ui/core";
 
 function Profile(props) {

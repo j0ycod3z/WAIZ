@@ -4,7 +4,7 @@ import redux from 'seed/redux';
 import { lcs } from "components/util/Locales"
 import List from 'components/canvas_forms/insights/List'
 
-import c from 'resources/css/canvas_forms/Insights.module.css'
+import c from 'components/canvas_forms/Insights.module.scss'
 
 function Insights(props) {
   const { match, canvases, insights, getInsightList } = props;

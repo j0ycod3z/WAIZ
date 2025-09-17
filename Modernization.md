@@ -7,13 +7,13 @@ npm uninstall node-sass-chokidar
 npm install --save-dev sass
 ```
 **SCSS - Deprecated Warning Fix**
-- replace all imports in all scss files to:
+- replace all imports in all scss files
 ```scss
 @use "src/resources/base" as base;
 @use "src/resources/layout" as layout;
 @use "src/resources/forms" as forms;
 ```
-- Make necessary changes in scss files.
+- Make necessary changes in.
 ```scss
 // Before
 @include fonts();
@@ -31,11 +31,13 @@ background-color: base.$green;
 - fixing UI styles that are breaking
 - consolidating global styles
 
-## 2. Integration Issues
+## 2. Integration Issues (Node 20  env)
 _*eto palang yung nahahanap ko na issues._
    - **Knowledge Base:** some YouTube videos are not rendering
    - **Dashboard:** Graph data for Hypothesis and Interviews are not showing
+   - **Dashboard:** Remove old insdustry data
    - **Projects Admin:** Can't create a cohort in the front end. _(no code in the front end at all)_
+   - **Canvas:** Weekly filter not working
 
 ## 2.  Check UI Components
 ### 2.1 Goal
@@ -54,12 +56,12 @@ _*eto palang yung nahahanap ko na issues._
 - [x] react-ga
 - [x] react-css-modules
 - [x] react-transition-group
-- [ ] react-bootstrap
+- [x] react-bootstrap
 - [x] styled-components
 - [x] yup
   
 #### List of dependencies
-1. **chart.js & react-chartjs-2** **(DONE)**
+1. **chart.js & react-chartjs-2 (DONE)**
    ```bash
    npm install --save-dev chart.js@4 react-chartjs-2@5
    "chart.js": "^3.9.1",
@@ -78,12 +80,12 @@ _*eto palang yung nahahanap ko na issues._
    npm install --save-dev formik@2
    ```
    - check for newer methods
-4. **react-csv**
+4. **react-csv (DONE)**
    ```bash
    npm install --save-dev react-csv@2
    ```
    - check for newer methods
-5. **react-youtube**
+5. **react-youtube (DONE)**
    ```bash
    npm install --save-dev react-youtube@10
    ```

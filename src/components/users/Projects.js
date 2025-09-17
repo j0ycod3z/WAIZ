@@ -3,7 +3,7 @@ import cx from "classnames";
 import { Link } from 'react-router-dom'
 import { lcs } from 'components/util/Locales';
 
-import c from "resources/css/users/Profile.module.css";
+import c from "components/users/Profile.module.scss";
 
 function Projects(props) {
   const { userId, projects } = props;

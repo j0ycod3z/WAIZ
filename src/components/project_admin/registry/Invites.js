@@ -4,11 +4,10 @@ import { Formik, Form, Field, FieldArray } from "formik";
 import { lcs } from 'components/util/Locales';
 import cx from "classnames";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import c from "resources/css/project_admin/registry/Invites.module.css";
+import c from "components/project_admin/registry/Invites.module.scss";
 
 function AddMembers(props) {
   const { match, history, inviteProject } = props;
-  const { path } = match;
   const { project_id } = match.params;
   
   const [loading, setLoading] = useState(false);

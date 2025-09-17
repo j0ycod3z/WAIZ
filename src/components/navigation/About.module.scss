@@ -1,7 +1,7 @@
 @use "src/resources/base.scss" as base;
 
 .module {
-  background: url("/src/resources/images/wave.svg") no-repeat center center;
+  background: url("../../resources/images/wave.svg") no-repeat center center;
   background-size: cover;
   background-color: base.$primary-dark;
   height: 100%;

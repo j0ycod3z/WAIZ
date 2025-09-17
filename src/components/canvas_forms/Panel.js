@@ -10,11 +10,11 @@ import Insights from 'components/canvas_forms/Insights'
 import DeepDive from 'components/canvas_forms/DeepDive'
 import Comments from 'components/canvas_forms/Comments'
 import Help from 'components/canvas_forms/Help'
-import Modal from 'seed/components/helpers/Modal';
+import Modal from 'components/helpers/Modal';
 import HypothesisForm from 'components/canvas_forms/Hypothesis';
 
 import cx from 'classnames';
-import c from 'resources/css/canvas_forms/Panel.module.css'
+import c from 'components/canvas_forms/Panel.module.scss'
 import { lcs, lc } from "components/util/Locales"
 
 function Panel(props) {

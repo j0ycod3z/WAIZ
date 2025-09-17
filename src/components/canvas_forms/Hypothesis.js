@@ -4,9 +4,9 @@ import redux from 'seed/redux';
 import TagPicker from 'components/helpers/TagPicker'
 import Multiselect from 'components/helpers/Multiselect'
 import { lcs, lc } from "components/util/Locales"
-import Loading from 'seed/components/helpers/Loading'
+import Loading from 'components/helpers/Loading'
 
-import c from 'resources/css/canvas_forms/Hypothesis.module.css'
+import c from 'components/canvas_forms/Hypothesis.module.scss'
 
 function HypothesisForm(props) {
   const {

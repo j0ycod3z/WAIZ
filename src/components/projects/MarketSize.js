@@ -3,8 +3,8 @@ import cx from 'classnames';
 import { lcs } from 'components/util/Locales';
 import { hasProjectPermission } from 'components/util/Permissions';
 
-import c from 'resources/css/projects/Profile.module.css';
-import c2 from 'resources/css/projects/MarketSize.module.css';
+import c from 'components/projects/Profile.module.scss';
+import c2 from 'components/projects/MarketSize.module.scss';
 
 function MarketSize(props) {
   const { projectDetails = {}, project, setProjectDetail } = props;

@@ -1,10 +1,8 @@
 import React from "react";
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { lcs } from "components/util/Locales"
 
-import Modal from 'seed/components/helpers/Modal';
 import KnowledgeBase from 'components/knowledge_base/Panel'
-import c from "resources/css/knowledge_base/Incubation.module.css";
+import c from "components/knowledge_base/Incubation.module.scss";
 
 function Incubation(props) {
   const { match } = props;

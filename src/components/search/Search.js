@@ -8,7 +8,7 @@ import Projects from './Projects';
 import Users from './Users';
 import { lcs } from 'components/util/Locales';
 
-import c from 'resources/css/search/Search.module.css';
+import c from 'components/search/Search.module.scss';
 
 function SearchComponent(props) {
   const { path, url, params: { search } } = props.match;

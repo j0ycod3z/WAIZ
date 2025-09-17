@@ -8,13 +8,13 @@ import { Route, Link } from 'react-router-dom'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import Modal from 'seed/components/helpers/Modal';
+import Modal from 'components/helpers/Modal';
 import AddMember from 'components/project_admin/AddMember';
 import BulkLoad from 'components/project_admin/Bulk';
 
 import { hasProjectPermission, hasCohortPermission } from 'components/util/Permissions';
 
-import c from 'resources/css/project_admin/Admin.module.css';
+import c from 'components/project_admin/Admin.module.scss';
 import { lcs } from 'components/util/Locales';
 
 function ProjectAdmin(props) {

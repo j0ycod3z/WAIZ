@@ -6,8 +6,8 @@ import { Formik, Field } from "formik";
 
 import cx from "classnames";
 
-import c from "resources/css/projects/DevStages.module.css";
-import Loading from "seed/components/helpers/Loading";
+import c from "components/projects/DevStages.module.scss";
+import Loading from "components/helpers/Loading";
 
 function DevStages(props) {
   const { match, devStages: devStagesProp, getDevStageList, getDevStageStatusList, saveDevStageStatus, setDevStageStatus, projectDetails = [], setProjectDetail, onClose } = props;

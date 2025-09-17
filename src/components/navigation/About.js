@@ -1,7 +1,6 @@
 import * as React from 'react';
-import c from 'resources/css/navigation/About.module.css';
+import c from 'components/navigation/About.module.scss';
 import waizLogo from 'resources/images/waiz_logo_white.svg';
-
 
 function About() {
   return (

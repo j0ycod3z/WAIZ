@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import c from 'resources/css/helpers/TagPicker.module.css';
+import c from 'components/helpers/TagPicker.module.scss';
 
 function TagPicker(props) {
   const {

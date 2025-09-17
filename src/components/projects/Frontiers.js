@@ -6,8 +6,8 @@ import { Formik, Field } from "formik";
 
 import cx from "classnames";
 
-import c from "resources/css/projects/Frontiers.module.css";
-import Loading from "seed/components/helpers/Loading";
+import c from "components/projects/Frontiers.module.scss";
+import Loading from "components/helpers/Loading";
 
 function Frontiers(props) {
   const { match, frontiers, getFrontierList, getFrontierStatusList, saveFrontierStatus, setFrontierStatus, projectDetails = [], setProjectDetail, onClose } = props;

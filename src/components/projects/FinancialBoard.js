@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import redux from 'seed/redux';
 
 import { lcs } from "components/util/Locales"
-import c from "resources/css/projects/FinancialBoard.module.css";
+import c from "components/projects/FinancialBoard.module.scss";
 
 function FinancialBoard(props) {
   const {

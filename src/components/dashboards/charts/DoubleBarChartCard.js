@@ -1,5 +1,5 @@
 import React from 'react';
-import c from 'resources/css/dashboards/charts/Charts.module.css';
+import c from 'components/dashboards/charts/Charts.module.scss';
 import cx from 'classnames';
 
 import {

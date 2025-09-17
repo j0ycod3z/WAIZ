@@ -4,15 +4,15 @@ import cx from 'classnames';
 
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import Loading from 'seed/components/helpers/Loading'
+import Loading from 'components/helpers/Loading'
 import Insights from 'components/interviews/Insights'
 import { hasProjectPermission } from 'components/util/Permissions';
 
-import Modal from 'seed/components/helpers/Modal';
+import Modal from 'components/helpers/Modal';
 import Form from 'components/interviews/Form'
 import { lcs } from 'components/util/Locales'
 
-import c from 'resources/css/interviews/Details.module.css'
+import c from 'components/interviews/Details.module.scss'
 
 function Details(props) {
   const { 

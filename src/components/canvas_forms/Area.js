@@ -5,7 +5,7 @@ import redux from 'seed/redux';
 import cx from 'classnames'
 import { lcs } from "components/util/Locales"
 
-import c from 'resources/css/canvas_forms/Area.module.css'
+import c from 'components/canvas_forms/Area.module.scss'
 
 function AreaForm(props) {
   const {

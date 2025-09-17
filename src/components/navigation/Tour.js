@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import redux from 'seed/redux'
 import Tour from 'reactour'
 
-import c from 'resources/css/navigation/Tour.module.css';
-import cSide from 'resources/css/navigation/SideNav.module.css';
-import cSideCanvas from 'resources/css/navigation/sideNav/Canvas.module.css';
-import cSideProject from 'resources/css/navigation/sideNav/Project.module.css';
-import cProfile from 'resources/css/users/Profile.module.css';
+import c from 'components/navigation/Tour.module.scss';
+import cSide from 'components/navigation/SideNav.module.scss';
+import cSideCanvas from 'components/navigation/sideNav/Canvas.module.scss';
+import cSideProject from 'components/navigation/sideNav/Project.module.scss';
+import cProfile from 'components/users/Profile.module.scss';
 
 import tabletPng from "resources/images/tablet.png";
 

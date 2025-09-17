@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import $ from 'jquery'
 
-import c from 'resources/css/helpers/Caption.module.css';
+import c from 'components/helpers/Caption.module.scss';
 
 function Caption(props) {
   const {

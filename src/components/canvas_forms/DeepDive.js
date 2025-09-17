@@ -4,7 +4,7 @@ import redux from 'seed/redux';
 import Nav from 'components/canvas_forms/deepdives/Nav'
 import Item from 'components/canvas_forms/deepdives/Item'
 
-import c from 'resources/css/canvas_forms/DeepDive.module.css'
+import c from 'components/canvas_forms/DeepDive.module.scss'
 
 function DeepDive(props) {
   const { match, deepQuestions, getDeepQuestionList } = props;

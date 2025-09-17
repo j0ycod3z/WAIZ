@@ -8,14 +8,14 @@ import redux from 'seed/redux';
 import { NavLink } from 'react-router-dom';
 import Select from "react-select";
 import { lcs } from 'components/util/Locales'
-import Loading from 'seed/components/helpers/Loading'
+import Loading from 'components/helpers/Loading'
 import CanvasNav from 'components/navigation/sideNav/Canvas'
 import ProjectNav from 'components/navigation/sideNav/Project'
 import MembersNav from 'components/navigation/sideNav/Members'
 // import { waizNav } from "components/navigation/sideNav/waiz";
 
 import { selectStyle } from 'components/navigation/SideNav.module.js'
-import c from "resources/css/navigation/SideNav.module.css";
+import c from "components/navigation/SideNav.module.scss";
 
 import waizLogo from 'resources/images/waiz_logo_white.svg';
 import menuExtended from 'resources/images/menu-extended.svg';

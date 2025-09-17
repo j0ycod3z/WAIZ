@@ -6,7 +6,7 @@ import cx from "classnames";
 import Invites from "components/project_admin/registry/Invites";
 import Registry from "components/project_admin/registry/Registry";
 
-import c from "resources/css/project_admin/registry/Panel.module.css";
+import c from "components/project_admin/registry/Panel.module.scss";
 
 import waizLogo from 'resources/images/waiz_logo_white.svg';
 import backSvg from 'resources/images/ic_back.svg';

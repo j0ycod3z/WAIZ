@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import redux from 'seed/redux'
 import { lcs, lc } from "components/util/Locales"
-import c from 'resources/css/canvas_forms/deepdives/Item.module.css'
+import c from 'components/canvas_forms/deepdives/Item.module.scss'
 
 function Item(props){
   const {

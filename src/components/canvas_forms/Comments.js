@@ -4,7 +4,7 @@ import redux from 'seed/redux';
 import { lcs } from "components/util/Locales"
 import List from 'components/canvas_forms/comments/List'
 
-import c from 'resources/css/canvas_forms/Comments.module.css'
+import c from 'components/canvas_forms/Comments.module.scss'
 
 function Comments(props) {
   const { match, canvases, comments, getCommentList } = props;

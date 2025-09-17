@@ -7,7 +7,7 @@ import { lcs } from 'components/util/Locales'
 import Caption from 'components/helpers/Caption';
 import cx from 'classnames';
 
-import c from "resources/css/navigation/sideNav/Members.module.css";
+import c from "components/navigation/sideNav/Members.module.scss";
 
 function Members(props) {
   const { project, match } = props;

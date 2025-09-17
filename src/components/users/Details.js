@@ -5,7 +5,7 @@ import { getBrText } from 'components/util/Format'
 import { lcs } from 'components/util/Locales';
 import { hasProfilePermission } from 'components/util/Permissions';
 
-import c from "resources/css/users/Profile.module.css";
+import c from "components/users/Profile.module.scss";
 
 function Details(props) {
   const {

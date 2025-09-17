@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import { getDate } from "components/util/Locales"
 
-import c from 'resources/css/canvas_forms/comments/Item.module.css'
+import c from 'components/canvas_forms/comments/Item.module.scss'
 
 function Item(props) {
   const {

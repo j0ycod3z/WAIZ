@@ -7,7 +7,7 @@ import { lc, lcs } from "components/util/Locales";
 import { hasProjectPermission } from "components/util/Permissions";
 
 import Hypothesis from "components/canvas/Hypothesis";
-import Modal from "seed/components/helpers/Modal";
+import Modal from "components/helpers/Modal";
 import AreaForm from "components/canvas_forms/Area";
 
 import c from "components/canvas/Area.module.scss";

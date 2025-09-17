@@ -5,7 +5,7 @@ import cx from "classnames";
 import { lc, lcs } from "components/util/Locales"
 import { NavLink } from 'react-router-dom'
 
-import c from "resources/css/knowledge_base/List.module.css";
+import c from "components/knowledge_base/List.module.scss";
 
 function List(props) {
   const { kbSections = [], getKbSectionList, match, history } = props;

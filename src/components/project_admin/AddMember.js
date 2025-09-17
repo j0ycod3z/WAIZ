@@ -5,7 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { lcs } from "components/util/Locales"
 import { Formik, Field } from "formik";
 
-import c from 'resources/css/project_admin/AddMember.module.css'
+import c from 'components/project_admin/AddMember.module.scss'
 
 function AddMember(props) {
   const { match, onClose, setProject, setCohort, inviteProject, inviteCohort } = props;
