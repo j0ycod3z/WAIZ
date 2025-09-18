@@ -14,8 +14,6 @@ import { Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Title, Legend);
 
-function LargeDoughnutChartCard (props) {
-  const { labels = [], data = [], usePercentage = false, title } = props;
 function LargeDoughnutChartCard (props)
 {
     const { labels = [], data = [], usePercentage = false, title } = props
@@ -67,7 +65,6 @@ function LargeDoughnutChartCard (props)
         </div>
       </div>
     </div>
-  ); 
   );
 
 }

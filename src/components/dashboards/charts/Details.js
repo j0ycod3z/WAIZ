@@ -20,20 +20,6 @@ function Details (props)
       }
     }
 
-<<<<<<< Updated upstream
-  //   let intDataset = []; //bat dalawa tf
-  //   for (let i of iDatasets) {
-  //     if (i.label == format(projectData.name)){
-  //       intDataset.push(i);
-  //   }
-  // }
-
-  let intDataset = [];
-  for (let i of iDatasets) {
-    if (i.label == format(projectData.name)) {
-      intDataset.push(i);
-    }
-  }
     let intDataset = [];
     for (let i of iDatasets) {
       if (i.label == format(projectData.name)){
@@ -62,6 +48,4 @@ function Details (props)
 
     )
   }
-  
-
 export default Details;
