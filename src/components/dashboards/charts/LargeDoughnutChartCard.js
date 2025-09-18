@@ -16,6 +16,11 @@ ChartJS.register(ArcElement, Tooltip, Title, Legend);
 
 function LargeDoughnutChartCard (props) {
   const { labels = [], data = [], usePercentage = false, title } = props;
+function LargeDoughnutChartCard (props)
+{
+    const { labels = [], data = [], usePercentage = false, title } = props
+
+  const baseColors = getColors(labels.length);
 
   const dataset = {
     labels,
@@ -63,6 +68,8 @@ function LargeDoughnutChartCard (props) {
       </div>
     </div>
   ); 
+  );
+
 }
 
 export default LargeDoughnutChartCard;

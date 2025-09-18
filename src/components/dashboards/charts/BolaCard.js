@@ -15,4 +15,7 @@ function BolaCard(props) {
     )
   }
 
+  }
+
+
 export default BolaCard;

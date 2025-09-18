@@ -18,7 +18,7 @@ ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title, Legend)
 
 function BarChartCard (props)
 {
-    const { labels = [], data = [], color = '#5B558B', label = '', showNames = false, Title } = props;
+    const { labels = [], data = [], color = '#5B558B', label = '', showNames = false, title } = props;
     const dataset = {
       labels,
       datasets: [

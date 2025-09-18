@@ -153,5 +153,6 @@ function Benchmark (props)
 }
 
 }
+}
 
 export default redux(Benchmark);

@@ -20,6 +20,7 @@ ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Title, Legend)
 function LineChartCard (props)
 {
     const { hypothesisCount = {}, interviewsCount = {}, labels = [], datasets = [], title ="", interview=false } = props;
+    const { hypothesisCount = {}, interviewsCount = {}, labels = [], datasets = [], title, interview = false } = props;
     const data = {
       labels,
       datasets: datasets.map((d, idx) => ({

@@ -15,10 +15,12 @@ function Details (props)
 
     let hipDataset = [];
     for (let h of hDatasets) {
-      if (h.label == format(projectData.name))
+      if (h.label == format(projectData.name)){
         hipDataset.push(h)
+      }
     }
 
+<<<<<<< Updated upstream
   //   let intDataset = []; //bat dalawa tf
   //   for (let i of iDatasets) {
   //     if (i.label == format(projectData.name)){
@@ -32,6 +34,12 @@ function Details (props)
       intDataset.push(i);
     }
   }
+    let intDataset = [];
+    for (let i of iDatasets) {
+      if (i.label == format(projectData.name)){
+        intDataset.push(i)
+      }
+    }
 
   let typeLabels = [];
   let typeData = [];

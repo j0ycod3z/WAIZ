@@ -7,6 +7,13 @@ import _Cohorts from "seed/actions/cohorts";
 
 class Cohorts extends _Cohorts
 {
+
+  createCohort(data, callback) {
+    return this.postData(
+      '/create', data, callback
+    );
+  }
+
   getUserCohortList(userId, callback) 
   {
     let query = `user_id=${userId}`;

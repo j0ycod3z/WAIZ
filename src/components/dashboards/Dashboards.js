@@ -22,6 +22,7 @@ function Dashboards(props) {
         <div className={c.dashboardsMenu}>
           <NavLink activeClassName={c.active} className={c.btn} to={`${url}/performance`}>
             {lcs("performance")}
+          </NavLink>
 
           {cohortId != null && cohortId != 0 ? (
             <NavLink activeClassName={c.active} className={c.btn} to={`${url}/cohort`}>
