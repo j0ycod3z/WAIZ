@@ -5,8 +5,8 @@ import cx from 'classnames';
 import * as Util from 'seed/util'
 import { Route, Link } from 'react-router-dom'
 
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 import Modal from 'components/helpers/Modal';
 import AddMember from 'components/project_admin/AddMember';

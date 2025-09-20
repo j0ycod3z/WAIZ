@@ -2,8 +2,8 @@ import React, { useState, useCallback, useMemo } from 'react';
 import { NavLink, Link, Route, Switch, Redirect } from 'react-router-dom'
 import redux from 'seed/redux';
 
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 import Area from 'components/canvas/Area'
 import Insights from 'components/canvas_forms/Insights'

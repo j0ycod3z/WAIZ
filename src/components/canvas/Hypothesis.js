@@ -12,7 +12,7 @@ import { getBrText } from 'components/util/Format'
 import Caption from 'components/helpers/Caption';
 
 import c from 'components/canvas/Hypothesis.module.scss'
-// import color from '@material-ui/core/colors/yellow';
+// import color from '@mui/material/colors/yellow';
 
 function Hypothesis(props) {
   const {

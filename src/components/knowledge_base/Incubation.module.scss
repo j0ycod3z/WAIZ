@@ -1,6 +1,6 @@
-@use "src/resources/base.scss" as base;
-@use "src/resources/layout.scss" as layout;
-@use "src/resources/forms.scss" as forms;
+@use "src/resources/base" as base;
+@use "src/resources/layout" as layout;
+@use "src/resources/forms" as forms;
 
 .module > div > div {
   margin-top: 0px !important;

@@ -3,7 +3,7 @@ import redux from 'seed/redux';
 import { Formik, Form, Field, FieldArray } from "formik";
 import { lcs } from 'components/util/Locales';
 import cx from "classnames";
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 import c from "components/project_admin/registry/Invites.module.scss";
 
 function AddMembers(props) {

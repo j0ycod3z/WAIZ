@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import redux from 'seed/redux';
 import { lcs, lc } from "components/util/Locales"
-import Switch from '@material-ui/core/Switch';
+import Switch from '@mui/material/Switch';
 import Loading from 'components/helpers/Loading'
 
 import c from 'components/navigation/PhaseSelect.module.scss'

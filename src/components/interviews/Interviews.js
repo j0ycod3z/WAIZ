@@ -5,8 +5,8 @@ import cx from "classnames";
 import { NavLink, Route, Switch } from 'react-router-dom';
 import { hasProjectPermission } from 'components/util/Permissions';
 
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import { lcs } from 'components/util/Locales'
 import c from 'components/interviews/Interviews.module.scss';
 

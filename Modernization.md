@@ -3,7 +3,7 @@
 ## 1. Node 18 setup process
 - run this command in the terminal
 ```bash
-npm uninstall node-sass-chokidar
+npm uninstall node-sass node-sass-chokidar
 npm install --save-dev sass
 ```
 **SCSS - Deprecated Warning Fix**
@@ -31,24 +31,24 @@ background-color: base.$green;
 - fixing UI styles that are breaking
 - consolidating global styles
 
-## 2. Integration Issues (Node 20  env)
+## 2. Integration Issues (Node 20 env)
 _*eto palang yung nahahanap ko na issues._
-   - **Knowledge Base:** some YouTube videos are not rendering
-   - **Dashboard:** Graph data for Hypothesis and Interviews are not showing
-   - **Dashboard:** Remove old insdustry data
-   - **Projects Admin:** Can't create a cohort in the front end. _(no code in the front end at all)_
-   - **Canvas:** Weekly filter not working
+  - **Knowledge Base:** some YouTube videos are not rendering
+  - **Dashboard:** Graph data for Hypothesis and Interviews are not showing
+  - **Dashboard:** Remove old insdustry data
+  - **Projects Admin:** Can't create a cohort in the front end. _(no code in the front end at all)_
+  - **(FIXED) Canvas:** Weekly filter not working
 
-## 2.  Check UI Components
-### 2.1 Goal
-- Update to React v18 (update to React v17 first)
-### 2.2 Job List 
+## 3.  Check UI Components
+### 3.1 Goal
+- Update to React v18
+### 3.2 Job List 
 - Update/remove Dependencies
   - update methods under the dependencies
   - remove unused dependencies
 - UI/UX Changes
 
-### 2.3 Dependency to be Updated
+### 3.3 Dependency to be Updated
 #### Dependencies that may be unused _(can be removed)_
 - [x] select
 - [x] react-svg
@@ -59,23 +59,23 @@ _*eto palang yung nahahanap ko na issues._
 - [x] react-bootstrap
 - [x] styled-components
 - [x] yup
-  
-#### List of dependencies
+
+#### List of dependencies to be updated
 1. **chart.js & react-chartjs-2 (DONE)**
    ```bash
    npm install --save-dev chart.js@4 react-chartjs-2@5
    "chart.js": "^3.9.1",
    "react-chartjs-2": "^3.3.0",
    ```
-2. **@material-ui/core**
+2. **@mui/material (DONE)**
    - migrate to @mui/material
    ```bash
-   npm uninstall @material-ui/core @material-ui/icons
-   npm install --save-dev @mui/material @mui/icons-material @emotion/react @emotion/styled
+   npm uninstall @mui/material @material-ui/icons
+   npm install --save-dev @mui/material @mui/icons-material @mui/lab @emotion/react @emotion/styled
    ```
    - UI component import changes
    - minor but tedious change
-3. **formik**
+3. **formik (DONE)**
    ```bash
    npm install --save-dev formik@2
    ```
@@ -102,6 +102,6 @@ _*eto palang yung nahahanap ko na issues._
    ```
 8. **react & react-dom**
    ```bash
-   npm install --save-dev react@17 react-dom@17
+   npm install --save-dev react@18 react-dom@18
    ```
    - main react support for other packages

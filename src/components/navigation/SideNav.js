@@ -65,22 +65,25 @@ function SideNav(props) {
   const projectId = localStorage.getItem('projectId');
   const cohortId = localStorage.getItem('cohortId');
 
-  if (projectId == 0 || projectId === null || projectId == undefined) {
-    if (cohortId === null || cohortId == undefined) {
-      if (filteredProjects.length > 0) {
-        localStorage.setItem('projectId', filteredProjects[0].id);
-        localStorage.setItem('cohortId', filteredProjects[0].cohort_id ? filteredProjects[0].cohort_id : 0);
-        history.replace("/");
-      }
-    } else {
-      let temp = filteredProjects.filter((p) => (p.cohort_id === null || p.cohort_id === undefined));
-      if (temp.length > 0 && (cohortId == 0 || cohortId === null || cohortId == undefined)) {
-        localStorage.setItem('projectId', temp[0].id);
-        localStorage.setItem('cohortId', temp[0].cohort_id ? temp[0].cohort_id : 0);
-        history.replace("/");
+  // Handle project selection logic in useEffect to avoid state updates during render
+  useEffect(() => {
+    if (projectId === 0 || projectId === null || projectId === undefined) {
+      if (cohortId === null || cohortId == undefined) {
+        if (filteredProjects.length > 0) {
+          localStorage.setItem('projectId', filteredProjects[0].id);
+          localStorage.setItem('cohortId', filteredProjects[0].cohort_id ? filteredProjects[0].cohort_id : 0);
+          history.replace("/");
+        }
+      } else {
+        let temp = filteredProjects.filter((p) => (p.cohort_id === null || p.cohort_id === undefined));
+        if (temp.length > 0 && (cohortId == 0 || cohortId === null || cohortId == undefined)) {
+          localStorage.setItem('projectId', temp[0].id);
+          localStorage.setItem('cohortId', temp[0].cohort_id ? temp[0].cohort_id : 0);
+          history.replace("/");
+        }
       }
     }
-  }
+  }, [projectId, cohortId, filteredProjects, history]);
 
   filteredProjects = filteredProjects
     .filter((p) => (cohortId == 0 ? p.cohort_id == null : p.cohort_id == cohortId))

@@ -65,7 +65,8 @@ function Card(props) {
 
   const onClickOpen = () => setEditing(true);
   const onClickCancel = () => setEditing(false);
-
+  console.log(profile);
+  
   const renderUserCard = () => (
     <div className={cx(c.card, c.mainCard)}>
       <div className={cx("card-body", "d-flex", "flex-column")}>
@@ -81,26 +82,26 @@ function Card(props) {
 
         <div className={cx(c.cardSection, "card-text")}>
           <ul className={c.list}>
-            {profile.website != "" &&
+            {profile.website !== "" &&
               <li>
                 <i className="fas fa-globe-americas" />
                 {profile.website}
               </li>
             }
-            {profile.industry != "" &&
+            {profile.industry !== "" &&
               <li>
                 <i className="fas fa-industry" />
                 {nor(profile.industry)}
               </li>
             }
-            {profile.country != "" &&
+            {profile.country !== "" &&
               <li>
                 <i className="fas fa-map-marker-alt" />
                 {nor(profile.country)}
               </li>
             }
-            {profile.gender != "" && (
-              profile.gender == "FEMALE" ?
+            {profile.gender !== "" && (
+              profile.gender === "FEMALE" ?
                 <li>
                   <i className="fas fa-female" />
                   {lcs("female")}
@@ -116,7 +117,7 @@ function Card(props) {
                 {profile.user.email.length > 24 ? profile.user.email.substring(0, 24) + "…" : profile.user.email}
               </a>
             </li>
-            {profile.phone != "" &&
+            {profile.phone !== "" &&
               <li>
                 <i className="fas fa-phone" />
                 {profile.phone}
@@ -127,34 +128,34 @@ function Card(props) {
 
         <div className={cx("card-text")}>
           <ul className={c.list}>
-            {profile.linkedin != "" &&
+            {profile.linkedin !== "" &&
               <li>
                 <i className="fab fa-linkedin" />
-                <a href="">{profile.linkedin}</a>
+                <p>{profile.linkedin}</p>
               </li>
             }
-            {profile.angellist != "" &&
+            {profile.angellist !== "" &&
               <li>
                 <i className="fab fa-angellist" />
-                <a href="">{profile.angel_list}</a>
+                <p>{profile.angel_list}</p>
               </li>
             }
-            {profile.twitter != "" &&
+            {profile.twitter !== "" &&
               <li>
                 <i className="fab fa-twitter" />
-                <a href="">{profile.twitter}</a>
+                <p>{profile.twitter}</p>
               </li>
             }
-            {profile.facebook != "" &&
+            {profile.facebook !== "" &&
               <li>
                 <i className="fab fa-facebook" />
-                <a href="">{profile.facebook}</a>
+                <p>{profile.facebook}</p>
               </li>
             }
-            {profile.github != "" &&
+            {profile.github !== "" &&
               <li>
                 <i className="fab fa-github" />
-                <a href="">{profile.github}</a>
+                <p>{profile.github}</p>
               </li>
             }
           </ul>
@@ -167,7 +168,7 @@ function Card(props) {
     <div className={cx(c.card)}>
       <form onSubmit={onSubmit}>
         <div className={cx("card-body", "d-flex", "flex-column")}>
-          <img className={cx(c.profileImageContainer)} src={profile.user.image_url}/>
+          <img className={cx(c.profileImageContainer)} src={profile.user.image_url} alt="user"/>
           <h5 className={cx(c.username)}>{`${profile.user.first_name} ${profile.user.last_name}`}</h5>
           <div className={cx("card-text")}>
             <div className={cx("form-group")}>

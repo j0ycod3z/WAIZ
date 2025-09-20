@@ -7,8 +7,8 @@ import { saveAs } from 'file-saver';
 import domtoimage from 'dom-to-image';
 
 import { lcs } from 'components/util/Locales'
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 import Basic from 'components/canvas/types/Basic'
 import BMC from 'components/canvas/types/BMC'
@@ -21,7 +21,7 @@ import Productivity from 'components/canvas/types/Productivity'
 import Blank from 'components/canvas/types/Blank'
 import Scaling from 'components/canvas/types/Scaling';
 
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import c from 'components/canvas/Canvas.module.scss'
 

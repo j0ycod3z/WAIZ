@@ -23,22 +23,24 @@ function Performance(props) {
   const [projects, setProjects] = useState({});
 
   useEffect(() => {
-    const userId = sessionStorage.getItem('id');
-    const cohortId = localStorage.getItem('cohortId');
+    let IDs = {
+      user_id: sessionStorage.getItem('id'),
+      cohort_id: localStorage.getItem('cohortId'),
+    };
 
-    getStats("/performance/get_hypothesis_counts", { user_id: userId, cohort_id: cohortId }, (res) =>
+    getStats("/performance/get_hypothesis_counts", IDs, (res) =>
       setHypothesisCount(res.body)
     );
-    getStats("/performance/get_interviews_counts", { user_id: userId, cohort_id: cohortId }, (res) =>
+    getStats("/performance/get_interviews_counts", IDs, (res) =>
       setInterviewsCount(res.body)
     );
-    getStats("/performance/get_hypothesis_per_week", { user_id: userId, cohort_id: cohortId }, (res) =>
+    getStats("/performance/get_hypothesis_per_week", IDs, (res) =>
       setHypothesisWeek(res.body)
     );
-    getStats("/performance/get_interviews_per_week", { user_id: userId, cohort_id: cohortId }, (res) =>
+    getStats("/performance/get_interviews_per_week", IDs, (res) =>
       setInterviewsWeek(res.body)
     );
-    getStats("/performance/get_projects", { user_id: userId, cohort_id: cohortId }, (res) =>
+    getStats("/performance/get_projects", IDs, (res) =>
       setProjects(res.body)
     );
   }, [getStats]);

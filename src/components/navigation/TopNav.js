@@ -7,8 +7,8 @@ import Modal from "components/helpers/Modal"
 import { NavLink } from 'react-router-dom'
 import { lcs, lc } from 'components/util/Locales'
 
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 import c from 'components/navigation/TopNav.module.scss';
 

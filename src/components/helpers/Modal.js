@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import cx from "classnames";
-import ModalContainer from "@material-ui/core/Modal";
+import ModalContainer from "@mui/material/Modal";
 import c from "components/helpers/Modal.module.scss";
 
 function Modal(props) {

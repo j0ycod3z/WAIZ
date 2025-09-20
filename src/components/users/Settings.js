@@ -13,7 +13,6 @@ function Settings(props) {
   const [user, setUserState] = useState(null);
   const [error, setError] = useState(null);
   const [done, setDone] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const userId = sessionStorage.getItem("id");
@@ -37,7 +36,6 @@ function Settings(props) {
       token: user.verification_token,
     };
 
-    setLoading(true);
     changePassword(body, (res) => {
       if (res.ok) {
         setDone(lcs("password_done"));
@@ -48,7 +46,6 @@ function Settings(props) {
             : lcs("an_error_has_ocurred")
         );
       }
-      setLoading(false);
     });
   };
   

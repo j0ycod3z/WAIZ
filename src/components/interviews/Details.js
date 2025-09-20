@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import redux from 'seed/redux';
 import cx from 'classnames';
 
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import Loading from 'components/helpers/Loading'
 import Insights from 'components/interviews/Insights'
 import { hasProjectPermission } from 'components/util/Permissions';

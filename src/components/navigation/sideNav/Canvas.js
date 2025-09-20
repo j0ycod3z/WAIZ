@@ -5,8 +5,8 @@ import { NavLink, useLocation } from 'react-router-dom'
 import { lcs, lc } from 'components/util/Locales'
 import { hasProjectPermission } from 'components/util/Permissions';
 
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import Modal from 'components/helpers/Modal';
 
 import PhaseSelect from 'components/navigation/PhaseSelect';

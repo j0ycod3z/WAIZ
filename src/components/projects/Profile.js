@@ -23,7 +23,7 @@ import Modal from 'components/helpers/Modal'
 import Loading from 'components/helpers/Loading'
 
 import c from 'components/projects/Profile.module.scss';
-import { Switch } from "@material-ui/core";
+import { Switch } from "@mui/material";
 
 function Profile(props) {
   const { match, history, trls = [], projectDetails, projects, setProject, setProjectDetail, setProjectFeature, uploadFile, getProjectDetailList, getTrlList, getTrlStatusList } = props;
