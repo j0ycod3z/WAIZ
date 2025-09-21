@@ -63,8 +63,9 @@ function RecoveryForm(props) {
                 password2: ""
               }}
               onSubmit={onSubmit}
-              render={(formikProps) => (
-                <form onSubmit={formikProps.handleSubmit}>
+            >
+              {({ handleSubmit }) => (
+                <form onSubmit={handleSubmit}>
                   <div className={cx("form-group")}>
                     <Field
                       type="password"
@@ -89,14 +90,13 @@ function RecoveryForm(props) {
                     </div>
                   }
                   <div>
-                    <button className={cx("btn", "btn-md", c.buttonGreen, c.mainButton)}
-                      type="submit">
+                    <button className={cx("btn", "btn-md", c.buttonGreen, c.mainButton)} type="submit">
                       {lcs("send")}
                     </button>
                   </div>
                 </form>
               )}
-            />
+            </Formik>
           </div>
         </div>
       </div>

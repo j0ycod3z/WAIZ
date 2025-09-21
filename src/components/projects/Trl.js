@@ -81,21 +81,19 @@ function Trl(props) {
         <h4>{lc(trl.l_name)}</h4>
         <p>{lc(trl.l_description)}</p>
         <hr />
-        <Formik
-          initialValues={statuses}
-          onSubmit={onSubmit}
-          render={formProps => (
-            <form onSubmit={formProps.handleSubmit}>
+        <Formik initialValues={statuses} onSubmit={onSubmit}>
+          {({ values, setFieldValue, handleSubmit }) => (
+            <form onSubmit={handleSubmit}>
               <div className={cx("form-group")}>
                 <p>{lcs("trl_instructions")}</p>
               </div>
-              <div className={c.selectAllBtn} onClick={(e) => {e.preventDefault(); onSelectAll(formProps.values, formProps.setFieldValue)}}>
+              <div className={c.selectAllBtn} onClick={(e) => {e.preventDefault(); onSelectAll(values, setFieldValue)}}>
                 {lcs("mark_all")}
               </div>
               <div className={cx("list-group")}>
                 {trlQuestionsFiltered.map((q) =>
                   <label key={q.id} htmlFor={q.id} className={cx("list-group-item")}>
-                    <Field type="checkbox" name={q.id} id={q.id} checked={formProps.values[q.id]} />
+                    <Field type="checkbox" name={q.id} id={q.id} checked={values[q.id]} />
                     {lc(q.l_name)}
                   </label>
                 )}
@@ -106,7 +104,7 @@ function Trl(props) {
               </button>
             </form>
           )}
-        />
+        </Formik>
       </div>
     </div>
   );

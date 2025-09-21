@@ -52,10 +52,9 @@ function AddMember(props) {
         {loading &&
           <CircularProgress className={c.loading} size="20" />
         }
-        <Formik
-          onSubmit={onSubmit}
-          render={(formProps) => (
-            <form onSubmit={formProps.handleSubmit}>
+        <Formik onSubmit={onSubmit}>
+          {({ handleSubmit }) => (
+            <form onSubmit={handleSubmit}>
               <Field
                 type="email"
                 name="email"
@@ -71,7 +70,7 @@ function AddMember(props) {
               <button type="submit" className={c.call}>{lcs("add")}</button>
             </form>
           )}
-        />
+        </Formik>
       </div>
     </div>
   );

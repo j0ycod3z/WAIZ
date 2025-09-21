@@ -67,7 +67,8 @@ function Signup(props) {
                 password2: ""
               }}
               onSubmit={onSubmit}
-              render={({ handleSubmit }) => (
+            >
+              {({ handleSubmit }) => (
                 <form onSubmit={handleSubmit}>
                   <div className={cx("form-group")}>
                     <Field type="text" name="name" placeholder="First Name" className={cx("form-control", c.input)} required />
@@ -90,16 +91,13 @@ function Signup(props) {
                     </div>
                   )}
                   <div>
-                    <button
-                      className={cx("btn", "btn-md", c.buttonGreen, c.mainButton)}
-                      type="submit"
-                    >
+                    <button className={cx("btn", "btn-md", c.buttonGreen, c.mainButton)} type="submit">
                       {lcs("sign_up")}
                     </button>
                   </div>
                 </form>
               )}
-            />
+            </Formik>
           </div>
           <div className={cx("col-md-4", "col-lg-4")}>
             <h2 className={c.title2}>{lcs("sign_up_title")}</h2>

@@ -5,6 +5,8 @@
 ```bash
 npm uninstall node-sass node-sass-chokidar
 npm install --save-dev sass
+npm install --save-dev react@16 react-dom@16
+npm install --save-dev react-dnd@16 react-dnd-html5-backend@16
 ```
 **SCSS - Deprecated Warning Fix**
 - replace all imports in all scss files
@@ -90,21 +92,38 @@ _*eto palang yung nahahanap ko na issues._
    npm install --save-dev react-youtube@10
    ```
    - check for newer methods
-6. **react-router & react-router-dom**
+6. **redux, redux-thunk, & react-redux**
+   ```bash
+   npm install --save-dev redux@5 redux-thunk@3 react-redux@9
+   ```
+7. **react-router & react-router-dom**
    ```bash
    npm install --save-dev react-router@6 react-router-dom@6
    ```
    - migrate `<Switch>` to `<Routes>`
-   - combine all routes to one file [App.js](src/components/app.js)
-7. **redux & react-redux**
-   ```bash
-   npm install --save-dev redux@5 react-redux@9
-   ```
+   - combine all routes to [App.js](src/components/app.js)
 8. **react & react-dom**
    ```bash
    npm install --save-dev react@18 react-dom@18
    ```
    - main react support for other packages
+
+Package Name | Current | Target | Status
+-|-|-|-|
+body-parser      | 1.20.3 |  2.2.0 | Done
+express          | 4.21.2 |  5.1.0 | Done
+file-saver       |  2.0.2 |  2.0.5 | Done
+log              |  6.0.0 |  6.3.2 | Done
+cross-fetch      |  3.2.0 |  4.1.0 | Done
+redux            |  4.0.4 |  5.0.1 | Replace deprecated method
+redux-thunk      |  2.3.0 |  3.1.0 | Done
+react-redux      |  8.1.3 |  9.2.0 | Reactv18 required
+react-router     |  5.3.4 |  7.9.1 | v6 first
+react-router-dom |  5.3.4 |  7.9.1 | v6 first
+react            | 17.0.2 | 19.1.1 | pending react-router/dom@6
+react-dom        | 17.0.2 | 19.1.1 | pending react-router/dom@6
+
+commit text: partial fix on redux dependencies; formik method fix
 
 - Removed dependencies
   - react-bootstrap
@@ -137,3 +156,13 @@ _*eto palang yung nahahanap ko na issues._
 browserify-zlib@0.2.0
 path-browserify@1.0.1
 querystring-es3@0.2.1
+
+- Removed
+  - extract-text-webpack-plugin
+  - browserify-zlib
+  - path-browserify
+  - querystring-es3
+- Updated
+  - body-parser
+  - file-saver
+  - log

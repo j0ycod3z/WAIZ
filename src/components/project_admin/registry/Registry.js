@@ -32,7 +32,8 @@ function Registry(props) {
       <h1 className={c.title}>{lcs("create_a_project")}</h1>
       <Formik
         onSubmit={onSubmit}
-        render={({ handleSubmit, handleChange, handleBlur }) => (
+      >
+        {({ handleSubmit, handleChange, handleBlur }) => (
           <form onSubmit={handleSubmit}>
             <div className={cx("form-group")}>
               <input
@@ -65,7 +66,7 @@ function Registry(props) {
             </div>
           </form>
         )}
-      />
+      </Formik>
     </div>
   );
 }

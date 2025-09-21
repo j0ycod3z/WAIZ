@@ -33,10 +33,8 @@ function AddMembers(props) {
         <CircularProgress className={c.loading} size="20" />
       )}
 
-      <Formik
-        initialValues={{ members: [""], mentors: [""] }}
-        onSubmit={onSubmit}
-        render={({ values }) => (
+      <Formik initialValues={{ members: [""], mentors: [""] }} onSubmit={onSubmit}>
+        {({ values }) => (
           <Form>
             <h5>{lcs("members")} ({lcs("optional")})</h5>
             <FieldArray
@@ -122,7 +120,7 @@ function AddMembers(props) {
             </div>
           </Form>
         )}
-      />
+      </Formik>
     </div>
   );
 }

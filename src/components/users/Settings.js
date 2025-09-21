@@ -59,11 +59,9 @@ function Settings(props) {
             <div className={cx(c.card)}>
               <div className={cx("card-body")}>
                 <h2>{lcs("settings")}</h2>
-                <Formik
-                  initialValues={user}
-                  onSubmit={onSubmitLanguage}
-                  render={formProps => (
-                    <form onSubmit={formProps.handleSubmit}>
+                <Formik initialValues={user} onSubmit={onSubmitLanguage}>
+                  {({  handleSubmit }) => (
+                    <form onSubmit={handleSubmit}>
                       <h5>{lcs("set_language")}</h5>
                       <div className={cx("form-group")}>
                         <Field component="select" name="lang" className={cx("form-control", c.input)}>
@@ -78,19 +76,18 @@ function Settings(props) {
                       </div>
                     </form>
                   )}
-                />
+                </Formik>
                 <hr />
-                <Formik
-                  onSubmit={onChangePassword}
-                  render={formProps => (
-                    <form onSubmit={formProps.handleSubmit}>
+                <Formik onSubmit={onChangePassword}>
+                  {({ handleSubmit }) => (
+                    <form onSubmit={handleSubmit}>
                       <h5>{lcs("change_password")}</h5>
                       <div className={cx("form-group")}>
                         <label htmlFor="new_password">{lcs("new_password")}</label>
                         <input
                           type="password"
-                          onChange={formProps.handleChange}
-                          onBlur={formProps.handleBlur}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
                           name="new_password"
                           id="new_password"
                           className={cx("form-control", c.input)}
@@ -100,8 +97,8 @@ function Settings(props) {
                         <label htmlFor="new_password2">{lcs("repeat_new_password")}</label>
                         <input
                           type="password"
-                          onChange={formProps.handleChange}
-                          onBlur={formProps.handleBlur}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
                           name="new_password2"
                           id="new_password2"
                           className={cx("form-control", c.input)}
@@ -120,7 +117,7 @@ function Settings(props) {
                       </div>
                     </form>
                   )}
-                />
+                </Formik>
               </div>
             </div>
           </div>

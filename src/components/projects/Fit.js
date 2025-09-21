@@ -86,21 +86,19 @@ function Fit(props) {
       <h2>{lcs("level")} {level}</h2>
       <h4>{name}</h4>
       <hr />
-      <Formik
-        initialValues={statuses}
-        onSubmit={onSubmit}
-        render={formProps => (
-          <form onSubmit={formProps.handleSubmit}>
+      <Formik initialValues={statuses} onSubmit={onSubmit}>
+        {({ values, setFieldValue, handleSubmit }) => (
+          <form onSubmit={handleSubmit}>
             <div className={cx("form-group")}>
               <p>{lcs("trl_instructions")}</p>
             </div>
-            <div className={c.selectAllBtn} onClick={() => onSelectAll(formProps.values, formProps.setFieldValue)}>
+            <div className={c.selectAllBtn} onClick={() => onSelectAll(values, setFieldValue)}>
               {lcs("mark_all")}
             </div>
             <div className={cx("list-group")}>
               {fitsFiltered.map((q) =>
                 <label key={q.id} htmlFor={q.id} className={cx("list-group-item")}>
-                  <Field type="checkbox" name={q.id} id={q.id} checked={formProps.values[q.id]}/>
+                  <Field type="checkbox" name={q.id} id={q.id} checked={values[q.id]}/>
                   {lc(q.l_name)}
                 </label>
               )}
@@ -111,7 +109,7 @@ function Fit(props) {
             </button>
           </form>
         )}
-      />
+      </Formik>
     </div>
     </div>
   );

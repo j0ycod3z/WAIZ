@@ -83,16 +83,13 @@ function Bulk(props) {
         {loading &&
           <CircularProgress className={c.loading} size="20" />
         }
-        <Formik
-          onSubmit={onSubmit}
-          render={({ handleSubmit }) => (
+        <Formik onSubmit={onSubmit}>
+          {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <div className={c.instructions}>
                 {lcs("template_title")}
                 <ol>
-                  <li>{
-                    lcs("template_notice_1")}: <a href={`${url}/static/template.csv`}>{lcs("download_template")}</a>
-                  </li>
+                  <li>{lcs("template_notice_1")}: <a href={`${url}/static/template.csv`}>{lcs("download_template")}</a></li>
                   <li>{lcs("template_notice_2")}</li>
                   <li>{lcs("template_notice_3")}</li>
                 </ol>
@@ -117,7 +114,7 @@ function Bulk(props) {
               </button>
             </form>
           )}
-        />
+        </Formik>
       </div>
     </div>
   );
