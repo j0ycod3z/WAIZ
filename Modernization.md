@@ -105,3 +105,35 @@ _*eto palang yung nahahanap ko na issues._
    npm install --save-dev react@18 react-dom@18
    ```
    - main react support for other packages
+
+- Removed dependencies
+  - react-bootstrap
+  - react-scripts-cssmodules
+  - serve-favicon
+- Updated dependencies
+  - react-csv
+  - react-youtube
+  - jquery
+  - formik
+
+- Removed dependencies
+  - @material-ui/core
+  - reactour
+  - extract-text-webpack-plugin
+- Added dependencies
+  - @emotion/react
+  - @emotion/styled
+  - @mui/icons-material
+  - @mui/lab
+  - @mui/material
+  - @reactour/tour
+- Updated dependencies
+  - body-parser
+  - react-select
+  - cross-fetch
+  - morgan
+  - debug
+
+browserify-zlib@0.2.0
+path-browserify@1.0.1
+querystring-es3@0.2.1
