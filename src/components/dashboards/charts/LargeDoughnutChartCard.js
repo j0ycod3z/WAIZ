@@ -55,7 +55,6 @@ function LargeDoughnutChartCard (props)
     }
   };
 
-
   return (
     <div className={c.module}>
       <div className={cx(c.ChartCard, c.DoughnutChartCard, c.LargeChardCard)}>
