@@ -3,7 +3,7 @@ import cx from "classnames";
 import redux from 'seed/redux'
 import { lcs } from 'components/util/Locales';
 import { Formik, Field } from "formik";
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 import waizLogo from 'resources/images/waiz_logo_white.svg';
 import backSvg from 'resources/images/ic_back.svg';
 

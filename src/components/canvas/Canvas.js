@@ -5,10 +5,10 @@ import { CSVLink } from "react-csv";
 import { hypothesisToCsv } from 'components/canvas/util/FormatUtil';
 import { saveAs } from 'file-saver';
 import domtoimage from 'dom-to-image';
-
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { lcs } from 'components/util/Locales'
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 import Basic from 'components/canvas/types/Basic'
 import BMC from 'components/canvas/types/BMC'
@@ -21,7 +21,7 @@ import Productivity from 'components/canvas/types/Productivity'
 import Blank from 'components/canvas/types/Blank'
 import Scaling from 'components/canvas/types/Scaling';
 
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import c from 'resources/css/canvas/Canvas.module.css'
 

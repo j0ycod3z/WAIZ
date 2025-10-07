@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import redux from 'seed/redux';
 
 import cx from "classnames";
-import { NavLink, Route, Switch } from 'react-router-dom';
+import { NavLink, Routes, Route } from 'react-router-dom';
 import { hasProjectPermission } from 'components/util/Permissions';
 
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import { lcs } from 'components/util/Locales'
 import c from 'resources/css/interviews/Interviews.module.css';
 
@@ -50,14 +50,29 @@ function Interviews(props) {
 
   const interviewList = filteredInterviews.map((i) => (
     <NavLink
-      key={i.id}
-      to={`${url}/${i.id}`}
-      className={cx(c.item, "list-group-item list-group-item-action flex-column align-items-start active-temp")}
-      activeClassName={cx(c.active)}
-    >
-      <Item interview={i} />
-    </NavLink>
+  key={i.id}
+  to={`${url}/${i.id}`}
+  className={({ isActive }) =>
+    cx(
+      c.item,
+      "list-group-item list-group-item-action flex-column align-items-start active-temp",
+      { [c.active]: isActive }
+    )
+  }
+>
+  <Item interview={i} />
+</NavLink>
   ));
+
+  //prev format for reference
+  //<NavLink
+//   key={i.id}
+//   to={`${url}/${i.id}`}
+//   className={cx(c.item, "list-group-item list-group-item-action flex-column align-items-start active-temp")}
+//   activeClassName={cx(c.active)}
+// >
+//   <Item interview={i} />
+// </NavLink>
 
   const formModalElement = formModal && (
     <Modal
@@ -164,7 +179,7 @@ function Interviews(props) {
         </div>
         <div className={"col-md-9"}>
           <div>
-            <Switch>
+            <Routes>
               <Route
                 path={`${path}/:interview_id(\\d+)`}
                 component={Details}
@@ -173,7 +188,7 @@ function Interviews(props) {
                 path={`${path}`}
                 component={Empty}
               />
-            </Switch>
+            </Routes>
           </div>
         </div>
       </div>

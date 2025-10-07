@@ -62,13 +62,9 @@ function AnalyticCard (props)
               <p className={cx(c.redFont, c.number)}>{data.hypothesis.is_invalid}</p>
               <p>{lcs("invalid")}</p>
             </div>
-<<<<<<< HEAD
           </div>
         </div>
       </div>
-=======
-            </div>
->>>>>>> ab0a852e4081788b235cc42716f7ce7b642b3889
     )
 
 }

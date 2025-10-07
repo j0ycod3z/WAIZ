@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import redux from 'seed/redux';
 import cx from "classnames";
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 import { lcs } from "components/util/Locales"
 import { Formik, Field } from "formik";
 

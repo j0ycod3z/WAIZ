@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 
 import Home from 'components/Home';
 import Login from 'components/auth/Login';
@@ -13,7 +13,7 @@ import NewProject from 'components/project_admin/registry/Panel';
 
 function App() {
   return (
-    <Switch>
+    <Routes>
       <Route path='/login/:action?' component={Login} />
       <Route path='/logout' component={Logout} />
       <Route path="/projects/new" component={NewProject} />
@@ -23,8 +23,8 @@ function App() {
       <Route path='/recovery_message/:type' component={RecoveryMessage} />
       <Route path='/recovery' component={Recovery} />
       <Route path='/app' component={Home} />
-      <Redirect to='/app' />
-    </Switch>
+      <Navigate to='/app' />
+    </Routes>
   );
 }
 

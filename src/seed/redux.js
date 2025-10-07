@@ -7,7 +7,6 @@ __Seed builder__v0.2.0
 import * as Util from "seed/util";
 import defs from "actions/defs";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
 
 import _AreaActions from "seed/actions/areas";
 import _AreaHelpActions from "seed/actions/areaHelps";
@@ -421,10 +420,10 @@ const mergeProps = (states, disps, props) =>
   Object.assign({}, states, disps, props);
 
 const redux = (component) =>
-  withRouter(connect(
+  connect(
     stateToProps,
     dispToProps,
     mergeProps
-  )(component));
+  )(component);
 
 export default redux;

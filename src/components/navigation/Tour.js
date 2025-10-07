@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import redux from 'seed/redux'
-import Tour from 'reactour'
+import Tour from '@reactour/tour'
 
 import c from 'resources/css/navigation/Tour.module.css';
 import cSide from 'resources/css/navigation/SideNav.module.css';

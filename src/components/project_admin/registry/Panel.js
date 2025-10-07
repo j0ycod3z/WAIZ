@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import cx from "classnames";
 
@@ -36,11 +36,11 @@ function Panel(props) {
       </div>
       <div className={cx("d-flex", "justify-content-md-center")}>
         <div className={cx("col-md-4")}>
-          <Switch>
+          <Routes>
             <Route path={`${path}/:project_id(\\d+)/members`} component={Invites} />
             <Route path={`${path}`} component={Registry} />
-            <Redirect to={`${url}`} />
-          </Switch>
+            <Navigate to={`${url}`} />
+          </Routes>
           </div>
       </div>
     </div>

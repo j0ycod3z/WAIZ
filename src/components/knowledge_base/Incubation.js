@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { lcs } from "components/util/Locales"
 
 import Modal from 'seed/components/helpers/Modal';
@@ -18,13 +18,13 @@ function Incubation(props) {
 
   return (
     <div className={c.module}>
-      <Switch>
+      <Routes>
         <Route
           path={`${path}/:course_id(\\d+)`}
           component={knowledgeBase}
         />
-        <Redirect to={`${url}/3/0`} />
-      </Switch>
+        <Navigate to={`${url}/3/0`} />
+      </Routes>
     </div >
   );
 }

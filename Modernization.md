@@ -30,11 +30,11 @@
 - yup
   
 #### List of dependencies
-1. **chart.js & react-chartjs-2**
+1. **chart.js & react-chartjs-2** (DONE)
    ```bash
    npm --save-dev install chart.js@4 react-chartjs-2@5
    ```
-2. **@material-ui/core**
+2. **@material-ui/core** (DONE)
    - migrate to @mui/material
    ```bash
    npm uninstall @material-ui/core @material-ui/icons
@@ -42,26 +42,26 @@
    ```
    - UI component import changes
    - minor but tedious change
-3. **formik**
+3. **formik** (DONE)
    ```bash
    npm install --save-dev formik@2
    ```
    - check for newer methods
-4. **react-csv**
+4. **react-csv** (DONE)
    ```bash
    npm install --save-dev react-csv@2
    ```
    - check for newer methods
-5. **react-youtube**
+5. **react-youtube** (DONE)
    ```bash
    npm install --save-dev react-youtube@10
    ```
    - check for newer methods
-6. **react-router & react-router-dom**
+6. **react-router & react-router-dom** (DONE)
    ```bash
    npm install --save-dev react-router@6 react-router-dom@6
    ```
-   - migrate `<Switch>` to `<Routes>`
+   - migrate `<Route>` to `<Routes>`
    - combine all routes to one file [App.js](src/components/app.js)
 7. **redux & react-redux**
    ```bash
@@ -72,3 +72,11 @@
    npm install --save-dev react@17 react-dom@17
    ```
    - main react support for other packages
+
+
+
+
+   10/6/2025
+   Reinstalled reactour for temp compatibility, eventually it should be replaced with something else
+   Possibly react-joyride
+   or shepherd.js

@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux'
-import { MuiThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { MuiTheme } from 'settings/MuiTheme';
 import { BrowserRouter, Route } from 'react-router-dom'
 import { HTML5Backend } from 'react-dnd-html5-backend'
@@ -20,15 +20,15 @@ const store = Store();
 const muiTheme = MuiTheme();
 
 ReactDOM.render(
-    <Provider store={store}>
-        <MuiThemeProvider theme={muiTheme}>
+    <Provider store={store}>    
+        <ThemeProvider theme={muiTheme}>    
             <DndProvider backend={HTML5Backend}>
                 <Popup />
                 <BrowserRouter>
                     <Route path='/' component={App} />
                 </BrowserRouter>
             </DndProvider>
-        </MuiThemeProvider>
+        </ThemeProvider>
     </Provider>,
     document.getElementById('root')
 );

@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as Util from 'seed/util';
 import redux from 'seed/redux';
 import cx from 'classnames';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import CanvasPanel from 'components/canvas/Panel';
 import ProjectProfile from 'components/projects/Profile';
@@ -70,7 +70,7 @@ class Home extends React.Component {
               }
             />
             <div className={c.content}>
-              <Switch>
+              <Routes>
                 <Route path={`${path}/c/:canvas_id(\\d+)`} component={CanvasPanel} />
                 <Route path={`${path}/project_profile/:project_id(\\d+)`} component={ProjectProfile} />
                 <Route path={`${path}/interviews/:project_id(\\d+)`} component={Interviews} />
@@ -85,9 +85,9 @@ class Home extends React.Component {
                 <Route path={`${path}/chat`} component={Chatbot} /> */}
 
                 {defCanvas.id != null &&
-                  <Redirect to={`${path}/c/${defCanvas.id}`} />
+                  <Navigate to={`${path}/c/${defCanvas.id}`} />
                 }
-              </Switch>
+              </Routes>
               <Tour history={this.history} match={this.props.match} />
             </div>
           </div>

@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Route } from "react-router-dom";
-
 import Modal from "seed/components/helpers/Modal";
 import HypothesisForm from "components/canvas_forms/Hypothesis";
 import FormPanel from "components/canvas_forms/Panel";

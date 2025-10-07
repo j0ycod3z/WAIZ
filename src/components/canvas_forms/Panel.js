@@ -1,9 +1,9 @@
 import React, { useState, useCallback, useMemo } from 'react';
-import { NavLink, Link, Route, Switch, Redirect } from 'react-router-dom'
+import { NavLink, Routes, Link, Route, Navigate } from 'react-router-dom'
 import redux from 'seed/redux';
 
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 import Area from 'components/canvas/Area'
 import Insights from 'components/canvas_forms/Insights'
@@ -91,13 +91,13 @@ function Panel(props) {
 
   return (
     <div className={c.module}>
-      <Switch>
+      <Routes>
         <Route exact path={`${url}/insights`} render={() => <div className={cx(c.headerBackground, c.insights)}></div>} />
         <Route path={`${url}/deepdive`} render={() => <div className={cx(c.headerBackground, c.deepdive)}></div>} />
         <Route path={`${url}/comments`} render={() => <div className={cx(c.headerBackground, c.comments)}></div>} />
         <Route path={`${url}/help`} render={() => <div className={cx(c.headerBackground, c.help)}></div>} />
         <Route path={`${url}`} render={() => <div className={cx(c.headerBackground, c.insights)}></div>} />
-      </Switch>
+      </Routes>
 
       <div className={c.header}>
         <div className={c.headerTitle} onClick={openMenu}>
@@ -140,13 +140,13 @@ function Panel(props) {
       <Route path={`${path}/edit-hypothesis/:hypothesis_id`} component={hypothesisForm} />
 
       <div className={c.content}>
-        <Switch>
+        <Routes>
           <Route path={`${path}/insights`} component={Insights} />
           <Route path={`${path}/deepdive`} component={DeepDive} />
           <Route path={`${path}/comments`} component={Comments} />
           <Route path={`${path}/help`} component={Help} />
-          <Redirect to={`${url}/insights`} />
-        </Switch>
+          <Navigate to={`${url}/insights`} />
+        </Routes>
       </div>
     </div>
   );

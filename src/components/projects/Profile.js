@@ -4,7 +4,7 @@ import redux from 'seed/redux';
 import cx from 'classnames';
 import { lcs, lc } from 'components/util/Locales';
 import { hasProjectPermission } from 'components/util/Permissions';
-import { Route, Link } from "react-router-dom";
+import { Routes, Route, Link } from 'react-router-dom';
 
 import ProjectHeader from 'components/projects/Header';
 import KeyPerformanceIndicators from 'components/projects/KeyPerformanceIndicators';
@@ -23,7 +23,8 @@ import Modal from 'seed/components/helpers/Modal'
 import Loading from 'seed/components/helpers/Loading'
 
 import c from 'resources/css/projects/Profile.module.css';
-import { Switch } from "@material-ui/core";
+import Switch from "@mui/material/Switch";
+
 
 function Profile(props) {
   const { match, history, trls = [], projectDetails, projects, setProject, setProjectDetail, setProjectFeature, uploadFile, getProjectDetailList, getTrlList, getTrlStatusList } = props;
